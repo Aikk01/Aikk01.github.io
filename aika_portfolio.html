@@ -1,0 +1,265 @@
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+a{text-decoration:none;color:inherit}
+.site{background:#0b0b09;color:#edeae3;font-family:var(--font-sans)}
+
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 2rem;border-bottom:0.5px solid rgba(237,234,227,0.1)}
+.nav-name{font-size:13px;font-weight:500;letter-spacing:0.03em}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:11px;color:rgba(237,234,227,0.38);letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:#C85845}
+
+/* HERO */
+.hero{position:relative;padding:5rem 2rem 4rem;border-bottom:0.5px solid rgba(237,234,227,0.1);overflow:hidden;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:end}
+#hero-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero-inner{position:relative;z-index:1}
+.hero-fig{font-family:var(--font-mono);font-size:10px;color:#C85845;letter-spacing:0.09em;margin-bottom:2.5rem;display:flex;align-items:center;gap:12px;opacity:0.8}
+.hero-fig::before{content:'';display:inline-block;width:28px;height:0.5px;background:#C85845}
+.hero h1{font-size:clamp(64px,11vw,104px);font-weight:500;line-height:0.9;letter-spacing:-0.035em;margin-bottom:3rem}
+.hero h1 span{display:block}
+.hero-sub{font-size:14px;color:rgba(237,234,227,0.45);max-width:340px;line-height:1.8}
+
+/* Ghost data panel */
+.hero-data{position:relative;z-index:1;text-align:right;padding-bottom:0.25rem}
+.data-row{display:flex;align-items:baseline;justify-content:flex-end;gap:1rem;margin-bottom:0.6rem}
+.data-key{font-family:var(--font-mono);font-size:9px;color:rgba(237,234,227,0.18);letter-spacing:0.12em}
+.data-val{font-family:var(--font-mono);font-size:28px;font-weight:500;color:rgba(237,234,227,0.07);letter-spacing:-0.02em;line-height:1}
+.data-coord{font-family:var(--font-mono);font-size:9px;color:rgba(237,234,227,0.14);letter-spacing:0.06em;margin-top:1rem;line-height:2}
+
+/* ABOUT + CONTACT */
+.two-col{display:grid;grid-template-columns:1fr 1fr;border-bottom:0.5px solid rgba(237,234,227,0.1)}
+.col{padding:3.5rem 2rem}
+.col:first-child{border-right:0.5px solid rgba(237,234,227,0.1)}
+.s-label{font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#C85845;opacity:0.65;margin-bottom:1.75rem}
+.about-text{font-size:14px;line-height:1.9;color:rgba(237,234,227,0.52)}
+.about-text strong{color:#edeae3;font-weight:500}
+
+.c-item{margin-bottom:1.5rem}
+.c-key{font-family:var(--font-mono);font-size:10px;color:rgba(237,234,227,0.25);letter-spacing:0.08em;margin-bottom:5px}
+.c-val{font-size:14px;color:rgba(237,234,227,0.5);display:inline-flex;align-items:center;gap:8px;transition:color 0.15s}
+.c-val:hover{color:#C85845}
+.c-val i{font-size:13px}
+
+/* PROJECTS */
+.projects{padding:3.5rem 2rem;border-bottom:0.5px solid rgba(237,234,227,0.1)}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:0.6rem;margin-bottom:3rem}
+
+.feat-card{
+  border:0.5px solid rgba(237,234,227,0.1);
+  border-radius:2px;
+  background:rgba(237,234,227,0.02);
+  display:flex;flex-direction:column;
+  cursor:pointer;overflow:hidden;
+  transition:border-color 0.25s,background 0.25s,transform 0.25s;
+}
+.feat-card:hover{border-color:rgba(200,88,69,0.4);background:rgba(200,88,69,0.03);transform:translateY(-3px)}
+.feat-thumb{
+  height:160px;display:flex;align-items:center;justify-content:center;
+  border-bottom:0.5px solid rgba(237,234,227,0.07);
+  background:rgba(126,158,148,0.04);
+  position:relative;overflow:hidden;
+  transition:background 0.25s;
+}
+.feat-thumb-num{
+  position:absolute;font-family:var(--font-mono);
+  font-size:80px;font-weight:500;color:rgba(126,158,148,0.09);
+  line-height:1;letter-spacing:-0.04em;bottom:-8px;right:8px;
+}
+.feat-thumb i{font-size:22px;color:rgba(126,158,148,0.35);position:relative;z-index:1;transition:color 0.25s}
+.feat-card:hover .feat-thumb{background:rgba(200,88,69,0.05)}
+.feat-card:hover .feat-thumb i{color:rgba(200,88,69,0.55)}
+.feat-card:hover .feat-thumb-num{color:rgba(200,88,69,0.07)}
+.feat-body{padding:1.1rem;flex:1;display:flex;flex-direction:column}
+.feat-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem}
+.feat-num{font-family:var(--font-mono);font-size:10px;color:rgba(237,234,227,0.22);letter-spacing:0.05em}
+.feat-arrow{font-size:14px;color:rgba(237,234,227,0.18);transition:color 0.2s,transform 0.22s}
+.feat-card:hover .feat-arrow{color:#C85845;transform:translate(2px,-2px)}
+.feat-title{font-size:15px;font-weight:500;margin-bottom:0.45rem}
+.feat-desc{font-size:12px;color:rgba(237,234,227,0.38);line-height:1.65;flex:1}
+.feat-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:0.85rem}
+.tag{
+  font-size:10px;padding:2px 8px;
+  border:0.5px solid rgba(237,234,227,0.14);
+  color:rgba(237,234,227,0.3);
+  border-radius:1px;
+  font-family:var(--font-mono);letter-spacing:0.04em;
+  transition:border-color 0.2s,color 0.2s;
+}
+.feat-card:hover .tag{border-color:rgba(200,88,69,0.35);color:rgba(200,88,69,0.65)}
+
+/* TRASHY */
+.hr{height:0.5px;background:rgba(237,234,227,0.08);margin:0 0 2rem}
+.trashy-head{display:flex;align-items:baseline;gap:0.75rem;margin-bottom:1.2rem}
+.trashy-label{font-size:15px;font-weight:500}
+.trashy-meta{font-family:var(--font-mono);font-size:10px;color:rgba(237,234,227,0.22);letter-spacing:0.08em}
+.trashy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:0.5rem}
+.trashy-card{border:0.5px solid rgba(237,234,227,0.08);border-radius:2px;padding:0.85rem;display:block;cursor:pointer;transition:border-color 0.2s}
+.trashy-card:hover{border-color:rgba(200,88,69,0.3)}
+.trashy-title{font-size:13px;font-weight:500;margin-bottom:0.3rem}
+.trashy-desc{font-size:11px;color:rgba(237,234,227,0.34);line-height:1.55}
+
+/* SAGE accent strip */
+.accent-strip{height:2px;background:linear-gradient(90deg,#7E9E94,transparent);opacity:0.35}
+
+footer{display:flex;justify-content:space-between;align-items:center;padding:1.35rem 2rem}
+.f-txt{font-family:var(--font-mono);font-size:10px;color:rgba(237,234,227,0.16);letter-spacing:0.06em}
+</style>
+
+<h2 class="sr-only">Aika Ono — portfolio</h2>
+
+<div class="site">
+
+<nav>
+  <span class="nav-name">Aika Ono</span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-inner">
+    <div class="hero-fig">fig. 00 — future design engineer</div>
+    <h1><span>Aika</span><span>Ono.</span></h1>
+    <p class="hero-sub">Medical student intercalating in Biomedical Engineering. Building at the intersection of bodies, data, and design.</p>
+  </div>
+  <div class="hero-data">
+    <div class="data-row"><span class="data-key">SpO₂</span><span class="data-val">99</span></div>
+    <div class="data-row"><span class="data-key">NIBP</span><span class="data-val">31</span></div>
+    <div class="data-row"><span class="data-key">HR</span><span class="data-val">65</span></div>
+    <div class="data-coord">51.4988° N, 0.1749° W<br>Imperial College London<br>MEng Biomedical Engineering</div>
+  </div>
+</div>
+
+<div class="accent-strip"></div>
+
+<div class="two-col" id="about">
+  <div class="col">
+    <p class="s-label">About</p>
+    <p class="about-text">I'm a <strong>medical student intercalating in Biomedical Engineering</strong> at Imperial College London. I'm drawn to the hard problems — the ones that live at the border of clinical insight and engineering precision.<br><br>Whether I'm working on biomechanics, biosensor design, or how data flows through a system, I care about building things that actually work for real people.</p>
+  </div>
+  <div class="col">
+    <p class="s-label">Contact</p>
+    <div class="c-item">
+      <p class="c-key">Email</p>
+      <a class="c-val" href="mailto:hello@aikaono.com"><i class="ti ti-mail" aria-hidden="true"></i>hello@aikaono.com</a>
+    </div>
+    <div class="c-item">
+      <p class="c-key">LinkedIn</p>
+      <a class="c-val" href="#"><i class="ti ti-brand-linkedin" aria-hidden="true"></i>linkedin.com/in/aikaono</a>
+    </div>
+    <div class="c-item">
+      <p class="c-key">GitHub</p>
+      <a class="c-val" href="#"><i class="ti ti-brand-github" aria-hidden="true"></i>github.com/aikaono</a>
+    </div>
+  </div>
+</div>
+
+<div class="projects" id="projects">
+  <p class="s-label">Featured projects</p>
+  <div class="feat-grid">
+    <a class="feat-card" href="#">
+      <div class="feat-thumb">
+        <span class="feat-thumb-num">01</span>
+        <i class="ti ti-circle-dotted" aria-hidden="true"></i>
+      </div>
+      <div class="feat-body">
+        <div class="feat-head"><span class="feat-num">01</span><i class="ti ti-arrow-up-right feat-arrow" aria-hidden="true"></i></div>
+        <p class="feat-title">Your project title</p>
+        <p class="feat-desc">What you built, what problem it solves, what makes it worth doing. Replace this.</p>
+        <div class="feat-tags"><span class="tag">Engineering</span><span class="tag">Design</span></div>
+      </div>
+    </a>
+    <a class="feat-card" href="#">
+      <div class="feat-thumb">
+        <span class="feat-thumb-num">02</span>
+        <i class="ti ti-activity" aria-hidden="true"></i>
+      </div>
+      <div class="feat-body">
+        <div class="feat-head"><span class="feat-num">02</span><i class="ti ti-arrow-up-right feat-arrow" aria-hidden="true"></i></div>
+        <p class="feat-title">Your project title</p>
+        <p class="feat-desc">What you built, what problem it solves, what makes it worth doing. Replace this.</p>
+        <div class="feat-tags"><span class="tag">Biomedical</span><span class="tag">Research</span></div>
+      </div>
+    </a>
+    <a class="feat-card" href="#">
+      <div class="feat-thumb">
+        <span class="feat-thumb-num">03</span>
+        <i class="ti ti-vector-bezier" aria-hidden="true"></i>
+      </div>
+      <div class="feat-body">
+        <div class="feat-head"><span class="feat-num">03</span><i class="ti ti-arrow-up-right feat-arrow" aria-hidden="true"></i></div>
+        <p class="feat-title">Your project title</p>
+        <p class="feat-desc">What you built, what problem it solves, what makes it worth doing. Replace this.</p>
+        <div class="feat-tags"><span class="tag">Data</span><span class="tag">Clinical</span></div>
+      </div>
+    </a>
+  </div>
+
+  <div class="hr"></div>
+
+  <div class="trashy-head">
+    <p class="trashy-label">Trashy Quick Builds</p>
+    <span class="trashy-meta">— miscellaneous experiments</span>
+  </div>
+  <div class="trashy-grid">
+    <a class="trashy-card" href="#"><p class="trashy-title">Side project name</p><p class="trashy-desc">Quick description. What it is, why it exists.</p></a>
+    <a class="trashy-card" href="#"><p class="trashy-title">Side project name</p><p class="trashy-desc">Quick description. What it is, why it exists.</p></a>
+    <a class="trashy-card" href="#"><p class="trashy-title">Side project name</p><p class="trashy-desc">Quick description. What it is, why it exists.</p></a>
+    <a class="trashy-card" href="#"><p class="trashy-title">Side project name</p><p class="trashy-desc">Quick description. What it is, why it exists.</p></a>
+  </div>
+</div>
+
+<footer>
+  <span class="f-txt">Aika Ono © 2026</span>
+  <span class="f-txt">Design engineer in training</span>
+</footer>
+
+</div>
+
+<script>
+const canvas = document.getElementById('hero-canvas');
+const ctx = canvas.getContext('2d');
+let t = 0;
+
+function draw() {
+  const p = canvas.parentElement;
+  canvas.width = p.offsetWidth;
+  canvas.height = p.offsetHeight;
+  const w = canvas.width, h = canvas.height;
+  ctx.clearRect(0,0,w,h);
+
+  const N = 8;
+  for(let i = 0; i < N; i++) {
+    const fi = i / (N-1);
+    const phase = fi * Math.PI * 2.6;
+    const yBase = h * (0.05 + fi * 0.9);
+    const amp = 22 + fi * 28;
+    const spd = 0.5 + fi * 0.2;
+    const hue = i % 3;
+    const r = hue===0 ? 200 : hue===1 ? 126 : 80;
+    const g = hue===0 ? 88  : hue===1 ? 158 : 130;
+    const b = hue===0 ? 69  : hue===1 ? 148 : 200;
+    const op = 0.14 + fi * 0.18;
+
+    ctx.beginPath();
+    const S = 90;
+    for(let s = 0; s <= S; s++) {
+      const x = (w / S) * s;
+      const fx = s / S;
+      const y = yBase
+        + Math.sin(t*spd + phase + fx*3.6) * amp
+        + Math.sin(t*spd*0.55 + phase*1.2 + fx*5.8) * (amp*0.38)
+        + Math.cos(t*spd*0.35 + fx*2.1) * (amp*0.2);
+      s===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle = `rgba(${r},${g},${b},${op})`;
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+  }
+  t += 0.0022;
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
