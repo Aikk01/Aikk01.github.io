@@ -1,7 +1,9 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 a{text-decoration:none;color:inherit}
-.site{background:#0b0b09;color:#edeae3;font-family:var(--font-sans)}
+.site,.project-page{background:#0b0b09;color:#edeae3;font-family:var(--font-sans)}
+.site.jp-mode,.project-page.jp-mode{font-family:"Hiragino Mincho ProN","Hiragino Mincho Pro","Yu Mincho","YuMincho","HG明朝E","MS Mincho",serif}
+.project-page{display:none}
 
 nav{display:flex;justify-content:flex-end;align-items:center;padding:1.1rem 2rem;border-bottom:0.5px solid rgba(237,234,227,0.1);gap:1.5rem}
 .nav-links{display:flex;gap:2rem;align-items:center}
@@ -25,13 +27,11 @@ nav{display:flex;justify-content:flex-end;align-items:center;padding:1.1rem 2rem
 .s-label{font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#C85845;opacity:0.65;margin-bottom:1.75rem}
 .about-text{font-size:14px;line-height:1.9;color:rgba(237,234,227,0.52)}
 .about-text strong{color:#edeae3;font-weight:500}
-
 .c-item{margin-bottom:1.5rem}
 .c-key{font-family:var(--font-mono);font-size:10px;color:rgba(237,234,227,0.25);letter-spacing:0.08em;margin-bottom:5px}
 .c-val{font-size:14px;color:rgba(237,234,227,0.5);display:inline-flex;align-items:center;gap:9px;transition:color 0.15s}
 .c-val:hover{color:rgba(237,234,227,0.9)}
 .c-val svg{flex-shrink:0}
-.c-note{font-family:var(--font-mono);font-size:10px;color:rgba(237,234,227,0.22);letter-spacing:0.06em;margin-top:4px}
 
 .accent-strip{height:2px;background:linear-gradient(90deg,#7E9E94,transparent);opacity:0.35}
 
@@ -62,17 +62,30 @@ nav{display:flex;justify-content:flex-end;align-items:center;padding:1.1rem 2rem
 .hr{height:0.5px;background:rgba(237,234,227,0.08);margin:0 0 2rem}
 .trashy-head{display:flex;align-items:baseline;gap:0.75rem;margin-bottom:1.2rem}
 .trashy-label{font-size:15px;font-weight:500}
-.trashy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:0.5rem}
-.trashy-card{border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;padding:0.85rem;display:block;cursor:pointer;background:rgba(11,11,9,0.55);backdrop-filter:blur(3px);transition:border-color 0.2s}
-.trashy-card:hover{border-color:rgba(200,88,69,0.3)}
-.trashy-title{font-size:13px;font-weight:500;margin-bottom:0.3rem}
+.trashy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.5rem}
+.trashy-card{border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;padding:0.85rem;display:block;cursor:pointer;background:rgba(11,11,9,0.55);backdrop-filter:blur(3px);transition:border-color 0.2s,transform 0.2s}
+.trashy-card:hover{border-color:rgba(200,88,69,0.3);transform:translateY(-2px)}
+.trashy-title{font-size:13px;font-weight:500;margin-bottom:0.65rem}
 .trashy-desc{font-size:11px;color:rgba(237,234,227,0.34);line-height:1.55}
+.trashy-visual{margin-top:0.5rem;border-radius:2px;overflow:hidden;border:0.5px solid rgba(237,234,227,0.08)}
 
 footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2rem}
 .f-txt{font-family:var(--font-mono);font-size:10px;color:rgba(237,234,227,0.16);letter-spacing:0.06em}
+
+/* Project page */
+.proj-nav{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2rem;border-bottom:0.5px solid rgba(237,234,227,0.1)}
+.proj-back{font-family:var(--font-mono);font-size:11px;color:rgba(237,234,227,0.38);background:none;border:none;cursor:pointer;letter-spacing:0.08em;transition:color 0.15s;padding:0}
+.proj-back:hover{color:#edeae3}
+.proj-body{padding:4rem 2rem;max-width:760px}
+.proj-label{font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#C85845;opacity:0.65;margin-bottom:1.5rem}
+.proj-title{font-size:clamp(22px,4vw,38px);font-weight:500;line-height:1.1;letter-spacing:-0.02em;margin-bottom:2.5rem}
+.proj-visual{margin-bottom:2.5rem;border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;overflow:hidden}
+.proj-desc{font-size:14px;color:rgba(237,234,227,0.52);line-height:1.9;margin-bottom:2rem}
+.proj-tags{display:flex;gap:6px;flex-wrap:wrap}
 </style>
 
-<div class="site">
+<!-- MAIN PORTFOLIO -->
+<div class="site" id="main-site">
 
 <nav>
   <div class="nav-links">
@@ -103,9 +116,9 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
   <div class="col">
     <p class="s-label" data-en="About" data-jp="自己紹介">About</p>
     <p class="about-text"
-       data-en="I'm a 🇯🇵 <strong>medical student at University of Edinburgh</strong> currently intercalating in Biomedical Engineering at Imperial College London. I'm going to become a design engineer.<br><br>I like to draw and dance in my free time."
-       data-jp="現在、<strong>エディンバラ大学の医学生</strong>として、インペリアル・カレッジ・ロンドンで生体医工学を副専攻しています<br>将来はデザインエンジニアとして美しいものを作ることが夢です<br><br>趣味はダンスとイラストです">
-      I'm a 🇯🇵 <strong>medical student at University of Edinburgh</strong> currently intercalating in Biomedical Engineering at Imperial College London. I'm going to become a design engineer.<br><br>I like to draw and dance in my free time.
+       data-en="I'm a 🇯🇵 <strong>medical student at University of Edinburgh</strong> currently intercalating in Biomedical Engineering at Imperial College London. I want to make beautiful stuff as a design engineer.<br><br>I like to draw and dance in my free time."
+       data-jp="現在、<strong>エディンバラ大学の医学生</strong>として、インペリアル・カレッジ・ロンドンで生体医工学を副専攻しています<br>将来はデザインエンジニアとして美しいものを作ることが夢です<br><br>趣味：ダンス、イラスト">
+      I'm a 🇯🇵 <strong>medical student at University of Edinburgh</strong> currently intercalating in Biomedical Engineering at Imperial College London. I want to make beautiful stuff as a design engineer.<br><br>I like to draw and dance in my free time.
     </p>
   </div>
   <div class="col">
@@ -118,23 +131,11 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
       </a>
     </div>
     <div class="c-item">
-      <p class="c-key" data-en="Instagram" data-jp="イラスト投稿してます">Instagram</p>
+      <p class="c-key" data-en="I post art here" data-jp="イラスト投稿してます">I post art here</p>
       <a class="c-val" href="https://www.instagram.com/fractal0505/" target="_blank">
-        <svg width="17" height="17" viewBox="0 0 24 24" opacity="0.55">
-          <defs>
-            <linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#f09433"/>
-              <stop offset="35%" stop-color="#e6683c"/>
-              <stop offset="60%" stop-color="#dc2743"/>
-              <stop offset="80%" stop-color="#cc2366"/>
-              <stop offset="100%" stop-color="#bc1888"/>
-            </linearGradient>
-          </defs>
-          <path fill="url(#ig)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-        </svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" opacity="0.55"><defs><linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="35%" stop-color="#e6683c"/><stop offset="60%" stop-color="#dc2743"/><stop offset="80%" stop-color="#cc2366"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><path fill="url(#ig)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         fractal0505
       </a>
-
     </div>
   </div>
 </div>
@@ -163,42 +164,9 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
 
   <p class="s-label" data-en="Featured projects" data-jp="主要作品">Featured projects</p>
   <div class="feat-grid">
-    <a class="feat-card" href="#">
-      <div class="feat-thumb"><span class="feat-thumb-num">01</span><i class="ti ti-circle-dotted"></i></div>
-      <div class="feat-body">
-        <div class="feat-head"><span class="feat-num">01</span><i class="ti ti-arrow-up-right feat-arrow"></i></div>
-        <p class="feat-title" data-en="Your project title" data-jp="プロジェクト名">Your project title</p>
-        <p class="feat-desc" data-en="What you built, what problem it solves, what makes it worth doing." data-jp="制作物の概要、解決した課題、取り組んだ理由">What you built, what problem it solves, what makes it worth doing.</p>
-        <div class="feat-tags">
-          <span class="tag" data-en="Engineering" data-jp="工学">Engineering</span>
-          <span class="tag" data-en="Design" data-jp="デザイン">Design</span>
-        </div>
-      </div>
-    </a>
-    <a class="feat-card" href="#">
-      <div class="feat-thumb"><span class="feat-thumb-num">02</span><i class="ti ti-activity"></i></div>
-      <div class="feat-body">
-        <div class="feat-head"><span class="feat-num">02</span><i class="ti ti-arrow-up-right feat-arrow"></i></div>
-        <p class="feat-title" data-en="Your project title" data-jp="プロジェクト名">Your project title</p>
-        <p class="feat-desc" data-en="What you built, what problem it solves, what makes it worth doing." data-jp="制作物の概要、解決した課題、取り組んだ理由">What you built, what problem it solves, what makes it worth doing.</p>
-        <div class="feat-tags">
-          <span class="tag" data-en="Biomedical" data-jp="生物医学">Biomedical</span>
-          <span class="tag" data-en="Research" data-jp="研究">Research</span>
-        </div>
-      </div>
-    </a>
-    <a class="feat-card" href="#">
-      <div class="feat-thumb"><span class="feat-thumb-num">03</span><i class="ti ti-vector-bezier"></i></div>
-      <div class="feat-body">
-        <div class="feat-head"><span class="feat-num">03</span><i class="ti ti-arrow-up-right feat-arrow"></i></div>
-        <p class="feat-title" data-en="Your project title" data-jp="プロジェクト名">Your project title</p>
-        <p class="feat-desc" data-en="What you built, what problem it solves, what makes it worth doing." data-jp="制作物の概要、解決した課題、取り組んだ理由">What you built, what problem it solves, what makes it worth doing.</p>
-        <div class="feat-tags">
-          <span class="tag" data-en="Data" data-jp="データ">Data</span>
-          <span class="tag" data-en="Clinical" data-jp="臨床">Clinical</span>
-        </div>
-      </div>
-    </a>
+    <a class="feat-card" href="#"><div class="feat-thumb"><span class="feat-thumb-num">01</span><i class="ti ti-circle-dotted"></i></div><div class="feat-body"><div class="feat-head"><span class="feat-num">01</span><i class="ti ti-arrow-up-right feat-arrow"></i></div><p class="feat-title" data-en="Your project title" data-jp="プロジェクト名">Your project title</p><p class="feat-desc" data-en="What you built, what problem it solves, what makes it worth doing." data-jp="制作物の概要、解決した課題、取り組んだ理由">What you built, what problem it solves, what makes it worth doing.</p><div class="feat-tags"><span class="tag" data-en="Engineering" data-jp="工学">Engineering</span><span class="tag" data-en="Design" data-jp="デザイン">Design</span></div></div></a>
+    <a class="feat-card" href="#"><div class="feat-thumb"><span class="feat-thumb-num">02</span><i class="ti ti-activity"></i></div><div class="feat-body"><div class="feat-head"><span class="feat-num">02</span><i class="ti ti-arrow-up-right feat-arrow"></i></div><p class="feat-title" data-en="Your project title" data-jp="プロジェクト名">Your project title</p><p class="feat-desc" data-en="What you built, what problem it solves, what makes it worth doing." data-jp="制作物の概要、解決した課題、取り組んだ理由">What you built, what problem it solves, what makes it worth doing.</p><div class="feat-tags"><span class="tag" data-en="Biomedical" data-jp="生物医学">Biomedical</span><span class="tag" data-en="Research" data-jp="研究">Research</span></div></div></a>
+    <a class="feat-card" href="#"><div class="feat-thumb"><span class="feat-thumb-num">03</span><i class="ti ti-vector-bezier"></i></div><div class="feat-body"><div class="feat-head"><span class="feat-num">03</span><i class="ti ti-arrow-up-right feat-arrow"></i></div><p class="feat-title" data-en="Your project title" data-jp="プロジェクト名">Your project title</p><p class="feat-desc" data-en="What you built, what problem it solves, what makes it worth doing." data-jp="制作物の概要、解決した課題、取り組んだ理由">What you built, what problem it solves, what makes it worth doing.</p><div class="feat-tags"><span class="tag" data-en="Data" data-jp="データ">Data</span><span class="tag" data-en="Clinical" data-jp="臨床">Clinical</span></div></div></a>
   </div>
 
   <div class="hr"></div>
@@ -206,38 +174,163 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
     <p class="trashy-label" data-en="Trashy Quick Builds" data-jp="ゴミの掃き溜めみたいな作品たち">Trashy Quick Builds</p>
   </div>
   <div class="trashy-grid">
-    <a class="trashy-card" href="#">
-      <p class="trashy-title" data-en="Side project name" data-jp="サイドプロジェクト名">Side project name</p>
-      <p class="trashy-desc" data-en="Quick description. What it is, why it exists." data-jp="概要・なぜ作ったか">Quick description. What it is, why it exists.</p>
+
+    <a class="trashy-card" href="#" onclick="openProject('mirror');return false;">
+      <p class="trashy-title" data-en="Claude/ChatGPT Conversation History Personality Analyser" data-jp="AI会話履歴・性格分析">Claude/ChatGPT Conversation History Personality Analyser</p>
+      <div class="trashy-visual">
+        <svg viewBox="0 0 300 168" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <rect width="300" height="168" fill="#111"/>
+          <rect width="300" height="26" fill="#161616"/>
+          <text x="12" y="16" font-family="monospace" font-size="7.5" fill="rgba(237,234,227,0.55)" font-weight="500">ChatGPT Mirror</text>
+          <text x="232" y="16" font-family="monospace" font-size="6.5" fill="rgba(200,88,69,0.7)">● analysing</text>
+          <!-- Radar chart left -->
+          <polygon points="82,95 108,80 108,58 82,44 56,58 56,80" fill="none" stroke="rgba(80,130,200,0.22)" stroke-width="0.6"/>
+          <polygon points="82,83 100,72 100,64 82,54 64,64 64,72" fill="none" stroke="rgba(80,130,200,0.13)" stroke-width="0.6"/>
+          <polygon points="82,49 105,74 103,76 82,87 61,70 63,55" fill="rgba(80,130,200,0.1)" stroke="rgba(126,158,148,0.55)" stroke-width="0.9"/>
+          <circle cx="82" cy="49" r="2.2" fill="rgba(200,88,69,0.85)"/>
+          <circle cx="105" cy="74" r="2.2" fill="rgba(126,158,148,0.85)"/>
+          <circle cx="103" cy="76" r="2.2" fill="rgba(80,130,200,0.85)"/>
+          <circle cx="82" cy="87" r="2.2" fill="rgba(200,88,69,0.85)"/>
+          <circle cx="61" cy="70" r="2.2" fill="rgba(126,158,148,0.85)"/>
+          <circle cx="63" cy="55" r="2.2" fill="rgba(80,130,200,0.85)"/>
+          <text x="56" y="106" font-family="monospace" font-size="5.5" fill="rgba(237,234,227,0.28)">Personality</text>
+          <!-- Mood line right -->
+          <text x="148" y="38" font-family="monospace" font-size="5.5" fill="rgba(237,234,227,0.28)">Mood over time</text>
+          <line x1="148" y1="44" x2="288" y2="44" stroke="rgba(237,234,227,0.05)" stroke-width="0.5"/>
+          <line x1="148" y1="60" x2="288" y2="60" stroke="rgba(237,234,227,0.05)" stroke-width="0.5"/>
+          <line x1="148" y1="76" x2="288" y2="76" stroke="rgba(237,234,227,0.05)" stroke-width="0.5"/>
+          <line x1="148" y1="92" x2="288" y2="92" stroke="rgba(237,234,227,0.05)" stroke-width="0.5"/>
+          <polyline points="150,76 166,58 182,68 198,46 214,62 230,50 246,66 262,48 278,54" fill="none" stroke="rgba(126,158,148,0.75)" stroke-width="1.3"/>
+          <polygon points="150,76 166,58 182,68 198,46 214,62 230,50 246,66 262,48 278,54 278,92 150,92" fill="rgba(126,158,148,0.05)"/>
+          <circle cx="198" cy="46" r="2" fill="rgba(126,158,148,0.9)"/>
+          <circle cx="278" cy="54" r="2" fill="rgba(126,158,148,0.9)"/>
+          <!-- Trait bars -->
+          <text x="12" y="122" font-family="monospace" font-size="5.5" fill="rgba(237,234,227,0.22)">curiosity</text>
+          <rect x="60" y="116" width="110" height="5" rx="1" fill="rgba(200,88,69,0.15)"/>
+          <rect x="60" y="116" width="92" height="5" rx="1" fill="rgba(200,88,69,0.55)"/>
+          <text x="12" y="136" font-family="monospace" font-size="5.5" fill="rgba(237,234,227,0.22)">openness</text>
+          <rect x="60" y="130" width="110" height="5" rx="1" fill="rgba(80,130,200,0.15)"/>
+          <rect x="60" y="130" width="72" height="5" rx="1" fill="rgba(80,130,200,0.55)"/>
+          <text x="12" y="150" font-family="monospace" font-size="5.5" fill="rgba(237,234,227,0.22)">anxiety</text>
+          <rect x="60" y="144" width="110" height="5" rx="1" fill="rgba(126,158,148,0.15)"/>
+          <rect x="60" y="144" width="44" height="5" rx="1" fill="rgba(126,158,148,0.55)"/>
+          <text x="12" y="164" font-family="monospace" font-size="5.5" fill="rgba(237,234,227,0.22)">precision</text>
+          <rect x="60" y="158" width="110" height="5" rx="1" fill="rgba(168,120,200,0.15)"/>
+          <rect x="60" y="158" width="85" height="5" rx="1" fill="rgba(168,120,200,0.55)"/>
+        </svg>
+      </div>
     </a>
-    <a class="trashy-card" href="#">
-      <p class="trashy-title" data-en="Side project name" data-jp="サイドプロジェクト名">Side project name</p>
-      <p class="trashy-desc" data-en="Quick description. What it is, why it exists." data-jp="概要・なぜ作ったか">Quick description. What it is, why it exists.</p>
-    </a>
-    <a class="trashy-card" href="#">
-      <p class="trashy-title" data-en="Side project name" data-jp="サイドプロジェクト名">Side project name</p>
-      <p class="trashy-desc" data-en="Quick description. What it is, why it exists." data-jp="概要・なぜ作ったか">Quick description. What it is, why it exists.</p>
-    </a>
-    <a class="trashy-card" href="#">
-      <p class="trashy-title" data-en="Side project name" data-jp="サイドプロジェクト名">Side project name</p>
-      <p class="trashy-desc" data-en="Quick description. What it is, why it exists." data-jp="概要・なぜ作ったか">Quick description. What it is, why it exists.</p>
-    </a>
+
+    <a class="trashy-card" href="#"><p class="trashy-title" data-en="Side project name" data-jp="サイドプロジェクト名">Side project name</p><p class="trashy-desc" data-en="Quick description. What it is, why it exists." data-jp="概要・なぜ作ったか">Quick description. What it is, why it exists.</p></a>
+    <a class="trashy-card" href="#"><p class="trashy-title" data-en="Side project name" data-jp="サイドプロジェクト名">Side project name</p><p class="trashy-desc" data-en="Quick description. What it is, why it exists." data-jp="概要・なぜ作ったか">Quick description. What it is, why it exists.</p></a>
+    <a class="trashy-card" href="#"><p class="trashy-title" data-en="Side project name" data-jp="サイドプロジェクト名">Side project name</p><p class="trashy-desc" data-en="Quick description. What it is, why it exists." data-jp="概要・なぜ作ったか">Quick description. What it is, why it exists.</p></a>
   </div>
 </div>
 
 <footer><span class="f-txt">Aika Ono © 2026</span></footer>
 </div>
 
+<!-- PROJECT PAGE: ChatGPT Mirror -->
+<div class="project-page" id="project-mirror">
+  <div class="proj-nav">
+    <button class="proj-back" onclick="closeProject('mirror')">← Back</button>
+    <button class="lang-btn" id="lang-btn-proj" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button>
+  </div>
+  <div class="proj-body">
+    <p class="proj-label">Trashy Quick Builds</p>
+    <h1 class="proj-title" data-en="Claude/ChatGPT Conversation History Personality Analyser" data-jp="AI会話履歴・性格分析">Claude/ChatGPT Conversation History Personality Analyser</h1>
+    <div class="proj-visual">
+      <svg viewBox="0 0 700 380" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect width="700" height="380" fill="#111"/>
+        <rect width="700" height="44" fill="#161616"/>
+        <text x="24" y="27" font-family="monospace" font-size="13" fill="rgba(237,234,227,0.6)" font-weight="500">ChatGPT Mirror</text>
+        <text x="570" y="27" font-family="monospace" font-size="10" fill="rgba(200,88,69,0.75)">● analysing</text>
+        <!-- Radar chart -->
+        <polygon points="185,215 245,180 245,130 185,96 125,130 125,180" fill="none" stroke="rgba(80,130,200,0.22)" stroke-width="1"/>
+        <polygon points="185,198 232,172 232,144 185,118 138,144 138,172" fill="none" stroke="rgba(80,130,200,0.13)" stroke-width="0.8"/>
+        <polygon points="185,218 240,178 235,160 185,105 138,148 142,170" fill="rgba(80,130,200,0.09)" stroke="rgba(126,158,148,0.55)" stroke-width="1.2"/>
+        <circle cx="185" cy="96" r="4" fill="rgba(200,88,69,0.85)"/>
+        <circle cx="245" cy="180" r="4" fill="rgba(126,158,148,0.85)"/>
+        <circle cx="245" cy="130" r="4" fill="rgba(80,130,200,0.85)"/>
+        <circle cx="185" cy="218" r="4" fill="rgba(200,88,69,0.85)"/>
+        <circle cx="125" cy="180" r="4" fill="rgba(126,158,148,0.85)"/>
+        <circle cx="125" cy="130" r="4" fill="rgba(80,130,200,0.85)"/>
+        <text x="176" y="88" font-family="monospace" font-size="9" fill="rgba(237,234,227,0.32)">curiosity</text>
+        <text x="252" y="183" font-family="monospace" font-size="9" fill="rgba(237,234,227,0.32)">anxiety</text>
+        <text x="252" y="128" font-family="monospace" font-size="9" fill="rgba(237,234,227,0.32)">creativity</text>
+        <text x="164" y="232" font-family="monospace" font-size="9" fill="rgba(237,234,227,0.32)">precision</text>
+        <text x="72" y="183" font-family="monospace" font-size="9" fill="rgba(237,234,227,0.32)">openness</text>
+        <text x="80" y="128" font-family="monospace" font-size="9" fill="rgba(237,234,227,0.32)">energy</text>
+        <text x="155" y="258" font-family="monospace" font-size="9" fill="rgba(237,234,227,0.22)">Personality profile</text>
+        <!-- Mood timeline right -->
+        <text x="340" y="76" font-family="monospace" font-size="9" fill="rgba(237,234,227,0.28)">Mood over time</text>
+        <line x1="340" y1="88" x2="672" y2="88" stroke="rgba(237,234,227,0.05)" stroke-width="0.75"/>
+        <line x1="340" y1="118" x2="672" y2="118" stroke="rgba(237,234,227,0.05)" stroke-width="0.75"/>
+        <line x1="340" y1="148" x2="672" y2="148" stroke="rgba(237,234,227,0.05)" stroke-width="0.75"/>
+        <line x1="340" y1="178" x2="672" y2="178" stroke="rgba(237,234,227,0.05)" stroke-width="0.75"/>
+        <line x1="340" y1="208" x2="672" y2="208" stroke="rgba(237,234,227,0.05)" stroke-width="0.75"/>
+        <polyline points="342,168 383,128 424,148 465,98 506,132 547,108 588,140 629,102 670,115" fill="none" stroke="rgba(126,158,148,0.75)" stroke-width="1.8"/>
+        <polygon points="342,168 383,128 424,148 465,98 506,132 547,108 588,140 629,102 670,115 670,208 342,208" fill="rgba(126,158,148,0.06)"/>
+        <circle cx="465" cy="98" r="3.5" fill="rgba(126,158,148,0.9)"/>
+        <circle cx="670" cy="115" r="3.5" fill="rgba(126,158,148,0.9)"/>
+        <text x="340" y="230" font-family="monospace" font-size="8" fill="rgba(237,234,227,0.18)">Jan</text>
+        <text x="420" y="230" font-family="monospace" font-size="8" fill="rgba(237,234,227,0.18)">Feb</text>
+        <text x="500" y="230" font-family="monospace" font-size="8" fill="rgba(237,234,227,0.18)">Mar</text>
+        <text x="580" y="230" font-family="monospace" font-size="8" fill="rgba(237,234,227,0.18)">Apr</text>
+        <!-- Trait bars bottom -->
+        <text x="24" y="292" font-family="monospace" font-size="9" fill="rgba(237,234,227,0.22)">curiosity</text>
+        <rect x="100" y="283" width="250" height="8" rx="1.5" fill="rgba(200,88,69,0.12)"/>
+        <rect x="100" y="283" width="210" height="8" rx="1.5" fill="rgba(200,88,69,0.5)"/>
+        <text x="356" y="292" font-family="monospace" font-size="9" fill="rgba(200,88,69,0.55)">84%</text>
+        <text x="24" y="314" font-family="monospace" font-size="9" fill="rgba(237,234,227,0.22)">openness</text>
+        <rect x="100" y="305" width="250" height="8" rx="1.5" fill="rgba(80,130,200,0.12)"/>
+        <rect x="100" y="305" width="165" height="8" rx="1.5" fill="rgba(80,130,200,0.5)"/>
+        <text x="356" y="314" font-family="monospace" font-size="9" fill="rgba(80,130,200,0.55)">66%</text>
+        <text x="24" y="336" font-family="monospace" font-size="9" fill="rgba(237,234,227,0.22)">anxiety</text>
+        <rect x="100" y="327" width="250" height="8" rx="1.5" fill="rgba(126,158,148,0.12)"/>
+        <rect x="100" y="327" width="100" height="8" rx="1.5" fill="rgba(126,158,148,0.5)"/>
+        <text x="356" y="336" font-family="monospace" font-size="9" fill="rgba(126,158,148,0.55)">40%</text>
+        <text x="24" y="358" font-family="monospace" font-size="9" fill="rgba(237,234,227,0.22)">precision</text>
+        <rect x="100" y="349" width="250" height="8" rx="1.5" fill="rgba(168,120,200,0.12)"/>
+        <rect x="100" y="349" width="195" height="8" rx="1.5" fill="rgba(168,120,200,0.5)"/>
+        <text x="356" y="358" font-family="monospace" font-size="9" fill="rgba(168,120,200,0.55)">78%</text>
+      </svg>
+    </div>
+    <p class="proj-desc" data-en="Upload your ChatGPT or Claude conversation history as a JSON file. The analyser reads your messages across time and produces a mood timeline, recurring emotional patterns, topics you gravitate toward, and a personality profile inferred from how you communicate with AI. Built as an experiment in meta-AI analysis — AI watching how you talk to AI." data-jp="ChatGPTまたはClaudeの会話履歴をJSONファイルでアップロードすると、気分の推移、感情パターン、よく話すテーマ、コミュニケーションスタイルから性格プロファイルを生成します。AIがAIとの会話を分析するメタな実験として作りました。">Upload your ChatGPT or Claude conversation history as a JSON file. The analyser reads your messages across time and produces a mood timeline, recurring emotional patterns, topics you gravitate toward, and a personality profile inferred from how you communicate with AI. Built as an experiment in meta-AI analysis — AI watching how you talk to AI.</p>
+    <div class="proj-tags">
+      <span class="tag">Claude API</span>
+      <span class="tag">Personality</span>
+      <span class="tag">Data viz</span>
+      <span class="tag">Quick build</span>
+    </div>
+  </div>
+</div>
+
 <script>
+function openProject(id) {
+  document.getElementById('main-site').style.display = 'none';
+  document.getElementById('project-' + id).style.display = 'block';
+  window.scrollTo(0,0);
+}
+function closeProject(id) {
+  document.getElementById('project-' + id).style.display = 'none';
+  document.getElementById('main-site').style.display = 'block';
+}
+
 let lang = 'en';
 function toggleLang() {
   lang = lang === 'en' ? 'jp' : 'en';
   document.querySelectorAll('[data-en]').forEach(el => {
     el.innerHTML = el.dataset[lang] || el.dataset.en;
   });
-  document.getElementById('lang-btn').innerHTML = lang === 'en'
+  const btnHtml = lang === 'en'
     ? '<span class="lit">EN</span> / <span class="dim">JP</span>'
     : '<span class="dim">EN</span> / <span class="lit">JP</span>';
+  document.getElementById('lang-btn').innerHTML = btnHtml;
+  if(document.getElementById('lang-btn-proj')) document.getElementById('lang-btn-proj').innerHTML = btnHtml;
+  const jp = lang === 'jp';
+  document.getElementById('main-site').classList.toggle('jp-mode', jp);
+  document.getElementById('project-mirror').classList.toggle('jp-mode', jp);
 }
 
 const canvas = document.getElementById('hero-canvas');
