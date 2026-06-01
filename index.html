@@ -1,60 +1,47 @@
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-a{text-decoration:none;color:inherit}
+*{box-sizing:border-box;margin:0;padding:0}a{text-decoration:none;color:inherit}
 .site,.project-page{background:#0b0b09;color:#edeae3;font-family:var(--font-sans)}
-.site.jp-mode,.project-page.jp-mode{font-family:"Hiragino Mincho ProN","Hiragino Mincho Pro","Yu Mincho","YuMincho","HG明朝E","MS Mincho",serif}
+.site.jp-mode,.project-page.jp-mode{font-family:"Hiragino Mincho ProN","Hiragino Mincho Pro","Yu Mincho","YuMincho",serif}
 .jp-mode .hero h1{font-size:clamp(38px,7vw,68px)!important}
 .project-page{display:none}
-
 nav{display:flex;justify-content:flex-end;align-items:center;padding:1.1rem 2rem;border-bottom:0.5px solid rgba(237,234,227,0.1);gap:1.5rem}
 .nav-links{display:flex;gap:2rem;align-items:center}
 .nav-links a{font-size:11px;color:rgba(237,234,227,0.38);letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
 .nav-links a:hover{color:#C85845}
 .lang-btn{font-family:var(--font-mono);font-size:10px;background:none;border:0.5px solid rgba(237,234,227,0.2);padding:3px 12px;cursor:pointer;letter-spacing:0.1em;border-radius:1px;transition:border-color 0.2s}
 .lang-btn:hover{border-color:rgba(237,234,227,0.5)}
-.lang-btn .dim{color:rgba(237,234,227,0.28)}
-.lang-btn .lit{color:#edeae3}
-
+.lang-btn .dim{color:rgba(237,234,227,0.28)}.lang-btn .lit{color:#edeae3}
 .hero{position:relative;padding:5rem 2rem 4rem;border-bottom:0.5px solid rgba(237,234,227,0.1);overflow:hidden}
 #hero-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .hero-inner{position:relative;z-index:1}
 .hero h1{font-size:clamp(56px,10vw,96px);font-weight:500;line-height:0.9;letter-spacing:-0.035em}
 .hero h1 span{display:block}
-
 .two-col{display:grid;grid-template-columns:1fr 1fr;border-bottom:0.5px solid rgba(237,234,227,0.1)}
-.col{padding:3.5rem 2rem}
-.col:first-child{border-right:0.5px solid rgba(237,234,227,0.1)}
+.col{padding:3.5rem 2rem}.col:first-child{border-right:0.5px solid rgba(237,234,227,0.1)}
 .s-label{font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#C85845;opacity:0.65;margin-bottom:1.75rem}
 .about-text{font-size:14px;line-height:1.9;color:rgba(237,234,227,0.52)}
 .about-text strong{color:#edeae3;font-weight:500}
 .about-list{list-style:none;margin:0.6rem 0 0.8rem;padding:0}
 .about-list li{padding:0.18rem 0 0.18rem 1.1rem;position:relative;font-size:14px;color:rgba(237,234,227,0.52);line-height:1.7}
 .about-list li::before{content:'•';position:absolute;left:0;color:rgba(237,234,227,0.28)}
-.about-role{font-size:10px;font-family:var(--font-mono);letter-spacing:0.1em;color:rgba(237,234,227,0.28);text-transform:uppercase}
 .c-item{margin-bottom:1.5rem}
 .c-key{font-family:var(--font-mono);font-size:10px;color:rgba(237,234,227,0.25);letter-spacing:0.08em;margin-bottom:5px}
 .c-val{font-size:14px;color:rgba(237,234,227,0.5);display:inline-flex;align-items:center;gap:9px;transition:color 0.15s}
-.c-val:hover{color:rgba(237,234,227,0.9)}
-.c-val svg{flex-shrink:0}
-
+.c-val:hover{color:rgba(237,234,227,0.9)}.c-val svg{flex-shrink:0}
 .accent-strip{height:2px;background:linear-gradient(90deg,#7E9E94,transparent);opacity:0.35}
-
 .projects{position:relative;padding:3.5rem 2rem;border-bottom:0.5px solid rgba(237,234,227,0.1);overflow:hidden}
 .projects-bg{position:absolute;bottom:0;left:0;width:100%;height:72%;pointer-events:none;z-index:0}
 .projects>.s-label,.feat-grid,.hr,.trashy-head,.trashy-grid{position:relative;z-index:1}
-
 .feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.6rem;margin-bottom:3rem}
 .feat-card{border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;background:rgba(11,11,9,0.65);backdrop-filter:blur(3px);display:flex;flex-direction:column;cursor:pointer;overflow:hidden;transition:border-color 0.25s,background 0.25s,transform 0.25s}
 .feat-card:hover{border-color:rgba(200,88,69,0.4);background:rgba(200,88,69,0.07);transform:translateY(-3px)}
-.feat-thumb{height:148px;display:flex;align-items:center;justify-content:center;border-bottom:0.5px solid rgba(237,234,227,0.07);background:rgba(126,158,148,0.04);position:relative;overflow:hidden;transition:background 0.25s}
-.feat-thumb-num{position:absolute;font-family:var(--font-mono);font-size:72px;font-weight:500;color:rgba(126,158,148,0.09);line-height:1;letter-spacing:-0.04em;bottom:-6px;right:8px}
-.feat-thumb i{font-size:22px;color:rgba(126,158,148,0.35);position:relative;z-index:1;transition:color 0.25s}
-.feat-card:hover .feat-thumb{background:rgba(200,88,69,0.05)}
-.feat-card:hover .feat-thumb i{color:rgba(200,88,69,0.55)}
-.feat-card:hover .feat-thumb-num{color:rgba(200,88,69,0.07)}
+.feat-thumb{height:148px;display:flex;align-items:center;justify-content:center;border-bottom:0.5px solid rgba(237,234,227,0.07);position:relative;overflow:hidden;transition:background 0.25s}
+.feat-thumb svg{width:100%;height:100%}
 .feat-body{padding:1rem;flex:1;display:flex;flex-direction:column}
 .feat-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem}
+.feat-num-wrap{display:flex;align-items:center;gap:8px}
 .feat-num{font-family:var(--font-mono);font-size:10px;color:rgba(237,234,227,0.22);letter-spacing:0.05em}
+.tag-wip{font-size:9px;padding:1px 6px;border:0.5px solid rgba(200,88,69,0.45);color:rgba(200,88,69,0.7);border-radius:1px;font-family:var(--font-mono);letter-spacing:0.06em}
 .feat-arrow{font-size:14px;color:rgba(237,234,227,0.18);transition:color 0.2s,transform 0.22s}
 .feat-card:hover .feat-arrow{color:#C85845;transform:translate(2px,-2px)}
 .feat-title{font-size:14px;font-weight:500;margin-bottom:0.4rem}
@@ -62,54 +49,76 @@ nav{display:flex;justify-content:flex-end;align-items:center;padding:1.1rem 2rem
 .feat-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:0.75rem}
 .tag{font-size:10px;padding:2px 8px;border:0.5px solid rgba(237,234,227,0.14);color:rgba(237,234,227,0.3);border-radius:1px;font-family:var(--font-mono);letter-spacing:0.04em;transition:border-color 0.2s,color 0.2s}
 .feat-card:hover .tag{border-color:rgba(200,88,69,0.35);color:rgba(200,88,69,0.65)}
-
 .hr{height:0.5px;background:rgba(237,234,227,0.08);margin:0 0 2rem}
-.trashy-head{display:flex;align-items:baseline;gap:0.75rem;margin-bottom:1.2rem}
-.trashy-label{font-size:15px;font-weight:500}
+.trashy-head{display:flex;align-items:baseline;gap:0.75rem;margin-bottom:1.2rem}.trashy-label{font-size:15px;font-weight:500}
 .trashy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.5rem}
 .trashy-card{border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;padding:0.85rem;display:block;cursor:pointer;background:rgba(11,11,9,0.55);backdrop-filter:blur(3px);transition:border-color 0.2s,transform 0.2s}
 .trashy-card:hover{border-color:rgba(200,88,69,0.3);transform:translateY(-2px)}
 .trashy-title{font-size:13px;font-weight:500;margin-bottom:0.65rem}
 .trashy-visual{margin-top:0.5rem;border-radius:2px;overflow:hidden;border:0.5px solid rgba(237,234,227,0.08)}
 .trashy-visual img{width:100%;display:block;opacity:0.9}
-
 footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2rem}
 .f-txt{font-family:var(--font-mono);font-size:10px;color:rgba(237,234,227,0.16);letter-spacing:0.06em}
-
+/* Project pages */
 .proj-nav{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2rem;border-bottom:0.5px solid rgba(237,234,227,0.1)}
 .proj-back{font-family:var(--font-mono);font-size:11px;color:rgba(237,234,227,0.38);background:none;border:none;cursor:pointer;letter-spacing:0.08em;transition:color 0.15s;padding:0}
 .proj-back:hover{color:#edeae3}
 .proj-body{padding:3.5rem 2rem;max-width:760px}
 .proj-label{font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#C85845;opacity:0.65;margin-bottom:1.5rem}
 .proj-title{font-size:clamp(22px,4vw,38px);font-weight:500;line-height:1.1;letter-spacing:-0.02em;margin-bottom:1.25rem}
-.proj-skills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1.5rem}
+.proj-skills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem}
+.proj-wip{display:inline-flex;align-items:center;gap:6px;margin-bottom:1.5rem;font-family:var(--font-mono);font-size:10px;color:rgba(200,88,69,0.7);letter-spacing:0.08em}
+.proj-wip::before{content:'';width:6px;height:6px;border-radius:50%;background:rgba(200,88,69,0.7);display:inline-block}
 .proj-visit{display:inline-flex;align-items:center;gap:8px;margin-bottom:2.5rem;font-size:12px;color:rgba(237,234,227,0.55);border:0.5px solid rgba(237,234,227,0.22);padding:8px 18px;border-radius:2px;font-family:var(--font-mono);letter-spacing:0.07em;transition:color 0.2s,border-color 0.2s}
 .proj-visit:hover{color:#edeae3;border-color:rgba(237,234,227,0.55)}
-.proj-visual{margin-bottom:2.5rem;border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;overflow:hidden}
-.proj-visual img{width:100%;display:block}
-.proj-desc{font-size:14px;color:rgba(237,234,227,0.52);line-height:1.9;margin-bottom:2rem}
+.proj-visual{margin-bottom:2rem;border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;overflow:hidden;line-height:0}
+.proj-visual img,.proj-visual svg{width:100%;display:block}
+.proj-desc{font-size:14px;color:rgba(237,234,227,0.52);line-height:1.9}
+.proj-section-label{font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#C85845;opacity:0.5;margin:2.5rem 0 1rem}
+/* Keshiki dome demo */
+.kd-wrap{display:grid;grid-template-columns:1fr 1fr;border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;overflow:hidden;margin-bottom:2rem;min-height:320px}
+.kd-left{background:#08080f;display:flex;flex-direction:column;align-items:center;padding:1.25rem 1rem 1rem;gap:0.65rem}
+#kd-canvas{width:100%;max-width:240px;aspect-ratio:1;display:block}
+.kd-states{display:flex;align-items:center;gap:3px;flex-wrap:wrap;justify-content:center}
+.kd-btn{font-family:var(--font-mono);font-size:9.5px;padding:2px 7px;border:0.5px solid rgba(237,234,227,0.14);background:none;color:rgba(237,234,227,0.3);cursor:pointer;border-radius:1px;transition:all 0.3s}
+.kd-btn.active{border-color:rgba(237,234,227,0.5);color:#edeae3}
+.kd-arr{font-size:9px;color:rgba(237,234,227,0.18)}
+.kd-meaning{font-family:var(--font-mono);font-size:9px;color:rgba(237,234,227,0.28);letter-spacing:0.05em;text-align:center;transition:all 1.5s;min-height:1.4em}
+.kd-right{background:#060610;border-left:0.5px solid rgba(237,234,227,0.07);display:flex;flex-direction:column}
+.kd-msgs{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:0.75rem;min-height:220px;max-height:260px}
+.kd-msg{font-size:12px;line-height:1.7}
+.kd-msg.user{color:rgba(237,234,227,0.38);text-align:right;font-family:var(--font-mono)}
+.kd-msg.ai{color:rgba(168,148,210,0.85);border-left:1.5px solid rgba(100,75,160,0.4);padding-left:10px;transition:border-color 1.5s}
+.kd-row{display:flex;gap:6px;padding:0.65rem;border-top:0.5px solid rgba(237,234,227,0.06)}
+#kd-input{flex:1;background:#070712;border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;padding:5px 9px;color:rgba(237,234,227,0.7);font-size:11px;font-family:inherit;outline:none}
+#kd-send{background:none;border:0.5px solid rgba(237,234,227,0.14);color:rgba(237,234,227,0.38);padding:5px 11px;cursor:pointer;border-radius:1px;font-size:13px;transition:color 0.2s}
+#kd-send:hover{color:#edeae3}
+/* 3D diagram */
+.k3d-outer{border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;overflow:hidden;margin-bottom:2rem;background:#05050d}
+#k3d-canvas{width:100%;height:300px;display:block;cursor:grab}
+#k3d-canvas:active{cursor:grabbing}
+.k3d-bar{display:flex;align-items:center;justify-content:space-between;padding:7px 12px;border-top:0.5px solid rgba(237,234,227,0.07)}
+.k3d-legend{display:flex;flex-wrap:wrap;gap:6px 14px}
+.k3d-legend span{font-family:var(--font-mono);font-size:9px;color:rgba(237,234,227,0.28);display:flex;align-items:center;gap:4px}
+.k3d-legend i{display:inline-block;width:6px;height:6px;border-radius:50%;flex-shrink:0}
+#k3d-cut{font-family:var(--font-mono);font-size:9px;color:rgba(237,234,227,0.35);background:none;border:0.5px solid rgba(237,234,227,0.18);padding:2px 9px;cursor:pointer;border-radius:1px;transition:color 0.2s}
+#k3d-cut:hover{color:#edeae3}
+.k3d-hint{font-family:var(--font-mono);font-size:8px;color:rgba(237,234,227,0.16);text-align:center;padding-bottom:6px}
 </style>
 
 <div class="site" id="main-site">
-<nav>
-  <div class="nav-links">
-    <a href="#about" data-en="About" data-jp="自己紹介">About</a>
-    <a href="#projects" data-en="Projects" data-jp="作品">Projects</a>
-    <button class="lang-btn" id="lang-btn" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button>
-  </div>
-</nav>
+<nav><div class="nav-links">
+  <a href="#about" data-en="About" data-jp="自己紹介">About</a>
+  <a href="#projects" data-en="Projects" data-jp="作品">Projects</a>
+  <button class="lang-btn" id="lang-btn" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button>
+</div></nav>
 
-<div class="hero">
-  <canvas id="hero-canvas"></canvas>
-  <div class="hero-inner">
-    <h1>
-      <span data-en="Aika Ono" data-jp="小野愛佳">Aika Ono</span>
-      <span data-en="Portfolio." data-jp="ポートフォリオ">Portfolio.</span>
-    </h1>
-  </div>
-</div>
-
-<div class="accent-strip"></div>
+<div class="hero"><canvas id="hero-canvas"></canvas>
+  <div class="hero-inner"><h1>
+    <span data-en="Aika Ono" data-jp="小野愛佳">Aika Ono</span>
+    <span data-en="Portfolio." data-jp="ポートフォリオ">Portfolio.</span>
+  </h1></div>
+</div><div class="accent-strip"></div>
 
 <div class="two-col" id="about">
   <div class="col">
@@ -117,24 +126,18 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
     <div class="about-text"
        data-en="I'm a 🇯🇵 <strong>medical student at the University of Edinburgh</strong>, currently intercalating in Biomedical Engineering at Imperial College London.<br><br>As a Design Engineer...<br>I want to make stuff that is:<ul class='about-list'><li>Beautiful</li><li>Has both functionality and human warmth</li><li>Gives the emotion of awe to people</li></ul>Interests: Parametric/generative design, IoT, Biomimetics<br><br>Hobbies: Drawing, Dance, Poker"
        data-jp="現在、<strong>エディンバラ大学の医学生</strong>として、インペリアル・カレッジ・ロンドンで生体医工学を副専攻しています<br><br>デザインエンジニアとして、<br>こういうものが作りたいです：<ul class='about-list'><li>美しいもの</li><li>温かさと機能が両方ある機械</li><li>見たものに畏敬の念を抱かせる作品</li></ul>興味：パラメトリック/ジェネラティブデザイン、IoT、バイオミメティクス<br><br>趣味：ダンス、イラスト、ポーカー">
-      I'm a 🇯🇵 <strong>medical student at the University of Edinburgh</strong>, currently intercalating in Biomedical Engineering at Imperial College London.<br><br>As a Design Engineer, I want to make stuff that is:<ul class="about-list"><li>Beautiful</li><li>Has both functionality and human warmth</li><li>Gives the emotion of awe to people</li></ul>Interests: Parametric/generative design, IoT, Biomimetics<br><br>Hobbies: Drawing, Dance, Poker
+      I'm a 🇯🇵 <strong>medical student at the University of Edinburgh</strong>, currently intercalating in Biomedical Engineering at Imperial College London.<br><br>As a Design Engineer...<br>I want to make stuff that is:<ul class="about-list"><li>Beautiful</li><li>Has both functionality and human warmth</li><li>Gives the emotion of awe to people</li></ul>Interests: Parametric/generative design, IoT, Biomimetics<br><br>Hobbies: Drawing, Dance, Poker
     </div>
   </div>
   <div class="col">
     <p class="s-label" data-en="Contact" data-jp="連絡先">Contact</p>
-    <div class="c-item">
-      <p class="c-key" data-en="Email" data-jp="メール">Email</p>
-      <a class="c-val" href="mailto:aika.ono59@gmail.com">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="rgba(237,234,227,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-        aika.ono59@gmail.com
-      </a>
+    <div class="c-item"><p class="c-key" data-en="Email" data-jp="メール">Email</p>
+      <a class="c-val" href="mailto:aika.ono59@gmail.com"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="rgba(237,234,227,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>aika.ono59@gmail.com</a>
     </div>
-    <div class="c-item">
-      <p class="c-key" data-en="I post art here" data-jp="イラスト投稿してます">I post art here</p>
+    <div class="c-item"><p class="c-key" data-en="I post art here" data-jp="イラスト投稿してます">I post art here</p>
       <a class="c-val" href="https://www.instagram.com/fractal0505/" target="_blank">
-        <svg width="17" height="17" viewBox="0 0 24 24" opacity="0.55"><defs><linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="35%" stop-color="#e6683c"/><stop offset="60%" stop-color="#dc2743"/><stop offset="80%" stop-color="#cc2366"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><path fill="url(#ig)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        fractal0505
-      </a>
+        <svg width="17" height="17" viewBox="0 0 24 24" opacity="0.55"><defs><linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="60%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><path fill="url(#ig)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        fractal0505</a>
     </div>
   </div>
 </div>
@@ -148,106 +151,187 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
     <path d="M822,520 C800,468 816,418 837,368 C858,318 892,283 900,253 L900,332 C890,362 868,400 848,450 C828,500 846,516 862,520 Z" fill="#2255C8" opacity="0.28"/>
     <line x1="0" y1="358" x2="900" y2="193" stroke="#5080C8" stroke-width="0.85" opacity="0.17"/>
     <line x1="0" y1="398" x2="900" y2="233" stroke="#5080C8" stroke-width="0.55" opacity="0.11"/>
-    <line x1="0" y1="438" x2="900" y2="273" stroke="#4070B8" stroke-width="0.45" opacity="0.08"/>
     <rect x="555" y="265" width="225" height="255" stroke="#6090D0" stroke-width="0.75" opacity="0.11" fill="none"/>
     <polygon points="698,520 786,298 804,298 716,520" fill="#1E3A90" opacity="0.18"/>
-    <polygon points="758,520 828,358 842,358 772,520" fill="#1A3080" opacity="0.13"/>
     <path d="M0,372 C200,332 420,357 622,297 C822,237 900,257 900,247" stroke="#C8A830" stroke-width="1.5" opacity="0.26"/>
-    <path d="M0,432 C160,412 340,397 532,420 C724,444 862,422 900,412" stroke="#D4B840" stroke-width="0.75" opacity="0.17"/>
-    <ellipse cx="222" cy="436" rx="162" ry="52" fill="#18A0B5" opacity="0.08" transform="rotate(-10,222,436)"/>
-    <ellipse cx="658" cy="377" rx="132" ry="44" fill="#1575A0" opacity="0.07" transform="rotate(-5,658,377)"/>
-    <path d="M322,520 C344,472 330,430 355,385 C380,340 412,308 388,258 C364,208 338,190 352,142" stroke="#140808" stroke-width="3" opacity="0.48" stroke-linecap="round"/>
+    <path d="M322,520 C344,472 330,430 355,385 C380,340 412,308 388,258" stroke="#140808" stroke-width="3" opacity="0.48" stroke-linecap="round"/>
     <path d="M612,520 C635,472 612,436 635,392 C658,348 680,315 655,268" stroke="#120606" stroke-width="2.5" opacity="0.4" stroke-linecap="round"/>
-    <path d="M0,480 C200,460 400,474 600,454 C800,434 900,444 900,439" stroke="#8090D8" stroke-width="0.5" opacity="0.2"/>
   </svg>
 
   <p class="s-label" data-en="Featured projects" data-jp="主要作品">Featured projects</p>
   <div class="feat-grid">
-
-    <a class="feat-card" href="#">
-      <div class="feat-thumb"><span class="feat-thumb-num">01</span><i class="ti ti-artboard"></i></div>
-      <div class="feat-body">
-        <div class="feat-head"><span class="feat-num">01</span><i class="ti ti-arrow-up-right feat-arrow"></i></div>
+    <a class="feat-card" href="#" onclick="openProject('keshiki');return false;">
+      <div class="feat-thumb"><svg viewBox="0 0 260 148" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="148" fill="#0d0d0b"/><defs><radialGradient id="lg1" cx="50%" cy="0%" r="60%"><stop offset="0%" stop-color="#b0d8ff" stop-opacity="0.6"/><stop offset="100%" stop-color="#4090ff" stop-opacity="0"/></radialGradient></defs><ellipse cx="130" cy="18" rx="28" ry="18" fill="url(#lg1)"/><circle cx="130" cy="16" r="4" fill="#e0f0ff" opacity="0.9"/><path d="M130,24 C131,42 129,60 130,78 C131,96 129,114 130,132" stroke="rgba(237,234,227,0.08)" stroke-width="1.5" fill="none" stroke-dasharray="3,3"/><g fill="rgba(237,234,227,0.05)" stroke="rgba(237,234,227,0.22)" stroke-width="0.6"><rect x="104" y="28" width="52" height="14" rx="4"/><rect x="102" y="48" width="56" height="14" rx="4"/><rect x="101" y="68" width="58" height="14" rx="4"/><rect x="102" y="88" width="56" height="14" rx="4"/><rect x="104" y="108" width="52" height="14" rx="4"/></g><rect x="108" y="124" width="44" height="20" rx="4" fill="rgba(80,130,200,0.12)" stroke="rgba(80,130,200,0.3)" stroke-width="0.6"/><circle cx="130" cy="134" r="6" fill="none" stroke="rgba(80,130,200,0.4)" stroke-width="0.6"/><circle cx="130" cy="134" r="2.5" fill="rgba(80,130,200,0.5)"/></svg></div>
+      <div class="feat-body"><div class="feat-head"><div class="feat-num-wrap"><span class="feat-num">01</span><span class="tag-wip">WIP</span></div><i class="ti ti-arrow-up-right feat-arrow"></i></div>
         <p class="feat-title" data-en="Keshiki" data-jp="景色">Keshiki</p>
-        <p class="feat-desc" data-en="Add description." data-jp="説明を追加">Add description.</p>
-        <div class="feat-tags"><span class="tag" data-en="Generative" data-jp="ジェネラティブ">Generative</span><span class="tag" data-en="Design" data-jp="デザイン">Design</span></div>
+        <p class="feat-desc" data-en="IoT device for learned helplessness. A dome + AI companion that grows with you." data-jp="学習性無力感のためのIoTデバイス">IoT device for learned helplessness. A dome + AI companion that grows with you.</p>
+        <div class="feat-tags"><span class="tag">OpenSCAD</span><span class="tag">ESP32</span><span class="tag">IoT</span></div>
       </div>
     </a>
-
-    <a class="feat-card" href="#">
-      <div class="feat-thumb"><span class="feat-thumb-num">02</span><i class="ti ti-clock"></i></div>
-      <div class="feat-body">
-        <div class="feat-head"><span class="feat-num">02</span><i class="ti ti-arrow-up-right feat-arrow"></i></div>
+    <a class="feat-card" href="#" onclick="openProject('clock');return false;">
+      <div class="feat-thumb"><svg viewBox="0 0 260 148" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="148" fill="#0d0d0b"/><circle cx="92" cy="74" r="52" fill="rgba(237,234,227,0.02)" stroke="rgba(237,234,227,0.1)" stroke-width="0.6"/><circle cx="92" cy="74" r="55" fill="none" stroke="rgba(237,234,227,0.15)" stroke-width="7" stroke-dasharray="9,8.45"><animateTransform attributeName="transform" type="rotate" from="0 92 74" to="360 92 74" dur="20s" repeatCount="indefinite"/></circle><g stroke="rgba(237,234,227,0.07)" stroke-width="0.6"><line x1="92" y1="46" x2="92" y2="102"/><line x1="64" y1="74" x2="120" y2="74"/></g><circle cx="92" cy="74" r="4" fill="rgba(237,234,227,0.3)"/><circle cx="188" cy="50" r="28" fill="rgba(237,234,227,0.02)" stroke="rgba(237,234,227,0.08)" stroke-width="0.5"/><circle cx="188" cy="50" r="30" fill="none" stroke="rgba(237,234,227,0.12)" stroke-width="5" stroke-dasharray="7,6.28"><animateTransform attributeName="transform" type="rotate" from="0 188 50" to="-360 188 50" dur="10s" repeatCount="indefinite"/></circle><circle cx="188" cy="50" r="4" fill="rgba(237,234,227,0.25)"/><circle cx="205" cy="108" r="18" fill="rgba(237,234,227,0.02)" stroke="rgba(237,234,227,0.08)" stroke-width="0.5"/><circle cx="205" cy="108" r="20" fill="none" stroke="rgba(237,234,227,0.1)" stroke-width="4" stroke-dasharray="5,5.65"><animateTransform attributeName="transform" type="rotate" from="0 205 108" to="360 205 108" dur="6s" repeatCount="indefinite"/></circle><circle cx="205" cy="108" r="3" fill="rgba(237,234,227,0.2)"/></svg></div>
+      <div class="feat-body"><div class="feat-head"><div class="feat-num-wrap"><span class="feat-num">02</span><span class="tag-wip">WIP</span></div><i class="ti ti-arrow-up-right feat-arrow"></i></div>
         <p class="feat-title" data-en="Mechanical Clock" data-jp="機械時計">Mechanical Clock</p>
-        <p class="feat-desc" data-en="Add description." data-jp="説明を追加">Add description.</p>
-        <div class="feat-tags"><span class="tag" data-en="CAD" data-jp="CAD">CAD</span><span class="tag" data-en="Fusion 360" data-jp="Fusion 360">Fusion 360</span></div>
+        <p class="feat-desc" data-en="Fully 3D-printed mechanical clock in translucent PETG." data-jp="トランスルーセントPETGで印刷した機械時計">Fully 3D-printed mechanical clock in translucent PETG.</p>
+        <div class="feat-tags"><span class="tag">3D print</span><span class="tag">PETG</span></div>
       </div>
     </a>
-
-    <a class="feat-card" href="#">
-      <div class="feat-thumb"><span class="feat-thumb-num">03</span><i class="ti ti-vector-bezier"></i></div>
-      <div class="feat-body">
-        <div class="feat-head"><span class="feat-num">03</span><i class="ti ti-arrow-up-right feat-arrow"></i></div>
+    <a class="feat-card" href="#" onclick="openProject('chokusen');return false;">
+      <div class="feat-thumb"><svg viewBox="0 0 260 148" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="148" fill="#0d0d0b"/><defs><linearGradient id="sg1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(80,130,200,0.7)"/><stop offset="50%" stop-color="rgba(126,158,148,0.7)"/><stop offset="100%" stop-color="rgba(200,88,69,0.7)"/></linearGradient></defs><rect x="20" y="20" width="220" height="2" rx="1" fill="url(#sg1)" opacity="0.6"/><rect x="68" y="40" width="42" height="70" fill="none" stroke="rgba(80,130,200,0.5)" stroke-width="0.75"/><rect x="73" y="40" width="42" height="70" rx="6" fill="none" stroke="rgba(100,155,165,0.5)" stroke-width="0.75" transform="translate(58,0)"/><ellipse cx="146" cy="75" rx="21" ry="35" fill="none" stroke="rgba(126,158,148,0.5)" stroke-width="0.75"/><path d="M180,40 C204,40 204,110 180,110 C156,110 156,40 180,40 Z" fill="none" stroke="rgba(165,120,90,0.5)" stroke-width="0.75"/><circle cx="230" cy="75" r="35" fill="none" stroke="rgba(200,88,69,0.5)" stroke-width="0.75"/><text x="20" y="128" font-family="monospace" font-size="7" fill="rgba(80,130,200,0.5)">直線</text><text x="218" y="128" font-family="monospace" font-size="7" fill="rgba(200,88,69,0.5)" text-anchor="end">曲線</text></svg></div>
+      <div class="feat-body"><div class="feat-head"><div class="feat-num-wrap"><span class="feat-num">03</span><span class="tag-wip">WIP</span></div><i class="ti ti-arrow-up-right feat-arrow"></i></div>
         <p class="feat-title" data-en="Straight Lines &amp; Curves" data-jp="直線と曲線">Straight Lines &amp; Curves</p>
-        <p class="feat-desc" data-en="Add description." data-jp="説明を追加">Add description.</p>
-        <div class="feat-tags"><span class="tag" data-en="Computational" data-jp="計算デザイン">Computational</span><span class="tag" data-en="Geometry" data-jp="幾何学">Geometry</span></div>
+        <p class="feat-desc" data-en="Grasshopper tool to quantify linearity as a tuneable parameter." data-jp="直線度指数をGrasshopperで定量化">Grasshopper tool to quantify linearity as a tuneable parameter.</p>
+        <div class="feat-tags"><span class="tag">Grasshopper</span><span class="tag">Parametric</span></div>
       </div>
     </a>
-
-    <a class="feat-card" href="#">
-      <div class="feat-thumb"><span class="feat-thumb-num">04</span><i class="ti ti-robot"></i></div>
-      <div class="feat-body">
-        <div class="feat-head"><span class="feat-num">04</span><i class="ti ti-arrow-up-right feat-arrow"></i></div>
+    <a class="feat-card" href="#" onclick="openProject('gripper');return false;">
+      <div class="feat-thumb"><svg viewBox="0 0 260 148" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="148" fill="#0d0d0b"/><rect x="90" y="82" width="80" height="54" rx="14" fill="rgba(237,234,227,0.03)" stroke="rgba(237,234,227,0.18)" stroke-width="0.75"/><rect x="97" y="30" width="18" height="55" rx="9" fill="rgba(237,234,227,0.03)" stroke="rgba(237,234,227,0.15)" stroke-width="0.75"/><rect x="121" y="20" width="18" height="65" rx="9" fill="rgba(237,234,227,0.03)" stroke="rgba(237,234,227,0.15)" stroke-width="0.75"/><rect x="145" y="22" width="18" height="63" rx="9" fill="rgba(237,234,227,0.03)" stroke="rgba(237,234,227,0.15)" stroke-width="0.75"/><g stroke="rgba(80,130,200,0.45)" stroke-width="1"><line x1="106" y1="35" x2="106" y2="82"/><line x1="130" y1="25" x2="130" y2="82"/><line x1="154" y1="27" x2="154" y2="82"/></g><g fill="none" stroke="rgba(80,130,200,0.5)" stroke-width="0.75"><ellipse cx="106" cy="33" rx="6" ry="4"/><ellipse cx="130" cy="23" rx="6" ry="4"/><ellipse cx="154" cy="25" rx="6" ry="4"/></g></svg></div>
+      <div class="feat-body"><div class="feat-head"><div class="feat-num-wrap"><span class="feat-num">04</span></div><i class="ti ti-arrow-up-right feat-arrow"></i></div>
         <p class="feat-title" data-en="Hydraulic Gripper" data-jp="油圧グリッパー">Hydraulic Gripper</p>
-        <p class="feat-desc" data-en="Add description." data-jp="説明を追加">Add description.</p>
-        <div class="feat-tags"><span class="tag" data-en="Soft robotics" data-jp="ソフトロボ">Soft robotics</span><span class="tag" data-en="CAD" data-jp="CAD">CAD</span></div>
+        <p class="feat-desc" data-en="Hydraulically actuated soft silicone hand with ArUco vision control." data-jp="油圧駆動のソフトシリコンハンド">Hydraulically actuated soft silicone hand with ArUco vision control.</p>
+        <div class="feat-tags"><span class="tag">Soft robotics</span><span class="tag">Silicone</span></div>
       </div>
     </a>
-
   </div>
 
   <div class="hr"></div>
-  <div class="trashy-head">
-    <p class="trashy-label" data-en="Trashy Quick Builds" data-jp="ゴミの掃き溜めみたいな作品たち">Trashy Quick Builds</p>
-  </div>
+  <div class="trashy-head"><p class="trashy-label" data-en="Trashy Quick Builds" data-jp="ゴミの掃き溜めみたいな作品たち">Trashy Quick Builds</p></div>
   <div class="trashy-grid">
     <a class="trashy-card" href="https://ai-mirror-pc6k.vercel.app/" onclick="openProject('mirror');return false;">
       <p class="trashy-title" data-en="Claude/ChatGPT Conversation History Personality Analyser" data-jp="AI会話履歴・性格分析">Claude/ChatGPT Conversation History Personality Analyser</p>
       <div class="trashy-visual"><img src="assets/chatgpt-mirror.png" alt="ChatGPT Mirror screenshot"></div>
     </a>
-    <a class="trashy-card" href="#"><p class="trashy-title" data-en="Side project name" data-jp="サイドプロジェクト名">Side project name</p><p class="trashy-desc" data-en="Quick description." data-jp="概要">Quick description.</p></a>
-    <a class="trashy-card" href="#"><p class="trashy-title" data-en="Side project name" data-jp="サイドプロジェクト名">Side project name</p><p class="trashy-desc" data-en="Quick description." data-jp="概要">Quick description.</p></a>
-    <a class="trashy-card" href="#"><p class="trashy-title" data-en="Side project name" data-jp="サイドプロジェクト名">Side project name</p><p class="trashy-desc" data-en="Quick description." data-jp="概要">Quick description.</p></a>
   </div>
 </div>
-
 <footer><span class="f-txt">Aika Ono © 2026</span></footer>
 </div>
 
-<!-- PROJECT PAGE: ChatGPT Mirror -->
-<div class="project-page" id="project-mirror">
+<!-- PROJECT: Keshiki -->
+<div class="project-page" id="project-keshiki">
   <div class="proj-nav">
-    <button class="proj-back" onclick="closeProject('mirror')">← Back</button>
-    <button class="lang-btn" id="lang-btn-proj" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button>
+    <button class="proj-back" onclick="closeProject('keshiki')">← Back</button>
+    <button class="lang-btn" id="lang-btn-keshiki" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button>
   </div>
   <div class="proj-body">
-    <p class="proj-label">Trashy Quick Builds</p>
-    <h1 class="proj-title" data-en="Claude/ChatGPT Conversation History Personality Analyser" data-jp="AI会話履歴・性格分析">Claude/ChatGPT Conversation History Personality Analyser</h1>
-    <div class="proj-skills">
-      <span class="tag">Claude API</span>
-      <span class="tag">React</span>
-      <span class="tag">Personality</span>
-      <span class="tag">Data viz</span>
-      <span class="tag">Quick build</span>
+    <p class="proj-label" data-en="Featured Projects" data-jp="主要作品">Featured Projects</p>
+    <h1 class="proj-title" data-en="Keshiki" data-jp="景色">Keshiki</h1>
+    <div class="proj-skills"><span class="tag">OpenSCAD</span><span class="tag">ESP32</span><span class="tag">PETG</span><span class="tag">NeoPixel</span><span class="tag">SG90 servo</span><span class="tag">Claude API</span></div>
+    <p class="proj-wip" data-en="Work in progress" data-jp="制作中">Work in progress</p>
+
+    <p class="proj-section-label" data-en="Interactive companion demo" data-jp="インタラクティブデモ">Interactive companion demo</p>
+    <div class="kd-wrap">
+      <div class="kd-left">
+        <canvas id="kd-canvas"></canvas>
+        <div class="kd-states">
+          <button class="kd-btn active" data-i="0">迷い</button><span class="kd-arr">→</span>
+          <button class="kd-btn" data-i="1">気づき</button><span class="kd-arr">→</span>
+          <button class="kd-btn" data-i="2">芽生え</button><span class="kd-arr">→</span>
+          <button class="kd-btn" data-i="3">成長</button><span class="kd-arr">→</span>
+          <button class="kd-btn" data-i="4">景色</button>
+        </div>
+        <p class="kd-meaning" id="kd-meaning">The beginning of suffering.</p>
+      </div>
+      <div class="kd-right">
+        <div class="kd-msgs" id="kd-msgs">
+          <div class="kd-msg ai">I'm here. Speak freely — I'm not here to fix you, only to witness.</div>
+        </div>
+        <div class="kd-row">
+          <input id="kd-input" placeholder="speak freely...">
+          <button id="kd-send">→</button>
+        </div>
+      </div>
     </div>
-    <a class="proj-visit" href="https://ai-mirror-pc6k.vercel.app/" target="_blank">Visit project ↗</a>
-    <div class="proj-visual"><img src="assets/chatgpt-mirror.png" alt="ChatGPT Mirror dashboard"></div>
-    <p class="proj-desc" data-en="Upload your ChatGPT or Claude conversation history as a JSON file. The analyser reads your messages across time and produces a mood timeline, recurring emotional patterns, topics you gravitate toward, and a personality profile inferred from how you communicate with AI. Built as an experiment in meta-AI analysis — AI watching how you talk to AI." data-jp="ChatGPTまたはClaudeの会話履歴をJSONファイルでアップロードすると、気分の推移、感情パターン、よく話すテーマ、コミュニケーションスタイルから性格プロファイルを生成します。AIがAIとの会話を分析するメタな実験として作りました。">Upload your ChatGPT or Claude conversation history as a JSON file. The analyser reads your messages across time and produces a mood timeline, recurring emotional patterns, topics you gravitate toward, and a personality profile inferred from how you communicate with AI. Built as an experiment in meta-AI analysis — AI watching how you talk to AI.</p>
+
+    <p class="proj-section-label" data-en="Hardware diagram — drag to rotate" data-jp="ハードウェア図 — ドラッグで回転">Hardware diagram — drag to rotate</p>
+    <div class="k3d-outer">
+      <canvas id="k3d-canvas"></canvas>
+      <div class="k3d-bar">
+        <div class="k3d-legend">
+          <span><i style="background:rgba(140,160,255,0.6)"></i>PETG dome</span>
+          <span><i style="background:#f0a020"></i>NeoPixel ×16</span>
+          <span><i style="background:rgba(180,160,210,0.8)"></i>figure + servo</span>
+          <span><i style="background:rgba(50,50,100,0.9)"></i>ESP32 base</span>
+        </div>
+        <button id="k3d-cut">cutaway ✂</button>
+      </div>
+      <p class="k3d-hint">drag to rotate</p>
+    </div>
+
+    <p class="proj-section-label" data-en="Schematic" data-jp="回路図">Schematic</p>
+    <div class="proj-visual">
+      <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg"><rect width="700" height="300" fill="#0d0d0b"/><defs><radialGradient id="kled" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#b0d8ff" stop-opacity="0.85"/><stop offset="100%" stop-color="#4090ff" stop-opacity="0"/></radialGradient></defs><ellipse cx="350" cy="38" rx="38" ry="28" fill="url(#kled)"/><circle cx="350" cy="34" r="7" fill="#d0e8ff" opacity="0.7"/><circle cx="350" cy="34" r="3.5" fill="#f0f8ff" opacity="0.95"/><path d="M350,48 C352,75 348,102 350,129 C352,156 348,183 350,210 C352,237 348,255 350,268" stroke="rgba(237,234,227,0.1)" stroke-width="2" fill="none" stroke-dasharray="4,4"/><g fill="rgba(237,234,227,0.05)" stroke="rgba(237,234,227,0.25)" stroke-width="0.75"><rect x="308" y="52" width="84" height="24" rx="6"/><path d="M392,56 L418,64 L392,72" fill="rgba(237,234,227,0.04)" stroke="rgba(237,234,227,0.18)" stroke-width="0.6"/><rect x="318" y="76" width="64" height="7" rx="2.5" fill="rgba(126,158,148,0.12)" stroke="rgba(126,158,148,0.28)" stroke-width="0.5"/><rect x="306" y="83" width="88" height="24" rx="6"/><path d="M394,87 L422,95 L394,103" fill="rgba(237,234,227,0.04)" stroke="rgba(237,234,227,0.18)" stroke-width="0.6"/><rect x="316" y="107" width="68" height="7" rx="2.5" fill="rgba(126,158,148,0.12)" stroke="rgba(126,158,148,0.28)" stroke-width="0.5"/><rect x="305" y="114" width="90" height="24" rx="6"/><path d="M395,118 L424,126 L395,134" fill="rgba(237,234,227,0.04)" stroke="rgba(237,234,227,0.18)" stroke-width="0.6"/><rect x="315" y="138" width="70" height="7" rx="2.5" fill="rgba(126,158,148,0.12)" stroke="rgba(126,158,148,0.28)" stroke-width="0.5"/><rect x="305" y="145" width="90" height="24" rx="6"/><path d="M395,149 L424,157 L395,165" fill="rgba(237,234,227,0.04)" stroke="rgba(237,234,227,0.18)" stroke-width="0.6"/><rect x="315" y="169" width="70" height="7" rx="2.5" fill="rgba(126,158,148,0.12)" stroke="rgba(126,158,148,0.28)" stroke-width="0.5"/><rect x="306" y="176" width="88" height="24" rx="6"/><path d="M394,180 L422,188 L394,196" fill="rgba(237,234,227,0.04)" stroke="rgba(237,234,227,0.18)" stroke-width="0.6"/><rect x="316" y="200" width="68" height="7" rx="2.5" fill="rgba(126,158,148,0.12)" stroke="rgba(126,158,148,0.28)" stroke-width="0.5"/><rect x="308" y="207" width="84" height="24" rx="6"/><path d="M392,211 L418,219 L392,227" fill="rgba(237,234,227,0.04)" stroke="rgba(237,234,227,0.18)" stroke-width="0.6"/></g><rect x="304" y="234" width="92" height="44" rx="7" fill="rgba(80,130,200,0.08)" stroke="rgba(80,130,200,0.32)" stroke-width="0.75"/><circle cx="350" cy="256" r="15" fill="none" stroke="rgba(80,130,200,0.38)" stroke-width="0.75"/><circle cx="350" cy="256" r="5.5" fill="rgba(80,130,200,0.45)"/><line x1="350" y1="256" x2="340" y2="242" stroke="rgba(80,130,200,0.55)" stroke-width="1.5" stroke-linecap="round"/><rect x="252" y="248" width="36" height="20" rx="2" fill="rgba(237,234,227,0.03)" stroke="rgba(237,234,227,0.18)" stroke-width="0.5"/><text x="258" y="261" font-family="monospace" font-size="6.5" fill="rgba(237,234,227,0.3)">ESP32</text><g stroke="rgba(237,234,227,0.12)" stroke-width="0.5"><line x1="252" y1="252" x2="246" y2="252"/><line x1="252" y1="257" x2="246" y2="257"/><line x1="252" y1="262" x2="246" y2="262"/><line x1="288" y1="257" x2="294" y2="257"/></g><path d="M294,257 Q302,257 302,256 L304,256" stroke="rgba(237,234,227,0.12)" stroke-width="0.5" fill="none"/><text x="435" y="37" font-family="monospace" font-size="9" fill="rgba(200,220,255,0.5)">LED tip</text><line x1="422" y1="34" x2="433" y2="34" stroke="rgba(200,220,255,0.25)" stroke-width="0.5"/><text x="435" y="130" font-family="monospace" font-size="9" fill="rgba(237,234,227,0.28)">PETG vertebra</text><line x1="395" y1="128" x2="433" y2="128" stroke="rgba(237,234,227,0.15)" stroke-width="0.5"/><text x="435" y="178" font-family="monospace" font-size="9" fill="rgba(126,158,148,0.45)">living hinge</text><line x1="384" y1="174" x2="433" y2="174" stroke="rgba(126,158,148,0.2)" stroke-width="0.5"/><text x="435" y="258" font-family="monospace" font-size="9" fill="rgba(80,130,200,0.5)">SG90 servo</text><line x1="396" y1="256" x2="433" y2="256" stroke="rgba(80,130,200,0.22)" stroke-width="0.5"/><text x="20" y="292" font-family="monospace" font-size="8" fill="rgba(237,234,227,0.15)" letter-spacing="0.1em">KESHIKI — LATERAL SCHEMATIC</text></svg>
+    </div>
+
+    <p class="proj-desc" data-en="Keshiki (景色 — scenery) is a philosophical IoT device for people with learned helplessness. The name comes from Kikuo's concept in the film 国宝: that the beauty we see — the scenery — is earned through suffering and growth, not given.<br><br>The object is a dome enclosing a small articulated humanoid robot at its centre. The robot's posture and the dome's internal light and structure shift in response to the user's emotional and behavioural state, tracked via AI — beginning dim and fragmented, becoming more luminous and complex over time. The AI acts not as a teacher but as a quiet companion that grows alongside the user. The project embodies 私は人間である: humans are weak and ignorant, but we have an innate will to improve, and through suffering we arrive at a beautiful world.<br><br>The spine is the physical form the humanoid takes: anatomically-informed vertebrae in PETG, linked by living-hinge joints. A wire runs through the neural foramina — like the spinal cord — to an LED at the tip, which glows as the structure unfolds. Driven by an SG90 servo, controlled via ESP32. OpenSCAD modelling iterated extensively — silent polygon winding failures, 'Normalized tree has 0 elements' errors, overhanging spinous processes. Solution: print the spine on its side." data-jp="景色は、学習性無力感を抱える人のためのIoTデバイス。菊生が映画『国宝』で描いた「景色」の概念にちなむ——美しさは苦しみと成長の末に見えるもの。<br><br>ドーム型の筐体の中央に関節式ヒューマノイドロボットが立ち、AIがユーザーの感情状態を読み取り、ロボットの姿勢とドームの光が変化する。AIは教師ではなく、一緒に育つ「友人」として機能する。<br><br>ヒューマノイドの骨格として解剖学的に正確な脊椎モデルをPETGで3Dプリント。リビングヒンジで連結し、神経孔を通るワイヤーの先にLEDを配置。SG90サーボとESP32で制御。">Keshiki (景色 — scenery) is a philosophical IoT device for people with learned helplessness. The name comes from Kikuo's concept in the film 国宝: that beauty is earned through suffering and growth, not given.<br><br>A dome enclosing a small articulated humanoid robot. The robot's posture and the dome's internal light shift in response to the user's emotional state, tracked via AI — beginning dim, becoming luminous over time. The AI acts not as a teacher but as a quiet companion that grows alongside the user.<br><br>The spine is the physical form the humanoid takes: anatomically-informed PETG vertebrae with living-hinge joints, a wire running through the neural foramina to an LED tip. SG90 servo + ESP32 controlled.</p>
   </div>
 </div>
 
+<!-- PROJECT: Clock -->
+<div class="project-page" id="project-clock">
+  <div class="proj-nav"><button class="proj-back" onclick="closeProject('clock')">← Back</button><button class="lang-btn" id="lang-btn-clock" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button></div>
+  <div class="proj-body">
+    <p class="proj-label" data-en="Featured Projects" data-jp="主要作品">Featured Projects</p>
+    <h1 class="proj-title" data-en="Mechanical Clock" data-jp="機械時計">Mechanical Clock</h1>
+    <div class="proj-skills"><span class="tag">3D printing</span><span class="tag">PETG</span><span class="tag">Fusion 360</span><span class="tag">Mechanical assembly</span><span class="tag">Thingiverse Clock20</span></div>
+    <p class="proj-wip" data-en="Work in progress" data-jp="制作中">Work in progress</p>
+    <div class="proj-visual"><svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg"><rect width="700" height="300" fill="#0d0d0b"/><circle cx="210" cy="152" r="95" fill="rgba(237,234,227,0.02)" stroke="rgba(237,234,227,0.1)" stroke-width="0.75"/><circle cx="210" cy="152" r="98" fill="none" stroke="rgba(237,234,227,0.16)" stroke-width="10" stroke-dasharray="11,18.7"><animateTransform attributeName="transform" type="rotate" from="0 210 152" to="360 210 152" dur="24s" repeatCount="indefinite"/></circle><circle cx="210" cy="152" r="56" fill="none" stroke="rgba(237,234,227,0.05)" stroke-width="0.5"/><g stroke="rgba(237,234,227,0.07)" stroke-width="0.6"><line x1="210" y1="96" x2="210" y2="208"/><line x1="154" y1="152" x2="266" y2="152"/><line x1="170" y1="112" x2="250" y2="192"/><line x1="250" y1="112" x2="170" y2="192"/></g><circle cx="210" cy="152" r="6" fill="rgba(237,234,227,0.25)"/><circle cx="366" cy="104" r="50" fill="rgba(237,234,227,0.02)" stroke="rgba(237,234,227,0.08)" stroke-width="0.6"/><circle cx="366" cy="104" r="53" fill="none" stroke="rgba(237,234,227,0.13)" stroke-width="7" stroke-dasharray="9,15.4"><animateTransform attributeName="transform" type="rotate" from="0 366 104" to="-360 366 104" dur="12s" repeatCount="indefinite"/></circle><circle cx="366" cy="104" r="5" fill="rgba(237,234,227,0.2)"/><circle cx="388" cy="218" r="32" fill="rgba(237,234,227,0.02)" stroke="rgba(237,234,227,0.08)" stroke-width="0.6"/><circle cx="388" cy="218" r="35" fill="none" stroke="rgba(237,234,227,0.11)" stroke-width="5" stroke-dasharray="7,9.9"><animateTransform attributeName="transform" type="rotate" from="0 388 218" to="360 388 218" dur="7.5s" repeatCount="indefinite"/></circle><circle cx="388" cy="218" r="4" fill="rgba(237,234,227,0.18)"/><circle cx="572" cy="152" r="112" fill="rgba(237,234,227,0.015)" stroke="rgba(237,234,227,0.15)" stroke-width="0.75"/><g stroke="rgba(237,234,227,0.35)" stroke-width="1.5" stroke-linecap="round"><line x1="572" y1="46" x2="572" y2="60"/><line x1="678" y1="152" x2="664" y2="152"/><line x1="572" y1="258" x2="572" y2="244"/><line x1="466" y1="152" x2="480" y2="152"/></g><g stroke="rgba(237,234,227,0.14)" stroke-width="0.75"><line x1="572" y1="46" x2="572" y2="56" transform="rotate(30,572,152)"/><line x1="572" y1="46" x2="572" y2="56" transform="rotate(60,572,152)"/><line x1="572" y1="46" x2="572" y2="56" transform="rotate(120,572,152)"/><line x1="572" y1="46" x2="572" y2="56" transform="rotate(150,572,152)"/><line x1="572" y1="46" x2="572" y2="56" transform="rotate(210,572,152)"/><line x1="572" y1="46" x2="572" y2="56" transform="rotate(240,572,152)"/><line x1="572" y1="46" x2="572" y2="56" transform="rotate(300,572,152)"/><line x1="572" y1="46" x2="572" y2="56" transform="rotate(330,572,152)"/></g><line x1="572" y1="152" x2="542" y2="96" stroke="rgba(237,234,227,0.65)" stroke-width="2.5" stroke-linecap="round"/><line x1="572" y1="152" x2="624" y2="84" stroke="rgba(237,234,227,0.5)" stroke-width="1.5" stroke-linecap="round"/><line x1="572" y1="152" x2="572" y2="252" stroke="rgba(200,88,69,0.75)" stroke-width="0.75" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" from="0 572 152" to="360 572 152" dur="60s" repeatCount="indefinite"/></line><circle cx="572" cy="152" r="4.5" fill="rgba(237,234,227,0.75)"/><text x="20" y="291" font-family="monospace" font-size="8" fill="rgba(237,234,227,0.15)" letter-spacing="0.1em">CLOCK20 — GEAR TRAIN + ESCAPEMENT</text></svg></div>
+    <p class="proj-desc" data-en="A fully 3D-printed mechanical clock (Thingiverse Clock20, thing:328569) in translucent PETG. The build surfaced problems at every layer.<br><br>The clock face backplate has 135 separate floating print islands at its first layer — invisible in Fusion 360. Diagnosed by parsing the STL geometry directly, solved by adding a continuous base disc in the slicer rather than editing the mesh (which crashed Fusion at 58,592 triangles). PETG stringing at 0.12mm layer height produced cotton candy-like fibres; fixed via retraction tuning and temperature reduction.<br><br>Assembly required sourcing and hand-cutting steel pin axles in three diameters — 1.5mm, 2mm, 3mm — and dialling in the clearance for each rotating component by feel. The escapement anchor and escape wheel share a 2mm shaft. PTFE lubricant applied to all rotating interfaces.<br><br>A lesson in the gap between digital geometry and physical tolerance, and in the thousand small decisions between a Thingiverse file and something that actually ticks." data-jp="トランスルーセントPETGで印刷した完全3Dプリント機械時計（Clock20）。135個の浮遊印刷島をSTL解析で診断し、スライサーでベースディスクを追加して解決（Fusionは5万8千個の三角形でクラッシュ）。PETGストリンギングはリトラクション調整で対処。金属ピン軸を手動切断し、脱進機アンカーとエスケープホイールを2mmシャフトで組み立て。">A fully 3D-printed mechanical clock (Thingiverse Clock20) in translucent PETG. 135 floating print islands diagnosed by parsing STL geometry directly; solved by adding a base disc in the slicer. PETG stringing fixed via retraction tuning. Steel pin axles hand-cut in 1.5mm, 2mm, 3mm; clearances dialled in by feel. A lesson in the gap between digital geometry and physical tolerance.</p>
+  </div>
+</div>
+
+<!-- PROJECT: 直線と曲線 -->
+<div class="project-page" id="project-chokusen">
+  <div class="proj-nav"><button class="proj-back" onclick="closeProject('chokusen')">← Back</button><button class="lang-btn" id="lang-btn-chokusen" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button></div>
+  <div class="proj-body">
+    <p class="proj-label" data-en="Featured Projects" data-jp="主要作品">Featured Projects</p>
+    <h1 class="proj-title" data-en="Straight Lines &amp; Curves" data-jp="直線と曲線">Straight Lines &amp; Curves</h1>
+    <div class="proj-skills"><span class="tag">Grasshopper</span><span class="tag">Rhino</span><span class="tag">Computational design</span><span class="tag">Design theory</span></div>
+    <p class="proj-wip" data-en="Work in progress" data-jp="制作中">Work in progress</p>
+    <div class="proj-visual"><svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg"><rect width="700" height="300" fill="#0d0d0b"/><defs><linearGradient id="spec2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(80,130,200,0.9)"/><stop offset="50%" stop-color="rgba(126,158,148,0.9)"/><stop offset="100%" stop-color="rgba(200,88,69,0.9)"/></linearGradient></defs><text x="350" y="26" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(237,234,227,0.22)" letter-spacing="0.1em">直線 ←———————————————————————→ 曲線</text><rect x="44" y="36" width="612" height="2.5" rx="1.25" fill="url(#spec2)" opacity="0.7"/><g stroke="rgba(237,234,227,0.2)" stroke-width="0.75"><line x1="44" y1="36" x2="44" y2="46"/><line x1="197" y1="36" x2="197" y2="46"/><line x1="350" y1="36" x2="350" y2="46"/><line x1="503" y1="36" x2="503" y2="46"/><line x1="656" y1="36" x2="656" y2="46"/></g><rect x="18" y="70" width="52" height="110" fill="none" stroke="rgba(80,130,200,0.6)" stroke-width="0.75"/><g stroke="rgba(80,130,200,0.12)" stroke-width="0.4"><line x1="18" y1="92" x2="70" y2="92"/><line x1="18" y1="114" x2="70" y2="114"/><line x1="18" y1="136" x2="70" y2="136"/><line x1="18" y1="158" x2="70" y2="158"/></g><text x="44" y="198" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(80,130,200,0.5)">0%</text><rect x="172" y="70" width="50" height="110" rx="8" fill="none" stroke="rgba(100,155,175,0.55)" stroke-width="0.75"/><text x="197" y="198" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(100,155,175,0.5)">25%</text><ellipse cx="350" cy="125" rx="25" ry="55" fill="none" stroke="rgba(126,158,148,0.6)" stroke-width="0.75"/><g stroke="rgba(126,158,148,0.18)" stroke-width="0.4"><line x1="350" y1="70" x2="350" y2="58"/><line x1="375" y1="125" x2="385" y2="125"/><line x1="350" y1="180" x2="350" y2="192"/><line x1="325" y1="125" x2="315" y2="125"/></g><text x="350" y="198" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(126,158,148,0.5)">50%</text><path d="M503,70 Q530,70 530,125 Q530,180 503,180 Q476,180 476,125 Q476,70 503,70 Z" fill="none" stroke="rgba(165,115,90,0.55)" stroke-width="0.75"/><text x="503" y="198" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(165,115,90,0.5)">75%</text><circle cx="630" cy="125" r="55" fill="none" stroke="rgba(200,88,69,0.6)" stroke-width="0.75"/><g stroke="rgba(200,88,69,0.2)" stroke-width="0.4"><line x1="630" y1="70" x2="630" y2="55"/><line x1="685" y1="125" x2="700" y2="125"/><line x1="630" y1="180" x2="630" y2="195"/><line x1="575" y1="125" x2="560" y2="125"/></g><text x="630" y="198" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(200,88,69,0.5)">100%</text><text x="44" y="218" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(237,234,227,0.18)">pure lines</text><text x="630" y="218" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(237,234,227,0.18)">pure curves</text><text x="350" y="252" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(237,234,227,0.2)" letter-spacing="0.05em">直線と曲線のバランスを定量化する</text><text x="350" y="270" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(237,234,227,0.13)">Quantifying visual balance between straight lines and curves</text></svg></div>
+    <p class="proj-desc" data-en="A design research project asking: what makes the balance between straight lines and curves visually beautiful? Inspired by Kaede Sugano's six-step methodology (課題設定 → 解決方法 → 言語化 → 開発 → 修正 → プレゼン).<br><br>The central idea: define 'linearity' as a measurable, tuneable scalar — the Linearity Index — from 0 (pure curves: circles, organic forms) to 1 (pure straight lines: rectangles). Implemented in Grasshopper on Rhino.<br><br>Three modes: Analysis reads a 2D outline, samples 200 points, computes curvature magnitude |κ| at each, and outputs the Index plus a heatmap (blue = curve, red = straight). Comparison cross-references against a library of iconic designs — Aalto Vase (≈0.05), Eames Lounge Chair (≈0.30), Yohji Yamamoto silhouette (≈0.40), Braun SK4 (≈0.55). Generation lets a slider adjust the target Index in real time, a Graph Mapper controls where curvature concentrates, and the silhouette deforms live via Blend Curve interpolation." data-jp="直線と曲線のバランスが視覚的な美しさにどう影響するかを探るデザイン研究。菅野薫の6ステップ手法に着想を得た。<br><br>中核概念：「直線度指数」を0（純粋な曲線）から1（純粋な直線）のスカラー値として定義。RhinoのGrasshopperで実装。<br><br>3つのモード：【分析】200点サンプリングで曲率|κ|を計算し、色ヒートマップを出力。【比較】Aalto花瓶（≈0.05）、Eamesチェア（≈0.30）、山本耀司（≈0.40）、Braun SK4（≈0.55）のライブラリと照合。【生成】スライダーで目標指数をリアルタイム調整し、シルエットを変形。">A design research project asking: what makes the balance between straight lines and curves visually beautiful? Inspired by Kaede Sugano's methodology.<br><br>The Linearity Index: 0 = pure curves, 1 = pure straight lines. Implemented in Grasshopper/Rhino. Three modes: Analysis (curvature heatmap), Comparison (library: Aalto ≈0.05, Eames ≈0.30, Yohji ≈0.40, Braun SK4 ≈0.55), Generation (real-time silhouette deformation via slider + Graph Mapper).</p>
+  </div>
+</div>
+
+<!-- PROJECT: Gripper -->
+<div class="project-page" id="project-gripper">
+  <div class="proj-nav"><button class="proj-back" onclick="closeProject('gripper')">← Back</button><button class="lang-btn" id="lang-btn-gripper" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button></div>
+  <div class="proj-body">
+    <p class="proj-label" data-en="Featured Projects" data-jp="主要作品">Featured Projects</p>
+    <h1 class="proj-title" data-en="Hydraulic Gripper" data-jp="油圧グリッパー">Hydraulic Gripper</h1>
+    <div class="proj-skills"><span class="tag">Soft robotics</span><span class="tag">Silicone casting</span><span class="tag">Hydraulics</span><span class="tag">ArUco</span><span class="tag">Python</span></div>
+    <div class="proj-visual"><svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg"><rect width="700" height="300" fill="#0d0d0b"/><rect x="270" y="168" width="160" height="112" rx="22" fill="rgba(237,234,227,0.03)" stroke="rgba(237,234,227,0.18)" stroke-width="0.75"/><rect x="278" y="176" width="144" height="96" rx="18" fill="none" stroke="rgba(237,234,227,0.05)" stroke-width="0.4"/><rect x="278" y="58" width="34" height="115" rx="17" fill="rgba(237,234,227,0.03)" stroke="rgba(237,234,227,0.16)" stroke-width="0.75"/><rect x="318" y="40" width="34" height="133" rx="17" fill="rgba(237,234,227,0.03)" stroke="rgba(237,234,227,0.16)" stroke-width="0.75"/><rect x="358" y="46" width="34" height="127" rx="17" fill="rgba(237,234,227,0.03)" stroke="rgba(237,234,227,0.16)" stroke-width="0.75"/><rect x="398" y="68" width="28" height="106" rx="14" fill="rgba(237,234,227,0.03)" stroke="rgba(237,234,227,0.13)" stroke-width="0.75"/><rect x="210" y="150" width="70" height="28" rx="14" fill="rgba(237,234,227,0.03)" stroke="rgba(237,234,227,0.14)" stroke-width="0.75" transform="rotate(-35,245,164)"/><g stroke="rgba(80,130,200,0.45)" stroke-width="1"><line x1="295" y1="64" x2="295" y2="170"/><line x1="335" y1="46" x2="335" y2="170"/><line x1="375" y1="52" x2="375" y2="170"/><line x1="412" y1="74" x2="412" y2="174"/></g><g fill="none" stroke="rgba(80,130,200,0.5)" stroke-width="0.75"><ellipse cx="295" cy="65" rx="8" ry="5"/><ellipse cx="335" cy="47" rx="8" ry="5"/><ellipse cx="375" cy="53" rx="8" ry="5"/><ellipse cx="412" cy="75" rx="6" ry="4"/></g><path d="M295,210 Q295,225 335,225 Q375,225 412,218" fill="none" stroke="rgba(80,130,200,0.3)" stroke-width="0.75"/><line x1="335" y1="225" x2="335" y2="256" stroke="rgba(80,130,200,0.3)" stroke-width="0.75"/><rect x="320" y="258" width="30" height="18" rx="5" fill="rgba(80,130,200,0.1)" stroke="rgba(80,130,200,0.35)" stroke-width="0.75"/><text x="335" y="271" text-anchor="middle" font-family="monospace" font-size="6.5" fill="rgba(80,130,200,0.5)">inlet</text><rect x="560" y="30" width="110" height="110" rx="4" fill="rgba(237,234,227,0.03)" stroke="rgba(237,234,227,0.14)" stroke-width="0.75"/><g fill="rgba(237,234,227,0.5)"><rect x="572" y="42" width="14" height="14"/><rect x="600" y="42" width="14" height="14"/><rect x="628" y="42" width="14" height="14"/><rect x="586" y="56" width="14" height="14"/><rect x="614" y="56" width="14" height="14"/><rect x="642" y="56" width="14" height="14"/><rect x="572" y="70" width="14" height="14"/><rect x="600" y="70" width="14" height="14"/><rect x="628" y="70" width="14" height="14"/><rect x="586" y="84" width="14" height="14"/><rect x="614" y="84" width="14" height="14"/><rect x="572" y="98" width="14" height="14"/><rect x="600" y="98" width="14" height="14"/><rect x="628" y="98" width="14" height="14"/><rect x="586" y="112" width="14" height="14"/><rect x="642" y="112" width="14" height="14"/></g><text x="615" y="158" text-anchor="middle" font-family="monospace" font-size="7.5" fill="rgba(237,234,227,0.22)">ArUco marker</text><path d="M560,85 L470,180" stroke="rgba(200,88,69,0.2)" stroke-width="0.6" stroke-dasharray="4,3"/><text x="20" y="291" font-family="monospace" font-size="8" fill="rgba(237,234,227,0.13)" letter-spacing="0.08em">HYDRAULIC SOFT HAND — PALMAR VIEW + ARUCO CONTROL</text></svg></div>
+    <p class="proj-desc" data-en="A group project: a hydraulically actuated soft silicone hand. Hydraulic chosen over pneumatic for superior force transmission and stiffness control. Silicone fingers fabricated using retractable-pin casting — internal channel geometry, wall thickness, and fluid routing across the multi-finger assembly were the primary design challenges. Controlled via ArUco marker tracking for pose estimation." data-jp="油圧駆動のソフトシリコンハンドのグループプロジェクト。空気圧より高い力伝達を実現する油圧方式を採用。シリコン指はピン型鋳造で製作し、内部流路形状・壁厚・流体配管が主な設計課題。ArUcoマーカーによるビジョン制御。">A group project: hydraulically actuated soft silicone hand. Hydraulic over pneumatic for superior force transmission. Silicone fingers via retractable-pin casting. Internal channel geometry, wall thickness, and multi-finger fluid routing were the core design challenges. Controlled via ArUco marker pose estimation.</p>
+  </div>
+</div>
+
+<!-- PROJECT: Mirror -->
+<div class="project-page" id="project-mirror">
+  <div class="proj-nav"><button class="proj-back" onclick="closeProject('mirror')">← Back</button><button class="lang-btn" id="lang-btn-mirror" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button></div>
+  <div class="proj-body">
+    <p class="proj-label">Trashy Quick Builds</p>
+    <h1 class="proj-title" data-en="Claude/ChatGPT Conversation History Personality Analyser" data-jp="AI会話履歴・性格分析">Claude/ChatGPT Conversation History Personality Analyser</h1>
+    <div class="proj-skills"><span class="tag">Claude API</span><span class="tag">React</span><span class="tag">Personality</span><span class="tag">Data viz</span></div>
+    <a class="proj-visit" href="https://ai-mirror-pc6k.vercel.app/" target="_blank">Visit project ↗</a>
+    <div class="proj-visual"><img src="assets/chatgpt-mirror.png" alt="ChatGPT Mirror dashboard"></div>
+    <p class="proj-desc" data-en="Upload your ChatGPT or Claude conversation history as a JSON file. The analyser produces a mood timeline, emotional patterns, topics you gravitate toward, and a personality profile inferred from how you communicate with AI. Built as an experiment in meta-AI analysis — AI watching how you talk to AI." data-jp="会話履歴をJSONでアップロードすると、気分の推移・感情パターン・よく話すテーマ・性格プロファイルを生成。AIがAIとの会話を分析するメタな実験。">Upload your ChatGPT or Claude conversation history as a JSON file. The analyser produces a mood timeline, emotional patterns, topics you gravitate toward, and a personality profile inferred from how you communicate with AI. AI watching how you talk to AI.</p>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-function openProject(id){document.getElementById('main-site').style.display='none';document.getElementById('project-'+id).style.display='block';window.scrollTo(0,0)}
+const allPages=['keshiki','clock','chokusen','gripper','mirror'];
+let kdInit=false, k3dInit=false;
+
+function openProject(id){
+  document.getElementById('main-site').style.display='none';
+  allPages.forEach(p=>document.getElementById('project-'+p).style.display='none');
+  document.getElementById('project-'+id).style.display='block';
+  window.scrollTo(0,0);
+  if(id==='keshiki'){
+    if(!kdInit){initKD();kdInit=true;}
+    if(!k3dInit){initK3D();k3dInit=true;}
+  }
+}
 function closeProject(id){document.getElementById('project-'+id).style.display='none';document.getElementById('main-site').style.display='block'}
 
 let lang='en';
@@ -255,28 +339,184 @@ function toggleLang(){
   lang=lang==='en'?'jp':'en';
   document.querySelectorAll('[data-en]').forEach(el=>{el.innerHTML=el.dataset[lang]||el.dataset.en});
   const b='<span class="lit">EN</span> / <span class="dim">JP</span>',j='<span class="dim">EN</span> / <span class="lit">JP</span>';
-  document.getElementById('lang-btn').innerHTML=lang==='en'?b:j;
-  if(document.getElementById('lang-btn-proj'))document.getElementById('lang-btn-proj').innerHTML=lang==='en'?b:j;
+  ['lang-btn','lang-btn-keshiki','lang-btn-clock','lang-btn-chokusen','lang-btn-gripper','lang-btn-mirror'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=lang==='en'?b:j});
   const jp=lang==='jp';
   document.getElementById('main-site').classList.toggle('jp-mode',jp);
-  document.getElementById('project-mirror').classList.toggle('jp-mode',jp);
+  allPages.forEach(p=>document.getElementById('project-'+p).classList.toggle('jp-mode',jp));
 }
 
-const canvas=document.getElementById('hero-canvas'),ctx=canvas.getContext('2d');
-let t=0;
+/* ── KESHIKI DOME DEMO ── */
+function initKD(){
+  const cv=document.getElementById('kd-canvas');if(!cv)return;
+  const ctx=cv.getContext('2d');
+  const ST=[
+    {jp:'迷い',col:[22,20,58],m:'The beginning of suffering.'},
+    {jp:'気づき',col:[48,38,105],m:'Something shifts inside.'},
+    {jp:'芽生え',col:[18,78,78],m:'A will to grow emerges.'},
+    {jp:'成長',col:[135,88,18],m:'Through suffering, forward.'},
+    {jp:'景色',col:[195,168,82],m:'Beauty, earned.'},
+  ];
+  let cur=0,tgt=0,t=0,pts=[];
+  const lc=(a,b,f)=>a.map((v,i)=>v+(b[i]-v)*f);
+
+  function fig(ctx,cx,cy,r,s){
+    const sl=1-s/4,br=0.25+s*0.14;
+    ctx.save();ctx.translate(cx,cy);
+    const c=`rgba(200,185,230,${br})`;ctx.strokeStyle=c;ctx.fillStyle=c;ctx.lineWidth=1.8;ctx.lineCap='round';
+    ctx.beginPath();ctx.arc(0,-r*.82,r*.11,0,Math.PI*2);ctx.fill();
+    const bt=sl*.35,bx=Math.sin(bt)*r*.32,by=-r*.72+r*.42+sl*r*.08;
+    ctx.beginPath();ctx.moveTo(0,-r*.7);ctx.lineTo(bx,by);ctx.stroke();
+    const as=s/4,al=-.2+as*.7;
+    ctx.beginPath();ctx.moveTo(0,-r*.55);ctx.lineTo(-r*(.18+as*.12),-r*(.35+al*.25));ctx.stroke();
+    ctx.beginPath();ctx.moveTo(0,-r*.55);ctx.lineTo(r*(.18+as*.12),-r*(.35+al*.25));ctx.stroke();
+    ctx.beginPath();ctx.moveTo(bx,by);ctx.lineTo(-r*.08,0);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(bx,by);ctx.lineTo(r*.08,0);ctx.stroke();
+    ctx.restore();
+  }
+
+  function draw(){
+    const w=cv.offsetWidth,h=cv.offsetHeight;
+    if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h;}
+    const cx=w/2,cy=h*.46,r=Math.min(w,h)*.36;
+    ctx.fillStyle='#08080f';ctx.fillRect(0,0,w,h);
+    cur+=(tgt-cur)*.025;
+    const fi=Math.min(cur,3.999),frac=fi%1;
+    const [R,G,B]=lc(ST[Math.floor(fi)].col,ST[Math.ceil(fi)].col,frac);
+    // glow
+    const og=ctx.createRadialGradient(cx,cy,r*.2,cx,cy,r*1.5);
+    og.addColorStop(0,`rgba(${R},${G},${B},.2)`);og.addColorStop(1,`rgba(${R},${G},${B},0)`);
+    ctx.beginPath();ctx.arc(cx,cy,r*1.5,0,Math.PI*2);ctx.fillStyle=og;ctx.fill();
+    // dome
+    const dg=ctx.createRadialGradient(cx,cy-r*.15,0,cx,cy,r);
+    dg.addColorStop(0,`rgba(${Math.min(R*3,255)},${Math.min(G*3,255)},${Math.min(B*3,255)},.12)`);
+    dg.addColorStop(.7,`rgba(${R},${G},${B},.1)`);dg.addColorStop(1,`rgba(${R*.4},${G*.4},${B*.4},.04)`);
+    ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.fillStyle=dg;ctx.fill();
+    ctx.strokeStyle=`rgba(${R},${G},${B},.3)`;ctx.lineWidth=.8;ctx.stroke();
+    // ring
+    for(let i=0;i<16;i++){
+      const a=(i/16)*Math.PI*2+t*.08,rx=cx+Math.cos(a)*r*.62,ry=cy+Math.sin(a)*r*.22;
+      const br=.35+.3*Math.sin(t*1.8+i*.4);
+      ctx.beginPath();ctx.arc(rx,ry,2.2,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${R+90},${G+70},${B+30},${br})`;ctx.fill();
+    }
+    // particles
+    if(Math.random()<.12+tgt*.07){pts.push({x:cx+(Math.random()-.5)*r*.8,y:cy+r*.2,vx:(Math.random()-.5)*.4,vy:-.4-Math.random()*.6,size:Math.random()*2+.5,life:1,decay:.007+Math.random()*.004});}
+    pts=pts.filter(p=>p.life>0);
+    pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.life-=p.decay;
+      const pg=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.size*2);
+      pg.addColorStop(0,`rgba(${R+100},${G+80},${B+40},${p.life*.6})`);pg.addColorStop(1,`rgba(${R},${G},${B},0)`);
+      ctx.beginPath();ctx.arc(p.x,p.y,p.size*2,0,Math.PI*2);ctx.fillStyle=pg;ctx.fill();
+    });
+    fig(ctx,cx,cy+r*.08,r*.3,cur);
+    t+=.016;requestAnimationFrame(draw);
+  }
+  draw();
+
+  document.querySelectorAll('.kd-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      tgt=parseInt(btn.dataset.i);
+      document.querySelectorAll('.kd-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('kd-meaning').textContent=ST[tgt].m;
+    });
+  });
+
+  let hist=[];
+  const msgs=document.getElementById('kd-msgs'),inp=document.getElementById('kd-input'),snd=document.getElementById('kd-send');
+  async function send(){
+    const txt=inp.value.trim();if(!txt||inp.disabled)return;
+    inp.value='';inp.disabled=true;snd.disabled=true;
+    const um=document.createElement('div');um.className='kd-msg user';um.textContent=txt;msgs.appendChild(um);
+    hist.push({role:'user',content:txt});msgs.scrollTop=msgs.scrollHeight;
+    const tm=document.createElement('div');tm.className='kd-msg ai';tm.textContent='···';msgs.appendChild(tm);msgs.scrollTop=msgs.scrollHeight;
+    try{
+      const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:280,
+          system:`You are Keshiki — a quiet companion inside an IoT dome. Not a teacher. A witness. Sit with the person. Reflect what they share, gently (2-4 short sentences). Sometimes reference that humans are weak and ignorant (無知) but have an innate will to grow, and through suffering we arrive at a beautiful world — 景色. End every response with exactly: {"state":N} (N is 0-4: 0=迷い 1=気づき 2=芽生え 3=成長 4=景色, based on emotional tone of conversation).`,
+          messages:hist})});
+      const d=await res.json();const raw=d.content[0].text;
+      const sm=raw.match(/\{"state"\s*:\s*(\d)\}/);
+      const sn=sm?parseInt(sm[1]):null;
+      const clean=raw.replace(/\{"state"\s*:\s*\d\}/,'').trim();
+      tm.textContent=clean;hist.push({role:'assistant',content:raw});
+      if(sn!==null){tgt=sn;document.querySelectorAll('.kd-btn').forEach((b,i)=>b.classList.toggle('active',i===sn));document.getElementById('kd-meaning').textContent=ST[sn].m;}
+    }catch(e){tm.textContent='...';}
+    msgs.scrollTop=msgs.scrollHeight;inp.disabled=false;snd.disabled=false;inp.focus();
+  }
+  snd.addEventListener('click',send);
+  inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
+}
+
+/* ── KESHIKI 3D MODEL ── */
+function initK3D(){
+  const cv=document.getElementById('k3d-canvas');
+  if(!cv||typeof THREE==='undefined')return;
+  const W=cv.clientWidth,H=cv.clientHeight;
+  const renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true});
+  renderer.setSize(W,H,false);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.setClearColor(0x05050d,1);renderer.localClippingEnabled=true;
+  const scene=new THREE.Scene();
+  const cam=new THREE.PerspectiveCamera(42,W/H,.1,50);cam.position.set(0,1.2,4.8);cam.lookAt(0,.4,0);
+  scene.add(new THREE.AmbientLight(0x8888cc,.5));
+  const pl=new THREE.PointLight(0xb090ff,1.4,10);pl.position.set(0,2.5,1);scene.add(pl);
+  const pl2=new THREE.PointLight(0xffa040,.7,8);pl2.position.set(1.5,-1,2);scene.add(pl2);
+  const grp=new THREE.Group();scene.add(grp);
+  // base
+  const base=new THREE.Mesh(new THREE.CylinderGeometry(.88,.92,.38,32),new THREE.MeshStandardMaterial({color:0x181830,roughness:.8,metalness:.2}));
+  base.position.y=-.19;grp.add(base);
+  // ESP32 PCB hint
+  const pcb=new THREE.Mesh(new THREE.BoxGeometry(.42,.06,.28),new THREE.MeshStandardMaterial({color:0x1a3a1a,roughness:.5}));
+  pcb.position.set(0,-.1,.44);grp.add(pcb);
+  // NeoPixel ring
+  const ring=new THREE.Mesh(new THREE.TorusGeometry(.64,.042,8,24),new THREE.MeshStandardMaterial({color:0xf0a020,emissive:0xf08000,emissiveIntensity:.9,roughness:.2}));
+  ring.rotation.x=Math.PI/2;ring.position.y=.2;grp.add(ring);
+  // dome
+  const clipPlane=new THREE.Plane(new THREE.Vector3(-1,0,0),0.02);
+  const domeMat=new THREE.MeshPhysicalMaterial({color:0x8898e8,transparent:true,opacity:.22,roughness:.1,side:THREE.DoubleSide,clippingPlanes:[]});
+  const dome=new THREE.Mesh(new THREE.SphereGeometry(1,32,16,0,Math.PI*2,0,Math.PI/2),domeMat);grp.add(dome);
+  const wireM=new THREE.MeshBasicMaterial({color:0x5060b8,wireframe:true,opacity:.1,transparent:true,clippingPlanes:[]});
+  grp.add(new THREE.Mesh(new THREE.SphereGeometry(1,32,16,0,Math.PI*2,0,Math.PI/2),wireM));
+  // servo mount
+  const mount=new THREE.Mesh(new THREE.CylinderGeometry(.09,.11,.14,8),new THREE.MeshStandardMaterial({color:0x383858,roughness:.8}));
+  mount.position.y=.07;grp.add(mount);
+  // figure body
+  const figMat=new THREE.MeshStandardMaterial({color:0xb0a0d0,roughness:.6,metalness:.1});
+  const body=new THREE.Mesh(new THREE.CylinderGeometry(.058,.072,.3,8),figMat);body.position.y=.35;grp.add(body);
+  const head=new THREE.Mesh(new THREE.SphereGeometry(.092,8,8),figMat);head.position.y=.58;grp.add(head);
+
+  let cutaway=false;
+  document.getElementById('k3d-cut')?.addEventListener('click',()=>{
+    cutaway=!cutaway;
+    [domeMat,wireM].forEach(m=>m.clippingPlanes=cutaway?[clipPlane]:[]);
+    document.getElementById('k3d-cut').textContent=cutaway?'cutaway ✓':'cutaway ✂';
+  });
+
+  // drag rotation
+  let drag=false,px=0,py=0;
+  cv.addEventListener('mousedown',e=>{drag=true;px=e.clientX;py=e.clientY;});
+  window.addEventListener('mouseup',()=>drag=false);
+  cv.addEventListener('mousemove',e=>{if(!drag)return;grp.rotation.y+=(e.clientX-px)*.009;grp.rotation.x=Math.max(-.8,Math.min(.8,grp.rotation.x+(e.clientY-py)*.009));px=e.clientX;py=e.clientY;});
+  let tx=0,ty=0;
+  cv.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY;});
+  cv.addEventListener('touchmove',e=>{e.preventDefault();grp.rotation.y+=(e.touches[0].clientX-tx)*.009;grp.rotation.x=Math.max(-.8,Math.min(.8,grp.rotation.x+(e.touches[0].clientY-ty)*.009));tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:false});
+
+  let at=0;
+  (function anim(){requestAnimationFrame(anim);at+=.016;ring.material.emissiveIntensity=.6+.4*Math.sin(at*2);pl.intensity=1+.4*Math.sin(at*1.5);renderer.render(scene,cam);})();
+}
+
+/* ── HERO CANVAS ── */
+const canvas=document.getElementById('hero-canvas'),ctx=canvas.getContext('2d');let t=0;
 function draw(){
-  const p=canvas.parentElement;
-  canvas.width=p.offsetWidth;canvas.height=p.offsetHeight;
-  const w=canvas.width,h=canvas.height;
-  ctx.clearRect(0,0,w,h);
+  const p=canvas.parentElement;canvas.width=p.offsetWidth;canvas.height=p.offsetHeight;
+  const w=canvas.width,h=canvas.height;ctx.clearRect(0,0,w,h);
   for(let i=0;i<8;i++){
-    const fi=i/7,phase=fi*Math.PI*2.6,yBase=h*(0.05+fi*0.9),amp=22+fi*28,spd=0.5+fi*0.2;
+    const fi=i/7,phase=fi*Math.PI*2.6,yBase=h*(.05+fi*.9),amp=22+fi*28,spd=.5+fi*.2;
     const hue=i%3,r=hue===0?200:hue===1?126:80,g=hue===0?88:hue===1?158:130,b=hue===0?69:hue===1?148:200;
     ctx.beginPath();
-    for(let s=0;s<=90;s++){const x=w/90*s,fx=s/90,y=yBase+Math.sin(t*spd+phase+fx*3.6)*amp+Math.sin(t*spd*0.55+phase*1.2+fx*5.8)*(amp*0.38)+Math.cos(t*spd*0.35+fx*2.1)*(amp*0.2);s===0?ctx.moveTo(x,y):ctx.lineTo(x,y)}
-    ctx.strokeStyle=`rgba(${r},${g},${b},${0.14+fi*0.18})`;ctx.lineWidth=1.2;ctx.stroke();
+    for(let s=0;s<=90;s++){const x=w/90*s,fx=s/90,y=yBase+Math.sin(t*spd+phase+fx*3.6)*amp+Math.sin(t*spd*.55+phase*1.2+fx*5.8)*(amp*.38)+Math.cos(t*spd*.35+fx*2.1)*(amp*.2);s===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}
+    ctx.strokeStyle=`rgba(${r},${g},${b},${.14+fi*.18})`;ctx.lineWidth=1.2;ctx.stroke();
   }
-  t+=0.0022;requestAnimationFrame(draw);
+  t+=.0022;requestAnimationFrame(draw);
 }
 draw();
 </script>
