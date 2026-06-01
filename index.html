@@ -3,6 +3,7 @@
 a{text-decoration:none;color:inherit}
 .site,.project-page{background:#0b0b09;color:#edeae3;font-family:var(--font-sans)}
 .site.jp-mode,.project-page.jp-mode{font-family:"Hiragino Mincho ProN","Hiragino Mincho Pro","Yu Mincho","YuMincho","HG明朝E","MS Mincho",serif}
+.jp-mode .hero h1{font-size:clamp(38px,7vw,68px)!important}
 .project-page{display:none}
 
 nav{display:flex;justify-content:flex-end;align-items:center;padding:1.1rem 2rem;border-bottom:0.5px solid rgba(237,234,227,0.1);gap:1.5rem}
@@ -17,9 +18,8 @@ nav{display:flex;justify-content:flex-end;align-items:center;padding:1.1rem 2rem
 .hero{position:relative;padding:5rem 2rem 4rem;border-bottom:0.5px solid rgba(237,234,227,0.1);overflow:hidden}
 #hero-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .hero-inner{position:relative;z-index:1}
-.hero h1{font-size:clamp(56px,10vw,96px);font-weight:500;line-height:0.9;letter-spacing:-0.035em;margin-bottom:3rem}
+.hero h1{font-size:clamp(56px,10vw,96px);font-weight:500;line-height:0.9;letter-spacing:-0.035em}
 .hero h1 span{display:block}
-.hero-sub{font-size:14px;color:rgba(237,234,227,0.45);max-width:440px;line-height:1.8}
 
 .two-col{display:grid;grid-template-columns:1fr 1fr;border-bottom:0.5px solid rgba(237,234,227,0.1)}
 .col{padding:3.5rem 2rem}
@@ -27,6 +27,10 @@ nav{display:flex;justify-content:flex-end;align-items:center;padding:1.1rem 2rem
 .s-label{font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#C85845;opacity:0.65;margin-bottom:1.75rem}
 .about-text{font-size:14px;line-height:1.9;color:rgba(237,234,227,0.52)}
 .about-text strong{color:#edeae3;font-weight:500}
+.about-list{list-style:none;margin:0.6rem 0 0.8rem;padding:0}
+.about-list li{padding:0.18rem 0 0.18rem 1.1rem;position:relative;font-size:14px;color:rgba(237,234,227,0.52);line-height:1.7}
+.about-list li::before{content:'•';position:absolute;left:0;color:rgba(237,234,227,0.28)}
+.about-role{font-size:10px;font-family:var(--font-mono);letter-spacing:0.1em;color:rgba(237,234,227,0.28);text-transform:uppercase}
 .c-item{margin-bottom:1.5rem}
 .c-key{font-family:var(--font-mono);font-size:10px;color:rgba(237,234,227,0.25);letter-spacing:0.08em;margin-bottom:5px}
 .c-val{font-size:14px;color:rgba(237,234,227,0.5);display:inline-flex;align-items:center;gap:9px;transition:color 0.15s}
@@ -39,23 +43,23 @@ nav{display:flex;justify-content:flex-end;align-items:center;padding:1.1rem 2rem
 .projects-bg{position:absolute;bottom:0;left:0;width:100%;height:72%;pointer-events:none;z-index:0}
 .projects>.s-label,.feat-grid,.hr,.trashy-head,.trashy-grid{position:relative;z-index:1}
 
-.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:0.6rem;margin-bottom:3rem}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.6rem;margin-bottom:3rem}
 .feat-card{border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;background:rgba(11,11,9,0.65);backdrop-filter:blur(3px);display:flex;flex-direction:column;cursor:pointer;overflow:hidden;transition:border-color 0.25s,background 0.25s,transform 0.25s}
 .feat-card:hover{border-color:rgba(200,88,69,0.4);background:rgba(200,88,69,0.07);transform:translateY(-3px)}
-.feat-thumb{height:160px;display:flex;align-items:center;justify-content:center;border-bottom:0.5px solid rgba(237,234,227,0.07);background:rgba(126,158,148,0.04);position:relative;overflow:hidden;transition:background 0.25s}
-.feat-thumb-num{position:absolute;font-family:var(--font-mono);font-size:80px;font-weight:500;color:rgba(126,158,148,0.09);line-height:1;letter-spacing:-0.04em;bottom:-8px;right:8px}
+.feat-thumb{height:148px;display:flex;align-items:center;justify-content:center;border-bottom:0.5px solid rgba(237,234,227,0.07);background:rgba(126,158,148,0.04);position:relative;overflow:hidden;transition:background 0.25s}
+.feat-thumb-num{position:absolute;font-family:var(--font-mono);font-size:72px;font-weight:500;color:rgba(126,158,148,0.09);line-height:1;letter-spacing:-0.04em;bottom:-6px;right:8px}
 .feat-thumb i{font-size:22px;color:rgba(126,158,148,0.35);position:relative;z-index:1;transition:color 0.25s}
 .feat-card:hover .feat-thumb{background:rgba(200,88,69,0.05)}
 .feat-card:hover .feat-thumb i{color:rgba(200,88,69,0.55)}
 .feat-card:hover .feat-thumb-num{color:rgba(200,88,69,0.07)}
-.feat-body{padding:1.1rem;flex:1;display:flex;flex-direction:column}
+.feat-body{padding:1rem;flex:1;display:flex;flex-direction:column}
 .feat-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem}
 .feat-num{font-family:var(--font-mono);font-size:10px;color:rgba(237,234,227,0.22);letter-spacing:0.05em}
 .feat-arrow{font-size:14px;color:rgba(237,234,227,0.18);transition:color 0.2s,transform 0.22s}
 .feat-card:hover .feat-arrow{color:#C85845;transform:translate(2px,-2px)}
-.feat-title{font-size:15px;font-weight:500;margin-bottom:0.45rem}
-.feat-desc{font-size:12px;color:rgba(237,234,227,0.38);line-height:1.65;flex:1}
-.feat-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:0.85rem}
+.feat-title{font-size:14px;font-weight:500;margin-bottom:0.4rem}
+.feat-desc{font-size:11px;color:rgba(237,234,227,0.38);line-height:1.65;flex:1}
+.feat-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:0.75rem}
 .tag{font-size:10px;padding:2px 8px;border:0.5px solid rgba(237,234,227,0.14);color:rgba(237,234,227,0.3);border-radius:1px;font-family:var(--font-mono);letter-spacing:0.04em;transition:border-color 0.2s,color 0.2s}
 .feat-card:hover .tag{border-color:rgba(200,88,69,0.35);color:rgba(200,88,69,0.65)}
 
@@ -75,13 +79,15 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
 .proj-nav{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2rem;border-bottom:0.5px solid rgba(237,234,227,0.1)}
 .proj-back{font-family:var(--font-mono);font-size:11px;color:rgba(237,234,227,0.38);background:none;border:none;cursor:pointer;letter-spacing:0.08em;transition:color 0.15s;padding:0}
 .proj-back:hover{color:#edeae3}
-.proj-body{padding:4rem 2rem;max-width:760px}
+.proj-body{padding:3.5rem 2rem;max-width:760px}
 .proj-label{font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#C85845;opacity:0.65;margin-bottom:1.5rem}
-.proj-title{font-size:clamp(22px,4vw,38px);font-weight:500;line-height:1.1;letter-spacing:-0.02em;margin-bottom:2.5rem}
+.proj-title{font-size:clamp(22px,4vw,38px);font-weight:500;line-height:1.1;letter-spacing:-0.02em;margin-bottom:1.25rem}
+.proj-skills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1.5rem}
+.proj-visit{display:inline-flex;align-items:center;gap:8px;margin-bottom:2.5rem;font-size:12px;color:rgba(237,234,227,0.55);border:0.5px solid rgba(237,234,227,0.22);padding:8px 18px;border-radius:2px;font-family:var(--font-mono);letter-spacing:0.07em;transition:color 0.2s,border-color 0.2s}
+.proj-visit:hover{color:#edeae3;border-color:rgba(237,234,227,0.55)}
 .proj-visual{margin-bottom:2.5rem;border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;overflow:hidden}
 .proj-visual img{width:100%;display:block}
 .proj-desc{font-size:14px;color:rgba(237,234,227,0.52);line-height:1.9;margin-bottom:2rem}
-.proj-tags{display:flex;gap:6px;flex-wrap:wrap}
 </style>
 
 <div class="site" id="main-site">
@@ -100,11 +106,6 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
       <span data-en="Aika Ono" data-jp="小野愛佳">Aika Ono</span>
       <span data-en="Portfolio." data-jp="ポートフォリオ">Portfolio.</span>
     </h1>
-    <p class="hero-sub"
-       data-en="Medical student intercalating in Biomedical Engineering with interests in computational geometry, parametric and generative design, and biomimetics."
-       data-jp="生体医工学を副専攻として学ぶ医学生<br>計算幾何学、パラメトリック・ジェネラティブデザイン、バイオミメティクスに関心があります">
-      Medical student intercalating in Biomedical Engineering with interests in computational geometry, parametric and generative design, and biomimetics.
-    </p>
   </div>
 </div>
 
@@ -113,11 +114,11 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
 <div class="two-col" id="about">
   <div class="col">
     <p class="s-label" data-en="About" data-jp="自己紹介">About</p>
-    <p class="about-text"
-       data-en="I'm a 🇯🇵 <strong>medical student at University of Edinburgh</strong> currently intercalating in Biomedical Engineering at Imperial College London. I want to make beautiful stuff as a design engineer.<br><br>I like to draw and dance in my free time."
-       data-jp="現在、<strong>エディンバラ大学の医学生</strong>として、インペリアル・カレッジ・ロンドンで生体医工学を副専攻しています<br>将来はデザインエンジニアとして美しいものを作ることが夢です<br><br>趣味：ダンス、イラスト">
-      I'm a 🇯🇵 <strong>medical student at University of Edinburgh</strong> currently intercalating in Biomedical Engineering at Imperial College London. I want to make beautiful stuff as a design engineer.<br><br>I like to draw and dance in my free time.
-    </p>
+    <div class="about-text"
+       data-en="I'm a 🇯🇵 <strong>medical student at the University of Edinburgh</strong>, currently intercalating in Biomedical Engineering at Imperial College London.<br><br>As a Design Engineer...<br>I want to make stuff that is:<ul class='about-list'><li>Beautiful</li><li>Has both functionality and human warmth</li><li>Gives the emotion of awe to people</li></ul>Interests: Parametric/generative design, IoT, Biomimetics<br><br>Hobbies: Drawing, Dance, Poker"
+       data-jp="現在、<strong>エディンバラ大学の医学生</strong>として、インペリアル・カレッジ・ロンドンで生体医工学を副専攻しています<br><br>デザインエンジニアとして、<br>こういうものが作りたいです：<ul class='about-list'><li>美しいもの</li><li>温かさと機能が両方ある機械</li><li>見たものに畏敬の念を抱かせる作品</li></ul>興味：パラメトリック/ジェネラティブデザイン、IoT、バイオミメティクス<br><br>趣味：ダンス、イラスト、ポーカー">
+      I'm a 🇯🇵 <strong>medical student at the University of Edinburgh</strong>, currently intercalating in Biomedical Engineering at Imperial College London.<br><br>As a Design Engineer, I want to make stuff that is:<ul class="about-list"><li>Beautiful</li><li>Has both functionality and human warmth</li><li>Gives the emotion of awe to people</li></ul>Interests: Parametric/generative design, IoT, Biomimetics<br><br>Hobbies: Drawing, Dance, Poker
+    </div>
   </div>
   <div class="col">
     <p class="s-label" data-en="Contact" data-jp="連絡先">Contact</p>
@@ -162,9 +163,47 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
 
   <p class="s-label" data-en="Featured projects" data-jp="主要作品">Featured projects</p>
   <div class="feat-grid">
-    <a class="feat-card" href="#"><div class="feat-thumb"><span class="feat-thumb-num">01</span><i class="ti ti-circle-dotted"></i></div><div class="feat-body"><div class="feat-head"><span class="feat-num">01</span><i class="ti ti-arrow-up-right feat-arrow"></i></div><p class="feat-title" data-en="Your project title" data-jp="プロジェクト名">Your project title</p><p class="feat-desc" data-en="What you built, what problem it solves, what makes it worth doing." data-jp="制作物の概要、解決した課題、取り組んだ理由">What you built, what problem it solves, what makes it worth doing.</p><div class="feat-tags"><span class="tag" data-en="Engineering" data-jp="工学">Engineering</span><span class="tag" data-en="Design" data-jp="デザイン">Design</span></div></div></a>
-    <a class="feat-card" href="#"><div class="feat-thumb"><span class="feat-thumb-num">02</span><i class="ti ti-activity"></i></div><div class="feat-body"><div class="feat-head"><span class="feat-num">02</span><i class="ti ti-arrow-up-right feat-arrow"></i></div><p class="feat-title" data-en="Your project title" data-jp="プロジェクト名">Your project title</p><p class="feat-desc" data-en="What you built, what problem it solves, what makes it worth doing." data-jp="制作物の概要、解決した課題、取り組んだ理由">What you built, what problem it solves, what makes it worth doing.</p><div class="feat-tags"><span class="tag" data-en="Biomedical" data-jp="生物医学">Biomedical</span><span class="tag" data-en="Research" data-jp="研究">Research</span></div></div></a>
-    <a class="feat-card" href="#"><div class="feat-thumb"><span class="feat-thumb-num">03</span><i class="ti ti-vector-bezier"></i></div><div class="feat-body"><div class="feat-head"><span class="feat-num">03</span><i class="ti ti-arrow-up-right feat-arrow"></i></div><p class="feat-title" data-en="Your project title" data-jp="プロジェクト名">Your project title</p><p class="feat-desc" data-en="What you built, what problem it solves, what makes it worth doing." data-jp="制作物の概要、解決した課題、取り組んだ理由">What you built, what problem it solves, what makes it worth doing.</p><div class="feat-tags"><span class="tag" data-en="Data" data-jp="データ">Data</span><span class="tag" data-en="Clinical" data-jp="臨床">Clinical</span></div></div></a>
+
+    <a class="feat-card" href="#">
+      <div class="feat-thumb"><span class="feat-thumb-num">01</span><i class="ti ti-artboard"></i></div>
+      <div class="feat-body">
+        <div class="feat-head"><span class="feat-num">01</span><i class="ti ti-arrow-up-right feat-arrow"></i></div>
+        <p class="feat-title" data-en="Keshiki" data-jp="景色">Keshiki</p>
+        <p class="feat-desc" data-en="Add description." data-jp="説明を追加">Add description.</p>
+        <div class="feat-tags"><span class="tag" data-en="Generative" data-jp="ジェネラティブ">Generative</span><span class="tag" data-en="Design" data-jp="デザイン">Design</span></div>
+      </div>
+    </a>
+
+    <a class="feat-card" href="#">
+      <div class="feat-thumb"><span class="feat-thumb-num">02</span><i class="ti ti-clock"></i></div>
+      <div class="feat-body">
+        <div class="feat-head"><span class="feat-num">02</span><i class="ti ti-arrow-up-right feat-arrow"></i></div>
+        <p class="feat-title" data-en="Mechanical Clock" data-jp="機械時計">Mechanical Clock</p>
+        <p class="feat-desc" data-en="Add description." data-jp="説明を追加">Add description.</p>
+        <div class="feat-tags"><span class="tag" data-en="CAD" data-jp="CAD">CAD</span><span class="tag" data-en="Fusion 360" data-jp="Fusion 360">Fusion 360</span></div>
+      </div>
+    </a>
+
+    <a class="feat-card" href="#">
+      <div class="feat-thumb"><span class="feat-thumb-num">03</span><i class="ti ti-vector-bezier"></i></div>
+      <div class="feat-body">
+        <div class="feat-head"><span class="feat-num">03</span><i class="ti ti-arrow-up-right feat-arrow"></i></div>
+        <p class="feat-title" data-en="Straight Lines &amp; Curves" data-jp="直線と曲線">Straight Lines &amp; Curves</p>
+        <p class="feat-desc" data-en="Add description." data-jp="説明を追加">Add description.</p>
+        <div class="feat-tags"><span class="tag" data-en="Computational" data-jp="計算デザイン">Computational</span><span class="tag" data-en="Geometry" data-jp="幾何学">Geometry</span></div>
+      </div>
+    </a>
+
+    <a class="feat-card" href="#">
+      <div class="feat-thumb"><span class="feat-thumb-num">04</span><i class="ti ti-robot"></i></div>
+      <div class="feat-body">
+        <div class="feat-head"><span class="feat-num">04</span><i class="ti ti-arrow-up-right feat-arrow"></i></div>
+        <p class="feat-title" data-en="Hydraulic Gripper" data-jp="油圧グリッパー">Hydraulic Gripper</p>
+        <p class="feat-desc" data-en="Add description." data-jp="説明を追加">Add description.</p>
+        <div class="feat-tags"><span class="tag" data-en="Soft robotics" data-jp="ソフトロボ">Soft robotics</span><span class="tag" data-en="CAD" data-jp="CAD">CAD</span></div>
+      </div>
+    </a>
+
   </div>
 
   <div class="hr"></div>
@@ -174,98 +213,70 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
   <div class="trashy-grid">
     <a class="trashy-card" href="https://ai-mirror-pc6k.vercel.app/" onclick="openProject('mirror');return false;">
       <p class="trashy-title" data-en="Claude/ChatGPT Conversation History Personality Analyser" data-jp="AI会話履歴・性格分析">Claude/ChatGPT Conversation History Personality Analyser</p>
-      <div class="trashy-visual">
-        <img src="assets/chatgpt-mirror.png" alt="ChatGPT Mirror screenshot">
-      </div>
+      <div class="trashy-visual"><img src="assets/chatgpt-mirror.png" alt="ChatGPT Mirror screenshot"></div>
     </a>
-    <a class="trashy-card" href="#"><p class="trashy-title" data-en="Side project name" data-jp="サイドプロジェクト名">Side project name</p><p class="trashy-desc" data-en="Quick description. What it is, why it exists." data-jp="概要・なぜ作ったか">Quick description. What it is, why it exists.</p></a>
-    <a class="trashy-card" href="#"><p class="trashy-title" data-en="Side project name" data-jp="サイドプロジェクト名">Side project name</p><p class="trashy-desc" data-en="Quick description. What it is, why it exists." data-jp="概要・なぜ作ったか">Quick description. What it is, why it exists.</p></a>
-    <a class="trashy-card" href="#"><p class="trashy-title" data-en="Side project name" data-jp="サイドプロジェクト名">Side project name</p><p class="trashy-desc" data-en="Quick description. What it is, why it exists." data-jp="概要・なぜ作ったか">Quick description. What it is, why it exists.</p></a>
+    <a class="trashy-card" href="#"><p class="trashy-title" data-en="Side project name" data-jp="サイドプロジェクト名">Side project name</p><p class="trashy-desc" data-en="Quick description." data-jp="概要">Quick description.</p></a>
+    <a class="trashy-card" href="#"><p class="trashy-title" data-en="Side project name" data-jp="サイドプロジェクト名">Side project name</p><p class="trashy-desc" data-en="Quick description." data-jp="概要">Quick description.</p></a>
+    <a class="trashy-card" href="#"><p class="trashy-title" data-en="Side project name" data-jp="サイドプロジェクト名">Side project name</p><p class="trashy-desc" data-en="Quick description." data-jp="概要">Quick description.</p></a>
   </div>
 </div>
 
 <footer><span class="f-txt">Aika Ono © 2026</span></footer>
 </div>
 
-<!-- PROJECT PAGE -->
+<!-- PROJECT PAGE: ChatGPT Mirror -->
 <div class="project-page" id="project-mirror">
   <div class="proj-nav">
     <button class="proj-back" onclick="closeProject('mirror')">← Back</button>
-    <a href="https://ai-mirror-pc6k.vercel.app/" target="_blank" style="font-family:var(--font-mono);font-size:11px;color:rgba(237,234,227,0.5);border:0.5px solid rgba(237,234,227,0.2);padding:4px 14px;border-radius:2px;transition:color 0.2s,border-color 0.2s;letter-spacing:0.07em" onmouseover="this.style.color='#edeae3';this.style.borderColor='rgba(237,234,227,0.5)'" onmouseout="this.style.color='rgba(237,234,227,0.5)';this.style.borderColor='rgba(237,234,227,0.2)'">Visit project ↗</a>
     <button class="lang-btn" id="lang-btn-proj" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button>
   </div>
   <div class="proj-body">
     <p class="proj-label">Trashy Quick Builds</p>
     <h1 class="proj-title" data-en="Claude/ChatGPT Conversation History Personality Analyser" data-jp="AI会話履歴・性格分析">Claude/ChatGPT Conversation History Personality Analyser</h1>
-    <div class="proj-visual">
-      <img src="assets/chatgpt-mirror.png" alt="ChatGPT Mirror — personality profile and mood timeline dashboard">
-    </div>
-    <p class="proj-desc" data-en="Upload your ChatGPT or Claude conversation history as a JSON file. The analyser reads your messages across time and produces a mood timeline, recurring emotional patterns, topics you gravitate toward, and a personality profile inferred from how you communicate with AI. Built as an experiment in meta-AI analysis — AI watching how you talk to AI." data-jp="ChatGPTまたはClaudeの会話履歴をJSONファイルでアップロードすると、気分の推移、感情パターン、よく話すテーマ、コミュニケーションスタイルから性格プロファイルを生成します。AIがAIとの会話を分析するメタな実験として作りました。">Upload your ChatGPT or Claude conversation history as a JSON file. The analyser reads your messages across time and produces a mood timeline, recurring emotional patterns, topics you gravitate toward, and a personality profile inferred from how you communicate with AI. Built as an experiment in meta-AI analysis — AI watching how you talk to AI.</p>
-    <div class="proj-tags">
+    <div class="proj-skills">
       <span class="tag">Claude API</span>
+      <span class="tag">React</span>
       <span class="tag">Personality</span>
       <span class="tag">Data viz</span>
       <span class="tag">Quick build</span>
     </div>
+    <a class="proj-visit" href="https://ai-mirror-pc6k.vercel.app/" target="_blank">Visit project ↗</a>
+    <div class="proj-visual"><img src="assets/chatgpt-mirror.png" alt="ChatGPT Mirror dashboard"></div>
+    <p class="proj-desc" data-en="Upload your ChatGPT or Claude conversation history as a JSON file. The analyser reads your messages across time and produces a mood timeline, recurring emotional patterns, topics you gravitate toward, and a personality profile inferred from how you communicate with AI. Built as an experiment in meta-AI analysis — AI watching how you talk to AI." data-jp="ChatGPTまたはClaudeの会話履歴をJSONファイルでアップロードすると、気分の推移、感情パターン、よく話すテーマ、コミュニケーションスタイルから性格プロファイルを生成します。AIがAIとの会話を分析するメタな実験として作りました。">Upload your ChatGPT or Claude conversation history as a JSON file. The analyser reads your messages across time and produces a mood timeline, recurring emotional patterns, topics you gravitate toward, and a personality profile inferred from how you communicate with AI. Built as an experiment in meta-AI analysis — AI watching how you talk to AI.</p>
   </div>
 </div>
 
 <script>
-function openProject(id) {
-  document.getElementById('main-site').style.display = 'none';
-  document.getElementById('project-' + id).style.display = 'block';
-  window.scrollTo(0,0);
-}
-function closeProject(id) {
-  document.getElementById('project-' + id).style.display = 'none';
-  document.getElementById('main-site').style.display = 'block';
+function openProject(id){document.getElementById('main-site').style.display='none';document.getElementById('project-'+id).style.display='block';window.scrollTo(0,0)}
+function closeProject(id){document.getElementById('project-'+id).style.display='none';document.getElementById('main-site').style.display='block'}
+
+let lang='en';
+function toggleLang(){
+  lang=lang==='en'?'jp':'en';
+  document.querySelectorAll('[data-en]').forEach(el=>{el.innerHTML=el.dataset[lang]||el.dataset.en});
+  const b='<span class="lit">EN</span> / <span class="dim">JP</span>',j='<span class="dim">EN</span> / <span class="lit">JP</span>';
+  document.getElementById('lang-btn').innerHTML=lang==='en'?b:j;
+  if(document.getElementById('lang-btn-proj'))document.getElementById('lang-btn-proj').innerHTML=lang==='en'?b:j;
+  const jp=lang==='jp';
+  document.getElementById('main-site').classList.toggle('jp-mode',jp);
+  document.getElementById('project-mirror').classList.toggle('jp-mode',jp);
 }
 
-let lang = 'en';
-function toggleLang() {
-  lang = lang === 'en' ? 'jp' : 'en';
-  document.querySelectorAll('[data-en]').forEach(el => {
-    el.innerHTML = el.dataset[lang] || el.dataset.en;
-  });
-  const btnHtml = lang === 'en'
-    ? '<span class="lit">EN</span> / <span class="dim">JP</span>'
-    : '<span class="dim">EN</span> / <span class="lit">JP</span>';
-  document.getElementById('lang-btn').innerHTML = btnHtml;
-  if(document.getElementById('lang-btn-proj')) document.getElementById('lang-btn-proj').innerHTML = btnHtml;
-  const jp = lang === 'jp';
-  document.getElementById('main-site').classList.toggle('jp-mode', jp);
-  document.getElementById('project-mirror').classList.toggle('jp-mode', jp);
-}
-
-const canvas = document.getElementById('hero-canvas');
-const ctx = canvas.getContext('2d');
-let t = 0;
-function draw() {
-  const p = canvas.parentElement;
-  canvas.width = p.offsetWidth;
-  canvas.height = p.offsetHeight;
-  const w = canvas.width, h = canvas.height;
+const canvas=document.getElementById('hero-canvas'),ctx=canvas.getContext('2d');
+let t=0;
+function draw(){
+  const p=canvas.parentElement;
+  canvas.width=p.offsetWidth;canvas.height=p.offsetHeight;
+  const w=canvas.width,h=canvas.height;
   ctx.clearRect(0,0,w,h);
-  const N = 8;
-  for(let i = 0; i < N; i++) {
-    const fi = i/(N-1), phase = fi*Math.PI*2.6;
-    const yBase = h*(0.05+fi*0.9), amp = 22+fi*28, spd = 0.5+fi*0.2;
-    const hue = i%3;
-    const r = hue===0?200:hue===1?126:80;
-    const g = hue===0?88:hue===1?158:130;
-    const b = hue===0?69:hue===1?148:200;
+  for(let i=0;i<8;i++){
+    const fi=i/7,phase=fi*Math.PI*2.6,yBase=h*(0.05+fi*0.9),amp=22+fi*28,spd=0.5+fi*0.2;
+    const hue=i%3,r=hue===0?200:hue===1?126:80,g=hue===0?88:hue===1?158:130,b=hue===0?69:hue===1?148:200;
     ctx.beginPath();
-    for(let s=0;s<=90;s++){
-      const x=(w/90)*s, fx=s/90;
-      const y=yBase+Math.sin(t*spd+phase+fx*3.6)*amp+Math.sin(t*spd*0.55+phase*1.2+fx*5.8)*(amp*0.38)+Math.cos(t*spd*0.35+fx*2.1)*(amp*0.2);
-      s===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
-    }
-    ctx.strokeStyle=`rgba(${r},${g},${b},${0.14+fi*0.18})`;
-    ctx.lineWidth=1.2;
-    ctx.stroke();
+    for(let s=0;s<=90;s++){const x=w/90*s,fx=s/90,y=yBase+Math.sin(t*spd+phase+fx*3.6)*amp+Math.sin(t*spd*0.55+phase*1.2+fx*5.8)*(amp*0.38)+Math.cos(t*spd*0.35+fx*2.1)*(amp*0.2);s===0?ctx.moveTo(x,y):ctx.lineTo(x,y)}
+    ctx.strokeStyle=`rgba(${r},${g},${b},${0.14+fi*0.18})`;ctx.lineWidth=1.2;ctx.stroke();
   }
-  t+=0.0022;
-  requestAnimationFrame(draw);
+  t+=0.0022;requestAnimationFrame(draw);
 }
 draw();
 </script>
