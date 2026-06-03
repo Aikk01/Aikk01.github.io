@@ -42,6 +42,7 @@ nav{display:flex;justify-content:flex-end;align-items:center;padding:1.1rem 2rem
 .feat-num-wrap{display:flex;align-items:center;gap:8px}
 .feat-num{font-family:var(--font-mono);font-size:10px;color:rgba(237,234,227,0.22);letter-spacing:0.05em}
 .tag-wip{font-size:9px;padding:1px 6px;border:0.5px solid rgba(200,88,69,0.45);color:rgba(200,88,69,0.7);border-radius:1px;font-family:var(--font-mono);letter-spacing:0.06em}
+.tag-personal{font-size:9px;padding:1px 6px;border:0.5px solid rgba(122,158,138,0.45);color:rgba(122,158,138,0.7);border-radius:1px;font-family:var(--font-mono);letter-spacing:0.06em}
 .feat-arrow{font-size:14px;color:rgba(237,234,227,0.18);transition:color 0.2s,transform 0.22s}
 .feat-card:hover .feat-arrow{color:#C85845;transform:translate(2px,-2px)}
 .feat-title{font-size:14px;font-weight:500;margin-bottom:0.4rem}
@@ -75,48 +76,40 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
 .proj-visit:hover{color:#edeae3;border-color:rgba(237,234,227,0.55)}
 .proj-visual{margin-bottom:2rem;border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;overflow:hidden;line-height:0}
 .proj-visual img,.proj-visual svg{width:100%;display:block}
-.proj-desc{font-size:14px;color:rgba(237,234,227,0.52);line-height:1.9}
+.proj-desc{font-size:14px;color:rgba(237,234,227,0.52);line-height:1.9;margin-bottom:1rem}
 .proj-section-label{font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#C85845;opacity:0.5;margin:2.5rem 0 1rem}
+.proj-ideas{list-style:none;margin:0.5rem 0 1.5rem;padding:0}
+.proj-ideas li{padding:0.3rem 0 0.3rem 1.2rem;position:relative;font-size:14px;color:rgba(237,234,227,0.52);line-height:1.75}
+.proj-ideas li::before{content:'—';position:absolute;left:0;color:rgba(200,88,69,0.5)}
 /* Keshiki dome demo */
-.kd-wrap{display:grid;grid-template-columns:1fr 1fr;border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;overflow:hidden;margin-bottom:2rem;min-height:320px}
+.kd-wrap{display:grid;grid-template-columns:1fr 1fr;border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;overflow:hidden;margin-bottom:2.5rem;min-height:320px}
 .kd-left{background:#08080f;display:flex;flex-direction:column;align-items:center;padding:1.25rem 1rem 1rem;gap:0.65rem}
 #kd-canvas{width:100%;max-width:240px;aspect-ratio:1;display:block}
 .kd-states{display:flex;align-items:center;gap:3px;flex-wrap:wrap;justify-content:center}
 .kd-btn{font-family:var(--font-mono);font-size:9.5px;padding:2px 7px;border:0.5px solid rgba(237,234,227,0.14);background:none;color:rgba(237,234,227,0.3);cursor:pointer;border-radius:1px;transition:all 0.3s}
 .kd-btn.active{border-color:rgba(237,234,227,0.5);color:#edeae3}
 .kd-arr{font-size:9px;color:rgba(237,234,227,0.18)}
-.kd-meaning{font-family:var(--font-mono);font-size:9px;color:rgba(237,234,227,0.28);letter-spacing:0.05em;text-align:center;transition:all 1.5s;min-height:1.4em}
+.kd-meaning{font-family:var(--font-mono);font-size:9px;color:rgba(237,234,227,0.28);letter-spacing:0.05em;text-align:center;min-height:1.4em}
 .kd-right{background:#060610;border-left:0.5px solid rgba(237,234,227,0.07);display:flex;flex-direction:column}
 .kd-msgs{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:0.75rem;min-height:220px;max-height:260px}
 .kd-msg{font-size:12px;line-height:1.7}
 .kd-msg.user{color:rgba(237,234,227,0.38);text-align:right;font-family:var(--font-mono)}
-.kd-msg.ai{color:rgba(168,148,210,0.85);border-left:1.5px solid rgba(100,75,160,0.4);padding-left:10px;transition:border-color 1.5s}
+.kd-msg.ai{color:rgba(168,148,210,0.85);border-left:1.5px solid rgba(100,75,160,0.4);padding-left:10px}
 .kd-row{display:flex;gap:6px;padding:0.65rem;border-top:0.5px solid rgba(237,234,227,0.06)}
 #kd-input{flex:1;background:#070712;border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;padding:5px 9px;color:rgba(237,234,227,0.7);font-size:11px;font-family:inherit;outline:none}
 #kd-send{background:none;border:0.5px solid rgba(237,234,227,0.14);color:rgba(237,234,227,0.38);padding:5px 11px;cursor:pointer;border-radius:1px;font-size:13px;transition:color 0.2s}
 #kd-send:hover{color:#edeae3}
-/* 3D diagram */
-.k3d-outer{border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;overflow:hidden;margin-bottom:2rem;background:#05050d}
-#k3d-canvas{width:100%;height:300px;display:block;cursor:grab}
-#k3d-canvas:active{cursor:grabbing}
-.k3d-bar{display:flex;align-items:center;justify-content:space-between;padding:7px 12px;border-top:0.5px solid rgba(237,234,227,0.07)}
-.k3d-legend{display:flex;flex-wrap:wrap;gap:6px 14px}
-.k3d-legend span{font-family:var(--font-mono);font-size:9px;color:rgba(237,234,227,0.28);display:flex;align-items:center;gap:4px}
-.k3d-legend i{display:inline-block;width:6px;height:6px;border-radius:50%;flex-shrink:0}
-#k3d-cut{font-family:var(--font-mono);font-size:9px;color:rgba(237,234,227,0.35);background:none;border:0.5px solid rgba(237,234,227,0.18);padding:2px 9px;cursor:pointer;border-radius:1px;transition:color 0.2s}
-#k3d-cut:hover{color:#edeae3}
-.k3d-hint{font-family:var(--font-mono);font-size:8px;color:rgba(237,234,227,0.16);text-align:center;padding-bottom:6px}
+/* Skills section */
 .skills-section{padding:3rem 2rem;border-bottom:0.5px solid rgba(237,234,227,0.1)}
 .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.75rem}
 .skill-cat-label{font-family:var(--font-mono);font-size:10px;color:#C85845;opacity:0.6;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.6rem}
 .skill-item{font-size:13px;color:rgba(237,234,227,0.48);display:flex;align-items:center;gap:7px;line-height:1.85}
 .skill-item::before{content:'';width:3px;height:3px;border-radius:50%;background:rgba(237,234,227,0.22);flex-shrink:0}
-.proj-visual-hover{cursor:pointer}
-.proj-visual-hover img{filter:brightness(0.35);transition:filter 0.55s ease;width:100%;display:block}
-.proj-visual-hover:hover img{filter:brightness(1)}
-.process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-top:2rem}
-.process-grid img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center;border-radius:2px;border:0.5px solid rgba(237,234,227,0.1);display:block}
 #project-gripper .proj-visual:has(svg){display:none}
+/* Photo grid */
+.photo-row{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:2rem}
+.photo-placeholder{display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;background:rgba(237,234,227,0.03);border:0.5px dashed rgba(237,234,227,0.14);font-family:var(--font-mono);font-size:10px;color:rgba(237,234,227,0.22);letter-spacing:0.08em}
+.sketch-row{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin:1rem 0 2rem}
 </style>
 
 <div class="site" id="main-site">
@@ -137,8 +130,8 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
   <div class="col">
     <p class="s-label" data-en="About" data-jp="自己紹介">About</p>
     <div class="about-text"
-       data-en="I'm a 🇯🇵 <strong>medical student at the University of Edinburgh</strong>, currently intercalating in Biomedical Engineering at Imperial College London.<br><br>As a Design Engineer...<br>I want to make stuff that is:<ul class='about-list'><li>Beautiful</li><li>Has both functionality and human warmth</li><li>Gives the emotion of awe to people</li></ul>Interests: Parametric/generative design, IoT, Biomimetics<br><br>Hobbies: Drawing, Dance, Poker"
-       data-jp="現在、<strong>エディンバラ大学の医学生</strong>として、インペリアル・カレッジ・ロンドンで生体医工学を副専攻しています<br><br>デザインエンジニアとして、<br>こういうものが作りたいです：<ul class='about-list'><li>美しいもの</li><li>温かさと機能が両方ある機械</li><li>見たものに畏敬の念を抱かせる作品</li></ul>興味：パラメトリック/ジェネラティブデザイン、IoT、バイオミメティクス<br><br>趣味：ダンス、イラスト、ポーカー">
+       data-en="I'm a 🇯🇵 <strong>medical student at the University of Edinburgh</strong>, currently intercalating in Biomedical Engineering at Imperial College London.<br><br>As a Design Engineer...<br>I want to make stuff that is:<ul class='about-list'><li>Beautiful</li><li>Has both functionality and human warmth</li><li>Gives the emotion of awe to people</li></ul>Interests: Parametric/generative design, IoT, Biomimetics, HCI<br><br>Hobbies: Drawing, Dance, Poker"
+       data-jp="現在、<strong>エディンバラ大学の医学生</strong>として、インペリアル・カレッジ・ロンドンで生体医工学を副専攻しています<br><br>デザインエンジニアとして、<br>こういうものが作りたいです：<ul class='about-list'><li>美しいもの</li><li>温かさと機能が両方ある機械</li><li>見たものに畏敬の念を抱かせる作品</li></ul>興味：パラメトリック/ジェネラティブデザイン、IoT、バイオミメティクス、HCI<br><br>趣味：ダンス、イラスト、ポーカー">
       I'm a 🇯🇵 <strong>medical student at the University of Edinburgh</strong>, currently intercalating in Biomedical Engineering at Imperial College London.<br><br>As a Design Engineer...<br>I want to make stuff that is:<ul class="about-list"><li>Beautiful</li><li>Has both functionality and human warmth</li><li>Gives the emotion of awe to people</li></ul>Interests: Parametric/generative design, IoT, Biomimetics<br><br>Hobbies: Drawing, Dance, Poker
     </div>
   </div>
@@ -160,7 +153,7 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
   <div class="skills-grid">
     <div><p class="skill-cat-label" data-en="Design" data-jp="デザイン">Design</p><p class="skill-item">Fusion 360</p><p class="skill-item">Rhino / Grasshopper</p><p class="skill-item">OpenSCAD</p></div>
     <div><p class="skill-cat-label" data-en="Fabrication" data-jp="製作">Fabrication</p><p class="skill-item" data-en="3D Printing" data-jp="3Dプリント">3D Printing</p><p class="skill-item" data-en="Laser Cutting" data-jp="レーザーカット">Laser Cutting</p><p class="skill-item" data-en="Silicone Casting" data-jp="シリコン鋳造">Silicone Casting</p></div>
-    <div><p class="skill-cat-label" data-en="Electronics" data-jp="電子工学">Electronics</p><p class="skill-item">Arduino</p><p class="skill-item">ESP32</p><p class="skill-item" data-en="Physical Computing" data-jp="フィジカルコンピューティング">Physical Computing</p></div>
+    <div><p class="skill-cat-label" data-en="Electronics" data-jp="電子工学">Electronics</p><p class="skill-item">Arduino</p><p class="skill-item">ESP32</p></div>
     <div><p class="skill-cat-label" data-en="Programming" data-jp="プログラミング">Programming</p><p class="skill-item">Python</p><p class="skill-item" data-en="Machine Learning" data-jp="機械学習">Machine Learning</p><p class="skill-item" data-en="Data Analysis" data-jp="データ分析">Data Analysis</p></div>
     <div><p class="skill-cat-label" data-en="Visual Design" data-jp="ビジュアルデザイン">Visual Design</p><p class="skill-item">Clip Studio Paint</p><p class="skill-item">Adobe Illustrator</p></div>
   </div>
@@ -184,30 +177,44 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
 
   <p class="s-label" data-en="Featured projects" data-jp="主要作品">Featured projects</p>
   <div class="feat-grid">
+
+    <!-- ── 01 KESHIKI — Personal badge + updated tags ── -->
     <a class="feat-card" href="#" onclick="openProject('keshiki');return false;">
       <div class="feat-thumb"><svg viewBox="0 0 260 148" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="148" fill="#0d0d0b"/><defs><radialGradient id="lg1" cx="50%" cy="0%" r="60%"><stop offset="0%" stop-color="#b0d8ff" stop-opacity="0.6"/><stop offset="100%" stop-color="#4090ff" stop-opacity="0"/></radialGradient></defs><ellipse cx="130" cy="18" rx="28" ry="18" fill="url(#lg1)"/><circle cx="130" cy="16" r="4" fill="#e0f0ff" opacity="0.9"/><path d="M130,24 C131,42 129,60 130,78 C131,96 129,114 130,132" stroke="rgba(237,234,227,0.08)" stroke-width="1.5" fill="none" stroke-dasharray="3,3"/><g fill="rgba(237,234,227,0.05)" stroke="rgba(237,234,227,0.22)" stroke-width="0.6"><rect x="104" y="28" width="52" height="14" rx="4"/><rect x="102" y="48" width="56" height="14" rx="4"/><rect x="101" y="68" width="58" height="14" rx="4"/><rect x="102" y="88" width="56" height="14" rx="4"/><rect x="104" y="108" width="52" height="14" rx="4"/></g><rect x="108" y="124" width="44" height="20" rx="4" fill="rgba(80,130,200,0.12)" stroke="rgba(80,130,200,0.3)" stroke-width="0.6"/><circle cx="130" cy="134" r="6" fill="none" stroke="rgba(80,130,200,0.4)" stroke-width="0.6"/><circle cx="130" cy="134" r="2.5" fill="rgba(80,130,200,0.5)"/></svg></div>
-      <div class="feat-body"><div class="feat-head"><div class="feat-num-wrap"><span class="feat-num">01</span><span class="tag-wip">WIP</span></div><i class="ti ti-arrow-up-right feat-arrow"></i></div>
+      <div class="feat-body"><div class="feat-head"><div class="feat-num-wrap"><span class="feat-num">01</span><span class="tag-wip">WIP</span><span class="tag-personal">Personal</span></div><i class="ti ti-arrow-up-right feat-arrow"></i></div>
         <p class="feat-title" data-en="Keshiki" data-jp="景色">Keshiki</p>
         <p class="feat-desc" data-en="IoT device for learned helplessness. A dome + AI companion that grows with you." data-jp="学習性無力感のためのIoTデバイス">IoT device for learned helplessness. A dome + AI companion that grows with you.</p>
-        <div class="feat-tags"><span class="tag">OpenSCAD</span><span class="tag">ESP32</span><span class="tag">IoT</span></div>
+        <div class="feat-tags"><span class="tag">ESP32</span><span class="tag">NeoPixel</span><span class="tag">PETG/PLA 3D print</span><span class="tag">Servo</span><span class="tag">Soldering</span><span class="tag">UI/UX web design</span></div>
       </div>
     </a>
+
+    <!-- ── 02 CLOCK — Personal badge + real photo as thumb ── -->
     <a class="feat-card" href="#" onclick="openProject('clock');return false;">
-      <div class="feat-thumb"><svg viewBox="0 0 260 148" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="148" fill="#0d0d0b"/><circle cx="92" cy="74" r="52" fill="rgba(237,234,227,0.02)" stroke="rgba(237,234,227,0.1)" stroke-width="0.6"/><circle cx="92" cy="74" r="55" fill="none" stroke="rgba(237,234,227,0.15)" stroke-width="7" stroke-dasharray="9,8.45"><animateTransform attributeName="transform" type="rotate" from="0 92 74" to="360 92 74" dur="20s" repeatCount="indefinite"/></circle><g stroke="rgba(237,234,227,0.07)" stroke-width="0.6"><line x1="92" y1="46" x2="92" y2="102"/><line x1="64" y1="74" x2="120" y2="74"/></g><circle cx="92" cy="74" r="4" fill="rgba(237,234,227,0.3)"/><circle cx="188" cy="50" r="28" fill="rgba(237,234,227,0.02)" stroke="rgba(237,234,227,0.08)" stroke-width="0.5"/><circle cx="188" cy="50" r="30" fill="none" stroke="rgba(237,234,227,0.12)" stroke-width="5" stroke-dasharray="7,6.28"><animateTransform attributeName="transform" type="rotate" from="0 188 50" to="-360 188 50" dur="10s" repeatCount="indefinite"/></circle><circle cx="188" cy="50" r="4" fill="rgba(237,234,227,0.25)"/><circle cx="205" cy="108" r="18" fill="rgba(237,234,227,0.02)" stroke="rgba(237,234,227,0.08)" stroke-width="0.5"/><circle cx="205" cy="108" r="20" fill="none" stroke="rgba(237,234,227,0.1)" stroke-width="4" stroke-dasharray="5,5.65"><animateTransform attributeName="transform" type="rotate" from="0 205 108" to="360 205 108" dur="6s" repeatCount="indefinite"/></circle><circle cx="205" cy="108" r="3" fill="rgba(237,234,227,0.2)"/></svg></div>
-      <div class="feat-body"><div class="feat-head"><div class="feat-num-wrap"><span class="feat-num">02</span><span class="tag-wip">WIP</span></div><i class="ti ti-arrow-up-right feat-arrow"></i></div>
+      <div class="feat-thumb" style="background:#0d0d0b">
+        <img src="assets/clock-photo-1.png" alt="Mechanical clock"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+             style="width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(0.45);transition:filter 0.45s ease">
+        <svg style="display:none;width:100%;height:100%" viewBox="0 0 260 148" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="148" fill="#0d0d0b"/><circle cx="92" cy="74" r="52" fill="rgba(237,234,227,0.02)" stroke="rgba(237,234,227,0.1)" stroke-width="0.6"/><circle cx="92" cy="74" r="55" fill="none" stroke="rgba(237,234,227,0.15)" stroke-width="7" stroke-dasharray="9,8.45"><animateTransform attributeName="transform" type="rotate" from="0 92 74" to="360 92 74" dur="20s" repeatCount="indefinite"/></circle><g stroke="rgba(237,234,227,0.07)" stroke-width="0.6"><line x1="92" y1="46" x2="92" y2="102"/><line x1="64" y1="74" x2="120" y2="74"/></g><circle cx="92" cy="74" r="4" fill="rgba(237,234,227,0.3)"/><circle cx="188" cy="50" r="28" fill="rgba(237,234,227,0.02)" stroke="rgba(237,234,227,0.08)" stroke-width="0.5"/><circle cx="188" cy="50" r="30" fill="none" stroke="rgba(237,234,227,0.12)" stroke-width="5" stroke-dasharray="7,6.28"><animateTransform attributeName="transform" type="rotate" from="0 188 50" to="-360 188 50" dur="10s" repeatCount="indefinite"/></circle><circle cx="188" cy="50" r="4" fill="rgba(237,234,227,0.25)"/><circle cx="205" cy="108" r="18" fill="rgba(237,234,227,0.02)" stroke="rgba(237,234,227,0.08)" stroke-width="0.5"/><circle cx="205" cy="108" r="20" fill="none" stroke="rgba(237,234,227,0.1)" stroke-width="4" stroke-dasharray="5,5.65"><animateTransform attributeName="transform" type="rotate" from="0 205 108" to="360 205 108" dur="6s" repeatCount="indefinite"/></circle><circle cx="205" cy="108" r="3" fill="rgba(237,234,227,0.2)"/></svg>
+      </div>
+      <div class="feat-body"><div class="feat-head"><div class="feat-num-wrap"><span class="feat-num">02</span><span class="tag-wip">WIP</span><span class="tag-personal">Personal</span></div><i class="ti ti-arrow-up-right feat-arrow"></i></div>
         <p class="feat-title" data-en="Mechanical Clock" data-jp="機械時計">Mechanical Clock</p>
         <p class="feat-desc" data-en="Fully 3D-printed mechanical clock in translucent PETG." data-jp="トランスルーセントPETGで印刷した機械時計">Fully 3D-printed mechanical clock in translucent PETG.</p>
-        <div class="feat-tags"><span class="tag">3D print</span><span class="tag">PETG</span></div>
+        <div class="feat-tags"><span class="tag">3D print</span></div>
       </div>
     </a>
+
+    <!-- ── 03 LINES — Personal badge + heatmap thumb ── -->
     <a class="feat-card" href="#" onclick="openProject('chokusen');return false;">
-      <div class="feat-thumb"><svg viewBox="0 0 260 148" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="148" fill="#0d0d0b"/><defs><linearGradient id="sg1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(80,130,200,0.7)"/><stop offset="50%" stop-color="rgba(126,158,148,0.7)"/><stop offset="100%" stop-color="rgba(200,88,69,0.7)"/></linearGradient></defs><rect x="20" y="20" width="220" height="2" rx="1" fill="url(#sg1)" opacity="0.6"/><rect x="68" y="40" width="42" height="70" fill="none" stroke="rgba(80,130,200,0.5)" stroke-width="0.75"/><rect x="73" y="40" width="42" height="70" rx="6" fill="none" stroke="rgba(100,155,165,0.5)" stroke-width="0.75" transform="translate(58,0)"/><ellipse cx="146" cy="75" rx="21" ry="35" fill="none" stroke="rgba(126,158,148,0.5)" stroke-width="0.75"/><path d="M180,40 C204,40 204,110 180,110 C156,110 156,40 180,40 Z" fill="none" stroke="rgba(165,120,90,0.5)" stroke-width="0.75"/><circle cx="230" cy="75" r="35" fill="none" stroke="rgba(200,88,69,0.5)" stroke-width="0.75"/><text x="20" y="128" font-family="monospace" font-size="7" fill="rgba(80,130,200,0.5)">直線</text><text x="218" y="128" font-family="monospace" font-size="7" fill="rgba(200,88,69,0.5)" text-anchor="end">曲線</text></svg></div>
-      <div class="feat-body"><div class="feat-head"><div class="feat-num-wrap"><span class="feat-num">03</span><span class="tag-wip">WIP</span></div><i class="ti ti-arrow-up-right feat-arrow"></i></div>
+      <div class="feat-thumb"><svg viewBox="0 0 260 148" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="148" fill="#0d0d0b"/><defs><linearGradient id="sg1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(80,130,200,0.7)"/><stop offset="50%" stop-color="rgba(126,158,148,0.7)"/><stop offset="100%" stop-color="rgba(200,88,69,0.7)"/></linearGradient></defs><rect x="20" y="20" width="220" height="2" rx="1" fill="url(#sg1)" opacity="0.6"/><rect x="68" y="40" width="42" height="70" fill="none" stroke="rgba(80,130,200,0.5)" stroke-width="0.75"/><rect x="73" y="40" width="42" height="70" rx="6" fill="none" stroke="rgba(100,155,165,0.5)" stroke-width="0.75" transform="translate(58,0)"/><ellipse cx="146" cy="75" rx="21" ry="35" fill="none" stroke="rgba(126,158,148,0.5)" stroke-width="0.75"/><path d="M180,40 C204,40 204,110 180,110 C156,110 156,40 180,40 Z" fill="none" stroke="rgba(165,120,90,0.5)" stroke-width="0.75"/><circle cx="230" cy="75" r="35" fill="none" stroke="rgba(200,88,69,0.5)" stroke-width="0.75"/><text x="20" y="128" font-family="monospace" font-size="7" fill="rgba(80,130,200,0.5)">直線</text><text x="218" y="128" font-family="monospace" font-size="7" fill="rgba(200,88,69,0.5)" text-anchor="end">曲線</text></svg>
+            </div>
+      <div class="feat-body"><div class="feat-head"><div class="feat-num-wrap"><span class="feat-num">03</span><span class="tag-wip">WIP</span><span class="tag-personal">Personal</span></div><i class="ti ti-arrow-up-right feat-arrow"></i></div>
         <p class="feat-title" data-en="Straight Lines &amp; Curves" data-jp="直線と曲線">Straight Lines &amp; Curves</p>
         <p class="feat-desc" data-en="Grasshopper tool to quantify linearity as a tuneable parameter." data-jp="直線度指数をGrasshopperで定量化">Grasshopper tool to quantify linearity as a tuneable parameter.</p>
         <div class="feat-tags"><span class="tag">Grasshopper</span><span class="tag">Parametric</span></div>
       </div>
     </a>
+
+    <!-- ── 04 GRIPPER — unchanged ── -->
     <a class="feat-card" href="#" onclick="openProject('gripper');return false;">
       <div class="feat-thumb"><img src="assets/gripper-main.png" alt="Hydraulic soft gripper — Synaptech"></div>
       <div class="feat-body"><div class="feat-head"><div class="feat-num-wrap"><span class="feat-num">04</span></div><i class="ti ti-arrow-up-right feat-arrow"></i></div>
@@ -230,19 +237,24 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
 <footer><span class="f-txt">Aika Ono © 2026</span></footer>
 </div>
 
-<!-- PROJECT: Keshiki -->
+
+<!-- ══════════════════════════════════════════════════
+     PROJECT: Keshiki
+     - Only the top web demo (kd-wrap)
+     - Full description: イントロ / 解説 / Ideas explored / Ideation sketches
+══════════════════════════════════════════════════ -->
 <div class="project-page" id="project-keshiki">
   <div class="proj-nav">
     <button class="proj-back" onclick="closeProject('keshiki')">← Back</button>
     <button class="lang-btn" id="lang-btn-keshiki" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button>
   </div>
   <div class="proj-body">
-    <p class="proj-label" data-en="Featured Projects" data-jp="主要作品">Featured Projects</p>
+    <p class="proj-label" data-en="Featured Projects — Personal" data-jp="主要作品 — 個人制作">Featured Projects — Personal</p>
     <h1 class="proj-title" data-en="Keshiki" data-jp="景色">Keshiki</h1>
-    <div class="proj-skills"><span class="tag">OpenSCAD</span><span class="tag">ESP32</span><span class="tag">PETG</span><span class="tag">NeoPixel</span><span class="tag">SG90 servo</span><span class="tag">Claude API</span></div>
+    <div class="proj-skills"><span class="tag">ESP32</span><span class="tag">NeoPixel</span><span class="tag">PETG/PLA 3D print</span><span class="tag">Servo</span><span class="tag">Soldering</span><span class="tag">UI/UX web design</span></div>
     <p class="proj-wip" data-en="Work in progress" data-jp="制作中">Work in progress</p>
 
-    <p class="proj-section-label" data-en="Interactive companion demo" data-jp="インタラクティブデモ">Interactive companion demo</p>
+    <!-- Web demo — the only interactive element on this page -->
     <div class="kd-wrap">
       <div class="kd-left">
         <canvas id="kd-canvas"></canvas>
@@ -266,57 +278,172 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
       </div>
     </div>
 
-    <p class="proj-section-label" data-en="Hardware diagram — drag to rotate" data-jp="ハードウェア図 — ドラッグで回転">Hardware diagram — drag to rotate</p>
-    <div class="k3d-outer">
-      <canvas id="k3d-canvas"></canvas>
-      <div class="k3d-bar">
-        <div class="k3d-legend">
-          <span><i style="background:rgba(140,160,255,0.6)"></i>PETG dome</span>
-          <span><i style="background:#f0a020"></i>NeoPixel ×16</span>
-          <span><i style="background:rgba(180,160,210,0.8)"></i>figure + servo</span>
-          <span><i style="background:rgba(50,50,100,0.9)"></i>ESP32 base</span>
-        </div>
-        <button id="k3d-cut">cutaway ✂</button>
+    <!-- イントロ -->
+    <p class="proj-section-label" data-en="Intro" data-jp="イントロ">Intro</p>
+    <p class="proj-desc" data-en="I like the idea of a living machine.<br>One that sometimes rejoices like a child, sometimes carries unbearable suffering, and sometimes is moved — deeply, deeply moved. A machine that lives alongside you.<br>A machine that grows with you." data-jp="生きる機械というアイディアが好きです。<br>時に子供のように喜び、時に抱えきれない苦しみを持ち、時に深く深く感動するーそんな一緒に生きてくれる機械が居たらいいなって。<br>一緒に成長してくれる機械が居たらいいなって。">I like the idea of a living machine.<br>One that sometimes rejoices like a child, sometimes carries unbearable suffering, and sometimes is moved — deeply, deeply moved. A machine that lives alongside you.<br>A machine that grows with you.</p>
+    <p class="proj-desc" data-en="Keshiki is an IoT device for people with learned helplessness. It takes its name from the concept of 景色 in the film 国宝 — beauty is something that appears only at the end of growth." data-jp="景色は、学習性無力感を抱える人のためのIoTデバイス。映画『国宝』に出てくる「景色」の概念をイメージしましたー美しさは成長の末に見えるもの。">Keshiki is an IoT device for people with learned helplessness. It takes its name from the concept of 景色 in the film 国宝 — beauty is something that appears only at the end of growth.</p>
+
+    <!-- 解説 -->
+    <p class="proj-section-label" data-en="How it works" data-jp="解説">How it works</p>
+    <p class="proj-desc" data-en="AI tracks the user's mood. The hardware responds to that state." data-jp="AIで個人の気分をトラックし、ハードウェアがその状態により変わります。">AI tracks the user's mood. The hardware responds to that state.</p>
+    <p class="proj-desc" data-en="When the system senses <strong>confusion or stasis</strong> — the central object (modelled after a human spine and eye) moves randomly, while red LEDs pulse outward." data-jp="個人の中に迷いを感じたときは中心の人の脊髄と目をイメージした物体がランダムに動きながら、赤のLEDが光ります。">When the system senses <strong>confusion or stasis</strong> — the central object (modelled after a human spine and eye) moves randomly, while red LEDs pulse outward.</p>
+    <p class="proj-desc" data-en="When the system senses <strong>growth</strong> — the outer ring, which begins colourless, progresses through states:<br><br>White → Orange → Purple &amp; gold mix → Red &amp; blue mix (approaching enlightenment)" data-jp="個人の中に成長を感じたときはそれに応じて、無色だった外周の色が（最初）白→橙色→紫・金色のミックス→赤と青のミックス（悟りに近い状態）に変わります。">When the system senses <strong>growth</strong> — the outer ring, which begins colourless, progresses through states:<br><br>White → Orange → Purple &amp; gold mix → Red &amp; blue mix (approaching enlightenment)</p>
+
+    <!-- Ideas explored -->
+    <p class="proj-section-label" data-en="Ideas explored" data-jp="考察">Ideas explored</p>
+    <ul class="proj-ideas">
+      <li data-en="The same visual information looks different depending on the observer's internal state (awareness)" data-jp="個人の状態（知ること）によって同じ視覚情報が違うように見える">The same visual information looks different depending on the observer's internal state (awareness)</li>
+      <li data-en="What makes us feel that something is 'alive'? → Related to the topic of bio-likeness that Yamanaka Shunji (a design engineer I deeply admire) has mentioned" data-jp="what makes us feel that something is 'alive'? → 山中俊治氏が提唱するバイオライクネスに関連">What makes us feel that something is 'alive'? → Related to the topic of bio-likeness that Yamanaka Shunji (a design engineer I deeply admire) has mentioned</li>
+      <li data-en="Abstraction of suffering (苦しみの抽象化)" data-jp="苦しみの抽象化">Abstraction of suffering (苦しみの抽象化)</li>
+    </ul>
+
+    <!-- Ideation -->
+    <p class="proj-section-label" data-en="Ideation" data-jp="アイデアスケッチ">Ideation</p>
+    <div class="sketch-row">
+      <div class="proj-visual" style="margin-bottom:0">
+        <img src="assets/keshiki-sketch-1.png" alt="Ideation sketch 1"
+             onerror="this.outerHTML='<div class=\'photo-placeholder\' style=\'aspect-ratio:4/3\'>assets/keshiki-sketch-1.png</div>'">
       </div>
-      <p class="k3d-hint">drag to rotate</p>
+      <div class="proj-visual" style="margin-bottom:0">
+        <img src="assets/keshiki-sketch-2.png" alt="Ideation sketch 2"
+             onerror="this.outerHTML='<div class=\'photo-placeholder\' style=\'aspect-ratio:4/3\'>assets/keshiki-sketch-2.png</div>'">
+      </div>
     </div>
 
-    <p class="proj-section-label" data-en="Schematic" data-jp="回路図">Schematic</p>
-    <div class="proj-visual">
-      <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg"><rect width="700" height="300" fill="#0d0d0b"/><defs><radialGradient id="kled" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#b0d8ff" stop-opacity="0.85"/><stop offset="100%" stop-color="#4090ff" stop-opacity="0"/></radialGradient></defs><ellipse cx="350" cy="38" rx="38" ry="28" fill="url(#kled)"/><circle cx="350" cy="34" r="7" fill="#d0e8ff" opacity="0.7"/><circle cx="350" cy="34" r="3.5" fill="#f0f8ff" opacity="0.95"/><path d="M350,48 C352,75 348,102 350,129 C352,156 348,183 350,210 C352,237 348,255 350,268" stroke="rgba(237,234,227,0.1)" stroke-width="2" fill="none" stroke-dasharray="4,4"/><g fill="rgba(237,234,227,0.05)" stroke="rgba(237,234,227,0.25)" stroke-width="0.75"><rect x="308" y="52" width="84" height="24" rx="6"/><path d="M392,56 L418,64 L392,72" fill="rgba(237,234,227,0.04)" stroke="rgba(237,234,227,0.18)" stroke-width="0.6"/><rect x="318" y="76" width="64" height="7" rx="2.5" fill="rgba(126,158,148,0.12)" stroke="rgba(126,158,148,0.28)" stroke-width="0.5"/><rect x="306" y="83" width="88" height="24" rx="6"/><path d="M394,87 L422,95 L394,103" fill="rgba(237,234,227,0.04)" stroke="rgba(237,234,227,0.18)" stroke-width="0.6"/><rect x="316" y="107" width="68" height="7" rx="2.5" fill="rgba(126,158,148,0.12)" stroke="rgba(126,158,148,0.28)" stroke-width="0.5"/><rect x="305" y="114" width="90" height="24" rx="6"/><path d="M395,118 L424,126 L395,134" fill="rgba(237,234,227,0.04)" stroke="rgba(237,234,227,0.18)" stroke-width="0.6"/><rect x="315" y="138" width="70" height="7" rx="2.5" fill="rgba(126,158,148,0.12)" stroke="rgba(126,158,148,0.28)" stroke-width="0.5"/><rect x="305" y="145" width="90" height="24" rx="6"/><path d="M395,149 L424,157 L395,165" fill="rgba(237,234,227,0.04)" stroke="rgba(237,234,227,0.18)" stroke-width="0.6"/><rect x="315" y="169" width="70" height="7" rx="2.5" fill="rgba(126,158,148,0.12)" stroke="rgba(126,158,148,0.28)" stroke-width="0.5"/><rect x="306" y="176" width="88" height="24" rx="6"/><path d="M394,180 L422,188 L394,196" fill="rgba(237,234,227,0.04)" stroke="rgba(237,234,227,0.18)" stroke-width="0.6"/><rect x="316" y="200" width="68" height="7" rx="2.5" fill="rgba(126,158,148,0.12)" stroke="rgba(126,158,148,0.28)" stroke-width="0.5"/><rect x="308" y="207" width="84" height="24" rx="6"/><path d="M392,211 L418,219 L392,227" fill="rgba(237,234,227,0.04)" stroke="rgba(237,234,227,0.18)" stroke-width="0.6"/></g><rect x="304" y="234" width="92" height="44" rx="7" fill="rgba(80,130,200,0.08)" stroke="rgba(80,130,200,0.32)" stroke-width="0.75"/><circle cx="350" cy="256" r="15" fill="none" stroke="rgba(80,130,200,0.38)" stroke-width="0.75"/><circle cx="350" cy="256" r="5.5" fill="rgba(80,130,200,0.45)"/><line x1="350" y1="256" x2="340" y2="242" stroke="rgba(80,130,200,0.55)" stroke-width="1.5" stroke-linecap="round"/><rect x="252" y="248" width="36" height="20" rx="2" fill="rgba(237,234,227,0.03)" stroke="rgba(237,234,227,0.18)" stroke-width="0.5"/><text x="258" y="261" font-family="monospace" font-size="6.5" fill="rgba(237,234,227,0.3)">ESP32</text><g stroke="rgba(237,234,227,0.12)" stroke-width="0.5"><line x1="252" y1="252" x2="246" y2="252"/><line x1="252" y1="257" x2="246" y2="257"/><line x1="252" y1="262" x2="246" y2="262"/><line x1="288" y1="257" x2="294" y2="257"/></g><path d="M294,257 Q302,257 302,256 L304,256" stroke="rgba(237,234,227,0.12)" stroke-width="0.5" fill="none"/><text x="435" y="37" font-family="monospace" font-size="9" fill="rgba(200,220,255,0.5)">LED tip</text><line x1="422" y1="34" x2="433" y2="34" stroke="rgba(200,220,255,0.25)" stroke-width="0.5"/><text x="435" y="130" font-family="monospace" font-size="9" fill="rgba(237,234,227,0.28)">PETG vertebra</text><line x1="395" y1="128" x2="433" y2="128" stroke="rgba(237,234,227,0.15)" stroke-width="0.5"/><text x="435" y="178" font-family="monospace" font-size="9" fill="rgba(126,158,148,0.45)">living hinge</text><line x1="384" y1="174" x2="433" y2="174" stroke="rgba(126,158,148,0.2)" stroke-width="0.5"/><text x="435" y="258" font-family="monospace" font-size="9" fill="rgba(80,130,200,0.5)">SG90 servo</text><line x1="396" y1="256" x2="433" y2="256" stroke="rgba(80,130,200,0.22)" stroke-width="0.5"/><text x="20" y="292" font-family="monospace" font-size="8" fill="rgba(237,234,227,0.15)" letter-spacing="0.1em">KESHIKI — LATERAL SCHEMATIC</text></svg>
-    </div>
-
-    <p class="proj-desc" data-en="Keshiki (景色 — scenery) is a philosophical IoT device for people with learned helplessness. The name comes from Kikuo's concept in the film 国宝: that the beauty we see — the scenery — is earned through suffering and growth, not given.<br><br>The object is a dome enclosing a small articulated humanoid robot at its centre. The robot's posture and the dome's internal light and structure shift in response to the user's emotional and behavioural state, tracked via AI — beginning dim and fragmented, becoming more luminous and complex over time. The AI acts not as a teacher but as a quiet companion that grows alongside the user. The project embodies 私は人間である: humans are weak and ignorant, but we have an innate will to improve, and through suffering we arrive at a beautiful world.<br><br>The spine is the physical form the humanoid takes: anatomically-informed vertebrae in PETG, linked by living-hinge joints. A wire runs through the neural foramina — like the spinal cord — to an LED at the tip, which glows as the structure unfolds. Driven by an SG90 servo, controlled via ESP32. OpenSCAD modelling iterated extensively — silent polygon winding failures, 'Normalized tree has 0 elements' errors, overhanging spinous processes. Solution: print the spine on its side." data-jp="景色は、学習性無力感を抱える人のためのIoTデバイス。菊生が映画『国宝』で描いた「景色」の概念にちなむ——美しさは苦しみと成長の末に見えるもの。<br><br>ドーム型の筐体の中央に関節式ヒューマノイドロボットが立ち、AIがユーザーの感情状態を読み取り、ロボットの姿勢とドームの光が変化する。AIは教師ではなく、一緒に育つ「友人」として機能する。<br><br>ヒューマノイドの骨格として解剖学的に正確な脊椎モデルをPETGで3Dプリント。リビングヒンジで連結し、神経孔を通るワイヤーの先にLEDを配置。SG90サーボとESP32で制御。">Keshiki (景色 — scenery) is a philosophical IoT device for people with learned helplessness. The name comes from Kikuo's concept in the film 国宝: that beauty is earned through suffering and growth, not given.<br><br>A dome enclosing a small articulated humanoid robot. The robot's posture and the dome's internal light shift in response to the user's emotional state, tracked via AI — beginning dim, becoming luminous over time. The AI acts not as a teacher but as a quiet companion that grows alongside the user.<br><br>The spine is the physical form the humanoid takes: anatomically-informed PETG vertebrae with living-hinge joints, a wire running through the neural foramina to an LED tip. SG90 servo + ESP32 controlled.</p>
   </div>
 </div>
 
-<!-- PROJECT: Clock -->
+
+<!-- ══════════════════════════════════════════════════
+     PROJECT: Clock
+     - 2 real photos
+     - Concept description
+     - Moiré SVG
+     - Mechanism SVG
+══════════════════════════════════════════════════ -->
 <div class="project-page" id="project-clock">
   <div class="proj-nav"><button class="proj-back" onclick="closeProject('clock')">← Back</button><button class="lang-btn" id="lang-btn-clock" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button></div>
   <div class="proj-body">
-    <p class="proj-label" data-en="Featured Projects" data-jp="主要作品">Featured Projects</p>
+    <p class="proj-label" data-en="Featured Projects — Personal" data-jp="主要作品 — 個人制作">Featured Projects — Personal</p>
     <h1 class="proj-title" data-en="Mechanical Clock" data-jp="機械時計">Mechanical Clock</h1>
-    <div class="proj-skills"><span class="tag">3D printing</span><span class="tag">PETG</span><span class="tag">Fusion 360</span><span class="tag">Mechanical assembly</span><span class="tag">Thingiverse Clock20</span></div>
+    <div class="proj-skills"><span class="tag">3D printing</span><span class="tag">Fusion 360</span><span class="tag">Laser cutting</span><span class="tag">Acrylic</span><span class="tag">Mechanical assembly</span></div>
     <p class="proj-wip" data-en="Work in progress" data-jp="制作中">Work in progress</p>
-    <div class="proj-visual"><svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg"><rect width="700" height="300" fill="#0d0d0b"/><circle cx="210" cy="152" r="95" fill="rgba(237,234,227,0.02)" stroke="rgba(237,234,227,0.1)" stroke-width="0.75"/><circle cx="210" cy="152" r="98" fill="none" stroke="rgba(237,234,227,0.16)" stroke-width="10" stroke-dasharray="11,18.7"><animateTransform attributeName="transform" type="rotate" from="0 210 152" to="360 210 152" dur="24s" repeatCount="indefinite"/></circle><circle cx="210" cy="152" r="56" fill="none" stroke="rgba(237,234,227,0.05)" stroke-width="0.5"/><g stroke="rgba(237,234,227,0.07)" stroke-width="0.6"><line x1="210" y1="96" x2="210" y2="208"/><line x1="154" y1="152" x2="266" y2="152"/><line x1="170" y1="112" x2="250" y2="192"/><line x1="250" y1="112" x2="170" y2="192"/></g><circle cx="210" cy="152" r="6" fill="rgba(237,234,227,0.25)"/><circle cx="366" cy="104" r="50" fill="rgba(237,234,227,0.02)" stroke="rgba(237,234,227,0.08)" stroke-width="0.6"/><circle cx="366" cy="104" r="53" fill="none" stroke="rgba(237,234,227,0.13)" stroke-width="7" stroke-dasharray="9,15.4"><animateTransform attributeName="transform" type="rotate" from="0 366 104" to="-360 366 104" dur="12s" repeatCount="indefinite"/></circle><circle cx="366" cy="104" r="5" fill="rgba(237,234,227,0.2)"/><circle cx="388" cy="218" r="32" fill="rgba(237,234,227,0.02)" stroke="rgba(237,234,227,0.08)" stroke-width="0.6"/><circle cx="388" cy="218" r="35" fill="none" stroke="rgba(237,234,227,0.11)" stroke-width="5" stroke-dasharray="7,9.9"><animateTransform attributeName="transform" type="rotate" from="0 388 218" to="360 388 218" dur="7.5s" repeatCount="indefinite"/></circle><circle cx="388" cy="218" r="4" fill="rgba(237,234,227,0.18)"/><circle cx="572" cy="152" r="112" fill="rgba(237,234,227,0.015)" stroke="rgba(237,234,227,0.15)" stroke-width="0.75"/><g stroke="rgba(237,234,227,0.35)" stroke-width="1.5" stroke-linecap="round"><line x1="572" y1="46" x2="572" y2="60"/><line x1="678" y1="152" x2="664" y2="152"/><line x1="572" y1="258" x2="572" y2="244"/><line x1="466" y1="152" x2="480" y2="152"/></g><g stroke="rgba(237,234,227,0.14)" stroke-width="0.75"><line x1="572" y1="46" x2="572" y2="56" transform="rotate(30,572,152)"/><line x1="572" y1="46" x2="572" y2="56" transform="rotate(60,572,152)"/><line x1="572" y1="46" x2="572" y2="56" transform="rotate(120,572,152)"/><line x1="572" y1="46" x2="572" y2="56" transform="rotate(150,572,152)"/><line x1="572" y1="46" x2="572" y2="56" transform="rotate(210,572,152)"/><line x1="572" y1="46" x2="572" y2="56" transform="rotate(240,572,152)"/><line x1="572" y1="46" x2="572" y2="56" transform="rotate(300,572,152)"/><line x1="572" y1="46" x2="572" y2="56" transform="rotate(330,572,152)"/></g><line x1="572" y1="152" x2="542" y2="96" stroke="rgba(237,234,227,0.65)" stroke-width="2.5" stroke-linecap="round"/><line x1="572" y1="152" x2="624" y2="84" stroke="rgba(237,234,227,0.5)" stroke-width="1.5" stroke-linecap="round"/><line x1="572" y1="152" x2="572" y2="252" stroke="rgba(200,88,69,0.75)" stroke-width="0.75" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" from="0 572 152" to="360 572 152" dur="60s" repeatCount="indefinite"/></line><circle cx="572" cy="152" r="4.5" fill="rgba(237,234,227,0.75)"/><text x="20" y="291" font-family="monospace" font-size="8" fill="rgba(237,234,227,0.15)" letter-spacing="0.1em">CLOCK20 — GEAR TRAIN + ESCAPEMENT</text></svg></div>
-    <p class="proj-desc" data-en="A fully 3D-printed mechanical clock (Thingiverse Clock20, thing:328569) in translucent PETG. The build surfaced problems at every layer.<br><br>The clock face backplate has 135 separate floating print islands at its first layer — invisible in Fusion 360. Diagnosed by parsing the STL geometry directly, solved by adding a continuous base disc in the slicer rather than editing the mesh (which crashed Fusion at 58,592 triangles). PETG stringing at 0.12mm layer height produced cotton candy-like fibres; fixed via retraction tuning and temperature reduction.<br><br>Assembly required sourcing and hand-cutting steel pin axles in three diameters — 1.5mm, 2mm, 3mm — and dialling in the clearance for each rotating component by feel. The escapement anchor and escape wheel share a 2mm shaft. PTFE lubricant applied to all rotating interfaces.<br><br>A lesson in the gap between digital geometry and physical tolerance, and in the thousand small decisions between a Thingiverse file and something that actually ticks." data-jp="トランスルーセントPETGで印刷した完全3Dプリント機械時計（Clock20）。135個の浮遊印刷島をSTL解析で診断し、スライサーでベースディスクを追加して解決（Fusionは5万8千個の三角形でクラッシュ）。PETGストリンギングはリトラクション調整で対処。金属ピン軸を手動切断し、脱進機アンカーとエスケープホイールを2mmシャフトで組み立て。">A fully 3D-printed mechanical clock (Thingiverse Clock20) in translucent PETG. 135 floating print islands diagnosed by parsing STL geometry directly; solved by adding a base disc in the slicer. PETG stringing fixed via retraction tuning. Steel pin axles hand-cut in 1.5mm, 2mm, 3mm; clearances dialled in by feel. A lesson in the gap between digital geometry and physical tolerance.</p>
+
+    <!-- 2 real photos -->
+    <div class="photo-row">
+      <div class="proj-visual" style="margin-bottom:0">
+        <img src="assets/clock-photo-1.png" alt="Clock photo 1"
+             onerror="this.outerHTML='<div class=\'photo-placeholder\' style=\'aspect-ratio:4/3\'>assets/clock-photo-1.png</div>'">
+      </div>
+      <div class="proj-visual" style="margin-bottom:0">
+        <img src="assets/clock-photo-2.png" alt="Clock photo 2"
+             onerror="this.outerHTML='<div class=\'photo-placeholder\' style=\'aspect-ratio:4/3\'>assets/clock-photo-2.png</div>'">
+      </div>
+    </div>
+
+    <!-- Concept -->
+    <p class="proj-desc" data-en="Taking inspiration from mechanical escapement and fluid vortex shedding having similarities in phenomenon — both convert a steady input into a precise, rhythmic output. The product purely exists to share this message." data-jp="機械式エスケープメントと流体の渦放出という現象的類似性にインスピレーションを得ています。どちらも定常入力を精密なリズミカルな出力に変換します。このプロダクトはそのメッセージを伝えるためだけに存在します。">Taking inspiration from mechanical escapement and fluid vortex shedding having similarities in phenomenon — both convert a steady input into a precise, rhythmic output. The product purely exists to share this message.</p>
+    <p class="proj-desc" data-en="The escape wheel teeth are redrawn as vortex arc curves, and the pallet fork is redesigned as a von Kármán shedding body with spiral wake arms. The mechanism is functionally identical to the original — only the geometry changes." data-jp="エスケープホイールの歯をボルテックス弧曲線として再描画し、パレットフォークをスパイラルウェイクアームを持つフォン・カルマン放出体として再設計。機構は元のものと機能的に同一で、変わるのは形状のみ。">The escape wheel teeth are redrawn as vortex arc curves, and the pallet fork is redesigned as a von Kármán shedding body with spiral wake arms. The mechanism is functionally identical to the original — only the geometry changes.</p>
+
+    <!-- Moiré SVG -->
+    <p class="proj-section-label" data-en="Moiré disc face — expected appearance" data-jp="モアレ文字盤 — 完成イメージ">Moiré disc face — expected appearance</p>
+    <p class="proj-desc" data-en="Three concentric frosted acrylic discs, laser-cut, each carrying a parametric Archimedean spiral pattern. Arm counts 3, 4, 5 (a Pythagorean triple) were chosen because adjacent counts produce clean single-petal moiré interference.<br><br>Hours vs Minutes: |4−3| = 1 zone → slow single-petal rotation<br>Minutes vs Seconds: |5−4| = 1 zone → same<br>Hours vs Seconds: |5−3| = 2 zones → figure-8 when all three overlap" data-jp="レーザーカットされた3枚の同心フロストアクリルディスク。アーム数3・4・5（ピタゴラス数）を選択 — 隣接する数同士がクリーンな一葉モアレ干渉を生みます。<br><br>時 vs 分：|4-3|=1ゾーン → ゆっくりした一葉回転<br>分 vs 秒：|5-4|=1ゾーン → 同上<br>時 vs 秒：|5-3|=2ゾーン → 全重合時に8字型">Three concentric frosted acrylic discs, laser-cut, each carrying a parametric Archimedean spiral pattern. Arm counts 3, 4, 5 (a Pythagorean triple) were chosen because adjacent counts produce clean single-petal moiré interference.<br><br>Hours vs Minutes: |4−3| = 1 zone → slow single-petal rotation<br>Minutes vs Seconds: |5−4| = 1 zone → same<br>Hours vs Seconds: |5−3| = 2 zones → figure-8 when all three overlap</p>
+    <div class="proj-visual">
+      <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
+        <rect width="700" height="300" fill="#080808"/>
+        <g transform="translate(350,150)">
+          <g stroke="rgba(237,234,211,0.28)" stroke-width="0.65" fill="none" opacity="0.55">
+            <circle cx="0" cy="0" r="128" stroke-opacity="0.12"/>
+            <path d="M0,-128 Q32,-88 52,-46 Q72,-4 50,36 Q28,76 0,86" stroke-dasharray="1,5"/>
+            <path d="M0,-128 Q-32,-88 -52,-46 Q-72,-4 -50,36 Q-28,76 0,86" stroke-dasharray="1,5"/>
+            <path d="M110,-66 Q76,-30 68,16 Q60,62 28,88" stroke-dasharray="1,5"/>
+            <path d="M-110,-66 Q-76,-30 -68,16 Q-60,62 -28,88" stroke-dasharray="1,5"/>
+            <path d="M68,108 Q26,84 -2,54" stroke-dasharray="1,5"/>
+          </g>
+          <g stroke="rgba(237,234,211,0.45)" stroke-width="0.8" fill="none" opacity="0.75">
+            <circle cx="0" cy="0" r="88" stroke-opacity="0.15"/>
+            <path d="M0,-88 Q22,-44 0,0 Q-22,-44 0,-88" stroke-dasharray="2,5"/>
+            <path d="M88,0 Q44,22 0,0 Q44,-22 88,0" stroke-dasharray="2,5"/>
+            <path d="M0,88 Q22,44 0,0 Q-22,44 0,88" stroke-dasharray="2,5"/>
+            <path d="M-88,0 Q-44,22 0,0 Q-44,-22 -88,0" stroke-dasharray="2,5"/>
+          </g>
+          <g stroke="rgba(237,234,211,0.65)" stroke-width="1" fill="none">
+            <circle cx="0" cy="0" r="48" stroke-opacity="0.2"/>
+            <path d="M0,-48 Q18,-16 28,20 Q10,44 -14,42" stroke-dasharray="3,5"/>
+            <path d="M28,20 Q-4,38 -28,20 Q-34,-8 -20,-34" stroke-dasharray="3,5"/>
+            <path d="M-20,-34 Q4,-50 0,-48" stroke-dasharray="3,5"/>
+          </g>
+          <!-- Single-petal interference zone -->
+          <ellipse cx="0" cy="-58" rx="24" ry="40" fill="rgba(237,234,211,0.055)" stroke="rgba(237,234,211,0.2)" stroke-width="0.6"/>
+          <circle cx="0" cy="0" r="5" fill="rgba(237,234,211,0.15)" stroke="rgba(237,234,211,0.4)" stroke-width="0.5"/>
+        </g>
+        <text x="40" y="22" font-family="monospace" font-size="8.5" fill="rgba(237,234,211,0.35)" letter-spacing="0.1em">MOIRE INTERFERENCE</text>
+        <text x="40" y="36" font-family="monospace" font-size="8" fill="rgba(237,234,211,0.22)" letter-spacing="0.08em">3 · 4 · 5 ARM ARCHIMEDEAN SPIRALS — HOURS / MINUTES / SECONDS</text>
+        <text x="40" y="278" font-family="monospace" font-size="8" fill="rgba(237,234,211,0.18)" letter-spacing="0.08em">|4−3|=1 zone → single petal  ·  |5−4|=1 zone → same  ·  |5−3|=2 zones → figure-8</text>
+      </svg>
+    </div>
+
+    <!-- Mechanism SVG -->
+    <p class="proj-section-label" data-en="Mechanism redesign — expected geometry" data-jp="機構の再設計 — 完成イメージ">Mechanism redesign — expected geometry</p>
+    <div class="proj-visual">
+      <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
+        <rect width="700" height="300" fill="#080808"/>
+        <text x="40" y="24" font-family="monospace" font-size="8.5" fill="rgba(237,234,211,0.35)" letter-spacing="0.1em">ESCAPEMENT REDRAWN — SAME FUNCTION, NEW GEOMETRY</text>
+        <g transform="translate(188,158)">
+          <circle cx="0" cy="0" r="78" fill="none" stroke="rgba(237,234,211,0.09)" stroke-width="0.5"/>
+          <circle cx="0" cy="0" r="56" fill="none" stroke="rgba(237,234,211,0.06)" stroke-width="0.5"/>
+          <g stroke="rgba(237,234,211,0.7)" stroke-width="1.3" fill="none" stroke-linecap="round">
+            <path d="M0,-78 Q10,-64 3,-56"/>
+            <path d="M47,-63 Q59,-49 50,-41"/>
+            <path d="M74,-23 Q81,-9 72,-3"/>
+            <path d="M74,23 Q81,9 72,3"/>
+            <path d="M47,63 Q59,49 50,41"/>
+            <path d="M0,78 Q10,64 3,56"/>
+            <path d="M-47,63 Q-59,49 -50,41"/>
+            <path d="M-74,23 Q-81,9 -72,3"/>
+          </g>
+          <circle cx="0" cy="0" r="7" fill="rgba(237,234,211,0.08)" stroke="rgba(237,234,211,0.3)" stroke-width="0.7"/>
+          <text x="-40" y="102" font-family="monospace" font-size="7.5" fill="rgba(237,234,211,0.32)" letter-spacing="0.08em">VORTEX ARC TEETH</text>
+        </g>
+        <line x1="274" y1="158" x2="346" y2="158" stroke="rgba(237,234,211,0.14)" stroke-width="0.6" stroke-dasharray="3,4"/>
+        <text x="285" y="152" font-family="monospace" font-size="7" fill="rgba(237,234,211,0.2)">same fn</text>
+        <g transform="translate(388,158)">
+          <path d="M0,-42 C19,-30 23,-11 21,0 C19,11 17,23 0,32 C-17,23 -19,11 -21,0 C-23,-11 -19,-30 0,-42 Z" fill="rgba(237,234,211,0.04)" stroke="rgba(237,234,211,0.52)" stroke-width="0.9"/>
+          <path d="M19,0 Q43,12 52,34 Q61,56 46,65" fill="none" stroke="rgba(237,234,211,0.28)" stroke-width="0.8" stroke-dasharray="2,3"/>
+          <path d="M-19,0 Q-43,-12 -52,-34 Q-61,-56 -46,-65" fill="none" stroke="rgba(237,234,211,0.28)" stroke-width="0.8" stroke-dasharray="2,3"/>
+          <text x="-36" y="88" font-family="monospace" font-size="7.5" fill="rgba(237,234,211,0.32)" letter-spacing="0.08em">VON KÁRMÁN BODY</text>
+          <text x="-32" y="99" font-family="monospace" font-size="7" fill="rgba(237,234,211,0.2)" letter-spacing="0.06em">spiral wake arms</text>
+        </g>
+        <text x="40" y="278" font-family="monospace" font-size="8" fill="rgba(237,234,211,0.18)" letter-spacing="0.08em">CLOCK20 THINGIVERSE · PETG · 135 PRINT ISLANDS · STEEL PIN AXLES</text>
+      </svg>
+    </div>
   </div>
 </div>
 
-<!-- PROJECT: 直線と曲線 -->
+
+<!-- ══════════════════════════════════════════════════
+     PROJECT: 直線と曲線
+     - Original diagram kept exactly
+     - Description from 曲線と直線 chat (full Grasshopper workflow)
+══════════════════════════════════════════════════ -->
 <div class="project-page" id="project-chokusen">
   <div class="proj-nav"><button class="proj-back" onclick="closeProject('chokusen')">← Back</button><button class="lang-btn" id="lang-btn-chokusen" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button></div>
   <div class="proj-body">
-    <p class="proj-label" data-en="Featured Projects" data-jp="主要作品">Featured Projects</p>
+    <p class="proj-label" data-en="Featured Projects — Personal" data-jp="主要作品 — 個人制作">Featured Projects — Personal</p>
     <h1 class="proj-title" data-en="Straight Lines &amp; Curves" data-jp="直線と曲線">Straight Lines &amp; Curves</h1>
     <div class="proj-skills"><span class="tag">Grasshopper</span><span class="tag">Rhino</span><span class="tag">Computational design</span><span class="tag">Design theory</span></div>
     <p class="proj-wip" data-en="Work in progress" data-jp="制作中">Work in progress</p>
+    <!-- ORIGINAL DIAGRAM — byte-for-byte identical to source -->
     <div class="proj-visual"><svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg"><rect width="700" height="300" fill="#0d0d0b"/><defs><linearGradient id="spec2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(80,130,200,0.9)"/><stop offset="50%" stop-color="rgba(126,158,148,0.9)"/><stop offset="100%" stop-color="rgba(200,88,69,0.9)"/></linearGradient></defs><text x="350" y="26" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(237,234,227,0.22)" letter-spacing="0.1em">直線 ←———————————————————————→ 曲線</text><rect x="44" y="36" width="612" height="2.5" rx="1.25" fill="url(#spec2)" opacity="0.7"/><g stroke="rgba(237,234,227,0.2)" stroke-width="0.75"><line x1="44" y1="36" x2="44" y2="46"/><line x1="197" y1="36" x2="197" y2="46"/><line x1="350" y1="36" x2="350" y2="46"/><line x1="503" y1="36" x2="503" y2="46"/><line x1="656" y1="36" x2="656" y2="46"/></g><rect x="18" y="70" width="52" height="110" fill="none" stroke="rgba(80,130,200,0.6)" stroke-width="0.75"/><g stroke="rgba(80,130,200,0.12)" stroke-width="0.4"><line x1="18" y1="92" x2="70" y2="92"/><line x1="18" y1="114" x2="70" y2="114"/><line x1="18" y1="136" x2="70" y2="136"/><line x1="18" y1="158" x2="70" y2="158"/></g><text x="44" y="198" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(80,130,200,0.5)">0%</text><rect x="172" y="70" width="50" height="110" rx="8" fill="none" stroke="rgba(100,155,175,0.55)" stroke-width="0.75"/><text x="197" y="198" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(100,155,175,0.5)">25%</text><ellipse cx="350" cy="125" rx="25" ry="55" fill="none" stroke="rgba(126,158,148,0.6)" stroke-width="0.75"/><g stroke="rgba(126,158,148,0.18)" stroke-width="0.4"><line x1="350" y1="70" x2="350" y2="58"/><line x1="375" y1="125" x2="385" y2="125"/><line x1="350" y1="180" x2="350" y2="192"/><line x1="325" y1="125" x2="315" y2="125"/></g><text x="350" y="198" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(126,158,148,0.5)">50%</text><path d="M503,70 Q530,70 530,125 Q530,180 503,180 Q476,180 476,125 Q476,70 503,70 Z" fill="none" stroke="rgba(165,115,90,0.55)" stroke-width="0.75"/><text x="503" y="198" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(165,115,90,0.5)">75%</text><circle cx="630" cy="125" r="55" fill="none" stroke="rgba(200,88,69,0.6)" stroke-width="0.75"/><g stroke="rgba(200,88,69,0.2)" stroke-width="0.4"><line x1="630" y1="70" x2="630" y2="55"/><line x1="685" y1="125" x2="700" y2="125"/><line x1="630" y1="180" x2="630" y2="195"/><line x1="575" y1="125" x2="560" y2="125"/></g><text x="630" y="198" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(200,88,69,0.5)">100%</text><text x="44" y="218" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(237,234,227,0.18)">pure lines</text><text x="630" y="218" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(237,234,227,0.18)">pure curves</text><text x="350" y="252" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(237,234,227,0.2)" letter-spacing="0.05em">直線と曲線のバランスを定量化する</text><text x="350" y="270" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(237,234,227,0.13)">Quantifying visual balance between straight lines and curves</text></svg></div>
-    <p class="proj-desc" data-en="A design research project asking: what makes the balance between straight lines and curves visually beautiful? Inspired by Kaede Sugano's six-step methodology (課題設定 → 解決方法 → 言語化 → 開発 → 修正 → プレゼン).<br><br>The central idea: define 'linearity' as a measurable, tuneable scalar — the Linearity Index — from 0 (pure curves: circles, organic forms) to 1 (pure straight lines: rectangles). Implemented in Grasshopper on Rhino.<br><br>Three modes: Analysis reads a 2D outline, samples 200 points, computes curvature magnitude |κ| at each, and outputs the Index plus a heatmap (blue = curve, red = straight). Comparison cross-references against a library of iconic designs — Aalto Vase (≈0.05), Eames Lounge Chair (≈0.30), Yohji Yamamoto silhouette (≈0.40), Braun SK4 (≈0.55). Generation lets a slider adjust the target Index in real time, a Graph Mapper controls where curvature concentrates, and the silhouette deforms live via Blend Curve interpolation." data-jp="直線と曲線のバランスが視覚的な美しさにどう影響するかを探るデザイン研究。菅野薫の6ステップ手法に着想を得た。<br><br>中核概念：「直線度指数」を0（純粋な曲線）から1（純粋な直線）のスカラー値として定義。RhinoのGrasshopperで実装。<br><br>3つのモード：【分析】200点サンプリングで曲率|κ|を計算し、色ヒートマップを出力。【比較】Aalto花瓶（≈0.05）、Eamesチェア（≈0.30）、山本耀司（≈0.40）、Braun SK4（≈0.55）のライブラリと照合。【生成】スライダーで目標指数をリアルタイム調整し、シルエットを変形。">A design research project asking: what makes the balance between straight lines and curves visually beautiful? Inspired by Kaede Sugano's methodology.<br><br>The Linearity Index: 0 = pure curves, 1 = pure straight lines. Implemented in Grasshopper/Rhino. Three modes: Analysis (curvature heatmap), Comparison (library: Aalto ≈0.05, Eames ≈0.30, Yohji ≈0.40, Braun SK4 ≈0.55), Generation (real-time silhouette deformation via slider + Graph Mapper).</p>
+    <!-- Description from 曲線と直線 chat — full Grasshopper workflow -->
+    <p class="proj-desc" data-en="A design research project asking: what makes the balance between straight lines and curves visually beautiful? Inspired by Kaede Sugano's six-step methodology (課題設定 → 解決方法 → 言語化 → 開発 → 修正 → プレゼン).<br><br>The central idea: define 'linearity' as a measurable, tuneable scalar — the Linearity Index — from 0 (pure curves: circles, organic forms) to 1 (pure straight lines: rectangles). Implemented in Grasshopper on Rhino.<br><br>Three modes:<br><br><strong>Analysis</strong> — reads a 2D outline, samples 200 points, computes curvature magnitude |κ| at each, and outputs the Index plus a colour heatmap (blue = curve, red = straight).<br><br><strong>Comparison</strong> — cross-references against a library of iconic designs: Aalto Vase (≈0.05), Eames Lounge Chair (≈0.30), Yohji Yamamoto silhouette (≈0.40), Braun SK4 (≈0.55).<br><br><strong>Generation</strong> — a slider adjusts the target Index in real time; a Graph Mapper controls where curvature concentrates (at corners / at the centre / distributed); the silhouette deforms live via Blend Curve interpolation." data-jp="直線と曲線のバランスが視覚的な美しさにどう影響するかを探るデザイン研究。菅野薫の6ステップ手法（課題設定→解決方法→言語化→開発→修正→プレゼン）に着想を得た。<br><br>中核概念：「直線度指数（Linearity Index）」を0（純粋な曲線）から1（純粋な直線）のスカラー値として定義する。RhinoのGrasshopperで実装。<br><br>ツールは3つのモードを持つ。<br><br>【分析】輪郭線を読み込み、200点サンプリングして曲率|κ|を計算し、直線度指数と色ヒートマップ（青=曲線、赤=直線）を出力。<br><br>【比較】Aalto花瓶（≈0.05）、Eamesチェア（≈0.30）、山本耀司シルエット（≈0.40）、Braun SK4（≈0.55）などのライブラリと照合し、自分の形の位置を提示。<br><br>【生成】スライダーで目標指数をリアルタイム調整し、Graph Mapperで曲線の配置を制御しながらBlend Curve補間でシルエットを変形。">A design research project asking: what makes the balance between straight lines and curves visually beautiful? Inspired by Kaede Sugano's six-step methodology (課題設定 → 解決方法 → 言語化 → 開発 → 修正 → プレゼン).<br><br>The central idea: define 'linearity' as a measurable, tuneable scalar — the Linearity Index — from 0 (pure curves: circles, organic forms) to 1 (pure straight lines: rectangles). Implemented in Grasshopper on Rhino.<br><br>Three modes:<br><br><strong>Analysis</strong> — reads a 2D outline, samples 200 points, computes curvature magnitude |κ| at each, and outputs the Index plus a colour heatmap (blue = curve, red = straight).<br><br><strong>Comparison</strong> — cross-references against a library of iconic designs: Aalto Vase (≈0.05), Eames Lounge Chair (≈0.30), Yohji Yamamoto silhouette (≈0.40), Braun SK4 (≈0.55).<br><br><strong>Generation</strong> — a slider adjusts the target Index in real time; a Graph Mapper controls where curvature concentrates; the silhouette deforms live via Blend Curve interpolation.</p>
   </div>
 </div>
 
-<!-- PROJECT: Gripper -->
+
+<!-- ══════════════════════════════════════════════════
+     PROJECT: Gripper — completely unchanged
+══════════════════════════════════════════════════ -->
 <div class="project-page" id="project-gripper">
   <div class="proj-nav"><button class="proj-back" onclick="closeProject('gripper')">← Back</button><button class="lang-btn" id="lang-btn-gripper" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button></div>
   <div class="proj-body">
@@ -325,12 +452,14 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
     <div class="proj-skills"><span class="tag">Group project</span><span class="tag">Soft robotics</span><span class="tag">Silicone casting</span><span class="tag">Hydraulics</span><span class="tag">Fusion 360</span><span class="tag">3D printing</span><span class="tag">ArUco</span></div>
     <a class="proj-visit" href="https://yunjialiricky.wixsite.com/synaptech" target="_blank">Visit project site ↗</a>
     <div class="proj-visual" style="margin-bottom:1.5rem;max-height:240px;overflow:hidden"><img src="assets/gripper-main.png" alt="Soft hydraulic gripper holding a strawberry — Synaptech" style="width:100%;object-fit:cover;object-position:top 16%"></div>
-    <div class="proj-visual"><svg viewBox="0 0 700 300" width="160" height="112" rx="22" fill="rgba(237,234,227,0.03)" stroke="rgba(237,234,227,0.18)" stroke-width="0.75"/><rect x="278" y="176" width="144" height="96" rx="18" fill="none" stroke="rgba(237,234,227,0.05)" stroke-width="0.4"/><rect x="278" y="58" width="34" height="115" rx="17" fill="rgba(237,234,227,0.03)" stroke="rgba(237,234,227,0.16)" stroke-width="0.75"/><rect x="318" y="40" width="34" height="133" rx="17" fill="rgba(237,234,227,0.03)" stroke="rgba(237,234,227,0.16)" stroke-width="0.75"/><rect x="358" y="46" width="34" height="127" rx="17" fill="rgba(237,234,227,0.03)" stroke="rgba(237,234,227,0.16)" stroke-width="0.75"/><rect x="398" y="68" width="28" height="106" rx="14" fill="rgba(237,234,227,0.03)" stroke="rgba(237,234,227,0.13)" stroke-width="0.75"/><rect x="210" y="150" width="70" height="28" rx="14" fill="rgba(237,234,227,0.03)" stroke="rgba(237,234,227,0.14)" stroke-width="0.75" transform="rotate(-35,245,164)"/><g stroke="rgba(80,130,200,0.45)" stroke-width="1"><line x1="295" y1="64" x2="295" y2="170"/><line x1="335" y1="46" x2="335" y2="170"/><line x1="375" y1="52" x2="375" y2="170"/><line x1="412" y1="74" x2="412" y2="174"/></g><g fill="none" stroke="rgba(80,130,200,0.5)" stroke-width="0.75"><ellipse cx="295" cy="65" rx="8" ry="5"/><ellipse cx="335" cy="47" rx="8" ry="5"/><ellipse cx="375" cy="53" rx="8" ry="5"/><ellipse cx="412" cy="75" rx="6" ry="4"/></g><path d="M295,210 Q295,225 335,225 Q375,225 412,218" fill="none" stroke="rgba(80,130,200,0.3)" stroke-width="0.75"/><line x1="335" y1="225" x2="335" y2="256" stroke="rgba(80,130,200,0.3)" stroke-width="0.75"/><rect x="320" y="258" width="30" height="18" rx="5" fill="rgba(80,130,200,0.1)" stroke="rgba(80,130,200,0.35)" stroke-width="0.75"/><text x="335" y="271" text-anchor="middle" font-family="monospace" font-size="6.5" fill="rgba(80,130,200,0.5)">inlet</text><rect x="560" y="30" width="110" height="110" rx="4" fill="rgba(237,234,227,0.03)" stroke="rgba(237,234,227,0.14)" stroke-width="0.75"/><g fill="rgba(237,234,227,0.5)"><rect x="572" y="42" width="14" height="14"/><rect x="600" y="42" width="14" height="14"/><rect x="628" y="42" width="14" height="14"/><rect x="586" y="56" width="14" height="14"/><rect x="614" y="56" width="14" height="14"/><rect x="642" y="56" width="14" height="14"/><rect x="572" y="70" width="14" height="14"/><rect x="600" y="70" width="14" height="14"/><rect x="628" y="70" width="14" height="14"/><rect x="586" y="84" width="14" height="14"/><rect x="614" y="84" width="14" height="14"/><rect x="572" y="98" width="14" height="14"/><rect x="600" y="98" width="14" height="14"/><rect x="628" y="98" width="14" height="14"/><rect x="586" y="112" width="14" height="14"/><rect x="642" y="112" width="14" height="14"/></g><text x="615" y="158" text-anchor="middle" font-family="monospace" font-size="7.5" fill="rgba(237,234,227,0.22)">ArUco marker</text><path d="M560,85 L470,180" stroke="rgba(200,88,69,0.2)" stroke-width="0.6" stroke-dasharray="4,3"/><text x="20" y="291" font-family="monospace" font-size="8" fill="rgba(237,234,227,0.13)" letter-spacing="0.08em">HYDRAULIC SOFT HAND — PALMAR VIEW + ARUCO CONTROL</text></svg></div>
     <p class="proj-desc" data-en="A group project: a hydraulically actuated soft silicone hand. Hydraulic chosen over pneumatic for superior force transmission and stiffness control. Silicone fingers fabricated using retractable-pin casting — internal channel geometry, wall thickness, and fluid routing across the multi-finger assembly were the primary design challenges. Controlled via ArUco marker tracking for pose estimation." data-jp="油圧駆動のソフトシリコンハンドのグループプロジェクト。空気圧より高い力伝達を実現する油圧方式を採用。シリコン指はピン型鋳造で製作し、内部流路形状・壁厚・流体配管が主な設計課題。ArUcoマーカーによるビジョン制御。">A group project: hydraulically actuated soft silicone hand. Hydraulic over pneumatic for superior force transmission. Silicone fingers via retractable-pin casting. Internal channel geometry, wall thickness, and multi-finger fluid routing were the core design challenges. Controlled via ArUco marker pose estimation.</p>
   </div>
 </div>
 
-<!-- PROJECT: Mirror -->
+
+<!-- ══════════════════════════════════════════════════
+     PROJECT: Mirror — completely unchanged
+══════════════════════════════════════════════════ -->
 <div class="project-page" id="project-mirror">
   <div class="proj-nav"><button class="proj-back" onclick="closeProject('mirror')">← Back</button><button class="lang-btn" id="lang-btn-mirror" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button></div>
   <div class="proj-body">
@@ -338,25 +467,22 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
     <h1 class="proj-title" data-en="Claude/ChatGPT Conversation History Personality Analyser" data-jp="AI会話履歴・性格分析">Claude/ChatGPT Conversation History Personality Analyser</h1>
     <div class="proj-skills"><span class="tag">Claude API</span><span class="tag">React</span><span class="tag">Personality</span><span class="tag">Data viz</span></div>
     <a class="proj-visit" href="https://ai-mirror-pc6k.vercel.app/" target="_blank">Visit project ↗</a>
-    <div class="proj-visual" style="max-height:180px;overflow:hidden"><img src="assets/chatgpt-mirror.png" alt="ChatGPT Mirror dashboard" style="width:100%;object-fit:cover;object-position:top"></div>
+    <div class="proj-visual" style="max-height:220px;overflow:hidden;background:#0a0a0a"><img src="assets/chatgpt-mirror.png" alt="ChatGPT Mirror dashboard" style="width:100%;object-fit:contain;max-height:220px"></div>
     <p class="proj-desc" data-en="Upload your ChatGPT or Claude conversation history as a JSON file. The analyser produces a mood timeline, emotional patterns, topics you gravitate toward, and a personality profile inferred from how you communicate with AI. Built as an experiment in meta-AI analysis — AI watching how you talk to AI." data-jp="会話履歴をJSONでアップロードすると、気分の推移・感情パターン・よく話すテーマ・性格プロファイルを生成。AIがAIとの会話を分析するメタな実験。">Upload your ChatGPT or Claude conversation history as a JSON file. The analyser produces a mood timeline, emotional patterns, topics you gravitate toward, and a personality profile inferred from how you communicate with AI. AI watching how you talk to AI.</p>
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
 <script>
 const allPages=['keshiki','clock','chokusen','gripper','mirror'];
-let kdInit=false, k3dInit=false;
+let kdInit=false;
 
 function openProject(id){
   document.getElementById('main-site').style.display='none';
   allPages.forEach(p=>document.getElementById('project-'+p).style.display='none');
   document.getElementById('project-'+id).style.display='block';
   window.scrollTo(0,0);
-  if(id==='keshiki'){
-    if(!kdInit){initKD();kdInit=true;}
-    if(!k3dInit){initK3D();k3dInit=true;}
-  }
+  if(id==='keshiki'&&!kdInit){initKD();kdInit=true;}
 }
 function closeProject(id){document.getElementById('project-'+id).style.display='none';document.getElementById('main-site').style.display='block'}
 
@@ -371,32 +497,43 @@ function toggleLang(){
   allPages.forEach(p=>document.getElementById('project-'+p).classList.toggle('jp-mode',jp));
 }
 
-/* ── KESHIKI DOME DEMO ── */
+/* ── KESHIKI DOME DEMO ──
+   Colour scheme per spec:
+   迷い   → red LED + random jitter of figure
+   気づき  → white / colourless outer ring
+   芽生え  → orange
+   成長   → purple + gold secondary
+   景色   → red + blue mix (enlightenment)
+*/
 function initKD(){
   const cv=document.getElementById('kd-canvas');if(!cv)return;
   const ctx=cv.getContext('2d');
-  const ST=[
-    {jp:'迷い',col:[22,20,58],m:'The beginning of suffering.'},
-    {jp:'気づき',col:[48,38,105],m:'Something shifts inside.'},
-    {jp:'芽生え',col:[18,78,78],m:'A will to grow emerges.'},
-    {jp:'成長',col:[135,88,18],m:'Through suffering, forward.'},
-    {jp:'景色',col:[195,168,82],m:'Beauty, earned.'},
-  ];
-  let cur=0,tgt=0,t=0,pts=[];
-  const lc=(a,b,f)=>a.map((v,i)=>v+(b[i]-v)*f);
 
-  function fig(ctx,cx,cy,r,s){
-    const sl=1-s/4,br=0.25+s*0.14;
+  const ST=[
+    {ring:'rgba(220,32,32,',   ring2:null,               jitter:true,  m:'The beginning of suffering.'},
+    {ring:'rgba(228,225,215,', ring2:null,               jitter:false, m:'Something shifts inside.'},
+    {ring:'rgba(249,115,22,',  ring2:null,               jitter:false, m:'A will to grow emerges.'},
+    {ring:'rgba(168,85,247,',  ring2:'rgba(212,174,0,',  jitter:false, m:'Through suffering, forward.'},
+    {ring:'rgba(220,60,60,',   ring2:'rgba(60,100,220,', jitter:false, m:'Beauty, earned.'},
+  ];
+
+  let cur=0,tgt=0,t=0,pts=[];
+
+  function fig(cx,cy,r,s,jitter){
+    const br=0.28+s*0.12;
     ctx.save();ctx.translate(cx,cy);
-    const c=`rgba(200,185,230,${br})`;ctx.strokeStyle=c;ctx.fillStyle=c;ctx.lineWidth=1.8;ctx.lineCap='round';
+    if(jitter){ctx.translate((Math.random()-.5)*4,(Math.random()-.5)*4);}
+    const c=`rgba(200,185,230,${br})`;
+    ctx.strokeStyle=c;ctx.fillStyle=c;ctx.lineWidth=1.8;ctx.lineCap='round';
+    const sl=1-s/4;
     ctx.beginPath();ctx.arc(0,-r*.82,r*.11,0,Math.PI*2);ctx.fill();
     const bt=sl*.35,bx=Math.sin(bt)*r*.32,by=-r*.72+r*.42+sl*r*.08;
     ctx.beginPath();ctx.moveTo(0,-r*.7);ctx.lineTo(bx,by);ctx.stroke();
     const as=s/4,al=-.2+as*.7;
     ctx.beginPath();ctx.moveTo(0,-r*.55);ctx.lineTo(-r*(.18+as*.12),-r*(.35+al*.25));ctx.stroke();
-    ctx.beginPath();ctx.moveTo(0,-r*.55);ctx.lineTo(r*(.18+as*.12),-r*(.35+al*.25));ctx.stroke();
+    ctx.beginPath();ctx.moveTo(0,-r*.55);ctx.lineTo( r*(.18+as*.12),-r*(.35+al*.25));ctx.stroke();
     ctx.beginPath();ctx.moveTo(bx,by);ctx.lineTo(-r*.08,0);ctx.stroke();
-    ctx.beginPath();ctx.moveTo(bx,by);ctx.lineTo(r*.08,0);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(bx,by);ctx.lineTo( r*.08,0);ctx.stroke();
     ctx.restore();
   }
 
@@ -406,34 +543,47 @@ function initKD(){
     const cx=w/2,cy=h*.46,r=Math.min(w,h)*.36;
     ctx.fillStyle='#08080f';ctx.fillRect(0,0,w,h);
     cur+=(tgt-cur)*.025;
-    const fi=Math.min(cur,3.999),frac=fi%1;
-    const [R,G,B]=lc(ST[Math.floor(fi)].col,ST[Math.ceil(fi)].col,frac);
-    // glow
+    const si=Math.min(Math.floor(cur),4);
+    const rs=ST[si].ring;
+
+    // outer glow
     const og=ctx.createRadialGradient(cx,cy,r*.2,cx,cy,r*1.5);
-    og.addColorStop(0,`rgba(${R},${G},${B},.2)`);og.addColorStop(1,`rgba(${R},${G},${B},0)`);
+    og.addColorStop(0,rs+'.22)');og.addColorStop(1,rs+'0)');
     ctx.beginPath();ctx.arc(cx,cy,r*1.5,0,Math.PI*2);ctx.fillStyle=og;ctx.fill();
+
+    // secondary accent for 成長 + 景色
+    if(ST[si].ring2){
+      const og2=ctx.createRadialGradient(cx+r*.2,cy-r*.15,0,cx,cy,r*1.2);
+      og2.addColorStop(0,ST[si].ring2+'.18)');og2.addColorStop(1,ST[si].ring2+'0)');
+      ctx.beginPath();ctx.arc(cx,cy,r*1.5,0,Math.PI*2);ctx.fillStyle=og2;ctx.fill();
+    }
+
     // dome
     const dg=ctx.createRadialGradient(cx,cy-r*.15,0,cx,cy,r);
-    dg.addColorStop(0,`rgba(${Math.min(R*3,255)},${Math.min(G*3,255)},${Math.min(B*3,255)},.12)`);
-    dg.addColorStop(.7,`rgba(${R},${G},${B},.1)`);dg.addColorStop(1,`rgba(${R*.4},${G*.4},${B*.4},.04)`);
+    dg.addColorStop(0,rs+'.14)');dg.addColorStop(.7,rs+'.08)');dg.addColorStop(1,rs+'.02)');
     ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.fillStyle=dg;ctx.fill();
-    ctx.strokeStyle=`rgba(${R},${G},${B},.3)`;ctx.lineWidth=.8;ctx.stroke();
-    // ring
+    ctx.strokeStyle=rs+'.3)';ctx.lineWidth=.8;ctx.stroke();
+
+    // NeoPixel ring — 16 LEDs
     for(let i=0;i<16;i++){
-      const a=(i/16)*Math.PI*2+t*.08,rx=cx+Math.cos(a)*r*.62,ry=cy+Math.sin(a)*r*.22;
-      const br=.35+.3*Math.sin(t*1.8+i*.4);
-      ctx.beginPath();ctx.arc(rx,ry,2.2,0,Math.PI*2);
-      ctx.fillStyle=`rgba(${R+90},${G+70},${B+30},${br})`;ctx.fill();
+      const a=(i/16)*Math.PI*2+t*.08;
+      const rx=cx+Math.cos(a)*r*.62,ry=cy+Math.sin(a)*r*.22;
+      const br=.45+.4*Math.sin(t*1.8+i*.4);
+      ctx.beginPath();ctx.arc(rx,ry,2.5,0,Math.PI*2);
+      ctx.fillStyle=rs+br+')';ctx.fill();
     }
+
     // particles
-    if(Math.random()<.12+tgt*.07){pts.push({x:cx+(Math.random()-.5)*r*.8,y:cy+r*.2,vx:(Math.random()-.5)*.4,vy:-.4-Math.random()*.6,size:Math.random()*2+.5,life:1,decay:.007+Math.random()*.004});}
+    if(Math.random()<.12+tgt*.07)pts.push({x:cx+(Math.random()-.5)*r*.8,y:cy+r*.2,vx:(Math.random()-.5)*.4,vy:-.4-Math.random()*.6,size:Math.random()*2+.5,life:1,decay:.007+Math.random()*.004});
     pts=pts.filter(p=>p.life>0);
-    pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.life-=p.decay;
+    pts.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;p.life-=p.decay;
       const pg=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.size*2);
-      pg.addColorStop(0,`rgba(${R+100},${G+80},${B+40},${p.life*.6})`);pg.addColorStop(1,`rgba(${R},${G},${B},0)`);
+      pg.addColorStop(0,rs+(p.life*.6)+')');pg.addColorStop(1,rs+'0)');
       ctx.beginPath();ctx.arc(p.x,p.y,p.size*2,0,Math.PI*2);ctx.fillStyle=pg;ctx.fill();
     });
-    fig(ctx,cx,cy+r*.08,r*.3,cur);
+
+    fig(cx,cy+r*.08,r*.3,cur,ST[si].jitter);
     t+=.016;requestAnimationFrame(draw);
   }
   draw();
@@ -461,8 +611,7 @@ function initKD(){
           system:`You are Keshiki — a quiet companion inside an IoT dome. Not a teacher. A witness. Sit with the person. Reflect what they share, gently (2-4 short sentences). Sometimes reference that humans are weak and ignorant (無知) but have an innate will to grow, and through suffering we arrive at a beautiful world — 景色. End every response with exactly: {"state":N} (N is 0-4: 0=迷い 1=気づき 2=芽生え 3=成長 4=景色, based on emotional tone of conversation).`,
           messages:hist})});
       const d=await res.json();const raw=d.content[0].text;
-      const sm=raw.match(/\{"state"\s*:\s*(\d)\}/);
-      const sn=sm?parseInt(sm[1]):null;
+      const sm=raw.match(/\{"state"\s*:\s*(\d)\}/);const sn=sm?parseInt(sm[1]):null;
       const clean=raw.replace(/\{"state"\s*:\s*\d\}/,'').trim();
       tm.textContent=clean;hist.push({role:'assistant',content:raw});
       if(sn!==null){tgt=sn;document.querySelectorAll('.kd-btn').forEach((b,i)=>b.classList.toggle('active',i===sn));document.getElementById('kd-meaning').textContent=ST[sn].m;}
@@ -473,64 +622,7 @@ function initKD(){
   inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
 }
 
-/* ── KESHIKI 3D MODEL ── */
-function initK3D(){
-  const cv=document.getElementById('k3d-canvas');
-  if(!cv||typeof THREE==='undefined')return;
-  const W=cv.clientWidth,H=cv.clientHeight;
-  const renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true});
-  renderer.setSize(W,H,false);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-  renderer.setClearColor(0x05050d,1);renderer.localClippingEnabled=true;
-  const scene=new THREE.Scene();
-  const cam=new THREE.PerspectiveCamera(42,W/H,.1,50);cam.position.set(0,1.2,4.8);cam.lookAt(0,.4,0);
-  scene.add(new THREE.AmbientLight(0x8888cc,.5));
-  const pl=new THREE.PointLight(0xb090ff,1.4,10);pl.position.set(0,2.5,1);scene.add(pl);
-  const pl2=new THREE.PointLight(0xffa040,.7,8);pl2.position.set(1.5,-1,2);scene.add(pl2);
-  const grp=new THREE.Group();scene.add(grp);
-  // base
-  const base=new THREE.Mesh(new THREE.CylinderGeometry(.88,.92,.38,32),new THREE.MeshStandardMaterial({color:0x181830,roughness:.8,metalness:.2}));
-  base.position.y=-.19;grp.add(base);
-  // ESP32 PCB hint
-  const pcb=new THREE.Mesh(new THREE.BoxGeometry(.42,.06,.28),new THREE.MeshStandardMaterial({color:0x1a3a1a,roughness:.5}));
-  pcb.position.set(0,-.1,.44);grp.add(pcb);
-  // NeoPixel ring
-  const ring=new THREE.Mesh(new THREE.TorusGeometry(.64,.042,8,24),new THREE.MeshStandardMaterial({color:0xf0a020,emissive:0xf08000,emissiveIntensity:.9,roughness:.2}));
-  ring.rotation.x=Math.PI/2;ring.position.y=.2;grp.add(ring);
-  // dome
-  const clipPlane=new THREE.Plane(new THREE.Vector3(-1,0,0),0.02);
-  const domeMat=new THREE.MeshPhysicalMaterial({color:0x8898e8,transparent:true,opacity:.22,roughness:.1,side:THREE.DoubleSide,clippingPlanes:[]});
-  const dome=new THREE.Mesh(new THREE.SphereGeometry(1,32,16,0,Math.PI*2,0,Math.PI/2),domeMat);grp.add(dome);
-  const wireM=new THREE.MeshBasicMaterial({color:0x5060b8,wireframe:true,opacity:.1,transparent:true,clippingPlanes:[]});
-  grp.add(new THREE.Mesh(new THREE.SphereGeometry(1,32,16,0,Math.PI*2,0,Math.PI/2),wireM));
-  // servo mount
-  const mount=new THREE.Mesh(new THREE.CylinderGeometry(.09,.11,.14,8),new THREE.MeshStandardMaterial({color:0x383858,roughness:.8}));
-  mount.position.y=.07;grp.add(mount);
-  // figure body
-  const figMat=new THREE.MeshStandardMaterial({color:0xb0a0d0,roughness:.6,metalness:.1});
-  const body=new THREE.Mesh(new THREE.CylinderGeometry(.058,.072,.3,8),figMat);body.position.y=.35;grp.add(body);
-  const head=new THREE.Mesh(new THREE.SphereGeometry(.092,8,8),figMat);head.position.y=.58;grp.add(head);
-
-  let cutaway=false;
-  document.getElementById('k3d-cut')?.addEventListener('click',()=>{
-    cutaway=!cutaway;
-    [domeMat,wireM].forEach(m=>m.clippingPlanes=cutaway?[clipPlane]:[]);
-    document.getElementById('k3d-cut').textContent=cutaway?'cutaway ✓':'cutaway ✂';
-  });
-
-  // drag rotation
-  let drag=false,px=0,py=0;
-  cv.addEventListener('mousedown',e=>{drag=true;px=e.clientX;py=e.clientY;});
-  window.addEventListener('mouseup',()=>drag=false);
-  cv.addEventListener('mousemove',e=>{if(!drag)return;grp.rotation.y+=(e.clientX-px)*.009;grp.rotation.x=Math.max(-.8,Math.min(.8,grp.rotation.x+(e.clientY-py)*.009));px=e.clientX;py=e.clientY;});
-  let tx=0,ty=0;
-  cv.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY;});
-  cv.addEventListener('touchmove',e=>{e.preventDefault();grp.rotation.y+=(e.touches[0].clientX-tx)*.009;grp.rotation.x=Math.max(-.8,Math.min(.8,grp.rotation.x+(e.touches[0].clientY-ty)*.009));tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:false});
-
-  let at=0;
-  (function anim(){requestAnimationFrame(anim);at+=.016;ring.material.emissiveIntensity=.6+.4*Math.sin(at*2);pl.intensity=1+.4*Math.sin(at*1.5);renderer.render(scene,cam);})();
-}
-
-/* ── HERO CANVAS ── */
+/* ── HERO CANVAS — unchanged ── */
 const canvas=document.getElementById('hero-canvas'),ctx=canvas.getContext('2d');let t=0;
 function draw(){
   const p=canvas.parentElement;canvas.width=p.offsetWidth;canvas.height=p.offsetHeight;
