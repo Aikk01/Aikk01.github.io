@@ -57,7 +57,7 @@ nav{display:flex;justify-content:flex-end;align-items:center;padding:1.1rem 2rem
 .trashy-card:hover{border-color:rgba(200,88,69,0.3);transform:translateY(-2px)}
 .trashy-title{font-size:13px;font-weight:500;margin-bottom:0.65rem}
 .trashy-visual{margin-top:0.5rem;border-radius:2px;overflow:hidden;border:0.5px solid rgba(237,234,227,0.08);max-height:130px}
-.trashy-visual img{width:100%;display:block;opacity:0.9;object-fit:cover;object-position:top}
+.trashy-visual img{width:100%;display:block;opacity:0.9;object-fit:contain;background:#0a0a0a}
 .feat-thumb img{width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(0.4);transition:filter 0.45s ease;display:block}
 .feat-card:hover .feat-thumb img{filter:brightness(1)}
 footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2rem}
@@ -202,8 +202,8 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
         <svg style="display:none;width:100%;height:100%" viewBox="0 0 260 148" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="148" fill="#0d0d0b"/><circle cx="92" cy="74" r="52" fill="rgba(237,234,227,0.02)" stroke="rgba(237,234,227,0.1)" stroke-width="0.6"/><circle cx="92" cy="74" r="55" fill="none" stroke="rgba(237,234,227,0.15)" stroke-width="7" stroke-dasharray="9,8.45"><animateTransform attributeName="transform" type="rotate" from="0 92 74" to="360 92 74" dur="20s" repeatCount="indefinite"/></circle><g stroke="rgba(237,234,227,0.07)" stroke-width="0.6"><line x1="92" y1="46" x2="92" y2="102"/><line x1="64" y1="74" x2="120" y2="74"/></g><circle cx="92" cy="74" r="4" fill="rgba(237,234,227,0.3)"/><circle cx="188" cy="50" r="28" fill="rgba(237,234,227,0.02)" stroke="rgba(237,234,227,0.08)" stroke-width="0.5"/><circle cx="188" cy="50" r="30" fill="none" stroke="rgba(237,234,227,0.12)" stroke-width="5" stroke-dasharray="7,6.28"><animateTransform attributeName="transform" type="rotate" from="0 188 50" to="-360 188 50" dur="10s" repeatCount="indefinite"/></circle><circle cx="188" cy="50" r="4" fill="rgba(237,234,227,0.25)"/><circle cx="205" cy="108" r="18" fill="rgba(237,234,227,0.02)" stroke="rgba(237,234,227,0.08)" stroke-width="0.5"/><circle cx="205" cy="108" r="20" fill="none" stroke="rgba(237,234,227,0.1)" stroke-width="4" stroke-dasharray="5,5.65"><animateTransform attributeName="transform" type="rotate" from="0 205 108" to="360 205 108" dur="6s" repeatCount="indefinite"/></circle><circle cx="205" cy="108" r="3" fill="rgba(237,234,227,0.2)"/></svg>
       </div>
       <div class="feat-body"><div class="feat-head"><div class="feat-num-wrap"><span class="feat-num">02</span><span class="tag-wip">WIP</span><span class="tag-personal">Personal</span></div><i class="ti ti-arrow-up-right feat-arrow"></i></div>
-        <p class="feat-title" data-en="Mechanical Clock" data-jp="機械時計">Mechanical Clock</p>
-        <p class="feat-desc" data-en="Fully 3D-printed mechanical clock in translucent PETG." data-jp="トランスルーセントPETGで印刷した機械時計">Fully 3D-printed mechanical clock in translucent PETG.</p>
+        <p class="feat-title" data-en="流体力学時計" data-jp="流体力学時計">流体力学時計</p>
+        <p class="feat-desc" data-en="Expressing the shared phenomenon between mechanical escapement and fluid vortex shedding." data-jp="機械式エスケープメントと流体の渦放出の共通点を表現">機械式エスケープメントと流体の渦放出の共通点を表現</p>
         <div class="feat-tags"><span class="tag">3D print</span></div>
       </div>
     </a>
@@ -330,7 +330,7 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
   <div class="proj-nav"><button class="proj-back" onclick="closeProject('clock')">← Back</button><button class="lang-btn" id="lang-btn-clock" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button></div>
   <div class="proj-body">
     <p class="proj-label" data-en="Featured Projects — Personal" data-jp="主要作品 — 個人制作">Featured Projects — Personal</p>
-    <h1 class="proj-title" data-en="Mechanical Clock" data-jp="機械時計">Mechanical Clock</h1>
+    <h1 class="proj-title" data-en="流体力学時計" data-jp="流体力学時計">流体力学時計</h1>
     <div class="proj-skills"><span class="tag">3D printing</span><span class="tag">Fusion 360</span><span class="tag">Laser cutting</span><span class="tag">Acrylic</span><span class="tag">Mechanical assembly</span></div>
     <p class="proj-wip" data-en="Work in progress" data-jp="制作中">Work in progress</p>
 
@@ -348,48 +348,171 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
 
     <!-- Concept -->
     <p class="proj-desc" data-en="Taking inspiration from mechanical escapement and fluid vortex shedding having similarities in phenomenon — both convert a steady input into a precise, rhythmic output. The product purely exists to share this message." data-jp="機械式エスケープメントと流体の渦放出という現象的類似性にインスピレーションを得ています。どちらも定常入力を精密なリズミカルな出力に変換します。このプロダクトはそのメッセージを伝えるためだけに存在します。">Taking inspiration from mechanical escapement and fluid vortex shedding having similarities in phenomenon — both convert a steady input into a precise, rhythmic output. The product purely exists to share this message.</p>
-    <p class="proj-desc" data-en="The escape wheel teeth are redrawn as vortex arc curves, and the pallet fork is redesigned as a von Kármán shedding body with spiral wake arms. The mechanism is functionally identical to the original — only the geometry changes." data-jp="エスケープホイールの歯をボルテックス弧曲線として再描画し、パレットフォークをスパイラルウェイクアームを持つフォン・カルマン放出体として再設計。機構は元のものと機能的に同一で、変わるのは形状のみ。">The escape wheel teeth are redrawn as vortex arc curves, and the pallet fork is redesigned as a von Kármán shedding body with spiral wake arms. The mechanism is functionally identical to the original — only the geometry changes.</p>
+    <p class="proj-desc" data-en="The escape wheel teeth are redrawn as vortex arc curves, and the pallet fork is redesigned as a von Kármán shedding body with spiral wake arms. The mechanism is functionally identical to the original — only the geometry changes." data-jp="エスケープホイールの歯をボルテックス弧曲線として再描画し、パレットフォークをスパイラルウェイクアームを持つフォン・カルマン放出体として再設計。機構は元のものと機能的に同一で、変わるのは形状のみです。">The escape wheel teeth are redrawn as vortex arc curves, and the pallet fork is redesigned as a von Kármán shedding body with spiral wake arms. The mechanism is functionally identical to the original — only the geometry changes.</p>
 
     <!-- Moiré SVG -->
-    <p class="proj-section-label" data-en="Moiré disc face — expected appearance" data-jp="モアレ文字盤 — 完成イメージ">Moiré disc face — expected appearance</p>
+    <p class="proj-section-label" data-en="Moiré disc face — interactive explorer" data-jp="モアレ文字盤 — インタラクティブ">Moiré disc face — interactive explorer</p>
     <p class="proj-desc" data-en="Three concentric frosted acrylic discs, laser-cut, each carrying a parametric Archimedean spiral pattern. Arm counts 3, 4, 5 (a Pythagorean triple) were chosen because adjacent counts produce clean single-petal moiré interference.<br><br>Hours vs Minutes: |4−3| = 1 zone → slow single-petal rotation<br>Minutes vs Seconds: |5−4| = 1 zone → same<br>Hours vs Seconds: |5−3| = 2 zones → figure-8 when all three overlap" data-jp="レーザーカットされた3枚の同心フロストアクリルディスク。アーム数3・4・5（ピタゴラス数）を選択 — 隣接する数同士がクリーンな一葉モアレ干渉を生みます。<br><br>時 vs 分：|4-3|=1ゾーン → ゆっくりした一葉回転<br>分 vs 秒：|5-4|=1ゾーン → 同上<br>時 vs 秒：|5-3|=2ゾーン → 全重合時に8字型">Three concentric frosted acrylic discs, laser-cut, each carrying a parametric Archimedean spiral pattern. Arm counts 3, 4, 5 (a Pythagorean triple) were chosen because adjacent counts produce clean single-petal moiré interference.<br><br>Hours vs Minutes: |4−3| = 1 zone → slow single-petal rotation<br>Minutes vs Seconds: |5−4| = 1 zone → same<br>Hours vs Seconds: |5−3| = 2 zones → figure-8 when all three overlap</p>
-    <div class="proj-visual">
-      <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
-        <rect width="700" height="300" fill="#080808"/>
-        <g transform="translate(350,150)">
-          <g stroke="rgba(237,234,211,0.28)" stroke-width="0.65" fill="none" opacity="0.55">
-            <circle cx="0" cy="0" r="128" stroke-opacity="0.12"/>
-            <path d="M0,-128 Q32,-88 52,-46 Q72,-4 50,36 Q28,76 0,86" stroke-dasharray="1,5"/>
-            <path d="M0,-128 Q-32,-88 -52,-46 Q-72,-4 -50,36 Q-28,76 0,86" stroke-dasharray="1,5"/>
-            <path d="M110,-66 Q76,-30 68,16 Q60,62 28,88" stroke-dasharray="1,5"/>
-            <path d="M-110,-66 Q-76,-30 -68,16 Q-60,62 -28,88" stroke-dasharray="1,5"/>
-            <path d="M68,108 Q26,84 -2,54" stroke-dasharray="1,5"/>
-          </g>
-          <g stroke="rgba(237,234,211,0.45)" stroke-width="0.8" fill="none" opacity="0.75">
-            <circle cx="0" cy="0" r="88" stroke-opacity="0.15"/>
-            <path d="M0,-88 Q22,-44 0,0 Q-22,-44 0,-88" stroke-dasharray="2,5"/>
-            <path d="M88,0 Q44,22 0,0 Q44,-22 88,0" stroke-dasharray="2,5"/>
-            <path d="M0,88 Q22,44 0,0 Q-22,44 0,88" stroke-dasharray="2,5"/>
-            <path d="M-88,0 Q-44,22 0,0 Q-44,-22 -88,0" stroke-dasharray="2,5"/>
-          </g>
-          <g stroke="rgba(237,234,211,0.65)" stroke-width="1" fill="none">
-            <circle cx="0" cy="0" r="48" stroke-opacity="0.2"/>
-            <path d="M0,-48 Q18,-16 28,20 Q10,44 -14,42" stroke-dasharray="3,5"/>
-            <path d="M28,20 Q-4,38 -28,20 Q-34,-8 -20,-34" stroke-dasharray="3,5"/>
-            <path d="M-20,-34 Q4,-50 0,-48" stroke-dasharray="3,5"/>
-          </g>
-          <!-- Single-petal interference zone -->
-          <ellipse cx="0" cy="-58" rx="24" ry="40" fill="rgba(237,234,211,0.055)" stroke="rgba(237,234,211,0.2)" stroke-width="0.6"/>
-          <circle cx="0" cy="0" r="5" fill="rgba(237,234,211,0.15)" stroke="rgba(237,234,211,0.4)" stroke-width="0.5"/>
-        </g>
-        <text x="40" y="22" font-family="monospace" font-size="8.5" fill="rgba(237,234,211,0.35)" letter-spacing="0.1em">MOIRE INTERFERENCE</text>
-        <text x="40" y="36" font-family="monospace" font-size="8" fill="rgba(237,234,211,0.22)" letter-spacing="0.08em">3 · 4 · 5 ARM ARCHIMEDEAN SPIRALS — HOURS / MINUTES / SECONDS</text>
-        <text x="40" y="278" font-family="monospace" font-size="8" fill="rgba(237,234,211,0.18)" letter-spacing="0.08em">|4−3|=1 zone → single petal  ·  |5−4|=1 zone → same  ·  |5−3|=2 zones → figure-8</text>
-      </svg>
+    <div id="vd-wrap" style="border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;overflow:hidden;margin-bottom:2rem;background:#07070a;padding:24px 18px">
+      <style>
+        #vd-wrap .vd-h1{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#333;margin-bottom:20px}
+        #vd-wrap .vd-layout{display:flex;gap:18px;align-items:flex-start}
+        #vd-wrap .vd-disc-col{display:flex;flex-direction:column;gap:10px;flex-shrink:0}
+        #vd-wrap .vd-tag{font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+        #vd-wrap .vd-combined{flex:1}
+        #vd-wrap canvas{display:block;border-radius:50%}
+        #vd-wrap #vd-combined{border-radius:50%;margin:0 auto;display:block}
+        #vd-wrap .vd-vis-row{display:flex;gap:8px;justify-content:center;margin-top:10px}
+        #vd-wrap .vd-vis-btn{font-size:10px;padding:4px 10px;border-radius:4px;cursor:pointer;border:0.5px solid;background:none;letter-spacing:.04em;transition:all .15s}
+        #vd-wrap .vd-vis-btn.on{opacity:1}
+        #vd-wrap .vd-vis-btn.off{opacity:.3}
+        #vd-wrap .vd-anim-row{display:flex;gap:8px;margin-top:10px;align-items:center;justify-content:center}
+        #vd-wrap .vd-btn{background:none;border:0.5px solid #1e2a12;color:#4a6a28;padding:6px 12px;border-radius:5px;font-size:11px;cursor:pointer;letter-spacing:.04em;transition:all .15s}
+        #vd-wrap .vd-btn:hover,#vd-wrap .vd-btn.active{background:#141e0c;color:#90c050;border-color:#3a5820}
+        #vd-wrap .vd-sep{width:1px;height:16px;background:#1a1a1a}
+        #vd-wrap .vd-controls{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+        #vd-wrap .vd-ctrl-box{background:#0c0c0f;border-radius:7px;padding:11px 13px;border:0.5px solid #141414}
+        #vd-wrap .vd-ctrl-title{font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px}
+        #vd-wrap .vd-ctrl-row{display:flex;align-items:center;margin-bottom:6px}
+        #vd-wrap .vd-ctrl-row label{font-size:11px;color:#4a4a4a;width:44px;flex-shrink:0}
+        #vd-wrap .vd-ctrl-row input[type=range]{flex:1;margin:0 7px;-webkit-appearance:none;height:2px;border-radius:1px;outline:none;cursor:pointer}
+        #vd-wrap .vd-ctrl-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;border-radius:50%;cursor:pointer}
+        #vd-wrap .vd-ctrl-row .vd-v{font-size:11px;color:#666;width:26px;text-align:right}
+        #vd-wrap .rh{background:#2a1a08}
+        #vd-wrap .rh::-webkit-slider-thumb{background:#b07830}
+        #vd-wrap .rm{background:#081828}
+        #vd-wrap .rm::-webkit-slider-thumb{background:#2878c0}
+        #vd-wrap .rs{background:#0a180a}
+        #vd-wrap .rs::-webkit-slider-thumb{background:#50a030}
+        #vd-wrap .vd-hint{font-size:10px;color:#2a2a2a;text-align:center;margin-top:14px;line-height:1.7}
+      </style>
+
+      <p class="vd-h1">Vortex Disc Face — Pattern Explorer</p>
+      <div class="vd-layout">
+        <div class="vd-disc-col">
+          <div><div class="vd-tag" style="color:#8a6020">Hours</div><canvas id="vd-c-h" width="130" height="130"></canvas></div>
+          <div><div class="vd-tag" style="color:#1e5888">Minutes</div><canvas id="vd-c-m" width="130" height="130"></canvas></div>
+          <div><div class="vd-tag" style="color:#3a6820">Seconds</div><canvas id="vd-c-s" width="130" height="130"></canvas></div>
+        </div>
+        <div class="vd-combined">
+          <canvas id="vd-combined" width="380" height="380"></canvas>
+          <div class="vd-vis-row">
+            <button class="vd-vis-btn on" id="vd-vis-h" style="color:#c08830;border-color:#6a4010">hours</button>
+            <button class="vd-vis-btn on" id="vd-vis-m" style="color:#3090e0;border-color:#0e3868">minutes</button>
+            <button class="vd-vis-btn on" id="vd-vis-s" style="color:#60c040;border-color:#1e4810">seconds</button>
+          </div>
+          <div class="vd-anim-row">
+            <button class="vd-btn" id="vd-play">&#9654; animate</button>
+            <div class="vd-sep"></div>
+            <button class="vd-btn active" id="vd-sp100" data-sp="100">100×</button>
+            <button class="vd-btn" id="vd-sp500" data-sp="500">500×</button>
+            <button class="vd-btn" id="vd-sp2000" data-sp="2000">2000×</button>
+          </div>
+        </div>
+      </div>
+      <div class="vd-controls">
+        <div class="vd-ctrl-box">
+          <div class="vd-ctrl-title" style="color:#6a4010">Hours — slowest</div>
+          <div class="vd-ctrl-row"><label>arms</label><input class="rh" type="range" id="vd-ha" min="1" max="8" value="3" step="1"><span class="vd-v" id="vd-ha-v">3</span></div>
+          <div class="vd-ctrl-row"><label>turns</label><input class="rh" type="range" id="vd-ht" min="1" max="7" value="3" step="0.5"><span class="vd-v" id="vd-ht-v">3</span></div>
+          <div class="vd-ctrl-row"><label>weight</label><input class="rh" type="range" id="vd-hw" min="0.4" max="3.5" value="1.6" step="0.1"><span class="vd-v" id="vd-hw-v">1.6</span></div>
+        </div>
+        <div class="vd-ctrl-box">
+          <div class="vd-ctrl-title" style="color:#0e3060">Minutes — medium</div>
+          <div class="vd-ctrl-row"><label>arms</label><input class="rm" type="range" id="vd-ma" min="1" max="8" value="4" step="1"><span class="vd-v" id="vd-ma-v">4</span></div>
+          <div class="vd-ctrl-row"><label>turns</label><input class="rm" type="range" id="vd-mt" min="1" max="7" value="4" step="0.5"><span class="vd-v" id="vd-mt-v">4</span></div>
+          <div class="vd-ctrl-row"><label>weight</label><input class="rm" type="range" id="vd-mw" min="0.4" max="3.5" value="1.0" step="0.1"><span class="vd-v" id="vd-mw-v">1.0</span></div>
+        </div>
+        <div class="vd-ctrl-box">
+          <div class="vd-ctrl-title" style="color:#1e4010">Seconds — fastest</div>
+          <div class="vd-ctrl-row"><label>arms</label><input class="rs" type="range" id="vd-sa" min="1" max="8" value="5" step="1"><span class="vd-v" id="vd-sa-v">5</span></div>
+          <div class="vd-ctrl-row"><label>turns</label><input class="rs" type="range" id="vd-st" min="1" max="7" value="5" step="0.5"><span class="vd-v" id="vd-st-v">5</span></div>
+          <div class="vd-ctrl-row"><label>weight</label><input class="rs" type="range" id="vd-sw" min="0.4" max="3.5" value="0.6" step="0.1"><span class="vd-v" id="vd-sw-v">0.6</span></div>
+        </div>
+      </div>
+      <p class="vd-hint">arms = spiral branches &nbsp;·&nbsp; turns = windings per arm &nbsp;·&nbsp; weight = line thickness<br>the moiré interference in the combined view is what you will see when the laser-cut acrylic discs overlap</p>
     </div>
 
-    <!-- Mechanism SVG -->
-    <p class="proj-section-label" data-en="Mechanism redesign — expected geometry" data-jp="機構の再設計 — 完成イメージ">Mechanism redesign — expected geometry</p>
+    <script>
+    (function(){
+      const vdS={
+        h:{a:3,t:3,w:1.6,angle:0,vis:true},
+        m:{a:4,t:4,w:1.0,angle:0,vis:true},
+        s:{a:5,t:5,w:0.6,angle:0,vis:true},
+        playing:false,speed:100,lastTs:null,rafId:null
+      };
+      function vdSpiral(ctx,cx,cy,rIn,rOut,arms,turns,lw,color,angle){
+        const STEPS=420;ctx.strokeStyle=color;ctx.lineWidth=lw;ctx.lineCap='round';
+        for(let arm=0;arm<arms;arm++){
+          const off=angle+(2*Math.PI/arms)*arm;ctx.beginPath();
+          for(let i=0;i<=STEPS;i++){const t=i/STEPS,th=t*turns*2*Math.PI+off,r=rIn+(rOut-rIn)*t;const x=cx+r*Math.cos(th),y=cy+r*Math.sin(th);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}
+          ctx.stroke();
+        }
+      }
+      function vdRing(ctx,cx,cy,r,c){ctx.beginPath();ctx.arc(cx,cy,r,0,2*Math.PI);ctx.strokeStyle=c;ctx.lineWidth=0.5;ctx.stroke();}
+      function vdSingle(id,disc,angle,color){
+        const c=document.getElementById(id);if(!c)return;const ctx=c.getContext('2d');
+        const w=c.width,h=c.height,cx=w/2,cy=h/2,rIn=w*.115,rOut=w*.455;
+        ctx.clearRect(0,0,w,h);ctx.fillStyle='#0c0c10';ctx.beginPath();ctx.arc(cx,cy,w/2,0,2*Math.PI);ctx.fill();
+        vdRing(ctx,cx,cy,rOut+3,'rgba(255,255,255,0.06)');vdRing(ctx,cx,cy,rIn-2,'rgba(255,255,255,0.06)');
+        vdSpiral(ctx,cx,cy,rIn,rOut,disc.a,disc.t,disc.w,color,angle);
+        ctx.beginPath();ctx.arc(cx,cy,3,0,2*Math.PI);ctx.fillStyle='rgba(255,255,255,0.15)';ctx.fill();
+      }
+      function vdCombined(){
+        const c=document.getElementById('vd-combined');if(!c)return;const ctx=c.getContext('2d');
+        const w=c.width,h=c.height,cx=w/2,cy=h/2,rIn=w*.115,rOut=w*.455;
+        ctx.clearRect(0,0,w,h);ctx.fillStyle='#060608';ctx.beginPath();ctx.arc(cx,cy,w/2,0,2*Math.PI);ctx.fill();
+        for(let i=1;i<=4;i++)vdRing(ctx,cx,cy,rIn+(rOut-rIn)*(i/4),'rgba(255,255,255,0.025)');
+        vdRing(ctx,cx,cy,rOut+4,'rgba(255,255,255,0.08)');vdRing(ctx,cx,cy,rIn-3,'rgba(255,255,255,0.08)');
+        if(vdS.h.vis)vdSpiral(ctx,cx,cy,rIn,rOut,vdS.h.a,vdS.h.t,vdS.h.w*1.4,'rgba(210,140,50,0.42)',vdS.h.angle);
+        if(vdS.m.vis)vdSpiral(ctx,cx,cy,rIn,rOut,vdS.m.a,vdS.m.t,vdS.m.w*1.1,'rgba(50,140,230,0.38)',vdS.m.angle);
+        if(vdS.s.vis)vdSpiral(ctx,cx,cy,rIn,rOut,vdS.s.a,vdS.s.t,vdS.s.w,'rgba(100,220,60,0.35)',vdS.s.angle);
+        ctx.beginPath();ctx.moveTo(cx,cy-rOut-14);ctx.lineTo(cx,cy-rOut-2);ctx.strokeStyle='rgba(220,180,60,0.7)';ctx.lineWidth=1.8;ctx.lineCap='round';ctx.stroke();
+        ctx.beginPath();ctx.arc(cx,cy,4,0,2*Math.PI);ctx.fillStyle='rgba(255,255,255,0.12)';ctx.fill();
+        const nS=((vdS.s.angle%(2*Math.PI))+2*Math.PI)%(2*Math.PI),nM=((vdS.m.angle%(2*Math.PI))+2*Math.PI)%(2*Math.PI),nH=((vdS.h.angle%(2*Math.PI))+2*Math.PI)%(2*Math.PI);
+        const ss=Math.floor(nS/(2*Math.PI)*60),mm=Math.floor(nM/(2*Math.PI)*60),hh=Math.floor(nH/(2*Math.PI)*12);
+        ctx.fillStyle='rgba(255,255,255,0.12)';ctx.font='10px monospace';ctx.textAlign='center';
+        ctx.fillText(String(hh).padStart(2,'0')+':'+String(mm).padStart(2,'0')+':'+String(ss).padStart(2,'0'),cx,h-14);
+      }
+      function vdRender(){
+        vdSingle('vd-c-h',vdS.h,vdS.h.angle,'rgba(210,140,50,0.85)');
+        vdSingle('vd-c-m',vdS.m,vdS.m.angle,'rgba(50,140,230,0.85)');
+        vdSingle('vd-c-s',vdS.s,vdS.s.angle,'rgba(100,220,60,0.85)');
+        vdCombined();
+      }
+      function vdFrame(ts){
+        if(!vdS.playing)return;if(vdS.lastTs===null)vdS.lastTs=ts;
+        const dt=Math.min((ts-vdS.lastTs)/1000,0.05);vdS.lastTs=ts;const sp=vdS.speed;
+        vdS.s.angle+=(2*Math.PI/60)*sp*dt;vdS.m.angle+=(2*Math.PI/3600)*sp*dt;vdS.h.angle+=(2*Math.PI/43200)*sp*dt;
+        vdRender();vdS.rafId=requestAnimationFrame(vdFrame);
+      }
+      function vdWire(base,key){
+        const aEl=document.getElementById('vd-'+base+'a'),tEl=document.getElementById('vd-'+base+'t'),wEl=document.getElementById('vd-'+base+'w');
+        const aV=document.getElementById('vd-'+base+'a-v'),tV=document.getElementById('vd-'+base+'t-v'),wV=document.getElementById('vd-'+base+'w-v');
+        function u(){vdS[key].a=parseFloat(aEl.value);vdS[key].t=parseFloat(tEl.value);vdS[key].w=parseFloat(wEl.value);aV.textContent=aEl.value;tV.textContent=tEl.value;wV.textContent=parseFloat(wEl.value).toFixed(1);if(!vdS.playing)vdRender();}
+        aEl.addEventListener('input',u);tEl.addEventListener('input',u);wEl.addEventListener('input',u);
+      }
+      vdWire('h','h');vdWire('m','m');vdWire('s','s');
+      document.getElementById('vd-play').addEventListener('click',function(){
+        vdS.playing=!vdS.playing;this.textContent=vdS.playing?'⏸ pause':'▶ animate';this.classList.toggle('active',vdS.playing);
+        if(vdS.playing){vdS.lastTs=null;vdS.rafId=requestAnimationFrame(vdFrame);}else{cancelAnimationFrame(vdS.rafId);vdRender();}
+      });
+      ['vd-sp100','vd-sp500','vd-sp2000'].forEach(function(id){
+        document.getElementById(id).addEventListener('click',function(){
+          ['vd-sp100','vd-sp500','vd-sp2000'].forEach(function(i){document.getElementById(i).classList.remove('active');});
+          this.classList.add('active');vdS.speed=parseInt(this.dataset.sp);
+        });
+      });
+      ['h','m','s'].forEach(function(k){
+        document.getElementById('vd-vis-'+k).addEventListener('click',function(){
+          vdS[k].vis=!vdS[k].vis;this.classList.toggle('on',vdS[k].vis);this.classList.toggle('off',!vdS[k].vis);if(!vdS.playing)vdRender();
+        });
+      });
+      vdRender();
+    })();
+    </script>
+
+        <p class="proj-section-label" data-en="Mechanism redesign — expected geometry" data-jp="機構の再設計 — 完成イメージ">Mechanism redesign — expected geometry</p>
     <div class="proj-visual">
       <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
         <rect width="700" height="300" fill="#080808"/>
@@ -419,7 +542,6 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
           <text x="-36" y="88" font-family="monospace" font-size="7.5" fill="rgba(237,234,211,0.32)" letter-spacing="0.08em">VON KÁRMÁN BODY</text>
           <text x="-32" y="99" font-family="monospace" font-size="7" fill="rgba(237,234,211,0.2)" letter-spacing="0.06em">spiral wake arms</text>
         </g>
-        <text x="40" y="278" font-family="monospace" font-size="8" fill="rgba(237,234,211,0.18)" letter-spacing="0.08em">CLOCK20 THINGIVERSE · PETG · 135 PRINT ISLANDS · STEEL PIN AXLES</text>
       </svg>
     </div>
   </div>
