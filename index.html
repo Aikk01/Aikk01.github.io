@@ -4,6 +4,10 @@
 .site.jp-mode,.project-page.jp-mode{font-family:"Hiragino Mincho ProN","Hiragino Mincho Pro","Yu Mincho","YuMincho",serif}
 .jp-mode .hero h1{font-size:clamp(38px,7vw,68px)!important}
 .project-page{display:none}
+.project-page:target{display:block}
+body:has(.project-page:target) #main-site{display:none}
+body:has(.project-page:target) .project-page{display:none}
+body:has(.project-page:target) .project-page:target{display:block}
 nav{display:flex;justify-content:flex-end;align-items:center;padding:1.1rem 2rem;border-bottom:0.5px solid rgba(237,234,227,0.1);gap:1.5rem}
 .nav-links{display:flex;gap:2rem;align-items:center}
 .nav-links a{font-size:11px;color:rgba(237,234,227,0.38);letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
@@ -53,9 +57,9 @@ nav{display:flex;justify-content:flex-end;align-items:center;padding:1.1rem 2rem
 .hr{height:0.5px;background:rgba(237,234,227,0.08);margin:0 0 2rem}
 .trashy-head{display:flex;align-items:baseline;gap:0.75rem;margin-bottom:1.2rem}.trashy-label{font-size:15px;font-weight:500}
 .trashy-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,180px));gap:0.5rem;justify-content:start}
-.trashy-card{border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;padding:0.85rem;display:block;cursor:pointer;background:rgba(11,11,9,0.55);backdrop-filter:blur(3px);transition:border-color 0.2s,transform 0.2s}
+.trashy-card{border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;padding:0.85rem;display:flex;flex-direction:column;cursor:pointer;background:rgba(11,11,9,0.55);backdrop-filter:blur(3px);transition:border-color 0.2s,transform 0.2s}
 .trashy-card:hover{border-color:rgba(200,88,69,0.3);transform:translateY(-2px)}
-.trashy-title{font-size:13px;font-weight:500;margin-bottom:0.65rem}
+.trashy-title{font-size:13px;font-weight:500;line-height:1.35;min-height:3.6em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:0.65rem}
 .trashy-visual{margin-top:0.5rem;border-radius:2px;overflow:hidden;border:0.5px solid rgba(237,234,227,0.08);height:100px}
 .trashy-visual img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:0.9}
 .feat-thumb img{width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(0.4);transition:filter 0.45s ease;display:block}
@@ -70,6 +74,9 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
 .proj-label{font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#C85845;opacity:0.65;margin-bottom:1.5rem}
 .proj-title{font-size:clamp(22px,4vw,38px);font-weight:500;line-height:1.1;letter-spacing:-0.02em;margin-bottom:1.25rem}
 .proj-skills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem}
+.proj-date{display:flex;align-items:center;gap:10px;margin-bottom:1.2rem}
+.proj-date .label{font-family:var(--font-mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(237,234,227,0.28)}
+.proj-date .value{font-size:12px;color:rgba(237,234,227,0.6)}
 .proj-wip{display:inline-flex;align-items:center;gap:6px;margin-bottom:1.5rem;font-family:var(--font-mono);font-size:10px;color:rgba(200,88,69,0.7);letter-spacing:0.08em}
 .proj-wip::before{content:'';width:6px;height:6px;border-radius:50%;background:rgba(200,88,69,0.7);display:inline-block}
 .proj-visit{display:inline-flex;align-items:center;gap:8px;margin-bottom:2.5rem;font-size:12px;color:rgba(237,234,227,0.55);border:0.5px solid rgba(237,234,227,0.22);padding:8px 18px;border-radius:2px;font-family:var(--font-mono);letter-spacing:0.07em;transition:color 0.2s,border-color 0.2s}
@@ -179,7 +186,7 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
   <div class="feat-grid">
 
     <!-- ── 01 KESHIKI — Personal badge + updated tags ── -->
-    <a class="feat-card" href="#" onclick="openProject('keshiki');return false;">
+    <a class="feat-card" href="#project-keshiki" data-project="keshiki" onclick="openProject('keshiki');return false;">
       <div class="feat-thumb" style="background:#0d0d0b">
         <img src="assets/keshiki-main.jpg" alt="Keshiki"
              onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
@@ -194,7 +201,7 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
     </a>
 
     <!-- ── 02 CLOCK — Personal badge + real photo as thumb ── -->
-    <a class="feat-card" href="#" onclick="openProject('clock');return false;">
+    <a class="feat-card" href="#project-clock" data-project="clock" onclick="openProject('clock');return false;">
       <div class="feat-thumb" style="background:#0d0d0b">
         <img src="assets/clock-photo-1.jpg" alt="Mechanical clock"
              onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
@@ -209,7 +216,7 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
     </a>
 
     <!-- ── 03 LINES — Personal badge + heatmap thumb ── -->
-    <a class="feat-card" href="#" onclick="openProject('chokusen');return false;">
+    <a class="feat-card" href="#project-chokusen" data-project="chokusen" onclick="openProject('chokusen');return false;">
       <div class="feat-thumb"><svg viewBox="0 0 260 148" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="148" fill="#0d0d0b"/><defs><linearGradient id="sg1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(80,130,200,0.7)"/><stop offset="50%" stop-color="rgba(126,158,148,0.7)"/><stop offset="100%" stop-color="rgba(200,88,69,0.7)"/></linearGradient></defs><rect x="20" y="20" width="220" height="2" rx="1" fill="url(#sg1)" opacity="0.6"/><rect x="68" y="40" width="42" height="70" fill="none" stroke="rgba(80,130,200,0.5)" stroke-width="0.75"/><rect x="73" y="40" width="42" height="70" rx="6" fill="none" stroke="rgba(100,155,165,0.5)" stroke-width="0.75" transform="translate(58,0)"/><ellipse cx="146" cy="75" rx="21" ry="35" fill="none" stroke="rgba(126,158,148,0.5)" stroke-width="0.75"/><path d="M180,40 C204,40 204,110 180,110 C156,110 156,40 180,40 Z" fill="none" stroke="rgba(165,120,90,0.5)" stroke-width="0.75"/><circle cx="230" cy="75" r="35" fill="none" stroke="rgba(200,88,69,0.5)" stroke-width="0.75"/><text x="20" y="128" font-family="monospace" font-size="7" fill="rgba(80,130,200,0.5)">直線</text><text x="218" y="128" font-family="monospace" font-size="7" fill="rgba(200,88,69,0.5)" text-anchor="end">曲線</text></svg>
             </div>
       <div class="feat-body"><div class="feat-head"><div class="feat-num-wrap"><span class="feat-num">03</span><span class="tag-wip">WIP</span><span class="tag-personal">Personal</span></div><i class="ti ti-arrow-up-right feat-arrow"></i></div>
@@ -220,7 +227,7 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
     </a>
 
     <!-- ── 04 GRIPPER — unchanged ── -->
-    <a class="feat-card" href="#" onclick="openProject('gripper');return false;">
+    <a class="feat-card" href="#project-gripper" data-project="gripper" onclick="openProject('gripper');return false;">
       <div class="feat-thumb"><img src="assets/gripper-main.png" alt="Hydraulic soft gripper — Synaptech"></div>
       <div class="feat-body"><div class="feat-head"><div class="feat-num-wrap"><span class="feat-num">04</span></div><i class="ti ti-arrow-up-right feat-arrow"></i></div>
         <p class="feat-title" data-en="Hydraulic Gripper" data-jp="油圧グリッパー">Hydraulic Gripper</p>
@@ -233,9 +240,15 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
   <div class="hr"></div>
   <div class="trashy-head"><p class="trashy-label" data-en="Trashy Quick Builds" data-jp="ゴミの掃き溜めみたいな作品たち">Trashy Quick Builds</p></div>
   <div class="trashy-grid">
-    <a class="trashy-card" href="https://ai-mirror-pc6k.vercel.app/" onclick="openProject('mirror');return false;">
+    <a class="trashy-card" href="#project-mirror" data-project="mirror" onclick="openProject('mirror');return false;">
       <p class="trashy-title" data-en="Claude/ChatGPT Conversation History Personality Analyser" data-jp="AI会話履歴・性格分析">Claude/ChatGPT Conversation History Personality Analyser</p>
       <div class="trashy-visual"><img src="assets/chatgpt-mirror.png" alt="ChatGPT Mirror screenshot"></div>
+    </a>
+    <a class="trashy-card" href="#project-slugcat" data-project="slugcat" onclick="openProject('slugcat');return false;">
+      <p class="trashy-title">Slugcat CAD</p>
+      <div class="trashy-visual" style="background:#000">
+        <img src="assets/slugcat-main.png" alt="Slugcat CAD render" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:0.9">
+      </div>
     </a>
   </div>
 </div>
@@ -250,13 +263,14 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
 ══════════════════════════════════════════════════ -->
 <div class="project-page" id="project-keshiki">
   <div class="proj-nav">
-    <button class="proj-back" onclick="closeProject('keshiki')">← Back</button>
+    <a class="proj-back" href="#" data-close-project="keshiki" onclick="closeProject('keshiki')">← Back</a>
     <button class="lang-btn" id="lang-btn-keshiki" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button>
   </div>
   <div class="proj-body">
     <p class="proj-label" data-en="Featured Projects — Personal" data-jp="主要作品 — 個人制作">Featured Projects — Personal</p>
     <h1 class="proj-title" data-en="Keshiki" data-jp="景色">Keshiki</h1>
     <div class="proj-skills"><span class="tag">ESP32</span><span class="tag">NeoPixel</span><span class="tag">PETG/PLA 3D print</span><span class="tag">Servo</span><span class="tag">Soldering</span><span class="tag">UI/UX web design</span></div>
+    <div class="proj-date"><span class="label" data-en="Date" data-jp="制作時期">Date</span><span class="value" data-en="TBD" data-jp="未定">TBD</span></div>
     <p class="proj-wip" data-en="Work in progress" data-jp="制作中">Work in progress</p>
 
     <!-- Web demo — the only interactive element on this page -->
@@ -327,11 +341,12 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
      - Mechanism SVG
 ══════════════════════════════════════════════════ -->
 <div class="project-page" id="project-clock">
-  <div class="proj-nav"><button class="proj-back" onclick="closeProject('clock')">← Back</button><button class="lang-btn" id="lang-btn-clock" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button></div>
+  <div class="proj-nav"><a class="proj-back" href="#" data-close-project="clock" onclick="closeProject('clock')">← Back</a><button class="lang-btn" id="lang-btn-clock" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button></div>
   <div class="proj-body">
     <p class="proj-label" data-en="Featured Projects — Personal" data-jp="主要作品 — 個人制作">Featured Projects — Personal</p>
     <h1 class="proj-title" data-en="流体力学時計" data-jp="流体力学時計">流体力学時計</h1>
     <div class="proj-skills"><span class="tag">3D printing</span><span class="tag">Fusion 360</span><span class="tag">Laser cutting</span><span class="tag">Acrylic</span><span class="tag">Mechanical assembly</span></div>
+    <div class="proj-date"><span class="label" data-en="Date" data-jp="制作時期">Date</span><span class="value" data-en="TBD" data-jp="未定">TBD</span></div>
     <p class="proj-wip" data-en="Work in progress" data-jp="制作中">Work in progress</p>
 
     <!-- 2 real photos -->
@@ -554,11 +569,12 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
      - Description from 曲線と直線 chat (full Grasshopper workflow)
 ══════════════════════════════════════════════════ -->
 <div class="project-page" id="project-chokusen">
-  <div class="proj-nav"><button class="proj-back" onclick="closeProject('chokusen')">← Back</button><button class="lang-btn" id="lang-btn-chokusen" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button></div>
+  <div class="proj-nav"><a class="proj-back" href="#" data-close-project="chokusen" onclick="closeProject('chokusen')">← Back</a><button class="lang-btn" id="lang-btn-chokusen" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button></div>
   <div class="proj-body">
     <p class="proj-label" data-en="Featured Projects — Personal" data-jp="主要作品 — 個人制作">Featured Projects — Personal</p>
     <h1 class="proj-title" data-en="Straight Lines &amp; Curves" data-jp="直線と曲線">Straight Lines &amp; Curves</h1>
     <div class="proj-skills"><span class="tag">Grasshopper</span><span class="tag">Rhino</span><span class="tag">Computational design</span><span class="tag">Design theory</span></div>
+    <div class="proj-date"><span class="label" data-en="Date" data-jp="制作時期">Date</span><span class="value" data-en="TBD" data-jp="未定">TBD</span></div>
     <p class="proj-wip" data-en="Work in progress" data-jp="制作中">Work in progress</p>
     <!-- ORIGINAL DIAGRAM — byte-for-byte identical to source -->
     <div class="proj-visual"><svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg"><rect width="700" height="300" fill="#0d0d0b"/><defs><linearGradient id="spec2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(80,130,200,0.9)"/><stop offset="50%" stop-color="rgba(126,158,148,0.9)"/><stop offset="100%" stop-color="rgba(200,88,69,0.9)"/></linearGradient></defs><text x="350" y="26" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(237,234,227,0.22)" letter-spacing="0.1em">直線 ←———————————————————————→ 曲線</text><rect x="44" y="36" width="612" height="2.5" rx="1.25" fill="url(#spec2)" opacity="0.7"/><g stroke="rgba(237,234,227,0.2)" stroke-width="0.75"><line x1="44" y1="36" x2="44" y2="46"/><line x1="197" y1="36" x2="197" y2="46"/><line x1="350" y1="36" x2="350" y2="46"/><line x1="503" y1="36" x2="503" y2="46"/><line x1="656" y1="36" x2="656" y2="46"/></g><rect x="18" y="70" width="52" height="110" fill="none" stroke="rgba(80,130,200,0.6)" stroke-width="0.75"/><g stroke="rgba(80,130,200,0.12)" stroke-width="0.4"><line x1="18" y1="92" x2="70" y2="92"/><line x1="18" y1="114" x2="70" y2="114"/><line x1="18" y1="136" x2="70" y2="136"/><line x1="18" y1="158" x2="70" y2="158"/></g><text x="44" y="198" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(80,130,200,0.5)">0%</text><rect x="172" y="70" width="50" height="110" rx="8" fill="none" stroke="rgba(100,155,175,0.55)" stroke-width="0.75"/><text x="197" y="198" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(100,155,175,0.5)">25%</text><ellipse cx="350" cy="125" rx="25" ry="55" fill="none" stroke="rgba(126,158,148,0.6)" stroke-width="0.75"/><g stroke="rgba(126,158,148,0.18)" stroke-width="0.4"><line x1="350" y1="70" x2="350" y2="58"/><line x1="375" y1="125" x2="385" y2="125"/><line x1="350" y1="180" x2="350" y2="192"/><line x1="325" y1="125" x2="315" y2="125"/></g><text x="350" y="198" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(126,158,148,0.5)">50%</text><path d="M503,70 Q530,70 530,125 Q530,180 503,180 Q476,180 476,125 Q476,70 503,70 Z" fill="none" stroke="rgba(165,115,90,0.55)" stroke-width="0.75"/><text x="503" y="198" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(165,115,90,0.5)">75%</text><circle cx="630" cy="125" r="55" fill="none" stroke="rgba(200,88,69,0.6)" stroke-width="0.75"/><g stroke="rgba(200,88,69,0.2)" stroke-width="0.4"><line x1="630" y1="70" x2="630" y2="55"/><line x1="685" y1="125" x2="700" y2="125"/><line x1="630" y1="180" x2="630" y2="195"/><line x1="575" y1="125" x2="560" y2="125"/></g><text x="630" y="198" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(200,88,69,0.5)">100%</text><text x="44" y="218" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(237,234,227,0.18)">pure lines</text><text x="630" y="218" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(237,234,227,0.18)">pure curves</text><text x="350" y="252" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(237,234,227,0.2)" letter-spacing="0.05em">直線と曲線のバランスを定量化する</text><text x="350" y="270" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(237,234,227,0.13)">Quantifying visual balance between straight lines and curves</text></svg></div>
@@ -602,11 +618,12 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
      PROJECT: Gripper — completely unchanged
 ══════════════════════════════════════════════════ -->
 <div class="project-page" id="project-gripper">
-  <div class="proj-nav"><button class="proj-back" onclick="closeProject('gripper')">← Back</button><button class="lang-btn" id="lang-btn-gripper" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button></div>
+  <div class="proj-nav"><a class="proj-back" href="#" data-close-project="gripper" onclick="closeProject('gripper')">← Back</a><button class="lang-btn" id="lang-btn-gripper" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button></div>
   <div class="proj-body">
     <p class="proj-label" data-en="Featured Projects" data-jp="主要作品">Featured Projects</p>
     <h1 class="proj-title" data-en="Hydraulic Gripper" data-jp="油圧グリッパー">Hydraulic Gripper</h1>
     <div class="proj-skills"><span class="tag">Group project</span><span class="tag">Soft robotics</span><span class="tag">Silicone casting</span><span class="tag">Hydraulics</span><span class="tag">Fusion 360</span><span class="tag">3D printing</span><span class="tag">ArUco</span></div>
+    <div class="proj-date"><span class="label" data-en="Date" data-jp="制作時期">Date</span><span class="value" data-en="TBD" data-jp="未定">TBD</span></div>
     <a class="proj-visit" href="https://yunjialiricky.wixsite.com/synaptech" target="_blank">Visit project site ↗</a>
     <div class="proj-visual" style="margin-bottom:1.5rem;max-height:240px;overflow:hidden"><img src="assets/gripper-main.png" alt="Soft hydraulic gripper holding a strawberry — Synaptech" style="width:100%;object-fit:cover;object-position:top 16%"></div>
     <p class="proj-desc" data-en="A group project: a hydraulically actuated soft silicone hand. Hydraulic chosen over pneumatic for superior force transmission and stiffness control. Silicone fingers fabricated using retractable-pin casting — internal channel geometry, wall thickness, and fluid routing across the multi-finger assembly were the primary design challenges. Controlled via ArUco marker tracking for pose estimation." data-jp="油圧駆動のソフトシリコンハンドのグループプロジェクト。空気圧より高い力伝達を実現する油圧方式を採用。シリコン指はピン型鋳造で製作し、内部流路形状・壁厚・流体配管が主な設計課題。ArUcoマーカーによるビジョン制御。">A group project: hydraulically actuated soft silicone hand. Hydraulic over pneumatic for superior force transmission. Silicone fingers via retractable-pin casting. Internal channel geometry, wall thickness, and multi-finger fluid routing were the core design challenges. Controlled via ArUco marker pose estimation.</p>
@@ -618,11 +635,12 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
      PROJECT: Mirror — completely unchanged
 ══════════════════════════════════════════════════ -->
 <div class="project-page" id="project-mirror">
-  <div class="proj-nav"><button class="proj-back" onclick="closeProject('mirror')">← Back</button><button class="lang-btn" id="lang-btn-mirror" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button></div>
+  <div class="proj-nav"><a class="proj-back" href="#" data-close-project="mirror" onclick="closeProject('mirror')">← Back</a><button class="lang-btn" id="lang-btn-mirror" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button></div>
   <div class="proj-body">
     <p class="proj-label">Trashy Quick Builds</p>
     <h1 class="proj-title" data-en="Claude/ChatGPT Conversation History Personality Analyser" data-jp="AI会話履歴・性格分析">Claude/ChatGPT Conversation History Personality Analyser</h1>
     <div class="proj-skills"><span class="tag">Claude API</span><span class="tag">React</span><span class="tag">Personality</span><span class="tag">Data viz</span></div>
+    <div class="proj-date"><span class="label" data-en="Date" data-jp="制作時期">Date</span><span class="value" data-en="TBD" data-jp="未定">TBD</span></div>
     <a class="proj-visit" href="https://ai-mirror-pc6k.vercel.app/" target="_blank">Visit project ↗</a>
     <div class="proj-visual" style="max-height:220px;overflow:hidden;background:#0a0a0a"><img src="assets/chatgpt-mirror.png" alt="ChatGPT Mirror dashboard" style="width:100%;object-fit:contain;max-height:220px"></div>
     <p class="proj-desc" data-en="Upload your ChatGPT or Claude conversation history as a JSON file. The analyser produces a mood timeline, emotional patterns, topics you gravitate toward, and a personality profile inferred from how you communicate with AI. Built as an experiment in meta-AI analysis — AI watching how you talk to AI." data-jp="会話履歴をJSONでアップロードすると、気分の推移・感情パターン・よく話すテーマ・性格プロファイルを生成。AIがAIとの会話を分析するメタな実験。">Upload your ChatGPT or Claude conversation history as a JSON file. The analyser produces a mood timeline, emotional patterns, topics you gravitate toward, and a personality profile inferred from how you communicate with AI. AI watching how you talk to AI.</p>
@@ -630,18 +648,161 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
 </div>
 
 
+<!-- ═══ PROJECT: Slugcat CAD ═══ -->
+<div class="project-page" id="project-slugcat">
+  <div class="proj-nav">
+    <a class="proj-back" href="#" data-close-project="slugcat" onclick="closeProject('slugcat')">← Back</a>
+  </div>
+  <div class="proj-body">
+    <p class="proj-label">Trashy Quick Builds</p>
+    <h1 class="proj-title">Slugcat CAD</h1>
+    <div class="proj-skills"><span class="tag">CAD</span></div>
+    <div class="proj-date"><span class="label" data-en="Date" data-jp="制作時期">Date</span><span class="value" data-en="June 2025" data-jp="2025年6月">June 2025</span></div>
+    <p class="proj-desc">For my friend.<br>Has a thicc tail.<br><br>T-spline modelling in Fusion360.</p>
+
+    <!-- Three.js GLB viewer -->
+    <div style="border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;overflow:hidden;margin:1.5rem 0;position:relative">
+      <canvas id="slugcat-canvas" style="width:100%;height:480px;display:block;cursor:grab;background:#0c0a10"></canvas>
+      <div style="position:absolute;bottom:10px;right:12px;font-family:var(--font-mono);font-size:9px;color:rgba(237,234,227,0.2);letter-spacing:0.1em">DRAG TO ROTATE · SCROLL TO ZOOM</div>
+      <div id="slugcat-loading" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:rgba(237,234,227,0.3);letter-spacing:0.1em;pointer-events:none">LOADING MODEL…</div>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script>
-const allPages=['keshiki','clock','chokusen','gripper','mirror'];
+const allPages=['keshiki','clock','chokusen','gripper','mirror','slugcat'];
 let kdInit=false;
 
 function openProject(id){
+  if(!allPages.includes(id)) return;
+  const targetHash='project-'+id;
+  if(location.hash!=='#'+targetHash){
+    location.hash=targetHash;
+    return;
+  }
+  showProject(id);
+}
+
+function showProject(id){
   document.getElementById('main-site').style.display='none';
   allPages.forEach(p=>document.getElementById('project-'+p).style.display='none');
   document.getElementById('project-'+id).style.display='block';
   window.scrollTo(0,0);
   if(id==='keshiki'&&!kdInit){initKD();kdInit=true;}
+  if(id==='slugcat') initSlugcatViewer();
 }
-function closeProject(id){document.getElementById('project-'+id).style.display='none';document.getElementById('main-site').style.display='block'}
+
+function showMainSite(){
+  allPages.forEach(p=>document.getElementById('project-'+p).style.display='none');
+  document.getElementById('main-site').style.display='block';
+}
+
+function syncViewFromHash(){
+  const hash=location.hash.replace('#','');
+  if(hash.startsWith('project-')){
+    const id=hash.slice(8);
+    if(allPages.includes(id)){
+      showProject(id);
+      return;
+    }
+  }
+  showMainSite();
+}
+    // ── SLUGCAT GLB VIEWER ───────────────────────────────────
+    function initSlugcatViewer() {
+      const canvas = document.getElementById('slugcat-canvas');
+      if (!canvas || canvas._scInit) return;
+      canvas._scInit = true;
+
+      const W = canvas.offsetWidth, H = canvas.offsetHeight;
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+      renderer.setSize(W, H, false);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setClearColor(0x0c0a10, 1);
+      renderer.shadowMap.enabled = true;
+
+      const scene = new THREE.Scene();
+      const cam = new THREE.PerspectiveCamera(45, W / H, 0.01, 100);
+      cam.position.set(0, 1, 3);
+
+      // Lights
+      scene.add(new THREE.AmbientLight(0xfff0ff, 0.6));
+      const dl = new THREE.DirectionalLight(0xffffff, 1.2);
+      dl.position.set(2, 4, 3);
+      scene.add(dl);
+      const dl2 = new THREE.DirectionalLight(0xc8a0ff, 0.4);
+      dl2.position.set(-3, 1, -2);
+      scene.add(dl2);
+
+      // OrbitControls
+      const controls = new THREE.OrbitControls(cam, canvas);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.08;
+      controls.minDistance = 0.5;
+      controls.maxDistance = 20;
+
+      // Load GLB
+      const loader = new THREE.GLTFLoader();
+      loader.load('assets/slugcat.glb', function(gltf) {
+        const model = gltf.scene;
+        // Auto-centre and scale
+        const box = new THREE.Box3().setFromObject(model);
+        const centre = box.getCenter(new THREE.Vector3());
+        const size = box.getSize(new THREE.Vector3()).length();
+        model.position.sub(centre);
+        const scale = 2 / size;
+        model.scale.setScalar(scale);
+        scene.add(model);
+        cam.position.set(0, 0.2, 2.2);
+        controls.target.set(0, 0, 0);
+        controls.update();
+        const loading = document.getElementById('slugcat-loading');
+        if (loading) loading.style.display = 'none';
+      }, undefined, function(err) {
+        const loading = document.getElementById('slugcat-loading');
+        if (loading) loading.textContent = 'Place assets/slugcat.glb to view model';
+      });
+
+      (function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, cam);
+      })();
+
+      window.addEventListener('resize', function() {
+        const W2 = canvas.offsetWidth, H2 = canvas.offsetHeight;
+        cam.aspect = W2 / H2; cam.updateProjectionMatrix();
+        renderer.setSize(W2, H2, false);
+      });
+    }
+
+function closeProject(id){
+  const url=window.location.pathname+window.location.search;
+  history.pushState('',document.title,url);
+  showMainSite();
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('[data-project]').forEach(function(el){
+    el.addEventListener('click',function(e){
+      e.preventDefault();
+      openProject(el.dataset.project);
+    });
+  });
+  document.querySelectorAll('[data-close-project]').forEach(function(el){
+    el.addEventListener('click',function(e){
+      e.preventDefault();
+      closeProject(el.dataset.closeProject);
+    });
+  });
+  syncViewFromHash();
+});
+
+window.addEventListener('hashchange',syncViewFromHash);
 
 let lang='en';
 function toggleLang(){
