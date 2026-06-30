@@ -148,7 +148,27 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
   .proj-visit{width:100%;margin:0 0 2.5rem}
   #project-chokusen .chokusen-split{display:block}
   #project-chokusen .chokusen-split .proj-visual{margin-bottom:1.25rem}
+  #project-clock .photo-row{grid-template-columns:1fr}
 }
+
+/* GH figure — frosted panel with edges faded into the page */
+#project-chokusen .gh-figure{border:0;background:transparent;overflow:visible;border-radius:0;margin-bottom:1rem}
+#project-chokusen .gh-figure img{border:0;-webkit-mask-image:linear-gradient(to right,transparent,#000 4%,#000 96%,transparent),linear-gradient(to bottom,transparent,#000 5%,#000 95%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent,#000 4%,#000 96%,transparent),linear-gradient(to bottom,transparent,#000 5%,#000 95%,transparent);mask-composite:intersect}
+
+/* Group tag — same treatment as Personal, distinct colour */
+.tag-group{font-size:11.18px;padding:1px 6px;border:0.5px solid rgba(110,140,195,0.45);color:rgba(125,155,205,0.75);border-radius:1px;font-family:var(--font-mono);letter-spacing:0.06em}
+
+/* Fluid Mechanics Clock — blue theme (mirrors the chokusen treatment) */
+#project-clock .proj-body{position:relative}
+#project-clock .proj-body::before{content:'';position:absolute;top:0;right:0;width:min(44rem,62%);height:16rem;background:linear-gradient(105deg,rgba(11,11,9,0) 0%,rgba(80,130,200,0.1) 45%,rgba(80,130,200,0.24) 100%);border-bottom:0.5px solid rgba(80,130,200,0.14);pointer-events:none}
+#project-clock .proj-body>*{position:relative;z-index:1}
+#project-clock .proj-label{color:#5E86C6}
+#project-clock .proj-section-label{color:rgba(96,140,205,0.8);opacity:1;font-size:13.5px;font-weight:600;letter-spacing:0.14em}
+#project-clock .proj-lead{font-size:18.5px;color:rgba(237,234,227,0.72);margin-top:0.75rem}
+
+/* Anonymous comments (Cusdis) */
+.proj-comments{margin-top:3.5rem;padding-top:2rem;border-top:0.5px solid rgba(237,234,227,0.1)}
+.proj-comments .cusdis-mount{margin-top:0.5rem}
 </style>
 
 <div class="site" id="main-site">
@@ -260,7 +280,7 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
     <!-- ── 04 GRIPPER — unchanged ── -->
     <a class="feat-card" href="#project-gripper" data-project="gripper" onclick="openProject('gripper');return false;">
       <div class="feat-thumb"><img src="assets/gripper-main.png" alt="Hydraulic soft gripper — Synaptech"></div>
-      <div class="feat-body"><div class="feat-head"><div class="feat-num-wrap"><span class="feat-num">02</span></div><i class="ti ti-arrow-up-right feat-arrow"></i></div>
+      <div class="feat-body"><div class="feat-head"><div class="feat-num-wrap"><span class="feat-num">02</span><span class="tag-group">Group</span></div><i class="ti ti-arrow-up-right feat-arrow"></i></div>
         <p class="feat-title" data-en="Hydraulic Gripper" data-jp="油圧グリッパー">Hydraulic Gripper</p>
         <p class="feat-desc" data-en="Hydraulically actuated soft silicone hand with ArUco vision control." data-jp="油圧駆動のソフトシリコンハンド">Hydraulically actuated soft silicone hand with ArUco vision control.</p>
         <div class="feat-tags"><span class="tag">Soft robotics</span><span class="tag">Silicone</span></div>
@@ -375,10 +395,12 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
   <div class="proj-nav"><a class="proj-back" href="#" data-close-project="clock" onclick="closeProject('clock')">← Back</a><button class="lang-btn" id="lang-btn-clock" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button></div>
   <div class="proj-body">
     <p class="proj-label" data-en="Featured Projects — Personal" data-jp="主要作品 — 個人制作">Featured Projects — Personal</p>
-    <h1 class="proj-title" data-en="流体力学時計" data-jp="流体力学時計">流体力学時計</h1>
+    <h1 class="proj-title" data-en="Fluid Mechanics Clock" data-jp="流体力学時計">Fluid Mechanics Clock</h1>
     <div class="proj-skills"><span class="tag">3D printing</span><span class="tag">Fusion 360</span><span class="tag">Laser cutting</span><span class="tag">Acrylic</span><span class="tag">Mechanical assembly</span></div>
     <div class="proj-date"><span class="label" data-en="Date" data-jp="制作時期">Date</span><span class="value" data-en="TBD" data-jp="未定">TBD</span></div>
     <p class="proj-wip" data-en="Work in progress" data-jp="制作中">Work in progress</p>
+
+    <p class="proj-desc proj-lead" data-en="The project gives an artistic twist to the traditional mechanical clock. Taking inspiration from mechanical escapement and fluid vortex shedding having similarities in phenomenon — both convert a steady input into a precise, rhythmic output." data-jp="このプロジェクトは、伝統的な機械式時計に芸術的なひねりを加えるものです。機械式エスケープメントと流体の渦放出が現象として似ていることに着想を得ています——どちらも定常的な入力を、精密でリズミカルな出力へと変換します。">The project gives an artistic twist to the traditional mechanical clock. Taking inspiration from mechanical escapement and fluid vortex shedding having similarities in phenomenon — both convert a steady input into a precise, rhythmic output.</p>
 
     <!-- 2 real photos -->
     <div class="photo-row">
@@ -393,7 +415,6 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
     </div>
 
     <!-- Concept -->
-    <p class="proj-desc" data-en="Taking inspiration from mechanical escapement and fluid vortex shedding having similarities in phenomenon — both convert a steady input into a precise, rhythmic output. The product purely exists to share this message." data-jp="機械式エスケープメントと流体の渦放出という現象的類似性にインスピレーションを得ています。どちらも定常入力を精密なリズミカルな出力に変換します。このプロダクトはそのメッセージを伝えるためだけに存在します。">Taking inspiration from mechanical escapement and fluid vortex shedding having similarities in phenomenon — both convert a steady input into a precise, rhythmic output. The product purely exists to share this message.</p>
     <p class="proj-desc" data-en="The escape wheel teeth are redrawn as vortex arc curves, and the pallet fork is redesigned as a von Kármán shedding body with spiral wake arms. The mechanism is functionally identical to the original — only the geometry changes." data-jp="エスケープホイールの歯をボルテックス弧曲線として再描画し、パレットフォークをスパイラルウェイクアームを持つフォン・カルマン放出体として再設計。機構は元のものと機能的に同一で、変わるのは形状のみです。">The escape wheel teeth are redrawn as vortex arc curves, and the pallet fork is redesigned as a von Kármán shedding body with spiral wake arms. The mechanism is functionally identical to the original — only the geometry changes.</p>
 
     <!-- Moiré SVG -->
@@ -651,7 +672,7 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
       </div>
     </div>
 
-    <div class="proj-visual"><img src="assets/lines-grasshopper-canvas.png?v=7" alt="Grasshopper canvas for the Straight Lines and Curves tool showing the native Rhino definition." style="width:100%;display:block;border:0.5px solid rgba(237,234,227,0.1);border-radius:4px" loading="lazy"></div>
+    <div class="proj-visual gh-figure"><img src="assets/lines-grasshopper-canvas.png?v=8" alt="Grasshopper canvas for the Straight Lines and Curves tool showing the native Rhino definition." style="width:100%;display:block" loading="lazy"></div>
     <p class="chokusen-caption" data-en="Native Grasshopper definition for sampling a curve, measuring curvature, calculating the Linearity Index, and previewing the output in Rhino." data-jp="曲線をサンプリングし、曲率を測定し、直線度指数を計算してRhino上で出力をプレビューするGrasshopper定義。">Native Grasshopper definition for sampling a curve, measuring curvature, calculating the Linearity Index, and previewing the output in Rhino.</p>
 
     <p class="proj-section-label" data-en="Justifying the Threshold" data-jp="しきい値の妥当性">Justifying the Threshold</p>
@@ -756,6 +777,50 @@ function showProject(id){
   window.scrollTo(0,0);
   if(id==='keshiki'&&!kdInit){initKD();kdInit=true;}
   if(id==='slugcat') initSlugcatViewer();
+  mountComments(id);
+}
+
+/* ── Anonymous comments via Cusdis ──
+   Paste your Cusdis App ID below to enable comments on every project page.
+   Sign up free at https://cusdis.com → create a website → copy the App ID. */
+const CUSDIS_APP_ID='';
+const COMMENT_TITLES={keshiki:'Keshiki',clock:'Fluid Mechanics Clock',chokusen:'Straight and Curved Lines',gripper:'Hydraulic Gripper',mirror:'Mirror',slugcat:'Slugcat'};
+function mountComments(id){
+  if(!CUSDIS_APP_ID) return;
+  const page=document.getElementById('project-'+id);
+  const body=page&&page.querySelector('.proj-body');
+  if(!body) return;
+  let section=body.querySelector('.proj-comments');
+  if(!section){
+    section=document.createElement('section');
+    section.className='proj-comments';
+    const h=document.createElement('p');
+    h.className='proj-section-label';
+    h.setAttribute('data-en','Comments');h.setAttribute('data-jp','コメント');
+    h.innerHTML=(lang==='jp'?'コメント':'Comments');
+    const mount=document.createElement('div');mount.className='cusdis-mount';
+    section.appendChild(h);section.appendChild(mount);
+    body.appendChild(section);
+  }
+  const mount=section.querySelector('.cusdis-mount');
+  let thread=document.getElementById('cusdis_thread');
+  if(!thread){
+    thread=document.createElement('div');thread.id='cusdis_thread';
+    thread.setAttribute('data-host','https://cusdis.com');
+    thread.setAttribute('data-app-id',CUSDIS_APP_ID);
+  }
+  const title=COMMENT_TITLES[id]||id,url=location.origin+location.pathname+'#project-'+id;
+  thread.setAttribute('data-page-id',id);
+  thread.setAttribute('data-page-title',title);
+  thread.setAttribute('data-page-url',url);
+  mount.appendChild(thread);
+  if(window.CUSDIS&&window.CUSDIS.setPage){
+    window.CUSDIS.setPage(id,{pageId:id,pageTitle:title,pageUrl:url});
+  } else if(!window.__cusdisLoaded){
+    window.__cusdisLoaded=true;
+    const s=document.createElement('script');s.async=true;s.defer=true;
+    s.src='https://cusdis.com/js/cusdis.es.js';document.body.appendChild(s);
+  }
 }
 
 function showMainSite(){
