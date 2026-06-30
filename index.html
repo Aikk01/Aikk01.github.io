@@ -165,6 +165,13 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
 #project-clock .proj-label{color:#5E86C6}
 #project-clock .proj-section-label{color:rgba(96,140,205,0.8);opacity:1;font-size:13.5px;font-weight:600;letter-spacing:0.14em}
 #project-clock .proj-lead{font-size:18.5px;color:rgba(237,234,227,0.72);margin-top:0.75rem}
+#project-clock .clock-grid{display:grid;grid-template-columns:minmax(200px,0.62fr) minmax(0,1.55fr);gap:1.5rem 2.25rem;align-items:start;margin:1.25rem 0 2.5rem;grid-column:1/-1}
+#project-clock .clock-step{display:flex;gap:0.85rem;font-size:17.39px;color:rgba(237,234,227,0.62);line-height:1.7}
+#project-clock .clock-step .n{font-family:var(--font-mono);font-weight:600;color:#5E86C6;font-size:15px;flex-shrink:0;padding-top:0.12rem}
+#project-clock .clock-aside{min-width:0}
+#project-clock .clock-aside .vd-moire{font-family:var(--font-mono);font-size:13.66px;color:rgba(237,234,227,0.5);line-height:1.8;margin:0 0 1.1rem;letter-spacing:0.01em}
+#project-clock #vd-wrap{margin-bottom:0}
+@media (max-width:980px){#project-clock .clock-grid{display:block}#project-clock .clock-step{margin-bottom:0.4rem}#project-clock .clock-aside{margin:0.4rem 0 1.75rem}}
 
 /* Anonymous comments (Cusdis) */
 .proj-comments{margin-top:3.5rem;padding-top:2rem;border-top:0.5px solid rgba(237,234,227,0.1)}
@@ -270,7 +277,7 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
     <!-- ── 03 LINES — Personal badge + heatmap thumb ── -->
     <a class="feat-card" href="#project-chokusen" data-project="chokusen" onclick="openProject('chokusen');return false;">
       <div class="feat-thumb"><img src="assets/morph-straight-rectangle.png" alt="Straight and Curved Lines — rectangle morph"></div>
-      <div class="feat-body"><div class="feat-head"><div class="feat-num-wrap"><span class="feat-num">01</span><span class="tag-wip">WIP</span><span class="tag-personal">Personal</span></div><i class="ti ti-arrow-up-right feat-arrow"></i></div>
+      <div class="feat-body"><div class="feat-head"><div class="feat-num-wrap"><span class="feat-num">01</span><span class="tag-personal">Personal</span></div><i class="ti ti-arrow-up-right feat-arrow"></i></div>
         <p class="feat-title" data-en="Straight and Curved Lines" data-jp="直線と曲線">Straight and Curved Lines</p>
         <p class="feat-desc" data-en="Grasshopper tool to quantify linearity as a tuneable parameter." data-jp="直線度指数をGrasshopperで定量化">Grasshopper tool to quantify linearity as a tuneable parameter.</p>
         <div class="feat-tags"><span class="tag">Grasshopper</span><span class="tag">Parametric</span></div>
@@ -414,12 +421,22 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
       </div>
     </div>
 
-    <!-- Concept -->
-    <p class="proj-desc" data-en="The escape wheel teeth are redrawn as vortex arc curves, and the pallet fork is redesigned as a von Kármán shedding body with spiral wake arms. The mechanism is functionally identical to the original — only the geometry changes." data-jp="エスケープホイールの歯をボルテックス弧曲線として再描画し、パレットフォークをスパイラルウェイクアームを持つフォン・カルマン放出体として再設計。機構は元のものと機能的に同一で、変わるのは形状のみです。">The escape wheel teeth are redrawn as vortex arc curves, and the pallet fork is redesigned as a von Kármán shedding body with spiral wake arms. The mechanism is functionally identical to the original — only the geometry changes.</p>
-
-    <!-- Moiré SVG -->
-    <p class="proj-section-label" data-en="Moiré disc face — interactive explorer" data-jp="モアレ文字盤 — インタラクティブ">Moiré disc face — interactive explorer</p>
-    <p class="proj-desc" data-en="Three concentric frosted acrylic discs, laser-cut, each carrying a parametric Archimedean spiral pattern. Arm counts 3, 4, 5 (a Pythagorean triple) were chosen because adjacent counts produce clean single-petal moiré interference.<br><br>Hours vs Minutes: |4−3| = 1 zone → slow single-petal rotation<br>Minutes vs Seconds: |5−4| = 1 zone → same<br>Hours vs Seconds: |5−3| = 2 zones → figure-8 when all three overlap" data-jp="レーザーカットされた3枚の同心フロストアクリルディスク。アーム数3・4・5（ピタゴラス数）を選択 — 隣接する数同士がクリーンな一葉モアレ干渉を生みます。<br><br>時 vs 分：|4-3|=1ゾーン → ゆっくりした一葉回転<br>分 vs 秒：|5-4|=1ゾーン → 同上<br>時 vs 秒：|5-3|=2ゾーン → 全重合時に8字型">Three concentric frosted acrylic discs, laser-cut, each carrying a parametric Archimedean spiral pattern. Arm counts 3, 4, 5 (a Pythagorean triple) were chosen because adjacent counts produce clean single-petal moiré interference.<br><br>Hours vs Minutes: |4−3| = 1 zone → slow single-petal rotation<br>Minutes vs Seconds: |5−4| = 1 zone → same<br>Hours vs Seconds: |5−3| = 2 zones → figure-8 when all three overlap</p>
+    <!-- Project description -->
+    <p class="proj-section-label" data-en="Project description" data-jp="プロジェクト概要">Project description</p>
+    <div class="clock-grid">
+      <!-- step 1 -->
+      <div class="clock-step"><span class="n">1</span><span data-en="An open-source 3D file of a traditional mechanical clock forms the basis (built using 3D printing, rods, strings and screws)." data-jp="伝統的な機械式時計のオープンソース3Dファイルをベースにしています（3Dプリント・ロッド・糸・ネジで製作）。">An open-source 3D file of a traditional mechanical clock forms the basis (built using 3D printing, rods, strings and screws).</span></div>
+      <div class="clock-aside"></div>
+      <!-- step 2 -->
+      <div class="clock-step"><span class="n">2</span><span data-en="The clock face and hands are replaced with three concentric frosted acrylic discs, laser-cut, each carrying a parametric Archimedean spiral pattern (modelled in Rhino / Grasshopper)." data-jp="文字盤と針を、レーザーカットした3枚の同心フロストアクリルディスクに置き換え。各ディスクにパラメトリックなアルキメデス螺旋パターンを持たせています（Rhino / Grasshopperでモデリング）。">The clock face and hands are replaced with three concentric frosted acrylic discs, laser-cut, each carrying a parametric Archimedean spiral pattern (modelled in Rhino / Grasshopper).</span></div>
+      <div class="clock-aside">
+        <p class="vd-moire" data-en="Arm counts 3, 4, 5 (a Pythagorean triple) were chosen because adjacent counts produce clean single-petal moiré interference.<br><br>Hours vs Minutes: |4−3| = 1 zone → slow single-petal rotation<br>Minutes vs Seconds: |5−4| = 1 zone → same<br>Hours vs Seconds: |5−3| = 2 zones → figure-8 when all three overlap" data-jp="アーム数3・4・5（ピタゴラス数）を選択 — 隣接する数同士がクリーンな一葉モアレ干渉を生みます。<br><br>時 vs 分：|4-3|=1ゾーン → ゆっくりした一葉回転<br>分 vs 秒：|5-4|=1ゾーン → 同上<br>時 vs 秒：|5-3|=2ゾーン → 全重合時に8字型">Arm counts 3, 4, 5 (a Pythagorean triple) were chosen because adjacent counts produce clean single-petal moiré interference.<br><br>Hours vs Minutes: |4−3| = 1 zone → slow single-petal rotation<br>Minutes vs Seconds: |5−4| = 1 zone → same<br>Hours vs Seconds: |5−3| = 2 zones → figure-8 when all three overlap</p>
+        <div id="clock-explorer-slot"></div>
+      </div>
+      <!-- step 3 -->
+      <div class="clock-step"><span class="n">3</span><span data-en="The escape wheel teeth are redrawn as vortex arc curves, and the escapement anchor is redesigned as a von Kármán shedding body with spiral wake arms." data-jp="エスケープホイールの歯をボルテックス弧曲線として再描画し、エスケープメントのアンカーをスパイラルウェイクアームを持つフォン・カルマン放出体として再設計しています。">The escape wheel teeth are redrawn as vortex arc curves, and the escapement anchor is redesigned as a von Kármán shedding body with spiral wake arms.</span></div>
+      <div class="clock-aside"><div class="proj-visual" style="margin:0"><img src="assets/escapement-original.png" alt="Original mechanical escapement geometry" style="width:100%;display:block" loading="lazy"></div></div>
+    </div>
     <div id="vd-wrap" style="border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;overflow:hidden;margin-bottom:2rem;background:#07070a;padding:24px 18px">
       <style>
         #vd-wrap .vd-h1{font-size:12.42px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#333;margin-bottom:20px}
@@ -579,38 +596,6 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
     })();
     </script>
 
-        <p class="proj-section-label" data-en="Mechanism redesign — expected geometry" data-jp="機構の再設計 — 完成イメージ">Mechanism redesign — expected geometry</p>
-    <div class="proj-visual">
-      <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
-        <rect width="700" height="300" fill="#080808"/>
-        <text x="40" y="24" font-family="monospace" font-size="10.55" fill="rgba(237,234,211,0.35)" letter-spacing="0.1em">ESCAPEMENT REDRAWN — SAME FUNCTION, NEW GEOMETRY</text>
-        <g transform="translate(188,158)">
-          <circle cx="0" cy="0" r="78" fill="none" stroke="rgba(237,234,211,0.09)" stroke-width="0.5"/>
-          <circle cx="0" cy="0" r="56" fill="none" stroke="rgba(237,234,211,0.06)" stroke-width="0.5"/>
-          <g stroke="rgba(237,234,211,0.7)" stroke-width="1.3" fill="none" stroke-linecap="round">
-            <path d="M0,-78 Q10,-64 3,-56"/>
-            <path d="M47,-63 Q59,-49 50,-41"/>
-            <path d="M74,-23 Q81,-9 72,-3"/>
-            <path d="M74,23 Q81,9 72,3"/>
-            <path d="M47,63 Q59,49 50,41"/>
-            <path d="M0,78 Q10,64 3,56"/>
-            <path d="M-47,63 Q-59,49 -50,41"/>
-            <path d="M-74,23 Q-81,9 -72,3"/>
-          </g>
-          <circle cx="0" cy="0" r="7" fill="rgba(237,234,211,0.08)" stroke="rgba(237,234,211,0.3)" stroke-width="0.7"/>
-          <text x="-40" y="102" font-family="monospace" font-size="9.31" fill="rgba(237,234,211,0.32)" letter-spacing="0.08em">VORTEX ARC TEETH</text>
-        </g>
-        <line x1="274" y1="158" x2="346" y2="158" stroke="rgba(237,234,211,0.14)" stroke-width="0.6" stroke-dasharray="3,4"/>
-        <text x="285" y="152" font-family="monospace" font-size="8.69" fill="rgba(237,234,211,0.2)">same fn</text>
-        <g transform="translate(388,158)">
-          <path d="M0,-42 C19,-30 23,-11 21,0 C19,11 17,23 0,32 C-17,23 -19,11 -21,0 C-23,-11 -19,-30 0,-42 Z" fill="rgba(237,234,211,0.04)" stroke="rgba(237,234,211,0.52)" stroke-width="0.9"/>
-          <path d="M19,0 Q43,12 52,34 Q61,56 46,65" fill="none" stroke="rgba(237,234,211,0.28)" stroke-width="0.8" stroke-dasharray="2,3"/>
-          <path d="M-19,0 Q-43,-12 -52,-34 Q-61,-56 -46,-65" fill="none" stroke="rgba(237,234,211,0.28)" stroke-width="0.8" stroke-dasharray="2,3"/>
-          <text x="-36" y="88" font-family="monospace" font-size="9.31" fill="rgba(237,234,211,0.32)" letter-spacing="0.08em">VON KÁRMÁN BODY</text>
-          <text x="-32" y="99" font-family="monospace" font-size="8.69" fill="rgba(237,234,211,0.2)" letter-spacing="0.06em">spiral wake arms</text>
-        </g>
-      </svg>
-    </div>
   </div>
 </div>
 
@@ -627,7 +612,6 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
     <h1 class="proj-title" data-en="Straight and Curved Lines" data-jp="直線と曲線">Straight and Curved Lines</h1>
     <div class="proj-skills"><span class="tag">Grasshopper</span><span class="tag">Rhino</span><span class="tag">Computational design</span><span class="tag">Design theory</span><span class="tag">Python</span></div>
     <div class="proj-date"><span class="label" data-en="Date" data-jp="制作時期">Date</span><span class="value" data-en="June 2026" data-jp="2026年6月">June 2026</span></div>
-    <p class="proj-wip" data-en="Work in progress" data-jp="制作中">Work in progress</p>
     <a class="proj-visit" href="https://straight-n-curved-line.vercel.app" target="_blank">Visit project ↗</a>
     <p class="proj-desc" style="font-size:18.5px;color:rgba(237,234,227,0.72);margin-top:0.75rem" data-en="The Linearity Index aims to measure the composition ratio of straight lines to curves as a continuous quantity, shape by shape. It is a web tool that can predict, visually, how a given shape would look if it were more linear or more curved. To remove the black box in the code and make it easier for designers to handle, I implemented the same results as the web tool in Grasshopper." data-jp="Linearity Index は、直線と曲線の構成比を、形ごとに連続量として測ることを目的としています。そして、ある形がもっと直線的であったり、曲線的であったりする場合のビジュアル予想ができるウェブツールです。コード上のブラックボックスを無くし、デザイナーにとって扱いやすくする意図でウェブツールと同様の結果をGrasshopper上で実装しました。">The Linearity Index aims to measure the composition ratio of straight lines to curves as a continuous quantity, shape by shape. It is a web tool that can predict, visually, how a given shape would look if it were more linear or more curved. To remove the black box in the code and make it easier for designers to handle, I implemented the same results as the web tool in Grasshopper.</p>
 
@@ -777,13 +761,14 @@ function showProject(id){
   window.scrollTo(0,0);
   if(id==='keshiki'&&!kdInit){initKD();kdInit=true;}
   if(id==='slugcat') initSlugcatViewer();
+  if(id==='clock'){const _ex=document.getElementById('vd-wrap'),_slot=document.getElementById('clock-explorer-slot');if(_ex&&_slot&&_ex.parentNode!==_slot)_slot.appendChild(_ex);}
   mountComments(id);
 }
 
 /* ── Anonymous comments via Cusdis ──
    Paste your Cusdis App ID below to enable comments on every project page.
    Sign up free at https://cusdis.com → create a website → copy the App ID. */
-const CUSDIS_APP_ID='';
+const CUSDIS_APP_ID='dd921b76-5d0b-4eac-a127-b5e0d804aa07';
 const COMMENT_TITLES={keshiki:'Keshiki',clock:'Fluid Mechanics Clock',chokusen:'Straight and Curved Lines',gripper:'Hydraulic Gripper',mirror:'Mirror',slugcat:'Slugcat'};
 function mountComments(id){
   if(!CUSDIS_APP_ID) return;
@@ -808,6 +793,7 @@ function mountComments(id){
     thread=document.createElement('div');thread.id='cusdis_thread';
     thread.setAttribute('data-host','https://cusdis.com');
     thread.setAttribute('data-app-id',CUSDIS_APP_ID);
+    thread.setAttribute('data-theme','dark');
   }
   const title=COMMENT_TITLES[id]||id,url=location.origin+location.pathname+'#project-'+id;
   thread.setAttribute('data-page-id',id);
