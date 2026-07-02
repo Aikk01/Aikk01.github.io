@@ -582,7 +582,10 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
         vdCombined();
       }
       function vdFrame(ts){
-        if(!vdS.playing)return;if(vdS.lastTs===null)vdS.lastTs=ts;
+        if(!vdS.playing)return;
+        const vw=document.getElementById('vd-wrap');
+        if(vw&&vw.offsetParent===null){vdS.lastTs=null;vdS.rafId=requestAnimationFrame(vdFrame);return;}   // clock page hidden — pause
+        if(vdS.lastTs===null)vdS.lastTs=ts;
         const dt=Math.min((ts-vdS.lastTs)/1000,0.05);vdS.lastTs=ts;const sp=vdS.speed;
         vdS.s.angle+=(2*Math.PI/60)*sp*dt;vdS.m.angle+=(2*Math.PI/3600)*sp*dt;vdS.h.angle+=(2*Math.PI/43200)*sp*dt;
         vdRender();vdS.rafId=requestAnimationFrame(vdFrame);
@@ -971,6 +974,7 @@ function syncViewFromHash(){
 
       (function animate() {
         requestAnimationFrame(animate);
+        if (canvas.offsetParent === null) return;   // page hidden — skip render
         controls.update();
         renderer.render(scene, cam);
       })();
@@ -1058,6 +1062,7 @@ function initKD(){
   }
 
   function draw(){
+    if(cv.offsetParent===null){requestAnimationFrame(draw);return;}   // page hidden — skip
     const w=cv.offsetWidth,h=cv.offsetHeight;
     if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h;}
     const cx=w/2,cy=h*.46,r=Math.min(w,h)*.36;
@@ -1145,7 +1150,9 @@ function initKD(){
 /* ── HERO CANVAS — unchanged ── */
 const canvas=document.getElementById('hero-canvas'),ctx=canvas.getContext('2d');let t=0;
 function draw(){
-  const p=canvas.parentElement;canvas.width=p.offsetWidth;canvas.height=p.offsetHeight;
+  if(canvas.offsetParent===null){requestAnimationFrame(draw);return;}   // hero hidden — skip
+  const p=canvas.parentElement,pw=p.offsetWidth,ph=p.offsetHeight;
+  if(canvas.width!==pw||canvas.height!==ph){canvas.width=pw;canvas.height=ph;}   // resize only on change
   const w=canvas.width,h=canvas.height;ctx.clearRect(0,0,w,h);
   for(let i=0;i<8;i++){
     const fi=i/7,phase=fi*Math.PI*2.6,yBase=h*(.05+fi*.9),amp=22+fi*28,spd=.5+fi*.2;
