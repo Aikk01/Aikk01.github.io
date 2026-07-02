@@ -813,8 +813,9 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 <script>
-(function renderClockMath(){
-  if(!window.renderMathInElement){setTimeout(renderClockMath,60);return;}   // wait for KaTeX to load
+(function renderClockMath(tries){
+  tries=tries||0;
+  if(!window.renderMathInElement){if(tries<100)setTimeout(function(){renderClockMath(tries+1);},60);return;}   // wait for KaTeX (give up after ~6s)
   var el=document.getElementById('clock-math');
   if(el) renderMathInElement(el,{delimiters:[
     {left:'$$',right:'$$',display:true},
@@ -898,7 +899,8 @@ function mountComments(id){
 function preventCommentFrameScroll(mount){
   const tune=()=>{
     const frame=mount.querySelector('iframe');
-    if(!frame) return;
+    if(!frame||frame.__tuned) return;   // run once per iframe — writing styles below must not re-trigger us
+    frame.__tuned=true;
     frame.setAttribute('scrolling','no');
     frame.style.overflow='hidden';
     frame.style.width='100%';
@@ -907,8 +909,10 @@ function preventCommentFrameScroll(mount){
   };
   tune();
   if(mount.__cusdisObserver) return;
+  // Observe only childList (iframe insertion) — NOT attributes, or tune's own
+  // style writes would fire the observer again in an infinite loop.
   mount.__cusdisObserver=new MutationObserver(tune);
-  mount.__cusdisObserver.observe(mount,{childList:true,subtree:true,attributes:true});
+  mount.__cusdisObserver.observe(mount,{childList:true,subtree:true});
 }
 
 function showMainSite(){
