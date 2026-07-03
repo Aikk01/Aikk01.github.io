@@ -42,6 +42,7 @@ nav{display:flex;justify-content:flex-end;align-items:center;padding:1.1rem 2rem
 .feat-card[data-project="gripper"]{order:2}
 .feat-card[data-project="clock"]{order:3}
 .feat-card[data-project="keshiki"]{order:4}
+.feat-card[data-project="website"]{order:5}
 .feat-card{border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;background:rgba(11,11,9,0.65);backdrop-filter:blur(3px);display:flex;flex-direction:column;cursor:pointer;overflow:hidden;transition:border-color 0.25s,background 0.25s,transform 0.25s}
 .feat-card:hover{border-color:rgba(200,88,69,0.4);background:rgba(200,88,69,0.07);transform:translateY(-3px)}
 .feat-thumb{height:148px;display:flex;align-items:center;justify-content:center;border-bottom:0.5px solid rgba(237,234,227,0.07);position:relative;overflow:hidden;transition:background 0.25s}
@@ -59,11 +60,24 @@ nav{display:flex;justify-content:flex-end;align-items:center;padding:1.1rem 2rem
 .feat-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:0.75rem}
 .tag{font-size:12.42px;padding:2px 8px;border:0.5px solid rgba(237,234,227,0.14);color:rgba(237,234,227,0.3);border-radius:1px;font-family:var(--font-mono);letter-spacing:0.04em;transition:border-color 0.2s,color 0.2s}
 .feat-card:hover .tag{border-color:rgba(200,88,69,0.35);color:rgba(200,88,69,0.65)}
+/* Per-project hover themes — matching each project page's colour */
+.feat-card[data-project="chokusen"]:hover{border-color:rgba(185,74,61,0.5);background:rgba(185,74,61,0.08)}
+.feat-card[data-project="chokusen"]:hover .feat-arrow{color:#B94A3D}
+.feat-card[data-project="chokusen"]:hover .tag{border-color:rgba(185,74,61,0.4);color:rgba(238,145,118,0.75)}
+.feat-card[data-project="clock"]:hover{border-color:rgba(80,130,200,0.5);background:rgba(80,130,200,0.08)}
+.feat-card[data-project="clock"]:hover .feat-arrow{color:#5E86C6}
+.feat-card[data-project="clock"]:hover .tag{border-color:rgba(80,130,200,0.4);color:rgba(140,175,225,0.75)}
+.feat-card[data-project="keshiki"]:hover{border-color:rgba(182,26,37,0.55);background:rgba(182,26,37,0.09)}
+.feat-card[data-project="keshiki"]:hover .feat-arrow{color:#d64b52}
+.feat-card[data-project="keshiki"]:hover .tag{border-color:rgba(182,26,37,0.45);color:rgba(214,75,82,0.8)}
+.feat-card[data-project="gripper"]:hover{border-color:rgba(237,234,227,0.35);background:rgba(237,234,227,0.05)}
+.feat-card[data-project="gripper"]:hover .feat-arrow{color:rgba(237,234,227,0.7)}
+.feat-card[data-project="gripper"]:hover .tag{border-color:rgba(237,234,227,0.3);color:rgba(237,234,227,0.55)}
 .hr{height:0.5px;background:rgba(237,234,227,0.08);margin:0 0 2rem}
 .trashy-head{display:flex;align-items:baseline;gap:0.75rem;margin-bottom:1.2rem}.trashy-label{font-size:18.63px;font-weight:500}
 .trashy-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,180px));gap:0.5rem;justify-content:start}
 .trashy-card{border:0.5px solid rgba(237,234,227,0.1);border-radius:2px;padding:0.85rem;display:flex;flex-direction:column;cursor:pointer;background:rgba(11,11,9,0.55);backdrop-filter:blur(3px);transition:border-color 0.2s,transform 0.2s}
-.trashy-card:hover{border-color:rgba(200,88,69,0.3);transform:translateY(-2px)}
+.trashy-card:hover{border-color:rgba(237,234,227,0.35);background:rgba(237,234,227,0.05);transform:translateY(-2px)}
 .trashy-title{font-size:16.15px;font-weight:500;line-height:1.35;min-height:3.6em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:0.65rem}
 .trashy-visual{margin-top:0.5rem;border-radius:2px;overflow:hidden;border:0.5px solid rgba(237,234,227,0.08);height:100px}
 .trashy-visual img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:0.9}
@@ -315,6 +329,18 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
         <p class="feat-title" data-en="Hydraulic Gripper" data-jp="油圧グリッパー">Hydraulic Gripper</p>
         <p class="feat-desc" data-en="Hydraulically actuated soft silicone hand with ArUco vision control." data-jp="油圧駆動のソフトシリコンハンド">Hydraulically actuated soft silicone hand with ArUco vision control.</p>
         <div class="feat-tags"><span class="tag">Soft robotics</span><span class="tag">Silicone</span></div>
+      </div>
+    </a>
+
+    <!-- ── 05 WEBSITE — this site as its own project ── -->
+    <a class="feat-card" href="#project-website" data-project="website" onclick="openProject('website');return false;">
+      <div class="feat-thumb" style="background:#0d0d0b">
+        <svg style="width:100%;height:100%" viewBox="0 0 260 148" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="148" fill="#0d0d0b"/><path d="M0,38 C30,30 55,46 85,40 C115,34 140,20 170,28 C200,36 230,30 260,24" stroke="rgba(200,88,69,0.55)" stroke-width="1.2" fill="none"/><path d="M0,72 C35,62 60,82 95,74 C130,66 155,52 190,62 C220,70 240,62 260,58" stroke="rgba(126,158,148,0.5)" stroke-width="1.2" fill="none"/><path d="M0,106 C30,96 65,116 100,108 C135,100 160,86 195,96 C225,104 245,96 260,92" stroke="rgba(80,130,200,0.5)" stroke-width="1.2" fill="none"/><text x="20" y="132" font-family="monospace" font-size="11" fill="rgba(237,234,227,0.35)" letter-spacing="2">index.html</text></svg>
+      </div>
+      <div class="feat-body"><div class="feat-head"><div class="feat-num-wrap"><span class="feat-num">05</span><span class="tag-wip">WIP</span><span class="tag-personal">Personal</span></div><i class="ti ti-arrow-up-right feat-arrow"></i></div>
+        <p class="feat-title" data-en="This Website" data-jp="このサイト">This Website</p>
+        <p class="feat-desc" data-en="The site you are looking at right now — one hand-built HTML file. Comment on its development process." data-jp="今まさに見ているこのサイト。1枚の手作りHTML。開発過程にコメントできます。">The site you are looking at right now — one hand-built HTML file. Comment on its development process.</p>
+        <div class="feat-tags"><span class="tag">HTML/CSS/JS</span><span class="tag">Canvas</span><span class="tag">GitHub Pages</span></div>
       </div>
     </a>
   </div>
@@ -899,11 +925,28 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
 </div>
 
 
+<!-- ══════════════════════════════════════════════════
+     PROJECT: This Website
+══════════════════════════════════════════════════ -->
+<div class="project-page" id="project-website">
+  <div class="proj-nav">
+    <a class="proj-back" href="#" data-close-project="website" onclick="closeProject('website')">← Back</a>
+    <button class="lang-btn" id="lang-btn-website" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button>
+  </div>
+  <div class="proj-body">
+    <p class="proj-label" data-en="Featured Projects — Personal" data-jp="主要作品 — 個人制作">Featured Projects — Personal</p>
+    <h1 class="proj-title" data-en="This Website" data-jp="このサイト">This Website</h1>
+    <div class="proj-date"><span class="label" data-en="Date" data-jp="制作時期">Date</span><span class="value" data-en="Ongoing" data-jp="継続中">Ongoing</span></div>
+    <p class="proj-wip" data-en="Work in progress" data-jp="制作中">Work in progress</p>
+    <a class="proj-visit" href="https://github.com/Aikk01/Aikk01.github.io" target="_blank">View source ↗</a>
+  </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script>
-const allPages=['keshiki','clock','chokusen','gripper','mirror','slugcat'];
+const allPages=['keshiki','clock','chokusen','gripper','mirror','slugcat','website'];
 let kdInit=false;
 
 function openProject(id){
@@ -931,7 +974,7 @@ function showProject(id){
    Paste your Cusdis App ID below to enable comments on every project page.
    Sign up free at https://cusdis.com → create a website → copy the App ID. */
 const CUSDIS_APP_ID='dd921b76-5d0b-4eac-a127-b5e0d804aa07';
-const COMMENT_TITLES={keshiki:'Keshiki',clock:'Fluid Mechanics Clock',chokusen:'Straight and Curved Lines',gripper:'Hydraulic Gripper',mirror:'Mirror',slugcat:'Slugcat'};
+const COMMENT_TITLES={keshiki:'Keshiki',clock:'Fluid Mechanics Clock',chokusen:'Straight and Curved Lines',gripper:'Hydraulic Gripper',mirror:'Mirror',slugcat:'Slugcat',website:'This Website'};
 function mountComments(id){
   if(!CUSDIS_APP_ID) return;
   const page=document.getElementById('project-'+id);
@@ -1105,7 +1148,7 @@ function toggleLang(){
   lang=lang==='en'?'jp':'en';
   document.querySelectorAll('[data-en]').forEach(el=>{el.innerHTML=el.dataset[lang]||el.dataset.en});
   const b='<span class="lit">EN</span> / <span class="dim">JP</span>',j='<span class="dim">EN</span> / <span class="lit">JP</span>';
-  ['lang-btn','lang-btn-keshiki','lang-btn-clock','lang-btn-chokusen','lang-btn-gripper','lang-btn-mirror'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=lang==='en'?b:j});
+  ['lang-btn','lang-btn-keshiki','lang-btn-clock','lang-btn-chokusen','lang-btn-gripper','lang-btn-mirror','lang-btn-website'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=lang==='en'?b:j});
   const jp=lang==='jp';
   document.getElementById('main-site').classList.toggle('jp-mode',jp);
   allPages.forEach(p=>document.getElementById('project-'+p).classList.toggle('jp-mode',jp));
