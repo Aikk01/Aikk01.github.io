@@ -16,6 +16,8 @@ nav{display:flex;justify-content:flex-end;align-items:center;padding:1.1rem 2rem
 .lang-btn{font-family:var(--font-mono);font-size:12.42px;background:none;border:0.5px solid rgba(237,234,227,0.2);padding:3px 12px;cursor:pointer;letter-spacing:0.1em;border-radius:1px;transition:border-color 0.2s}
 .lang-btn:hover{border-color:rgba(237,234,227,0.5)}
 .lang-btn .dim{color:rgba(237,234,227,0.28)}.lang-btn .lit{color:#edeae3}
+.snd-btn{padding:3px 9px;min-width:32px}
+.snd-btn .dim{text-decoration:line-through;text-decoration-color:rgba(237,234,227,0.45)}
 .hero{position:relative;padding:5rem 2rem 4rem;border-bottom:0.5px solid rgba(237,234,227,0.1);overflow:hidden}
 #hero-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .hero-inner{position:relative;z-index:1}
@@ -960,6 +962,7 @@ let kdInit=false;
 
 function openProject(id){
   if(!allPages.includes(id)) return;
+  pluck(392,{gain:0.26,dur:0.5});pluck(587.33,{delay:0.08,gain:0.2,dur:0.55});
   const targetHash='project-'+id;
   if(location.hash!=='#'+targetHash){
     location.hash=targetHash;
@@ -1129,6 +1132,7 @@ function syncViewFromHash(){
     }
 
 function closeProject(id){
+  pluck(587.33,{gain:0.24,dur:0.45});pluck(392,{delay:0.08,gain:0.2,dur:0.55});
   const url=window.location.pathname+window.location.search;
   history.pushState('',document.title,url);
   showMainSite();
@@ -1161,7 +1165,73 @@ function toggleLang(){
   const jp=lang==='jp';
   document.getElementById('main-site').classList.toggle('jp-mode',jp);
   allPages.forEach(p=>document.getElementById('project-'+p).classList.toggle('jp-mode',jp));
+  pluck(659.26,{gain:0.14,dur:0.3});
 }
+
+/* ── SOUND INTERACTIONS ──
+   Tiny Web Audio synth, no audio files. Koto-ish plucks tuned to the
+   yo scale (D E G A B) — hovering across the project grid plays it. */
+let sndOn=localStorage.getItem('snd')!=='off';
+let actx=null,sndMaster=null;
+function sndInit(){
+  if(actx)return;
+  const AC=window.AudioContext||window.webkitAudioContext;
+  if(!AC)return;
+  actx=new AC();
+  sndMaster=actx.createGain();
+  sndMaster.gain.value=0.16;
+  sndMaster.connect(actx.destination);
+}
+/* Browsers only allow audio after a user gesture — arm on the first one */
+['pointerdown','keydown'].forEach(ev=>document.addEventListener(ev,function(){sndInit();if(actx&&actx.state==='suspended')actx.resume();},{capture:true,passive:true}));
+
+function pluck(f,o){
+  o=o||{};
+  if(!sndOn||!actx||actx.state!=='running')return;
+  const t=actx.currentTime+(o.delay||0),gain=o.gain||0.3,dur=o.dur||0.55;
+  /* fundamental + soft octave + faint metallic partial ≈ plucked string */
+  [[f,gain,dur],[f*2,gain*0.16,dur*0.5],[f*5.4,gain*0.04,dur*0.18]].forEach(p=>{
+    const osc=actx.createOscillator(),g=actx.createGain();
+    osc.type='sine';osc.frequency.value=p[0];
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.linearRampToValueAtTime(p[1],t+0.007);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+p[2]);
+    osc.connect(g).connect(sndMaster);
+    osc.start(t);osc.stop(t+p[2]+0.05);
+  });
+}
+const YO=[293.66,329.63,392,440,493.88,587.33,659.26]; /* D4 E4 G4 A4 B4 D5 E5 */
+function sndTick(){pluck(1174.7,{gain:0.05,dur:0.09})}
+function toggleSnd(){
+  sndOn=!sndOn;
+  localStorage.setItem('snd',sndOn?'on':'off');
+  updateSndBtns();
+  if(sndOn){sndInit();if(actx&&actx.state==='suspended')actx.resume();pluck(440,{gain:0.25,dur:0.4});pluck(587.33,{delay:0.09,gain:0.2,dur:0.45});}
+}
+function updateSndBtns(){
+  document.querySelectorAll('.snd-btn').forEach(b=>{
+    b.innerHTML=sndOn?'<span class="lit">♪</span>':'<span class="dim">♪</span>';
+    b.title=sndOn?'Sound: on':'Sound: off';
+  });
+}
+document.addEventListener('DOMContentLoaded',function(){
+  /* a ♪ toggle beside every EN/JP button, main site and project pages */
+  document.querySelectorAll('.lang-btn:not(.snd-btn)').forEach(function(lb){
+    const b=document.createElement('button');
+    b.className='lang-btn snd-btn';
+    b.setAttribute('aria-label','Toggle sound');
+    b.onclick=toggleSnd;
+    lb.parentNode.insertBefore(b,lb);
+  });
+  updateSndBtns();
+  /* each project card is one note of the scale */
+  document.querySelectorAll('.feat-card,.trashy-card').forEach(function(el,i){
+    el.addEventListener('mouseenter',function(){pluck(YO[i%YO.length],{gain:0.2,dur:0.5})});
+  });
+  document.querySelectorAll('.nav-links a,.c-val').forEach(function(el){
+    el.addEventListener('click',sndTick);
+  });
+});
 
 /* ── KESHIKI DOME DEMO ──
    Colour scheme per spec:
