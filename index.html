@@ -1365,7 +1365,7 @@ function initKD(){
     {speed:14, depth:.25,col:'#141716',gen:genMid},
     {speed:22, depth:.4, gen:genFog},
     {speed:36, depth:.6, col:'#0c0d0c',gen:genNear},
-    {speed:95, depth:1,  col:'#040403',gen:genFront},
+    {speed:95, depth:1,  col:'#040403',gen:genFront,blur:2.5},
   ];
   const PAD=10;   // extra tile height so pointer parallax never shows an edge
   let w=0,h=0,dpr=1,sky=null,drops=[],last=0;
@@ -1464,6 +1464,10 @@ function initKD(){
       L.c.width=W*dpr;L.c.height=H*dpr;
       const g=L.c.getContext('2d');g.setTransform(dpr,0,0,dpr,0,PAD*dpr);
       L.gen(g,W,h,R,L.col);
+      if(L.blur){   // soft focus on the nearest layer, like a shallow depth of field
+        const b=document.createElement('canvas');b.width=L.c.width;b.height=L.c.height;
+        const bg=b.getContext('2d');bg.filter=`blur(${L.blur*dpr}px)`;bg.drawImage(L.c,0,0);L.c=b;
+      }
       L.off=L.off||0;
     }
     sky=ctx.createLinearGradient(0,0,0,h);
