@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}a{text-decoration:none;color:inherit}
+body{background:#0b0b09}
 .site,.project-page{background:#0b0b09;color:#edeae3;font-family:var(--font-sans)}
 .site.jp-mode,.project-page.jp-mode{font-family:"Hiragino Mincho ProN","Hiragino Mincho Pro","Yu Mincho","YuMincho",serif}
 .jp-mode .hero h1{font-size:clamp(38px,7vw,68px)!important}
@@ -18,10 +19,15 @@ nav{display:flex;justify-content:flex-end;align-items:center;padding:1.1rem 2rem
 .lang-btn .dim{color:rgba(237,234,227,0.28)}.lang-btn .lit{color:#edeae3}
 .snd-btn{padding:3px 9px;min-width:32px}
 .snd-btn .dim{text-decoration:line-through;text-decoration-color:rgba(237,234,227,0.45)}
-.hero{position:relative;padding:5rem 2rem 4rem;border-bottom:0.5px solid rgba(237,234,227,0.1);overflow:hidden}
-#hero-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero{position:relative;min-height:min(78vh,720px);display:flex;align-items:flex-end;padding:5rem 2rem 4rem;border-bottom:0.5px solid rgba(237,234,227,0.1);overflow:hidden}
+#main-site{background:transparent}
+#hero-canvas{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:0}
+#main-site>*:not(canvas){position:relative;z-index:1}
+.ground{height:220px}
+#ground-canvas{display:block;width:100%;height:100%}
+.two-col,.skills-section,.projects{background:rgba(11,11,9,0.62);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
 .hero-inner{position:relative;z-index:1}
-.hero h1{font-size:clamp(56px,10vw,96px);font-weight:500;line-height:0.9;letter-spacing:-0.035em}
+.hero h1{font-size:clamp(56px,10vw,96px);font-weight:500;line-height:0.9;letter-spacing:-0.035em;text-shadow:0 2px 28px rgba(0,0,0,.7)}
 .hero h1 span{display:block}
 .two-col{display:grid;grid-template-columns:1fr 1fr;border-bottom:0.5px solid rgba(237,234,227,0.1)}
 .col{padding:3.5rem 2rem}.col:first-child{border-right:0.5px solid rgba(237,234,227,0.1)}
@@ -37,7 +43,6 @@ nav{display:flex;justify-content:flex-end;align-items:center;padding:1.1rem 2rem
 .c-val:hover{color:rgba(237,234,227,0.9)}.c-val svg{flex-shrink:0}
 .accent-strip{height:2px;background:linear-gradient(90deg,#7E9E94,transparent);opacity:0.35}
 .projects{position:relative;padding:3.5rem 2rem;border-bottom:0.5px solid rgba(237,234,227,0.1);overflow:hidden}
-.projects-bg{position:absolute;bottom:0;left:0;width:100%;height:72%;pointer-events:none;z-index:0}
 .projects>.s-label,.feat-grid,.hr,.trashy-head,.trashy-grid{position:relative;z-index:1}
 .feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.6rem;margin-bottom:3rem}
 .feat-card[data-project="chokusen"]{order:1}
@@ -85,7 +90,7 @@ nav{display:flex;justify-content:flex-end;align-items:center;padding:1.1rem 2rem
 .trashy-visual img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:0.9}
 .feat-thumb img{width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(0.4);transition:filter 0.45s ease;display:block}
 .feat-card:hover .feat-thumb img{filter:brightness(1)}
-footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2rem}
+footer{background:#0b0b09;display:flex;justify-content:center;align-items:center;padding:1.35rem 2rem}
 .f-txt{font-family:var(--font-mono);font-size:12.42px;color:rgba(237,234,227,0.16);letter-spacing:0.06em}
 /* Project pages */
 .proj-nav{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2rem;border-bottom:0.5px solid rgba(237,234,227,0.1)}
@@ -224,7 +229,7 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
 .proj-comments iframe{width:100%!important;min-height:760px!important;overflow:hidden!important;border:0!important}
 </style>
 
-<div class="site" id="main-site">
+<div class="site" id="main-site"><canvas id="hero-canvas"></canvas>
 <nav><div class="nav-links">
   <a href="#about" data-en="About" data-jp="自己紹介">About</a>
   <a href="#projects" data-en="Projects" data-jp="作品">Projects</a>
@@ -232,7 +237,7 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
   <button class="lang-btn" id="lang-btn" onclick="toggleLang()"><span class="lit">EN</span> / <span class="dim">JP</span></button>
 </div></nav>
 
-<div class="hero"><canvas id="hero-canvas"></canvas>
+<div class="hero">
   <div class="hero-inner"><h1>
     <span data-en="Aika Ono" data-jp="小野愛佳">Aika Ono</span>
     <span data-en="Portfolio." data-jp="ポートフォリオ">Portfolio.</span>
@@ -275,20 +280,6 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
 </div>
 
 <div class="projects" id="projects">
-  <svg class="projects-bg" viewBox="0 0 900 520" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" fill="none">
-    <path d="M0,320 C180,260 380,300 560,240 C740,180 860,210 900,190 L900,520 L0,520 Z" fill="#0D2E80" opacity="0.24"/>
-    <path d="M0,390 C150,330 320,370 500,310 C680,250 820,280 900,260 L900,360 C820,380 680,350 500,410 C320,470 150,440 0,480 Z" fill="#1A52B5" opacity="0.22"/>
-    <path d="M0,445 C120,395 280,415 440,362 C600,308 760,332 900,302 L900,418 C760,448 600,428 440,478 C280,528 120,508 0,520 Z" fill="#2090A8" opacity="0.18"/>
-    <path d="M355,520 C322,458 292,388 342,328 C392,268 472,248 512,294 C552,340 526,400 562,450 C598,500 672,512 722,520 Z" fill="#6858A8" opacity="0.16"/>
-    <path d="M822,520 C800,468 816,418 837,368 C858,318 892,283 900,253 L900,332 C890,362 868,400 848,450 C828,500 846,516 862,520 Z" fill="#2255C8" opacity="0.28"/>
-    <line x1="0" y1="358" x2="900" y2="193" stroke="#5080C8" stroke-width="0.85" opacity="0.17"/>
-    <line x1="0" y1="398" x2="900" y2="233" stroke="#5080C8" stroke-width="0.55" opacity="0.11"/>
-    <rect x="555" y="265" width="225" height="255" stroke="#6090D0" stroke-width="0.75" opacity="0.11" fill="none"/>
-    <polygon points="698,520 786,298 804,298 716,520" fill="#1E3A90" opacity="0.18"/>
-    <path d="M0,372 C200,332 420,357 622,297 C822,237 900,257 900,247" stroke="#C8A830" stroke-width="1.5" opacity="0.26"/>
-    <path d="M322,520 C344,472 330,430 355,385 C380,340 412,308 388,258" stroke="#140808" stroke-width="3" opacity="0.48" stroke-linecap="round"/>
-    <path d="M612,520 C635,472 612,436 635,392 C658,348 680,315 655,268" stroke="#120606" stroke-width="2.5" opacity="0.4" stroke-linecap="round"/>
-  </svg>
 
   <p class="s-label" data-en="Featured projects" data-jp="主要作品">Featured projects</p>
   <div class="feat-grid">
@@ -371,6 +362,7 @@ footer{display:flex;justify-content:center;align-items:center;padding:1.35rem 2r
     </a>
   </div>
 </div>
+<div class="ground" aria-hidden="true"><canvas id="ground-canvas"></canvas></div>
 <footer><span class="f-txt">Aika Ono © 2026</span></footer>
 </div>
 
@@ -1359,23 +1351,277 @@ function initKD(){
   inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
 }
 
-/* ── HERO CANVAS — unchanged ── */
-const canvas=document.getElementById('hero-canvas'),ctx=canvas.getContext('2d');let t=0;
-function draw(){
-  if(canvas.offsetParent===null){requestAnimationFrame(draw);return;}   // hero hidden — skip
-  const p=canvas.parentElement,pw=p.offsetWidth,ph=p.offsetHeight;
-  if(canvas.width!==pw||canvas.height!==ph){canvas.width=pw;canvas.height=ph;}   // resize only on change
-  const w=canvas.width,h=canvas.height;ctx.clearRect(0,0,w,h);
-  for(let i=0;i<8;i++){
-    const fi=i/7,phase=fi*Math.PI*2.6,yBase=h*(.05+fi*.9),amp=22+fi*28,spd=.5+fi*.2;
-    const hue=i%3,r=hue===0?200:hue===1?126:80,g=hue===0?88:hue===1?158:130,b=hue===0?69:hue===1?148:200;
-    ctx.beginPath();
-    for(let s=0;s<=90;s++){const x=w/90*s,fx=s/90,y=yBase+Math.sin(t*spd+phase+fx*3.6)*amp+Math.sin(t*spd*.55+phase*1.2+fx*5.8)*(amp*.38)+Math.cos(t*spd*.35+fx*2.1)*(amp*.2);s===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}
-    ctx.strokeStyle=`rgba(${r},${g},${b},${.14+fi*.18})`;ctx.lineWidth=1.2;ctx.stroke();
+/* ── BACKGROUND — layered parallax ruins (Rain World title-screen style), fixed behind the whole top page ──
+   Each layer is pre-rendered once into a seamlessly tiling offscreen canvas,
+   then scrolled sideways. Nearer layers scroll faster and are darker;
+   farther layers are slower and fade into the fog. Rain falls in two depths. */
+(function(){
+  const canvas=document.getElementById('hero-canvas'),ctx=canvas.getContext('2d');
+  const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const FOG='34,40,39';
+  // back → front. speed in px/s, depth drives pointer parallax
+  const LAYERS=[
+    {speed:5,  depth:.1, col:'#1d2221',gen:genFar},
+    {speed:14, depth:.25,col:'#141716',gen:genMid},
+    {speed:22, depth:.4, gen:genFog},
+    {speed:36, depth:.6, col:'#0c0d0c',gen:genNear},
+    {speed:95, depth:1,  col:'#040403',gen:genFront},
+  ];
+  const PAD=10;   // extra tile height so pointer parallax never shows an edge
+  let w=0,h=0,dpr=1,sky=null,drops=[],last=0;
+  const site=document.getElementById('main-site');
+  let px=0,py=0,tx=0,ty=0;
+
+  function rng(seed){return()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+  // draw at x and at x-W so anything crossing the right edge wraps to the left
+  const wrap=(W,x,fn)=>{fn(x);fn(x-W);};
+
+  function genFar(g,W,H,R,col){
+    g.fillStyle=col;g.fillRect(0,H*.82,W,H);
+    for(let x=0;x<W;){
+      const bw=8+R()*26,top=H*(.28+R()*.42),ant=R()<.4?20+R()*40:0,ax=R()*bw;
+      wrap(W,x,X=>{g.fillRect(X,top,bw,H-top);if(ant){g.fillRect(X+ax,top-ant,1.2,ant);g.fillRect(X+ax-4,top-ant*.6,9,1.2);}});
+      x+=bw*.7+R()*34;
+    }
   }
-  t+=.0022;requestAnimationFrame(draw);
-}
-draw();
+  function genMid(g,W,H,R,col){
+    for(let x=0;x<W;){
+      const bw=40+R()*90,top=H*(.45+R()*.3),wins=[];
+      for(let wy=top+8;wy<H-10;wy+=11)for(let wx=6;wx<bw-6;wx+=9){
+        const r=R();if(r<.04)wins.push([wx,wy,r<.012?'rgba(200,88,69,.6)':'rgba(237,220,180,.2)']);
+      }
+      const chim=R()<.4?[R()*bw*.7,4+R()*7,15+R()*35]:null;
+      wrap(W,x,X=>{
+        g.fillStyle=col;g.fillRect(X,top,bw,H-top);
+        if(chim)g.fillRect(X+chim[0],top-chim[2],chim[1],chim[2]);
+        for(const[a,b,c]of wins){g.fillStyle=c;g.fillRect(X+a,b,3,4);}
+      });
+      x+=bw*(.6+R()*.9);
+    }
+  }
+  function genFog(g,W,H,R){
+    for(let i=0;i<W/90;i++){
+      const x=R()*W,y=H*(.55+R()*.35),rx=120+R()*220,a=.12+R()*.14;
+      wrap(W,x,X=>{
+        g.save();g.translate(X,y);g.scale(1,.28);
+        const gr=g.createRadialGradient(0,0,0,0,0,rx);
+        gr.addColorStop(0,`rgba(${FOG},${a})`);gr.addColorStop(1,`rgba(${FOG},0)`);
+        g.fillStyle=gr;g.fillRect(-rx,-rx,rx*2,rx*2);g.restore();
+      });
+    }
+  }
+  function genNear(g,W,H,R,col){
+    g.fillStyle=col;g.strokeStyle=col;
+    // rubble ground — integer-frequency sines so it tiles seamlessly
+    const k1=3+(R()*3|0),k2=9+(R()*5|0),p1=R()*6,p2=R()*6;
+    g.beginPath();g.moveTo(0,H);
+    for(let x=0;x<=W;x+=6){const f=x/W*Math.PI*2;g.lineTo(x,H*.9+Math.sin(f*k1+p1)*7+Math.sin(f*k2+p2)*3);}
+    g.lineTo(W,H);g.fill();
+    // girder with truss (W is a multiple of 28)
+    const gy=H*(.14+R()*.08);
+    g.fillRect(0,gy,W,3);g.fillRect(0,gy+16,W,3);
+    g.lineWidth=1.6;g.beginPath();
+    for(let x=0;x<W;x+=28){g.moveTo(x,gy+1);g.lineTo(x+14,gy+17);g.lineTo(x+28,gy+1);}
+    g.stroke();
+    // pillars + sagging cables between them
+    const cols=[];
+    for(let x=R()*80;x<W-20;x+=180+R()*260)cols.push([x,22+R()*26]);
+    cols.forEach(([x,bw],i)=>{
+      const sag=30+R()*70,nx=(cols[i+1]||[cols[0][0]+W])[0];
+      wrap(W,x,X=>{
+        g.fillRect(X,gy,bw,H-gy);g.fillRect(X-5,gy+19,bw+10,8);
+        g.lineWidth=1.2;g.beginPath();g.moveTo(X+bw,gy+30);
+        g.quadraticCurveTo((X+bw+X+nx-x)/2,gy+30+sag,X+nx-x,gy+30);g.stroke();
+      });
+    });
+  }
+  function genFront(g,W,H,R,col){
+    g.fillStyle=col;g.strokeStyle=col;g.lineCap='round';
+    // hanging vines / chains from the top
+    for(let i=0;i<W/160;i++){
+      const x=R()*W,len=H*(.12+R()*.4),sw=(R()-.5)*50,lw=1.5+R()*3,leaf=R()<.5;
+      wrap(W,x,X=>{
+        g.lineWidth=lw;g.beginPath();g.moveTo(X,-PAD);
+        g.quadraticCurveTo(X+sw,len*.6,X+sw*.4,len);g.stroke();
+        if(leaf){g.beginPath();g.ellipse(X+sw*.4,len+6,4+lw,9+lw*2,sw/90,0,Math.PI*2);g.fill();}
+      });
+    }
+    // grass blades along the bottom
+    for(let x=0;x<W;x+=4+R()*10){
+      const bh=14+R()*R()*110,lean=(R()-.4)*40,bw=2+R()*4;
+      wrap(W,x,X=>{g.beginPath();g.moveTo(X-bw,H+PAD);g.quadraticCurveTo(X,H-bh*.5,X+lean,H-bh);g.quadraticCurveTo(X+bw*.3,H-bh*.4,X+bw,H+PAD);g.fill();});
+    }
+    // one big foreground pole
+    const x=R()*W,bw=26+R()*30;
+    wrap(W,x,X=>g.fillRect(X,-PAD,bw,H+PAD*2));
+  }
+
+  function build(){
+    const R=rng(7),H=h+PAD*2;
+    const W=Math.ceil(Math.max(w,600)*1.6/56)*56;
+    for(const L of LAYERS){
+      L.W=W;L.c=document.createElement('canvas');
+      L.c.width=W*dpr;L.c.height=H*dpr;
+      const g=L.c.getContext('2d');g.setTransform(dpr,0,0,dpr,0,PAD*dpr);
+      L.gen(g,W,h,R,L.col);
+      L.off=L.off||0;
+    }
+    sky=ctx.createLinearGradient(0,0,0,h);
+    sky.addColorStop(0,'#0b0b09');sky.addColorStop(.7,`rgb(${FOG})`);sky.addColorStop(1,'#151817');
+    drops=Array.from({length:Math.round(w*h/5000)},()=>newDrop(true));
+  }
+  function newDrop(any){
+    const z=Math.random();   // 0 far … 1 near
+    return{x:Math.random()*(w+100),y:any?Math.random()*h:-20,z,len:6+z*16,v:350+z*650};
+  }
+
+  function frame(now){
+    if(!still)requestAnimationFrame(frame);
+    if(site.offsetParent===null||document.hidden){last=0;return;}   // project page open — skip
+    const pw=innerWidth,ph=innerHeight;
+    if(pw!==w||ph!==h){
+      w=pw;h=ph;dpr=Math.min(devicePixelRatio||1,2);
+      canvas.width=w*dpr;canvas.height=h*dpr;build();
+    }
+    const dt=last?Math.min((now-last)/1000,.05):0;last=now;
+    px+=(tx-px)*.05;py+=(ty-py)*.05;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.fillStyle=sky;ctx.fillRect(0,0,w,h);
+    LAYERS.forEach((L,i)=>{
+      L.off=(L.off+L.speed*dt)%L.W;
+      const sx=L.off+px*L.depth*16;
+      let x=-(((sx%L.W)+L.W)%L.W);
+      const y=-PAD-py*L.depth*PAD;
+      for(;x<w;x+=L.W)ctx.drawImage(L.c,x,y,L.W,h+PAD*2);
+      if(i===3)drawRain(dt);   // rain sits between the ruins and the foreground
+    });
+  }
+  function drawRain(dt){
+    ctx.lineWidth=1;
+    for(const d of drops){
+      d.y+=d.v*dt;d.x-=d.v*dt*.12;
+      if(d.y>h||d.x<-20)Object.assign(d,newDrop(false));
+      ctx.strokeStyle=`rgba(200,212,206,${.05+d.z*.14})`;
+      ctx.beginPath();ctx.moveTo(d.x,d.y);ctx.lineTo(d.x+d.len*.12,d.y-d.len);ctx.stroke();
+    }
+  }
+
+  addEventListener('pointermove',e=>{tx=e.clientX/innerWidth*2-1;ty=e.clientY/innerHeight*2-1;});
+  document.addEventListener('pointerleave',()=>{tx=ty=0;});
+  if(still)addEventListener('resize',()=>requestAnimationFrame(frame));
+  requestAnimationFrame(frame);
+})();
+
+/* ── FLOODED FLOOR — standing water at the bottom of the top page ──
+   Silhouettes (broken pipe, rebar, reeds, a signal post) are pre-rendered,
+   then reflected each frame in wobbling strips. Rain lands as ripples,
+   and the pipe drips on a slow beat. */
+(function(){
+  const canvas=document.getElementById('ground-canvas'),ctx=canvas.getContext('2d');
+  const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const SURF=.42;   // waterline as a fraction of height
+  let w=0,h=0,sy=0,dpr=1,sil=null,pipe=null,lamp=null,ripples=[],drip=null,last=0,t=0,visible=false;
+
+  function rng(seed){return()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+
+  function build(){
+    const R=rng(11);
+    sil=document.createElement('canvas');sil.width=w*dpr;sil.height=sy*dpr;
+    const g=sil.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);
+    g.fillStyle=g.strokeStyle='#050505';g.lineCap='round';
+    // broken pipe jutting out from the left, mouth over the water
+    const py=sy*.38,pl=Math.min(w*.22,260);
+    g.fillRect(0,py,pl,14);g.fillRect(pl-6,py-3,10,20);
+    g.fillRect(pl*.35,py-4,8,22);   // flange
+    pipe={x:pl+4,y:py+16};
+    // rebar and broken posts
+    for(let i=0;i<w/120;i++){
+      const x=R()*w,ph=sy*(.25+R()*.6),lw=1.5+R()*3,bend=(R()-.5)*14;
+      g.lineWidth=lw;g.beginPath();g.moveTo(x,sy+2);g.quadraticCurveTo(x,sy-ph*.6,x+bend,sy-ph);g.stroke();
+    }
+    // reeds in clumps
+    for(let c=0;c<w/200;c++){
+      const cx=R()*w;
+      for(let i=0;i<10;i++){
+        const x=cx+(R()-.5)*50,bh=10+R()*R()*sy*.9,lean=(R()-.5)*24,bw=1.5+R()*2.5;
+        g.beginPath();g.moveTo(x-bw,sy+2);g.quadraticCurveTo(x,sy-bh*.5,x+lean,sy-bh);g.quadraticCurveTo(x+bw*.3,sy-bh*.4,x+bw,sy+2);g.fill();
+      }
+    }
+    // signal post with a dim red lamp, right side
+    const lx=w*(.72+R()*.15),lh=sy*.85;
+    g.fillRect(lx,sy-lh,4,lh+2);g.fillRect(lx-8,sy-lh,20,3);
+    lamp={x:lx+2,y:sy-lh-5};
+  }
+
+  function frame(now){
+    if(!still)requestAnimationFrame(frame);
+    if(!visible){last=0;return;}
+    const p=canvas.parentElement,pw=p.offsetWidth,ph=p.offsetHeight;
+    if(pw!==w||ph!==h){
+      w=pw;h=ph;sy=Math.round(h*SURF);dpr=Math.min(devicePixelRatio||1,2);
+      canvas.width=w*dpr;canvas.height=h*dpr;build();
+    }
+    const dt=last?Math.min((now-last)/1000,.05):0;last=now;t+=dt;
+    ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
+    // water body
+    const wg=ctx.createLinearGradient(0,sy,0,h);
+    wg.addColorStop(0,'rgba(34,40,39,.9)');wg.addColorStop(1,'#0b0b09');
+    ctx.fillStyle=wg;ctx.fillRect(0,sy,w,h-sy);
+    // reflection: flipped silhouettes in 2px strips, each nudged sideways
+    ctx.save();ctx.globalAlpha=.5;
+    for(let y=0;y<h-sy;y+=2){
+      const dx=Math.sin(t*1.6+y*.35)*(1+y*.04);
+      ctx.drawImage(sil,0,(sy-y-2)*dpr,w*dpr,2*dpr,dx,sy+y,w,2);
+    }
+    ctx.restore();
+    // lamp glow + its smeared reflection
+    const pulse=.75+Math.sin(t*1.3)*.25;
+    let gl=ctx.createRadialGradient(lamp.x,lamp.y,0,lamp.x,lamp.y,26);
+    gl.addColorStop(0,`rgba(200,88,69,${.55*pulse})`);gl.addColorStop(1,'rgba(200,88,69,0)');
+    ctx.fillStyle=gl;ctx.fillRect(lamp.x-26,lamp.y-26,52,52);
+    const ry=2*sy-lamp.y;
+    ctx.save();ctx.translate(lamp.x,ry);ctx.scale(.5,2.2);
+    gl=ctx.createRadialGradient(0,0,0,0,0,18);
+    gl.addColorStop(0,`rgba(200,88,69,${.28*pulse})`);gl.addColorStop(1,'rgba(200,88,69,0)');
+    ctx.fillStyle=gl;ctx.fillRect(-18,-18,36,36);ctx.restore();
+    // silhouettes above the waterline
+    ctx.drawImage(sil,0,0,w,sy);
+    // surface shimmer
+    ctx.strokeStyle='rgba(200,212,206,.07)';ctx.lineWidth=1;
+    for(let i=0;i<5;i++){
+      const y=sy+3+i*i*4;ctx.beginPath();
+      for(let x=0;x<=w;x+=16)ctx.lineTo(x,y+Math.sin(x*.02+t*(1+i*.3)+i)*1.2);
+      ctx.stroke();
+    }
+    // rain hits → ripples; farther (near the surface line) = smaller
+    if(!still){
+      const n=dt*w/45;
+      for(let i=0;i<n;i++){const d=Math.random();ripples.push({x:Math.random()*w,y:sy+4+d*(h-sy-12),s:.3+d*.9,a:0});}
+      if(!drip||drip.y>sy+8){
+        if(drip)ripples.push({x:pipe.x,y:sy+8,s:1.6,a:0});
+        drip={y:pipe.y,v:0,wait:1.6+Math.random()*1.4};
+      }
+      if(drip.wait>0)drip.wait-=dt;else{drip.v+=900*dt;drip.y+=drip.v*dt;}
+    }
+    ctx.lineWidth=1;
+    ripples=ripples.filter(r=>{
+      r.a+=dt*1.1;if(r.a>=1)return false;
+      const rx=r.a*22*r.s;
+      ctx.strokeStyle=`rgba(200,212,206,${(1-r.a)*.28})`;
+      ctx.beginPath();ctx.ellipse(r.x,r.y,rx,rx*.22,0,0,Math.PI*2);ctx.stroke();
+      return true;
+    });
+    // the drip itself (bead swelling at the pipe mouth, then falling)
+    if(drip){
+      const swell=drip.wait>0?Math.max(0,1-drip.wait/1.6)*2.2:2.2;
+      ctx.fillStyle='rgba(200,212,206,.45)';
+      ctx.beginPath();ctx.ellipse(pipe.x,drip.y,swell*.8,swell,0,0,Math.PI*2);ctx.fill();
+    }
+  }
+
+  new IntersectionObserver(([e])=>{visible=e.isIntersecting;if(visible&&still)requestAnimationFrame(frame);}).observe(canvas);
+  if(!still)requestAnimationFrame(frame);
+})();
 
 // Auto-switch to JP if URL contains ?lang=jp
 if(new URLSearchParams(window.location.search).get("lang")==="jp") toggleLang();
