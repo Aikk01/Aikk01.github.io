@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="雀魂の段位戦ルールに合わせた麻雀の役一覧。用語解説・牌姿の例・出現率の目安付き。">
+<title>麻雀役ハンドブック</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; }
+[hidden] { display: none !important; }
+/* Layout: one reading column; sticky filter bar; yaku as ruled rows grouped by han, like a scorebook */
+:root {
+  --bg: #ffffff;
+  --surface: #f4f5f4;
+  --ink: #111412;
+  --muted: #3f4642;
+  --line: #d6dad7;
+  --felt: #0f6b4c;
+  --felt-soft: #e1f1e9;
+  --gold: #8a5a00;
+  --gold-soft: #fbefd2;
+  --warn: #b3261e;
+  --tile: #fffdf7;
+  --tile-edge: #a89c7c;
+  --tile-side: #c9bd9b;
+  --t-ink: #1a1a1a;
+  --t-man: #b8322a;
+  --t-pin: #1d5aa6;
+  --t-sou: #1b7a45;
+  --tip-bg: #1c2420;
+  --tip-fg: #f2f5f1;
+  --font-display: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-body: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121212; --surface: #1e1e1e; --ink: #f5f5f5; --muted: #d0d4d1; --line: #3a3a3a;
+    --felt: #74d9b0; --felt-soft: #183a2d; --gold: #f2c75c; --gold-soft: #3b2f12; --warn: #ff8a7a;
+    --tile-side: #8c8166; --tip-bg: #f5f5f5; --tip-fg: #111111; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121212; --surface: #1e1e1e; --ink: #f5f5f5; --muted: #d0d4d1; --line: #3a3a3a;
+  --felt: #74d9b0; --felt-soft: #183a2d; --gold: #f2c75c; --gold-soft: #3b2f12; --warn: #ff8a7a;
+  --tile-side: #8c8166; --tip-bg: #f5f5f5; --tip-fg: #111111; color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.75; }
+.wrap { max-width: 860px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 64px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(28px, 6vw, 40px); font-weight: 800; letter-spacing: 0.02em; }
+.lead { color: var(--muted); margin: 6px 0 0; max-width: 40em; }
+.rules { margin-top: 14px; font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 8px; }
+.rules span { border: 1px solid var(--line); border-radius: 999px; padding: 1px 10px; background: var(--surface); }
+
+/* intro */
+.intro { margin-top: 24px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; display: grid; gap: 12px; }
+.intro h2 { font-size: 19px; }
+.intro p { margin: 0; }
+.shape { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; }
+.shape figure { margin: 0; display: grid; gap: 4px; justify-items: center; }
+.shape figcaption { font-size: 12px; color: var(--muted); }
+
+/* filters */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 12px; margin-top: 20px; border-bottom: 1px solid var(--line); display: grid; gap: 10px; }
+.bar-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+#q { flex: 1 1 220px; min-width: 0; font: inherit; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); }
+#q:focus-visible, button:focus-visible, .term:focus-visible, select:focus-visible { outline: 2px solid var(--felt); outline-offset: 2px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: inherit; font-size: 13px; padding: 3px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--felt); border-color: var(--felt); color: var(--surface); }
+select { font: inherit; font-size: 13px; padding: 5px 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+.count { font-size: 13px; color: var(--muted); margin-left: auto; font-variant-numeric: tabular-nums; }
+
+/* groups + rows */
+.group { margin-top: 28px; }
+.group-head { display: flex; align-items: baseline; gap: 10px; border-bottom: 2px solid var(--ink); padding-bottom: 6px; }
+.group-head h2 { font-size: 22px; }
+.group-head .sub { font-size: 13px; color: var(--muted); }
+.yaku { display: grid; grid-template-columns: minmax(0, 1fr) 190px; gap: 8px 24px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.yaku:last-child { border-bottom: none; }
+.y-main { min-width: 0; display: grid; gap: 8px; }
+.y-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.y-title h3 { font-size: 21px; font-weight: 800; }
+.y-title .kana { font-size: 13px; color: var(--muted); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-size: 12.5px; line-height: 1.6; padding: 0 8px; border-radius: 4px; border: 1px solid var(--muted); color: var(--ink); }
+.tag.han { border-color: var(--felt); color: var(--felt); font-weight: 700; }
+.tag.yakuman { border-color: var(--gold); background: var(--gold-soft); color: var(--gold); font-weight: 700; }
+.tag.closed { border-color: var(--warn); color: var(--warn); }
+.tag.easy { background: var(--felt-soft); border-color: transparent; color: var(--felt); font-weight: 700; }
+.desc { margin: 0; }
+.hint { margin: 0; font-size: 14px; color: var(--muted); }
+.hint b { color: var(--ink); font-weight: 700; }
+.example { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 14px; padding-top: 2px; overflow-x: auto; }
+.example .lab { font-size: 11px; color: var(--muted); display: block; margin-bottom: 2px; letter-spacing: 0.04em; }
+.no-ex { font-size: 13px; color: var(--muted); font-style: normal; }
+
+/* odds column */
+.odds { display: grid; gap: 6px; align-content: start; font-variant-numeric: tabular-nums; }
+.odds .k { font-size: 11px; color: var(--muted); letter-spacing: 0.04em; }
+.odds .v { font-family: var(--font-display); font-size: 24px; font-weight: 800; line-height: 1.2; }
+.odds .n { font-size: 12.5px; color: var(--muted); }
+.meter { height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
+.meter i { display: block; height: 100%; background: var(--felt); border-radius: 3px; }
+.yaku.ym .meter i { background: var(--gold); }
+
+/* tiles */
+.tiles { display: inline-flex; gap: 2px; }
+.tile { width: 26px; height: 36px; border-radius: 4px; background: var(--tile); border: 1px solid var(--tile-edge); box-shadow: 0 3px 0 var(--tile-side); display: grid; grid-template-rows: 1fr auto; justify-items: center; align-items: center; font-family: var(--font-display); color: var(--t-ink); line-height: 1; padding: 3px 0 2px; flex: none; }
+.tile .num { font-size: 15px; font-weight: 800; }
+.tile .suit { font-size: 9.5px; font-weight: 600; }
+.tile.m .suit { color: var(--t-man); }
+.tile.p .num, .tile.p .suit { color: var(--t-pin); }
+.tile.s .num, .tile.s .suit { color: var(--t-sou); }
+.tile.z { grid-template-rows: 1fr; }
+.tile.z .num { font-size: 17px; }
+.tile.haku .num { width: 16px; height: 22px; border: 2px solid var(--t-pin); border-radius: 2px; }
+.tile.hatsu .num { color: var(--t-sou); }
+.tile.chun .num { color: var(--t-man); }
+.tile.win { box-shadow: 0 3px 0 var(--tile-side), 0 0 0 2px var(--felt); }
+
+/* glossary terms + tooltip */
+.term { border-bottom: 1.5px dotted var(--felt); color: inherit; cursor: help; }
+.term:hover { background: var(--felt-soft); }
+#tip { position: fixed; z-index: 20; max-width: min(320px, calc(100vw - 32px)); background: var(--tip-bg); color: var(--tip-fg); border-radius: 8px; padding: 10px 12px; font-size: 13.5px; line-height: 1.65; box-shadow: 0 6px 24px rgb(0 0 0 / 0.25); pointer-events: none; }
+#tip b { font-size: 15px; }
+#tip .r { opacity: 0.7; font-size: 12px; margin-left: 6px; }
+#tip p { margin: 4px 0 0; }
+
+.notyaku { margin-top: 36px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
+.notyaku h2 { font-size: 19px; }
+.notyaku p { margin: 6px 0 0; }
+.source { margin-top: 28px; font-size: 12.5px; color: var(--muted); }
+.empty { padding: 40px 0; text-align: center; color: var(--muted); }
+
+@media (max-width: 620px) {
+  .yaku { grid-template-columns: 1fr; }
+  .odds { grid-template-columns: auto 1fr; align-items: baseline; column-gap: 12px; }
+  .odds .k { grid-column: 1 / -1; }
+  .odds .meter { grid-column: 1 / -1; }
+  .count { margin-left: 0; }
+  .bar { position: static; }
+  .tile { width: 22px; height: 31px; padding: 2px 0 1px; }
+  .tile .num { font-size: 13px; }
+  .tile.z .num { font-size: 15px; }
+  .tile .suit { font-size: 8.5px; }
+  .tile.haku .num { width: 13px; height: 19px; }
+}
+@media (prefers-reduced-motion: no-preference) { .chip, .term { transition: background-color 0.15s; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <h1>麻雀役ハンドブック</h1>
+    <p class="lead">点線の付いた言葉にマウスを乗せる（スマホならタップ）と意味が出ます。ルールは雀魂の段位戦（四人麻雀）です。</p>
+    <div class="rules" aria-label="このページのルール">
+      <span>喰いタンあり</span><span>後付けあり</span><span>人和なし</span><span>流し満貫あり</span><span>ダブル役満あり</span>
+    </div>
+  </header>
+
+  <div class="bar" role="search">
+    <div class="bar-row">
+      <input id="q" type="search" aria-label="役を検索" placeholder="役の名前や読みで検索（例：りーち、タンヤオ）" autocomplete="off">
+      <select id="sort" aria-label="並び順">
+        <option value="han">翻数順（雀魂の並び）</option>
+        <option value="rate">出やすい順</option>
+      </select>
+    </div>
+    <div class="bar-row">
+      <div class="chips" id="hanChips" aria-label="翻数で絞り込み"></div>
+    </div>
+    <div class="bar-row">
+      <div class="chips">
+        <button class="chip" id="fEasy" aria-pressed="false">初心者おすすめ</button>
+        <button class="chip" id="fOpen" aria-pressed="false">鳴いてもOKな役だけ</button>
+      </div>
+      <span class="count" id="count"></span>
+    </div>
+  </div>
+
+  <main id="list"></main>
+
+  <section class="notyaku" aria-labelledby="nd-h">
+    <h2 id="nd-h">役ではないもの：ドラ</h2>
+    <p><span data-g="ドラ">ドラ</span>・<span data-g="赤ドラ">赤ドラ</span>・<span data-g="裏ドラ">裏ドラ</span>は持っているだけで1枚につき1翻増えますが、<strong>役ではありません</strong>。ドラが何枚あっても、役がなければ和了れません。雀魂では和了画面に役と並んで表示されるので注意してください。</p>
+  </section>
+
+  <p class="source">出現率について：雀魂は役ごとの出現率を公式に公開していません。ここの数字は、四人麻雀の上級者卓で公開されている大規模な統計をもとにした<strong>おおよその目安</strong>で、「和了した手のうち、その役が付いていた割合」です。卓のレベルや打ち方で変わります。複数の役が同時につくので、合計は100%を超えます。</p>
+</div>
+
+<div id="tip" role="tooltip" hidden></div>
+
+<script>
+"use strict";
+
+// ---------- glossary ----------
+const G = {
+  "和了": ["あがり", "手牌を完成させて勝つこと。「和了る（あがる）」とも書く。ロンとツモの2通りがある。"],
+  "聴牌": ["てんぱい", "あと1枚で和了れる状態。リーチは聴牌しているときにしかできない。"],
+  "門前": ["めんぜん", "一度もポン・チー・明槓（鳴き）をしていない状態。暗槓はしても門前のまま。「メンゼン」とも読む。"],
+  "鳴き": ["なき", "他の人が捨てた牌をもらって面子を作ること。ポン・チー・明槓のこと。「副露（ふーろ）」とも言う。鳴くと門前ではなくなる。"],
+  "ポン": ["ぽん", "誰かが捨てた牌を使って、同じ牌3枚（刻子）を作る鳴き。誰の捨て牌でもできる。"],
+  "チー": ["ちー", "左隣（上家）が捨てた牌を使って、連続した数字3枚（順子）を作る鳴き。"],
+  "カン": ["かん", "同じ牌を4枚そろえて宣言すること。できた4枚の組を槓子と呼ぶ。カンすると嶺上牌を1枚引く。"],
+  "加槓": ["かかん", "ポンした3枚に、自分で引いた4枚目を足してカンにすること。この瞬間に他の人がその牌でロンすると槍槓。"],
+  "暗槓": ["あんかん", "自分で4枚全部を引いてするカン。鳴きにはならないので門前のまま。"],
+  "面子": ["めんつ", "3枚1組のかたまり。順子（連続した数字）か刻子（同じ牌3枚）のこと。槓子も面子1つと数える。"],
+  "雀頭": ["じゃんとう", "同じ牌2枚の組。和了の形には必ず1組必要。「アタマ」とも呼ぶ。"],
+  "対子": ["といつ", "同じ牌2枚の組。和了形で使うものを雀頭と呼ぶ。"],
+  "順子": ["しゅんつ", "同じ種類の数牌で連続する3枚（例：3萬4萬5萬）。字牌では作れない。"],
+  "刻子": ["こーつ", "同じ牌3枚の組（例：白白白）。"],
+  "槓子": ["かんつ", "同じ牌4枚の組。カンで作る。面子1つとして数える。"],
+  "暗刻": ["あんこー", "自分で引いて揃えた刻子。ポンで作った刻子や、ロンした牌で完成した刻子は暗刻にならない。"],
+  "数牌": ["しゅうぱい", "数字のある牌。萬子（マンズ）・筒子（ピンズ）・索子（ソーズ）の3種類で、それぞれ1〜9がある。"],
+  "字牌": ["じはい", "数字のない牌。風牌（東・南・西・北）と三元牌（白・發・中）の7種類。順子は作れない。"],
+  "風牌": ["かぜはい", "東・南・西・北の4種類の字牌。場風や自風と一致すると役牌になる。"],
+  "三元牌": ["さんげんぱい", "白・發・中の3種類の字牌。誰でも刻子にすれば役（役牌）になる。"],
+  "役牌": ["やくはい", "刻子にするだけで1翻つく牌。三元牌（白・發・中）と、場風・自風に当たる風牌。"],
+  "么九牌": ["やおちゅうはい", "1と9の数牌（老頭牌）と字牌のこと。2〜8の数牌は「中張牌（ちゅんちゃんぱい）」と呼ぶ。"],
+  "場風": ["ばかぜ", "その局の風。前半の東場は東、後半の南場は南。場風の刻子は役牌になる。"],
+  "自風": ["じかぜ", "自分の席の風。親が東家で、そこから反時計回りに南家・西家・北家。自風の刻子は役牌になる。"],
+  "親": ["おや", "その局で東家（とんちゃ）の人。和了ったときの点数が子の1.5倍になる。"],
+  "子": ["こ", "親以外の3人。"],
+  "ツモ": ["つも", "自分で引いた牌で和了ること。点数は他の3人全員から受け取る。"],
+  "ロン": ["ろん", "他の人が捨てた牌で和了ること。点数は捨てた人1人から受け取る。"],
+  "翻": ["はん", "役の点数の単位。翻が多いほど点数が高い。役の翻とドラの翻を合計して点数を決める。"],
+  "満貫": ["まんがん", "子8000点・親12000点の点数のかたまり。おおむね5翻で満貫になる。"],
+  "役満": ["やくまん", "最高クラスの役。子32000点・親48000点。役満がつくと他の役は数えない。"],
+  "ダブル役満": ["だぶるやくまん", "役満2つ分の点数（子64000点・親96000点）。雀魂では一部の特に難しい形がダブル役満になる。"],
+  "食い下がり": ["くいさがり", "鳴いて作ると翻数が1つ下がること。例：一気通貫は門前なら2翻、鳴くと1翻。"],
+  "門前限定": ["めんぜんげんてい", "鳴いてしまうとつかない役。リーチ・平和・七対子など。"],
+  "両面待ち": ["りゃんめんまち", "2枚の連続した数字（例：4・5）で、両側の2種類（3か6）を待つ形。いちばん和了りやすい待ち。"],
+  "単騎待ち": ["たんきまち", "1枚だけ浮いている牌と同じ牌を待って、雀頭を作る形。"],
+  "双碰待ち": ["しゃんぽんまち", "対子2組のどちらかが刻子になるのを待つ形。"],
+  "一巡": ["いちじゅん", "4人が1回ずつ牌を引いて捨てるまでのひとまわり。"],
+  "海底": ["はいてい", "山（積まれた牌）の最後の1枚。"],
+  "嶺上牌": ["りんしゃんはい", "カンをしたときに補充として引く、山の端の特別な牌。"],
+  "流局": ["りゅうきょく", "山の牌がなくなるまで誰も和了らずに局が終わること。"],
+  "ドラ": ["どら", "局ごとに決まる「ボーナス牌」。持っていると1枚につき1翻増える。役ではない。"],
+  "赤ドラ": ["あかどら", "赤い5の牌。雀魂では各種類に1枚ずつ入っていて、ドラと同じく1枚1翻。"],
+  "裏ドラ": ["うらどら", "リーチして和了ったときだけめくって確認できるドラ。リーチの大きな魅力。"],
+  "一盃口": ["いーぺーこー", "同じ順子を2組作る役。下の一覧を参照。"],
+  "対々和": ["といといほー", "4つの面子をすべて刻子にする役。"],
+  "七対子": ["ちーといつ", "対子を7組作る特殊な形の役。"],
+};
+
+// ---------- yaku data ----------
+// ex: hand groups ("234m567m"), win tile, melds (open groups). rate = % of winning hands.
+const Y = [
+  // 1翻
+  { g: "1", n: "立直", k: "りーち", c: 1, o: null, easy: true, rate: 40,
+    d: "{門前}で{聴牌}したときに「リーチ」と宣言すると付く役。1000点を場に出し、それ以降は手牌を変えられない（引いた牌は和了れなければそのまま捨てる）。",
+    h: "<b>まずはこれ。</b>形を問わないので、門前で聴牌したらリーチするだけで役ができる。{裏ドラ}も見られる。",
+    ex: { hand: "234m567m345p99s67s", win: "8s" } },
+  { g: "1", n: "一発", k: "いっぱつ", c: 1, o: null, rate: 7,
+    d: "リーチしてから{一巡}以内（自分の次のツモまで）に和了ると付く。その間に誰かが{鳴き}をすると消える。",
+    h: "狙って作る役ではなく、リーチのおまけ。", sit: true },
+  { g: "1", n: "門前清自摸和", k: "めんぜんちんつもほー（ツモ）", c: 1, o: null, easy: true, rate: 17,
+    d: "{門前}のまま、自分で引いた牌で和了る（{ツモ}）と付く。",
+    h: "略して「メンゼンツモ」「ツモ」。門前で聴牌していれば、ツモるだけで役になる。", sit: true },
+  { g: "1", n: "役牌：白", k: "やくはい：はく", c: 1, o: 1, easy: true, rate: 8.5,
+    d: "{三元牌}の白を3枚そろえる（{刻子}）と付く。鳴いてもよい。",
+    h: "<b>いちばん簡単に作れる役。</b>白が2枚あればポンを狙える。",
+    ex: { hand: "234m678p345s55p55z", win: "5z" } },
+  { g: "1", n: "役牌：發", k: "やくはい：はつ", c: 1, o: 1, easy: true, rate: 8.5,
+    d: "{三元牌}の發を3枚そろえる（{刻子}）と付く。鳴いてもよい。",
+    h: "白・中と同じく、2枚あったらポンのチャンス。",
+    ex: { hand: "234m678p345s55p66z", win: "6z" } },
+  { g: "1", n: "役牌：中", k: "やくはい：ちゅん", c: 1, o: 1, easy: true, rate: 8.5,
+    d: "{三元牌}の中を3枚そろえる（{刻子}）と付く。鳴いてもよい。",
+    h: "白・發と同じく、2枚あったらポンのチャンス。",
+    ex: { hand: "234m678p345s55p77z", win: "7z" } },
+  { g: "1", n: "役牌：自風牌", k: "やくはい：じかぜはい", c: 1, o: 1, easy: true, rate: 6,
+    d: "自分の{自風}（東家なら東、南家なら南…）の{刻子}を作ると付く。",
+    h: "例は南家のとき。自分の風は雀魂の画面中央に表示されている。",
+    ex: { hand: "234m678p345s55p22z", win: "2z" } },
+  { g: "1", n: "役牌：場風牌", k: "やくはい：ばかぜはい", c: 1, o: 1, easy: true, rate: 6,
+    d: "その局の{場風}（東場なら東、南場なら南）の{刻子}を作ると付く。",
+    h: "{親}が東場で東をそろえると、場風と自風の両方で2翻になる（ダブ東）。",
+    ex: { hand: "234m678p345s55p11z", win: "1z" } },
+  { g: "1", n: "断幺九", k: "たんやお", c: 1, o: 1, easy: true, rate: 22,
+    d: "2〜8の{数牌}だけで手を作ると付く。{么九牌}（1・9・{字牌}）を1枚も使わない。",
+    h: "雀魂は喰いタンありなので、<b>鳴いても付く</b>。速く和了りたいときの定番。",
+    ex: { hand: "234m567m33p456p67s", win: "5s" } },
+  { g: "1", n: "平和", k: "ぴんふ", c: 1, o: null, easy: true, rate: 19,
+    d: "{門前}で、①4つの{面子}がすべて{順子}、②{雀頭}が{役牌}ではない、③待ちが{両面待ち}。この3つを全部満たすと付く。",
+    h: "条件は多いが、手を順子中心に作るだけで自然とできることが多い。",
+    ex: { hand: "123m456m789p55s23s", win: "4s" } },
+  { g: "1", n: "一盃口", k: "いーぺーこー", c: 1, o: null, rate: 4.5,
+    d: "まったく同じ{順子}を2組作ると付く（例：1萬2萬3萬を2組）。",
+    h: "{門前限定}。平和と一緒に付くことが多い。",
+    ex: { hand: "112233m456p55s78s", win: "6s" } },
+  { g: "1", n: "海底摸月", k: "はいていもーゆえ", c: 1, o: 1, rate: 0.8,
+    d: "山の最後の1枚（{海底}の牌）を{ツモ}って和了ると付く。",
+    h: "最後まで聴牌を続けたごほうび。狙って作る役ではない。", sit: true },
+  { g: "1", n: "河底撈魚", k: "ほうていらおゆい", c: 1, o: 1, rate: 0.15,
+    d: "局の最後に捨てられた牌で{ロン}すると付く。",
+    h: "海底摸月のロン版。", sit: true },
+  { g: "1", n: "嶺上開花", k: "りんしゃんかいほう", c: 1, o: 1, rate: 0.3,
+    d: "{カン}をしたあと、補充で引く{嶺上牌}で和了ると付く。",
+    h: "カンすると引く牌が1枚増えるので、そのまま和了れることがある。", sit: true },
+  { g: "1", n: "槍槓", k: "ちゃんかん", c: 1, o: 1, rate: 0.05,
+    d: "他の人が{加槓}した牌が自分の和了り牌だったとき、その牌で{ロン}すると付く。",
+    h: "めったに出ない。和了ボタンが出たら押すだけ。", sit: true },
+
+  // 2翻
+  { g: "2", n: "ダブル立直", k: "だぶるりーち", c: 2, o: null, rate: 0.4,
+    d: "配られた手と最初の{ツモ}でいきなり{聴牌}し、最初の捨て牌でリーチすると付く（それまで誰も{鳴き}をしていないこと）。立直の代わりに付く。",
+    h: "完全に運。出たらラッキー。", sit: true },
+  { g: "2", n: "三色同刻", k: "さんしょくどうこー", c: 2, o: 2, rate: 0.05,
+    d: "萬子・筒子・索子で、同じ数字の{刻子}を作ると付く。",
+    h: "かなり珍しい。対々和や三暗刻と一緒になりやすい。",
+    ex: { hand: "222m222p222s56m99s", win: "7m" } },
+  { g: "2", n: "三槓子", k: "さんかんつ", c: 2, o: 2, rate: 0.004,
+    d: "{槓子}を3つ作ると付く。",
+    h: "非常に珍しい。カンは暗槓・明槓どちらでもよい。",
+    ex: { melds: ["1111m", "5555p", "9999s"], hand: "234s7z", win: "7z" } },
+  { g: "2", n: "対々和", k: "といといほー", c: 2, o: 2, rate: 2,
+    d: "4つの{面子}をすべて{刻子}（か{槓子}）にすると付く。鳴いてもよい。",
+    h: "対子が多い手で、ポンを重ねて作る。役牌と組み合わせると点数が上がる。",
+    ex: { melds: ["777p", "333s"], hand: "222m99s11z", win: "1z" } },
+  { g: "2", n: "三暗刻", k: "さんあんこー", c: 2, o: 2, rate: 0.6,
+    d: "{暗刻}（自分で引いてそろえた刻子）を3つ作ると付く。他の面子は鳴いていてもよい。",
+    h: "ロンした牌で完成した刻子は暗刻にならないので注意。",
+    ex: { hand: "222m555p888s34m99p", win: "5m" } },
+  { g: "2", n: "小三元", k: "しょうさんげん", c: 2, o: 2, rate: 0.25,
+    d: "{三元牌}（白・發・中）のうち2つを{刻子}、残り1つを{雀頭}にすると付く。",
+    h: "{役牌}2つも同時に付くので、実際は4翻以上になる。",
+    ex: { hand: "555z666z77z234m56p", win: "7p" } },
+  { g: "2", n: "混老頭", k: "ほんろうとう", c: 2, o: 2, rate: 0.04,
+    d: "1・9の{数牌}と{字牌}（{么九牌}）だけで手を作ると付く。",
+    h: "必ず{対々和}か{七対子}と一緒に付く。",
+    ex: { hand: "111m999p111s99m33z", win: "3z" } },
+  { g: "2", n: "七対子", k: "ちーといつ", c: 2, o: null, rate: 2.6,
+    d: "{対子}（同じ牌2枚）を7組そろえる、特別な形の役。同じ牌4枚を2組として数えることはできない。",
+    h: "4面子1雀頭ではない数少ない形。対子が多い配牌のときに狙う。",
+    ex: { hand: "11m44m77m22p55p88s3z", win: "3z" } },
+  { g: "2", n: "混全帯幺九", k: "ほんちゃんたいやおちゅう（チャンタ）", c: 2, o: 1, rate: 1.2,
+    d: "4つの{面子}と{雀頭}のすべてに{么九牌}（1・9・字牌）が入っていると付く。",
+    h: "鳴くと1翻に下がる（{食い下がり}）。",
+    ex: { hand: "123m789p111z99s78s", win: "9s" } },
+  { g: "2", n: "一気通貫", k: "いっきつうかん（イッツー）", c: 2, o: 1, rate: 1.8,
+    d: "同じ種類の{数牌}で、1-2-3・4-5-6・7-8-9の3つの{順子}をそろえると付く。",
+    h: "鳴くと1翻に下がる（{食い下がり}）。",
+    ex: { hand: "123456789m55p23s", win: "4s" } },
+  { g: "2", n: "三色同順", k: "さんしょくどうじゅん（三色）", c: 2, o: 1, rate: 3.8,
+    d: "萬子・筒子・索子で、同じ数字の{順子}を1つずつ作ると付く。",
+    h: "2翻役の中ではいちばんよく出る。鳴くと1翻（{食い下がり}）。",
+    ex: { hand: "123m123p123s456m9s", win: "9s" } },
+
+  // 3翻
+  { g: "3", n: "二盃口", k: "りゃんぺーこー", c: 3, o: null, rate: 0.08,
+    d: "{一盃口}を2組作ると付く。一盃口とは重ねて数えない。",
+    h: "{七対子}の形にも見えるが、二盃口として数えるほうが高い。",
+    ex: { hand: "223344m667788p5s", win: "5s" } },
+  { g: "3", n: "純全帯幺九", k: "じゅんちゃんたいやおちゅう（純チャン）", c: 3, o: 2, rate: 0.35,
+    d: "4つの{面子}と{雀頭}のすべてに1か9が入っていると付く。{字牌}は使わない。",
+    h: "チャンタの字牌なし版。鳴くと2翻（{食い下がり}）。",
+    ex: { hand: "123m789m123p999s1s", win: "1s" } },
+  { g: "3", n: "混一色", k: "ほんいつ", c: 3, o: 2, easy: true, rate: 6,
+    d: "1種類の{数牌}と{字牌}だけで手を作ると付く。",
+    h: "<b>鳴いても2翻ある高打点役。</b>配牌で1種類の数牌と字牌が多いときに狙う。",
+    ex: { hand: "123m456m789m11z22z", win: "1z" } },
+
+  // 6翻
+  { g: "6", n: "清一色", k: "ちんいつ", c: 6, o: 5, rate: 0.8,
+    d: "1種類の{数牌}だけで手を作ると付く。{字牌}も使わない。",
+    h: "これだけでほぼ跳満。鳴くと5翻（{食い下がり}）。待ちが分かりにくいので注意。",
+    ex: { hand: "234p456p789p22p67p", win: "8p" } },
+
+  // 満貫
+  { g: "mangan", n: "流し満貫", k: "ながしまんがん", c: "満貫", o: "満貫", rate: 0.01,
+    d: "{流局}したとき、自分の捨て牌がすべて{么九牌}で、しかも1枚も他の人に{鳴き}で取られていなければ、{満貫}として扱われる。",
+    h: "和了ではないが、和了と同じように点数がもらえる特別ルール。", sit: true },
+
+  // 役満
+  { g: "yakuman", n: "天和", k: "てんほー", c: "役満", o: null, rate: 0.0003,
+    d: "{親}が、配られた時点ですでに和了の形になっていると付く。", h: "完全な運。", sit: true },
+  { g: "yakuman", n: "地和", k: "ちーほー", c: "役満", o: null, rate: 0.0008,
+    d: "{子}が最初の{ツモ}で和了ると付く（それまで誰も{鳴き}をしていないこと）。", h: "完全な運。", sit: true },
+  { g: "yakuman", n: "大三元", k: "だいさんげん", c: "役満", o: "役満", rate: 0.03,
+    d: "白・發・中の3つすべてを{刻子}にすると付く。",
+    h: "役満の中では比較的出やすい。三元牌を2種類ポンしている人には注意。",
+    ex: { hand: "555z666z77z234m99p", win: "7z" } },
+  { g: "yakuman", n: "四暗刻", k: "すーあんこー", c: "役満", o: null, rate: 0.04,
+    d: "{暗刻}を4つ作ると付く。{双碰待ち}の場合、{ロン}だと最後の刻子が暗刻にならないので{ツモ}でしか成立しない。",
+    h: "役満の中ではいちばん出やすい部類。対子が多い手から生まれる。",
+    ex: { hand: "111m444p777s99s22z", win: "2z" } },
+  { g: "yakuman", n: "字一色", k: "つーいーそー", c: "役満", o: "役満", rate: 0.004,
+    d: "{字牌}だけで手を作ると付く。", h: "",
+    ex: { hand: "111z222z333z55z66z", win: "6z" } },
+  { g: "yakuman", n: "緑一色", k: "りゅーいーそー", c: "役満", o: "役満", rate: 0.0007,
+    d: "緑色だけで描かれた牌（2・3・4・6・8の索子と發）だけで手を作ると付く。", h: "",
+    ex: { hand: "234s234s666s88s66z", win: "8s" } },
+  { g: "yakuman", n: "清老頭", k: "ちんろうとう", c: "役満", o: "役満", rate: 0.0006,
+    d: "1と9の{数牌}だけで手を作ると付く。", h: "",
+    ex: { hand: "111m999m111p99p11s", win: "1s" } },
+  { g: "yakuman", n: "国士無双", k: "こくしむそう", c: "役満", o: null, rate: 0.04,
+    d: "1・9の数牌と{字牌}、合計13種類を1枚ずつそろえ、どれか1種類をもう1枚持つと付く。",
+    h: "{么九牌}がばらばらにたくさん配られたときの一発逆転手。",
+    ex: { hand: "119m19p19s123456z", win: "7z" } },
+  { g: "yakuman", n: "小四喜", k: "しょうすーしー", c: "役満", o: "役満", rate: 0.006,
+    d: "{風牌}（東・南・西・北）のうち3種類を{刻子}、残り1種類を{雀頭}にすると付く。", h: "",
+    ex: { hand: "111z222z333z44z56m", win: "7m" } },
+  { g: "yakuman", n: "四槓子", k: "すーかんつ", c: "役満", o: "役満", rate: 0.0001,
+    d: "{槓子}を4つ作ると付く。", h: "最も出にくい役満のひとつ。",
+    ex: { melds: ["2222m", "5555p", "8888s", "3333z"], hand: "5p", win: "5p" } },
+  { g: "yakuman", n: "九蓮宝燈", k: "ちゅうれんぽうとう", c: "役満", o: null, rate: 0.0012,
+    d: "1種類の{数牌}で「1112345678999」に同じ種類の牌を1枚足した形を作ると付く。", h: "",
+    ex: { hand: "1112345678899m", win: "9m" } },
+
+  // ダブル役満（雀魂）
+  { g: "double", n: "四暗刻単騎", k: "すーあんこーたんき", c: "ダブル役満", o: null, rate: 0.01,
+    d: "暗刻4つが完成していて、残り1枚の{単騎待ち}で和了ると付く。ロンでも成立する。", h: "",
+    ex: { hand: "111m444p777s222z9s", win: "9s" } },
+  { g: "double", n: "国士無双十三面", k: "こくしむそうじゅうさんめん", c: "ダブル役満", o: null, rate: 0.004,
+    d: "13種類の{么九牌}を1枚ずつ持ち、13種類どれが来ても和了れる待ちで和了ると付く。", h: "",
+    ex: { hand: "19m19p19s1234567z", win: "1m" } },
+  { g: "double", n: "純正九蓮宝燈", k: "じゅんせいちゅうれんぽうとう", c: "ダブル役満", o: null, rate: 0.0003,
+    d: "「1112345678999」の形で{聴牌}し、1〜9のどれでも和了れる9面待ちで和了ると付く。", h: "",
+    ex: { hand: "1112345678999m", win: "5m" } },
+  { g: "double", n: "大四喜", k: "だいすーしー", c: "ダブル役満", o: "ダブル役満", rate: 0.0008,
+    d: "{風牌}4種類すべてを{刻子}にすると付く。", h: "",
+    ex: { hand: "111z222z333z444z5m", win: "5m" } },
+];
+
+const GROUPS = [
+  ["1", "1翻", "いちばんよく使う役。まずはここから"],
+  ["2", "2翻", ""],
+  ["3", "3翻", ""],
+  ["6", "6翻", ""],
+  ["mangan", "満貫", "特別な扱いの役"],
+  ["yakuman", "役満", "子32000点・親48000点"],
+  ["double", "ダブル役満", "雀魂ではこの4つが役満2つ分"],
+];
+
+// ---------- helpers ----------
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+function rich(s) {
+  // {用語} or {用語|表示} -> hoverable term; <b> in yaku hints is author markup, kept as-is
+  return s.replace(/\{([^}|]+)(?:\|([^}]+))?\}/g, (m, k, label) =>
+    G[k] ? `<span class="term" tabindex="0" data-term="${esc(k)}">${esc(label || k)}</span>` : esc(label || k));
+}
+const KANJI = ["", "一", "二", "三", "四", "五", "六", "七", "八", "九"];
+const HONOR = ["", "東", "南", "西", "北", "白", "發", "中"];
+const SUIT = { m: "萬", p: "筒", s: "索" };
+function tile(d, s, win) {
+  const t = document.createElement("span");
+  t.className = "tile " + s + (win ? " win" : "");
+  if (s === "z") {
+    const n = +d;
+    if (n === 5) t.classList.add("haku");
+    if (n === 6) t.classList.add("hatsu");
+    if (n === 7) t.classList.add("chun");
+    t.innerHTML = `<span class="num">${n === 5 ? "" : HONOR[n]}</span>`;
+    t.setAttribute("aria-label", HONOR[n]);
+  } else {
+    t.innerHTML = `<span class="num">${s === "m" ? KANJI[d] : d}</span><span class="suit">${SUIT[s]}</span>`;
+    t.setAttribute("aria-label", d + SUIT[s]);
+  }
+  return t;
+}
+function tiles(str) {
+  const box = document.createElement("span");
+  box.className = "tiles";
+  for (const [, digits, s] of str.matchAll(/(\d+)([mpsz])/g))
+    for (const d of digits) box.append(tile(d, s, false));
+  return box;
+}
+function block(label, node) {
+  const w = document.createElement("span");
+  w.innerHTML = `<span class="lab">${label}</span>`;
+  w.append(node);
+  return w;
+}
+function rateText(r) {
+  const pct = r >= 1 ? r.toFixed(r >= 10 ? 0 : 1) : r >= 0.1 ? r.toFixed(2).replace(/0$/, "") : String(+r.toPrecision(2));
+  const every = 100 / r;
+  let n;
+  if (every < 1.5) n = null;
+  else {
+    const p = Math.pow(10, Math.max(0, Math.floor(Math.log10(every)) - 1));
+    n = Math.round(every / p) * p;
+  }
+  return { pct: "約" + pct + "%", every: n ? `和了のおよそ${n.toLocaleString()}回に1回` : "" };
+}
+const LMIN = Math.log10(0.0001), LMAX = Math.log10(50);
+const meterW = r => Math.max(3, Math.min(100, 100 * (Math.log10(r) - LMIN) / (LMAX - LMIN)));
+function hanTags(y) {
+  const ym = typeof y.c === "string";
+  if (ym) {
+    const cls = y.c === "満貫" ? "han" : "yakuman";
+    return [`<span class="tag ${cls}">${y.c}</span>`,
+      y.o == null ? `<span class="tag closed"><span class="term" tabindex="0" data-term="門前限定">門前限定</span></span>` : `<span class="tag">鳴いてもOK</span>`].join("");
+  }
+  const out = [`<span class="tag han">${y.c}翻</span>`];
+  if (y.o == null) out.push(`<span class="tag closed"><span class="term" tabindex="0" data-term="門前限定">門前限定</span></span>`);
+  else if (y.o < y.c) out.push(`<span class="tag">鳴くと${y.o}翻（<span class="term" tabindex="0" data-term="食い下がり">食い下がり</span>）</span>`);
+  else out.push(`<span class="tag">鳴いてもOK</span>`);
+  return out.join("");
+}
+
+// static terms written in the HTML
+document.querySelectorAll("[data-g]").forEach(el => {
+  el.className = "term"; el.tabIndex = 0; el.dataset.term = el.dataset.g;
+});
+
+// ---------- filters ----------
+const state = { q: "", group: "all", easy: false, open: false, sort: "han" };
+try {
+  const saved = JSON.parse(localStorage.getItem("yaku-filters") || "{}");
+  if (saved.sort === "rate" || saved.sort === "han") state.sort = saved.sort;
+} catch (e) { /* storage unavailable */ }
+$("#sort").value = state.sort;
+
+const chipsBox = $("#hanChips");
+for (const [id, label] of [["all", "すべて"], ...GROUPS.map(g => [g[0], g[1]])]) {
+  const b = document.createElement("button");
+  b.className = "chip"; b.textContent = label; b.dataset.g = id;
+  b.setAttribute("aria-pressed", String(id === state.group));
+  chipsBox.append(b);
+}
+chipsBox.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  state.group = b.dataset.g;
+  for (const x of chipsBox.children) x.setAttribute("aria-pressed", String(x === b));
+  render();
+});
+for (const [id, key] of [["#fEasy", "easy"], ["#fOpen", "open"]]) {
+  $(id).addEventListener("click", e => {
+    state[key] = !state[key];
+    e.currentTarget.setAttribute("aria-pressed", String(state[key]));
+    render();
+  });
+}
+$("#q").addEventListener("input", e => { state.q = e.target.value.trim(); render(); });
+$("#sort").addEventListener("change", e => {
+  state.sort = e.target.value;
+  try { localStorage.setItem("yaku-filters", JSON.stringify({ sort: state.sort })); } catch (err) { /* ignore */ }
+  render();
+});
+
+// katakana -> hiragana so タンヤオ finds たんやお
+const toHira = s => s.replace(/[ァ-ヶ]/g, c => String.fromCharCode(c.charCodeAt(0) - 0x60));
+function matches(y) {
+  if (state.group !== "all" && y.g !== state.group) return false;
+  if (state.easy && !y.easy) return false;
+  if (state.open && y.o == null) return false;
+  if (state.q) {
+    const q = toHira(state.q.toLowerCase());
+    const hay = toHira((y.n + " " + y.k).toLowerCase());
+    if (!hay.includes(q)) return false;
+  }
+  return true;
+}
+
+// ---------- render ----------
+function row(y) {
+  const el = document.createElement("article");
+  const ym = y.g === "yakuman" || y.g === "double";
+  el.className = "yaku" + (ym ? " ym" : "");
+  const main = document.createElement("div");
+  main.className = "y-main";
+  main.innerHTML = `
+    <div class="y-title"><h3>${esc(y.n)}</h3><span class="kana">${esc(y.k)}</span></div>
+    <div class="tags">${hanTags(y)}${y.easy ? '<span class="tag easy">初心者おすすめ</span>' : ""}</div>
+    <p class="desc">${rich(y.d)}</p>
+    ${y.h ? `<p class="hint">${rich(y.h)}</p>` : ""}`;
+  const ex = document.createElement("div");
+  ex.className = "example";
+  if (y.ex) {
+    if (y.ex.melds) {
+      const m = document.createElement("span"); m.className = "tiles"; m.style.gap = "8px";
+      for (const g of y.ex.melds) m.append(tiles(g));
+      ex.append(block("鳴き・カンした牌", m));
+    }
+    ex.append(block("手牌", tiles(y.ex.hand)));
+    const w = document.createElement("span"); w.className = "tiles"; w.append(tile(y.ex.win[0], y.ex.win[1], true));
+    ex.append(block("和了牌", w));
+  } else if (y.sit) {
+    ex.innerHTML = '<span class="no-ex">手牌の形は自由。和了ったときの状況で付く役です。</span>';
+  }
+  main.append(ex);
+  const r = rateText(y.rate);
+  const odds = document.createElement("div");
+  odds.className = "odds";
+  odds.innerHTML = `<span class="k">出現率（目安）</span><span class="v">${r.pct}</span><span class="n">${r.every}</span>
+    <span class="meter" title="対数目盛"><i style="width:${meterW(y.rate).toFixed(1)}%"></i></span>`;
+  el.append(main, odds);
+  return el;
+}
+
+function render() {
+  const list = $("#list");
+  list.replaceChildren();
+  const shown = Y.filter(matches);
+  $("#count").textContent = `${shown.length} / ${Y.length} 役`;
+  if (!shown.length) {
+    list.innerHTML = '<p class="empty">条件に合う役がありません。検索語や絞り込みを変えてください。</p>';
+    return;
+  }
+  if (state.sort === "rate") {
+    const sec = document.createElement("section"); sec.className = "group";
+    sec.innerHTML = '<div class="group-head"><h2>出やすい順</h2><span class="sub">上から覚えると効率がいい</span></div>';
+    for (const y of shown.slice().sort((a, b) => b.rate - a.rate)) sec.append(row(y));
+    list.append(sec);
+    return;
+  }
+  for (const [id, label, sub] of GROUPS) {
+    // within each han group, most common yaku first
+    const ys = shown.filter(y => y.g === id).sort((a, b) => b.rate - a.rate);
+    if (!ys.length) continue;
+    const sec = document.createElement("section"); sec.className = "group";
+    sec.innerHTML = `<div class="group-head"><h2>${label}</h2><span class="sub">${sub}</span></div>`;
+    for (const y of ys) sec.append(row(y));
+    list.append(sec);
+  }
+}
+render();
+
+// ---------- tooltip ----------
+const tip = $("#tip");
+let current = null;
+function show(el) {
+  const g = G[el.dataset.term]; if (!g) return;
+  current = el;
+  tip.innerHTML = `<b>${esc(el.dataset.term)}</b><span class="r">${esc(g[0])}</span><p>${esc(g[1])}</p>`;
+  tip.hidden = false;
+  const r = el.getBoundingClientRect(), t = tip.getBoundingClientRect();
+  const vw = document.documentElement.clientWidth, vh = window.innerHeight;
+  let left = Math.min(Math.max(16, r.left + r.width / 2 - t.width / 2), vw - t.width - 16);
+  let top = r.bottom + 8;
+  if (top + t.height > vh - 8) top = r.top - t.height - 8;
+  tip.style.left = left + "px"; tip.style.top = Math.max(8, top) + "px";
+}
+function hide() { tip.hidden = true; current = null; }
+document.addEventListener("mouseover", e => { const t = e.target.closest(".term"); if (t) show(t); });
+document.addEventListener("mouseout", e => { const t = e.target.closest(".term"); if (t && !t.contains(e.relatedTarget)) hide(); });
+document.addEventListener("focusin", e => { const t = e.target.closest(".term"); if (t) show(t); });
+document.addEventListener("focusout", e => { if (e.target.closest(".term")) hide(); });
+document.addEventListener("click", e => {
+  const t = e.target.closest(".term");
+  if (t) { if (current === t && !tip.hidden) hide(); else show(t); }
+  else hide();
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape") hide(); });
+window.addEventListener("scroll", hide, { passive: true });
+</script>
+
+</body>
+</html>
